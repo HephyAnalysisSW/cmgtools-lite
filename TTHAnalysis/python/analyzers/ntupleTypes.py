@@ -13,7 +13,7 @@ from CMGTools.TTHAnalysis.tools.functionsRAX import _susy2lss_idEmu_cuts_obj,_su
 ## LEPTON
 ##------------------------------------------  
 
-leptonTypeSusy = NTupleObjectType("leptonSusy", baseObjectTypes = [ leptonType ], variables = [
+leptonTypeSusy = NTupleObjectType("leptonSusy", baseObjectTypes = [ leptonTypeExtra ], variables = [
     NTupleVariable("mvaIdSpring15",   lambda lepton : lepton.mvaRun2("NonTrigSpring15MiniAOD") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG MVA ID for non-triggering electrons, Spring15 re-training; 1 for muons"),
     # Lepton MVA-id related variables
     NTupleVariable("mvaTTH",    lambda lepton : getattr(lepton, 'mvaValueTTH', -1), help="Lepton MVA (TTH version)"),
@@ -205,6 +205,20 @@ jetTypeSusyExtra = NTupleObjectType("jetSusyExtra",  baseObjectTypes = [ jetType
     NTupleVariable("muMult", lambda x : x.muonMultiplicity(), int, mcOnly = False,help="muonMultiplicity from PFJet.h"),
     NTupleVariable("HFHMult", lambda x : x.HFHadronMultiplicity(), int, mcOnly = False,help="HFHadronMultiplicity from PFJet.h"),
     NTupleVariable("HFEMMult", lambda x : x.HFEMMultiplicity(), int, mcOnly = False,help="HFEMMultiplicity from PFJet.h"),
+])
+
+genParticleWithMotherIndex = NTupleObjectType("genParticleWithMotherIndex", baseObjectTypes = [ genParticleWithMotherId ], mcOnly=True, variables = [
+    ## these work for 74X miniaod
+    NTupleVariable("nDaughters", lambda x : x.numberOfDaughters(), int, help="index of the daughters in the genParticles"),
+    NTupleVariable("nMothers", lambda x : x.numberOfMothers(), int, help="index of the mother in the genParticles"),
+    NTupleVariable("motherIndex1", lambda x : x.motherRef(0).index() if x.numberOfMothers() > 0 else -1, int, help="index of the first mother in the genParticles"),
+    NTupleVariable("daughterIndex1", lambda x : x.daughterRef(0).index() if x.numberOfDaughters() >0 else -1, int, help="index of the first mother in the genParticles"),
+    NTupleVariable("motherIndex2", lambda x : x.motherRef(x.numberOfMothers()-1).index() if x.numberOfMothers() > 1 else -1, int, help="index of the last mother in the genParticles"),
+    NTupleVariable("daughterIndex2", lambda x : x.daughterRef(x.numberOfDaughters()-1).index() if x.numberOfDaughters() > 1 else -1, int, help="index of the last mother in the genParticles"),
+])
+
+genJetType = NTupleObjectType("genJets",  baseObjectTypes = [ fourVectorType ], mcOnly=True, variables = [
+    NTupleVariable("nConstituents", lambda x : x.nConstituents() ,help="Number of Constituents"),
 ])
 
 fatJetType = NTupleObjectType("fatJet",  baseObjectTypes = [ jetType ], variables = [
