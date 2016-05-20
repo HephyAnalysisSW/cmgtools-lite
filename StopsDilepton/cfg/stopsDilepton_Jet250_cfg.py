@@ -66,7 +66,7 @@ elif isolation == "relIso03":
   lepAna.loose_muon_relIso = 0.5
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 1
+ttHLepSkim.minLeptons = 0
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
@@ -88,6 +88,22 @@ jetAna.dataGT   = "Fall15_25nsV2_DATA"
 jetAna.mcGT   = "Fall15_25nsV2_MC"
 
 metAna.recalibrate = False 
+
+## Jet-MET based Skim (generic, but requirements depend on the final state)
+from CMGTools.TTHAnalysis.analyzers.ttHJetMETSkimmer import ttHJetMETSkimmer
+ttHJetMETSkim = cfg.Analyzer(
+   ttHJetMETSkimmer, name='ttHJetMETSkimmer',
+   jets      = "jets", # jet collection to use
+   jetPtCuts = [250],  # e.g. [60,40,30,20] to require at least four jets with pt > 60,40,30,20
+   jetVetoPt =  0,  # if non-zero, veto additional jets with pt > veto beyond the ones in jetPtCuts
+   metCut    =  0,  # MET cut
+   htCut     = ('htJet40j', 0), # cut on HT defined with only jets and pt cut 40, at zero; i.e. no cut
+                                # see ttHCoreEventAnalyzer for alternative definitions
+   mhtCut    = ('mhtJet40', 0), # cut on MHT defined with all leptons, and jets with pt > 40.
+   nBJet     = ('CSVv2IVFM', 0, "jet.pt() > 30"),     # require at least 0 jets passing CSV medium and pt > 30
+   )
+susyCoreSequence.insert(susyCoreSequence.index(jetAna) + 1, 
+                        ttHJetMETSkim)
 
 isoTrackAna.setOff=False
 genAna.allGenTaus = True
@@ -262,8 +278,8 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_13TeV_16Dec2015ReReco_Collisions15_25ns_JSON_Silver_v2.txt"
     from CMGTools.StopsDilepton.samples import *
 
-#    selectedComponents = [TTJets, DoubleMuon_Run2015D_16Dec]
-    selectedComponents = [ QCD_Pt_15to3000_M2_0_500 ] #, QCD_Pt_15to3000_M2_5_100]
+    selectedComponents = [TTJets, DoubleMuon_Run2015D_16Dec]
+    #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
     for comp in selectedComponents:
             comp.files = comp.files[:1]
             comp.splitFactor = 1
