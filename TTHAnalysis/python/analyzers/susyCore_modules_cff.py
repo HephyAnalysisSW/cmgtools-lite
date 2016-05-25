@@ -173,6 +173,8 @@ lepAna = cfg.Analyzer(
     rhoElectron = 'fixedGridRhoFastjetCentralNeutral',
     # energy scale corrections and ghost muon suppression (off by default)
     doMuonScaleCorrections=False,
+    #doMuScleFitCorrections=False, # "rereco"
+    #doRochesterCorrections=False,
     doElectronScaleCorrections=False, # "embedded" in 5.18 for regression
     doSegmentBasedMuonCleaning=False,
     # inclusive very loose muon selection
@@ -245,6 +247,14 @@ globalSkim = cfg.Analyzer(
     collections={"lep":"selectedLeptons",
                  "tau":"selectedTaus"},
     selections=[]
+    )
+
+## OTHER LEPTON SKIMMER
+from CMGTools.TTHAnalysis.analyzers.anyLepSkimmer import anyLepSkimmer
+anyLepSkim = cfg.Analyzer(
+    anyLepSkimmer, name='anyLepSkimmer',
+    minLeptons = 0,
+    maxLeptons = 999,
     )
 
 ## Photon Analyzer (generic)
