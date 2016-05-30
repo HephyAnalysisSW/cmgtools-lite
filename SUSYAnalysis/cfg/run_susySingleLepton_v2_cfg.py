@@ -90,7 +90,7 @@ jetAna.jetEta = 2.4
 jetAna.minLepPt = 10
 
 ## JEC
-jetAna.mcGT = "76X_mcRun2_asymptotic_v12"
+jetAna.mcGT = "Summer15_25nsV6_MC"
 #jetAna.dataGT = "Summer15_25nsV6_DATA"
 jetAna.dataGT = "Summer15_25nsV7_DATA"
 
@@ -191,38 +191,62 @@ triggerFlagsAna.triggerBits = {
 #-------- HOW TO RUN
 isData = True # default, but will be overwritten below
 
-sample = 'MC'
+#sample = 'MC'
 #sample = 'data'
-#sample = 'Signal'
-
-test = 1
+sample = 'Signal'
+test = 0
 
 if sample == "MC":
-  
-  print 'Going to process MC'
-  
-  isData = False
-  isSignal = False
-  
-  # modify skim
-  #anyLepSkim.minLeptons = 1
-  ttHLepSkim.minLeptons = 0
-  
-  from CMGTools.RootTools.samples.samples_13TeV_RunIIFall15MiniAODv2 import *
-  selectedComponents = TTJets
-  if test == 1 :
-    comp = TTJets
-    print comp.files
-    comp.files = comp.files[:1]
-    selectedComponents = [comp] 
-    comp.splitFactor = 1
-  #if test==1:
-  #print comp.files
-  #comp = TT_pow_ext4 #TTJets_LO
-  #print comp.files
-  #comp.files = comp.files[0]
-  #selectedComponents = [comp]
-  #comp.splitFactor = 1
+
+	print 'Going to process MC'
+
+	isData = False
+	isSignal = False
+
+	# modify skim
+	anyLepSkim.minLeptons = 1
+	ttHLepSkim.minLeptons = 0
+
+	# -- new 74X samples
+	#from CMGTools.RootTools.samples.samples_13TeV_74X import *
+	# -- samples at DESY
+	# MiniAODv1
+	#from CMGTools.SUSYAnalysis.samples.samples_13TeV_74X_desy import *
+	# MiniAODv2
+	#from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy import *
+	from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy_Compact import *
+
+	selectedComponents = TTs + SingleTop #TTJets_SingleLepton
+
+	if test==1:
+		# test a single component, using a single thread.
+		comp = TTJets_LO
+		comp.files = comp.files[:1]
+		selectedComponents = [comp]
+		comp.splitFactor = 1
+	elif test==2:
+		# test all components (1 thread per component).
+		for comp in selectedComponents:
+			comp.splitFactor = 1
+			comp.fineSplitFactor = 1
+			comp.files = comp.files[:1]
+	elif test==3:
+		# run all components (1 thread per component).
+		for comp in selectedComponents:
+			comp.fineSplitFactor = 1
+			comp.splitFactor = len(comp.files)
+	elif test==0:
+		# PRODUCTION
+		# run on everything
+
+		#selectedComponents =  [TTJets_LO , TTJets_LO_HT600to800, TTJets_LO_HT800to1200, TTJets_LO_HT1200to2500, TTJets_LO_HT2500toInf] + QCDHT + WJetsToLNuHT + SingleTop + DYJetsM50HT + TTV
+		#selectedComponents =  #SingleTop + DYJetsM50HT + TTV
+		#selectedComponents = [TTJets_SingleLeptonFromTbar, TTJets_SingleLeptonFromTbar_ext, TTJets_SingleLeptonFromT, TTJets_SingleLeptonFromT_ext, TTJets_DiLepton, TTJets_DiLepton_ext]
+
+		for comp in selectedComponents:
+			comp.fineSplitFactor = 1
+			comp.splitFactor = len(comp.files)
+
 elif sample == "Signal":
 
 	print 'Going to process Signal'
