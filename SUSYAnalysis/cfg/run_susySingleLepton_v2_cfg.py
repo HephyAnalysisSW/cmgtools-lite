@@ -201,8 +201,8 @@ genAna.allGenTaus = True
 #-------- HOW TO RUN
 isData = True # default, but will be overwritten below
 
-sample = 'MC'
-#sample = 'data'
+#sample = 'MC'
+sample = 'data'
 #sample = 'Signal'
 test = 1
 
@@ -325,62 +325,57 @@ elif sample == "Signal":
 
 elif sample == "data":
 
-	print 'Going to process DATA'
+  print 'Going to process DATA'
 
-	isData = True
-	isSignal = False
+  isData = True
+  isSignal = False
 
-	# modify skim
-	anyLepSkim.minLeptons = 1
-	ttHLepSkim.minLeptons = 0
+  # modify skim
+  anyLepSkim.minLeptons = 1
+  ttHLepSkim.minLeptons = 0
 
-	# central samples
-#	from CMGTools.RootTools.samples.samples_13TeV_DATA2015 import *
-	# samples at DESY
-	from CMGTools.SUSYAnalysis.samples.samples_13TeV_DATA2015_desy import *
+  #For now no JEC  
+  print jetAna.shiftJEC , jetAna.recalibrateJets , jetAna.addJECShifts , jetAna.calculateSeparateCorrections , jetAna.calculateType1METCorrection
+  jetAna.addJECShifts = False
+  jetAna.doQG = False
+  jetAna.smearJets = False #should be false in susycore, already
+  jetAna.recalibrateJets = False # false for miniAOD v2!
+  jetAna.calculateSeparateCorrections = False
+  jetAna.applyL2L3Residual = False
+  print jetAna.shiftJEC , jetAna.recalibrateJets , jetAna.addJECShifts , jetAna.calculateSeparateCorrections , jetAna.calculateType1METCorrection
 
-	#selectedComponents = [ JetHT_Run2015D ] #, SingleElectron_Run2015D, SingleMuon_Run2015D ]
-	#selectedComponents = [ SingleElectron_Run2015D, SingleMuon_Run2015D ]
+  # central samples
+  from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
 
-	# MiniAOD V2
-	#selectedComponents = [ SingleElectron_Run2015D_05Oct, SingleMuon_Run2015D_05Oct, SingleElectron_Run2015D_Promptv4, SingleMuon_Run2015D_Promptv4]#, JetHT_Run2015D_05Oct,JetHT_Run2015D_Promptv4]
-	#selectedComponents = [ SingleMuon_Run2015D_05Oct, JetHT_Run2015D_05Oct, SingleElectron_Run2015D_Promptv4, SingleMuon_Run2015D_Promptv4, JetHT_Run2015D_Promptv4]
-	#selectedComponents = [ JetHT_Run2015D_05Oct,JetHT_Run2015D_Promptv4 ]
-	selectedComponents = [ SingleElectron_Run2015D_05Oct, SingleMuon_Run2015D_05Oct, SingleElectron_Run2015D_Promptv4, SingleMuon_Run2015D_Promptv4]
-	#selectedComponents = [ SingleMuon_Run2015D_Promptv4 ]
+  selectedComponents = [SingleElectron_Run2016B_PromptReco, SingleMuon_Run2016B_PromptReco]
 
-	if test!=0 and jsonAna in susyCoreSequence: susyCoreSequence.remove(jsonAna)
+  if test!=0 and jsonAna in susyCoreSequence: susyCoreSequence.remove(jsonAna)
+  if test==1:
+    comp = SingleElectron_Run2016B_PromptReco
+    comp.files = comp.files[:1]
+    selectedComponents = [comp]
+    comp.splitFactor = 1
+    comp.splitFactor = len(comp.files)
+  elif test==2:
+    # test all components (1 thread per component).
+    for comp in selectedComponents:
+      comp.splitFactor = 1
+      comp.fineSplitFactor = 1
+      comp.files = comp.files[:1]
+  elif test==3:
+    # run all components (10 files per component).
+    for comp in selectedComponents:
+      comp.files = comp.files[20:30]
+      comp.fineSplitFactor = 1
+      comp.splitFactor = len(comp.files)
+  elif test==0:
+    # PRODUCTION
+    # run on everything
+    for comp in selectedComponents:
+      comp.fineSplitFactor = 1
+      comp.splitFactor = len(comp.files)
 
-	if test==1:
-		# test a single component, using a single thread.
-		#comp = SingleMuon_Run2015D
-		comp = SingleElectron_Run2015D_Promptv4
-		#comp = SingleElectron_Run2015D
-		#comp.files = ['dcap://dcache-cms-dcap.desy.de/pnfs/desy.de/cms/tier2//store/data/Run2015D/JetHT/MINIAOD/PromptReco-v3/000/256/587/00000/F664AC07-935D-E511-A019-02163E01424B.root']
 
-		#comp.files = comp.files[20:30]
-		comp.files = comp.files[:1]
-		selectedComponents = [comp]
-#		comp.splitFactor = 1
-		comp.splitFactor = len(comp.files)
-	elif test==2:
-		# test all components (1 thread per component).
-		for comp in selectedComponents:
-			comp.splitFactor = 1
-			comp.fineSplitFactor = 1
-			comp.files = comp.files[:1]
-	elif test==3:
-		# run all components (10 files per component).
-		for comp in selectedComponents:
-			comp.files = comp.files[20:30]
-			comp.fineSplitFactor = 1
-			comp.splitFactor = len(comp.files)
-	elif test==0:
-		# PRODUCTION
-		# run on everything
-		for comp in selectedComponents:
-			comp.fineSplitFactor = 1
-			comp.splitFactor = len(comp.files)
 
 ## PDF weights
 PDFWeights = []
@@ -437,8 +432,8 @@ sequence = cfg.Sequence(susyCoreSequence+[
 		])
 
 # remove skimming for Data or Signal
-if isData:# or isSignal :
-	sequence.remove(ttHHTSkimmer)
+#if isData:# or isSignal :
+#	sequence.remove(ttHHTSkimmer)
 #	sequence.remove(ttHSTSkimmer)
 
 if isSignal:
