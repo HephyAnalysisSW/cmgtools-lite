@@ -15,6 +15,8 @@ class ttHHeavyFlavourHadronAnalyzer( Analyzer ):
         self.readCollections( event.input )
         if not self.cfg_comp.isMC: return True
 
+        def ref2id(ref):
+            return (ref.id().processIndex(), ref.id().productIndex(), ref.key()) if ref else (0,0,0)
         def flav(gp):
             id = abs(gp.pdgId())
             return max((id/1000) % 10, (id/100) % 10)
@@ -26,8 +28,8 @@ class ttHHeavyFlavourHadronAnalyzer( Analyzer ):
                 if mom.status() != 2 or abs(mom.pdgId()) < 100 and abs(mom.pdgId()) != 15: break
                 if same(bhadron,mom):
                     return True
-                mom = mom.mother() if mom.numberOfMothers() > 0 else None
-                if not mom: break
+                mom = mom.motherRef() if mom.numberOfMothers() > 0 else None
+                if mom == None or mom.isNull() or not mom.isAvailable(): break
             return False
 
         heavyHadrons = []
@@ -43,13 +45,13 @@ class ttHHeavyFlavourHadronAnalyzer( Analyzer ):
             if not lastInChain: continue
             if myflav == 4:
                 heaviestInChain = True
-                mom = g.mother() if g.numberOfMothers() > 0 else None
-                while mom:
+                mom = g.motherRef() if g.numberOfMothers() > 0 else None
+                while mom != None and mom.isNonnull() and mom.isAvailable():
                     if mom.status() != 2 or abs(mom.pdgId()) < 100: break
                     if flav(mom) == 5:
                         heaviestInChain = False
                         break
-                    mom = mom.mother() if mom.numberOfMothers() > 0 else None
+                    mom = mom.motherRef() if mom.numberOfMothers() > 0 else None
                     if not heaviestInChain: continue
             # OK, here we are
             g.flav = myflav
@@ -117,15 +119,15 @@ class ttHHeavyFlavourHadronAnalyzer( Analyzer ):
         for had in heavyHadrons:
             had.sourceId = 0
             srcmass = 0
-            mom = had.mother() if had.numberOfMothers() > 0 else None
-            while mom:
+            mom = had.motherRef() if had.numberOfMothers() > 0 else None
+            while mom != None and mom.isNonnull() and mom.isAvailable():
                 if mom.status() > 2: 
                     if mom.mass() > srcmass:
                         srcmass = mom.mass()
                         had.sourceId = mom.pdgId() 
                     if srcmass > 175:
                         break
-                mom = mom.mother() if mom.numberOfMothers() > 0 else None
+                mom = mom.motherRef() if mom.numberOfMothers() > 0 else None
         # sort and save
         heavyHadrons.sort(key = lambda h : h.pt(), reverse=True)
         event.genHeavyHadrons = heavyHadrons
