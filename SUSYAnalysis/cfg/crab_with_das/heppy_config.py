@@ -201,8 +201,8 @@ genAna.allGenTaus = True
 #-------- HOW TO RUN
 isData = True # default, but will be overwritten below
 
-sample = 'MC'
-#sample = 'data'
+#sample = 'MC'
+sample = 'data'
 #sample = 'Signal'
 test = 0
 

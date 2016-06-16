@@ -44,7 +44,7 @@ config.Data.publication = False
 config.Data.unitsPerJob = 10
 
 config.section_("Site")
-config.Site.blacklist = ['T2_US_Purdue', 'T2_US_Nebraska', 'T2_US_MIT', 'T2_US_Caltech']
+config.Site.whitelist = ['T2_IT_Legnaro','T2_DE_DESY','T1_US_FNAL']
 config.Site.storageSite = 'T2_AT_Vienna'
-config.Data.ignoreLocality = False
+config.Data.ignoreLocality = True
 
