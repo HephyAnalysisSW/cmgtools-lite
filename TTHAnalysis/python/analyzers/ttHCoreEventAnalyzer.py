@@ -385,6 +385,13 @@ class ttHCoreEventAnalyzer( Analyzer ):
             if lep not in event.selectedLeptons:
                 lep.mvaValueTTH     = self.leptonMVATTH(lep)
 
+        ## Added for DegStop
+        for lep in event.inclusiveLeptons:
+            lep.cosLMet = cos(  lep.phi() - event.met.phi() )
+            lep.mt      = sqrt( 2.* lep.pt() * event.met.pt() * (1- lep.cosLMet) )
+            lep.Q80     = 1. - 80**2 / (2.*lep.pt()*event.met.pt() )
+            #print  lep.cosLMet, lep.mt, lep.Q80
+
 
         # absolute value of the vectorial difference between met and mht
         diffMetMht_had_vec = ROOT.reco.Particle.LorentzVector(event.mhtJet40jvec.px()-event.met.px(), event.mhtJet40jvec.py()-event.met.py(), 0, 0 )
