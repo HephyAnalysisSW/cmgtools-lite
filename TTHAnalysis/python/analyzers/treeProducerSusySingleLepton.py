@@ -42,17 +42,33 @@ susySingleLepton_collections.update({
 
             # put more here
             "genParticles"     : NTupleCollection("genPartAll",  genParticleWithMotherId, 200, help="all pruned genparticles"), # need to decide which gen collection ?
+            #"genParticles"     : NTupleCollection("genPartAll",  genParticleWithMotherIndex, 200, help="all pruned genparticles"), # need to decide which gen collection ?
             ## ---------------------------------------------
-            "selectedLeptons" : NTupleCollection("LepGood", leptonTypeSusy, 8, help="Leptons after the preselection"),
-            "otherLeptons"    : NTupleCollection("LepOther", leptonTypeSusy, 8, help="Leptons after the preselection"),
+            "selectedLeptons" : NTupleCollection("LepGood", leptonTypeDegStop, 8, help="Leptons after the preselection"),
+            "otherLeptons"    : NTupleCollection("LepOther", leptonTypeDegStop, 8, help="Leptons after the preselection"),
             "selectedTaus"    : NTupleCollection("TauGood", tauTypeSusy, 3, help="Taus after the preselection"),
-            "selectedIsoTrack"    : NTupleCollection("isoTrack", isoTrackType, 50, help="isoTrack, sorted by pt"),
+            #"selectedIsoTrack"    : NTupleCollection("isoTrack", isoTrackType, 50, help="isoTrack, sorted by pt"),
             ##------------------------------------------------
             "cleanJetsAll"       : NTupleCollection("Jet",     jetTypeSusy, 25, help="Cental jets after full selection and cleaning, sorted by pt"),
             "allJetsUsedForMET"       : NTupleCollection("JetForMET",     jetType, 40, help="All Jets used for MET"),
-            "fatJets"         : NTupleCollection("FatJet",  fatJetType,  15, help="AK8 jets, sorted by pt"),
+
+            ## DegStop:
+            #"packedGenParticles"  : NTupleCollection("genPartPkd",  packedGenParticleWithMotherIndex, 2000, help="all packed genparticles"),
+            #"cleanGenJets"         : NTupleCollection("GenJet",  genJetType,  30, help="Gen Jets, sorted by pt"),
+            #"genJets"         : NTupleCollection("GenJet_NC",  genJetType,  30, help="Gen Jets, sorted by pt"),
+
+
+            #"Tracks"              : NTupleCollection("Tracks",      trackTypeSusy, 150, help="all Tracks from PackedPFCandidates (pt>1) , sorted by pt"),
+            #"GenTracks"           : NTupleCollection("GenTracks",   genTrackTypeSusy, 150, mcOnly=True, help="all Tracks from PackedPFCandidates (pt>1) , sorted by pt"),
+
+
+
+            ####
+
+
+            #"fatJets"         : NTupleCollection("FatJet",  fatJetType,  15, help="AK8 jets, sorted by pt"),
             #"reclusteredFatJets" : NTupleCollection("RCFatJet",     fourVectorType,20, help="FatJets1.2 reclusterd from ak4 cleanJetsAll pT > 30, eta <5 "),
-            "discardedJets"    : NTupleCollection("DiscJet", jetTypeSusy, 15, help="Jets discarted in the jet-lepton cleaning"),
+            #"discardedJets"    : NTupleCollection("DiscJet", jetTypeSusy, 15, help="Jets discarted in the jet-lepton cleaning"),
             ##------------------------------------------------
             #"ivf"       : NTupleCollection("SV",     svType, 20, help="SVs from IVF"),
             "LHE_weights"    : NTupleCollection("LHEweight",  weightsInfoType, 1000, mcOnly=True, help="LHE weight info"),

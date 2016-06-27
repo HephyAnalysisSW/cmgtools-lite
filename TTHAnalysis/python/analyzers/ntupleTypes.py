@@ -39,6 +39,45 @@ leptonTypeSusy = NTupleObjectType("leptonSusy", baseObjectTypes = [ leptonType ]
 
 
 
+
+
+leptonTypeDegStop = NTupleObjectType("leptonDegStop", baseObjectTypes = [ leptonTypeSusy ], variables = [
+    # Extra isolation variables
+    #NTupleVariable("chargedHadRelIso03",  lambda x : x.chargedHadronIsoR(0.3)/x.pt(), help="PF Rel Iso, R=0.3, charged hadrons only"),
+    #NTupleVariable("chargedHadRelIso04",  lambda x : x.chargedHadronIsoR(0.4)/x.pt(), help="PF Rel Iso, R=0.4, charged hadrons only"),
+    # Extra muon ID working points
+    NTupleVariable("softMuonId", lambda x : x.muonID("POG_ID_Soft") if abs(x.pdgId())==13 else 1, int, help="Muon POG Soft id"),
+    NTupleVariable("looseMuonId",   lambda x : x.muonID("POG_ID_Loose") if abs(x.pdgId())==13 else 1, int, help="Muon POG Loose id"),
+    #
+    NTupleVariable("absIso03",  lambda x : x.absIso03  , help="PF Abs Iso, R=0.3, pile-up corrected"),
+    NTupleVariable("absIso",  lambda x : x.absIso04 , help="PF Rel Iso, R=0.4, pile-up corrected"),
+    #NTupleVariable("hybIso",  lambda x : x.relIso04 * x.pt() if True, help="PF Rel Iso, R=0.4, pile-up corrected"),
+    NTupleVariable("cosPhiLepMet",  lambda x : x.cosLMet , help="Cos phi of the lepton and met  "),
+    NTupleVariable("mt",          lambda x : x.mt, help="Transverse Mass calculated for lepton"),
+    NTupleVariable("Q80",         lambda x : x.Q80  , help="Q80 variable for the deconstrcuted transverse mass"),
+    #
+    NTupleVariable("eleCutId2012_full5x5",     lambda x : (1*x.electronID("POG_Cuts_ID_2012_full5x5_Veto") + 1*x.electronID("POG_Cuts_ID_2012_full5x5_Loose") + 1*x.electronID("POG_Cuts_ID_2012_full5x5_Medium") + 1*x.electronID("POG_Cuts_ID_2012_full5x5_Tight")) if abs(x.pdgId()) == 11 else -1, int, help="Electron cut-based id (POG 2012, full5x5 shapes): 0=none, 1=veto, 2=loose, 3=medium, 4=tight"),
+    NTupleVariable("sigmaIEtaIEta",  lambda x : x.full5x5_sigmaIetaIeta() if abs(x.pdgId())==11 else 0, help="Electron sigma(ieta ieta), with full5x5 cluster shapes"),
+    NTupleVariable("dEtaScTrkIn",    lambda x : x.deltaEtaSuperClusterTrackAtVtx() if abs(x.pdgId())==11 else 0, help="Electron deltaEtaSuperClusterTrackAtVtx (without absolute value!)"),
+    NTupleVariable("dPhiScTrkIn",    lambda x : x.deltaPhiSuperClusterTrackAtVtx() if abs(x.pdgId())==11 else 0, help="Electron deltaPhiSuperClusterTrackAtVtx (without absolute value!)"),
+    NTupleVariable("hadronicOverEm", lambda x : x.hadronicOverEm() if abs(x.pdgId())==11 else 0, help="Electron hadronicOverEm"),
+    NTupleVariable("eInvMinusPInv",  lambda x : ((1.0/x.ecalEnergy() - x.eSuperClusterOverP()/x.ecalEnergy()) if x.ecalEnergy()>0. else 9e9) if abs(x.pdgId())==11 else 0, help="Electron 1/E - 1/p  (without absolute value!)"),
+#    new version used by EGM in Spring15, 7_4_14:
+    NTupleVariable("eInvMinusPInv_tkMom", lambda x: ((1.0/x.ecalEnergy()) - (1.0 / x.trackMomentumAtVtx().R() ) if (x.ecalEnergy()>0. and x.trackMomentumAtVtx().R()>0.) else 9e9) if abs(x.pdgId())==11 else 0, help="Electron 1/E - 1/p_tk_vtx  (without absolute value!)"),
+    NTupleVariable("etaSc", lambda x : x.superCluster().eta() if abs(x.pdgId())==11 else -100, help="Electron supercluster pseudorapidity"),
+])
+
+
+
+
+
+
+
+
+
+
+
+
 leptonTypeSusyExtraLight = NTupleObjectType("leptonSusyExtraLight", baseObjectTypes = [ leptonTypeSusy, leptonTypeExtra ], variables = [
     NTupleVariable("miniRelIsoCharged",   lambda x : getattr(x,'miniAbsIsoCharged',-99)/x.pt()),
     NTupleVariable("miniRelIsoNeutral",   lambda x : getattr(x,'miniAbsIsoNeutral',-99)/x.pt()),
@@ -197,9 +236,49 @@ fatJetType = NTupleObjectType("fatJet",  baseObjectTypes = [ jetType ], variable
 metTypeSusy = NTupleObjectType("metSusy", baseObjectTypes = [ metType ], variables = [
 ])
 
+
 ##------------------------------------------  
 ## GENPARTICLE
 ##------------------------------------------  
+
+
+##------------------------------------------  
+## TRACKS
+##------------------------------------------  
+
+
+#genTrackTypeSusy = NTupleObjectType("genTrackSusy",  baseObjectTypes = [ isoTrackType ], variables = [
+#    
+#    NTupleVariable("matchedJetIndex",     lambda x : x.matchedJetIndex , help="index of the matched Jet to the track"),
+#    NTupleVariable("matchedJetDr",        lambda x : x.matchedJetDr    , help="deltaR of the matched Jet to the track"),
+#    NTupleVariable("matchedLepIndex",     lambda x : x.matchedLepIndex , help="index of the matched Lepton to the track"),
+#    NTupleVariable("matchedLepDr",        lambda x : x.matchedLepDr    , help="deltaR of the matched Lepton to the track"),
+#    NTupleVariable("matchedGenPartIndex", lambda x : x.matchedGenPartIndex , mcOnly=True, help="index of the matched GenParticle to the track"),
+#    NTupleVariable("matchedGenPartDr",    lambda x : x.matchedGenPartDr    , mcOnly=True, help="deltaR of the matched GenPartricle to the track"),
+#    NTupleVariable("CosPhiMet",          lambda x : x.CosPhiMet   , help="Cos Track Phi with Met"     ),
+#    NTupleVariable("CosPhiJet1",          lambda x : x.CosPhiJet1   , help="Cos Track Phi with the Leading Jet"     ),
+#    NTupleVariable("CosPhiJet12",          lambda x : x.CosPhiJet12   , help="Cos Track Phi with the Leading + SubJet"),
+#    NTupleVariable("CosPhiJetAll",        lambda x : x.CosPhiJetAll , help="Cos Track Phi with the All Jets"     ),
+#])  
+#    
+#trackTypeSusy = NTupleObjectType("trackSusy",  baseObjectTypes = [ genTrackTypeSusy ], variables = [
+#    
+#    NTupleVariable("dxy",                 lambda x : x.dxy() , help="d_{xy} of lead track with respect to PV, in cm (with sign)"), 
+#    NTupleVariable("dxyError",            lambda x : x.dxyError() , help="d_{xy}Err of lead track with respect to PV, in cm (with sign)"),
+#    NTupleVariable("dzError",             lambda x : x.dzError() , help="d_{z}Err of lead track with respect to PV, in cm (with sign)"),
+#    NTupleVariable("fromPV",              lambda x : x.fromPV()  , help="is fromPV"),
+#    NTupleVariable("isJet",               lambda x : x.isJet()),
+#    NTupleVariable("numberOfPixleHits",   lambda x : x.numberOfPixelHits(), int),
+#    NTupleVariable("numberOfHits",        lambda x : x.numberOfHits(), int ),
+#    NTupleVariable("trackHighPurity",     lambda x : x.trackHighPurity(), int),
+#    NTupleVariable("puppiWeight",         lambda x : x.puppiWeight()  ),
+#    NTupleVariable("mcMatchIndex",        lambda x : x.mcMatchIndex ),
+#    NTupleVariable("mcMatchDr",           lambda x : x.mcMatchDr ),
+#    NTupleVariable("mcMatchPtRatio",           lambda x : x.mcMatchPtRatio ),
+#
+#])
+
+
 
 
 ##------------------------------------------  

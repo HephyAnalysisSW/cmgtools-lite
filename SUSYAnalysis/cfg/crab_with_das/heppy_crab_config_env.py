@@ -22,6 +22,7 @@ print "sample = ",sample
 ## try to identify data
 ##
 if m.group(2).startswith("Run201"):
+  print "------------ switching to LumiBased splitting"
   config.Data.splitting = "LumiBased"
 
 #NJOBS=int(os.environ["NJOBS"])
