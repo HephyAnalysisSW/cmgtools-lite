@@ -128,7 +128,10 @@ fi
 if  $qcd
 then
   echo ----------------------  Submitting QCD  -----------------------
-  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   QCD_HT100to200 QCD_HT200to300  QCD_HT300to500  QCD_HT500to700 QCD_HT700to1000 QCD_HT1000to1500  QCD_HT1500to2000  QCD_HT2000toInf  
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL  QCD_HT100to200 QCD_HT200to300  QCD_HT300to500  QCD_HT500to700 QCD_HT700to1000 QCD_HT1000to1500  QCD_HT1500to2000  QCD_HT2000toInf  
+
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL  QCD_HT300to500  QCD_HT300to500_ext QCD_HT500to700_ext  QCD_HT700to1000  QCD_HT700to1000_ext  QCD_HT1000to1500  QCD_HT1000to1500_ext  QCD_HT1500to2000  QCD_HT1500to2000_ext  QCD_HT2000toInf  QCD_HT2000toInf_ext
+#QCD_HT500to700,
 fi
 
 if  $sig
@@ -158,10 +161,13 @@ fi
 if  $dy
 then
   echo ----------------------  Submitting DY  -----------------------
-  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL  DYJetsToLL_M5to50_LO         DYJetsToNuNu_M50  
-  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL  DYJetsToLL_M5to50_HT100to200 DYJetsToLL_M5to50_HT200to400  DYJetsToLL_M5to50_HT400to600  DYJetsToLL_M5to50_HT600toInf 
-  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL  DYJetsToLL_M50_HT100to200    DYJetsToLL_M50_HT200to400     DYJetsToLL_M50_HT400to600     DYJetsToLL_M50_HT600toInf  
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   DYJetsToLL_M50_HT100to200_ext DYJetsToLL_M50_HT200to400_ext  DYJetsToLL_M50_HT400to600_ext  DYJetsToLL_M50_HT600toInf  DYJetsToLL_M50_HT600toInf_ext
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL  DYJetsToLL_M5to50_LO         DYJetsToNuNu_M50  
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL  DYJetsToLL_M5to50_HT100to200 DYJetsToLL_M5to50_HT200to400  DYJetsToLL_M5to50_HT400to600  DYJetsToLL_M5to50_HT600toInf 
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL  DYJetsToLL_M50_HT100to200    DYJetsToLL_M50_HT200to400     DYJetsToLL_M50_HT400to600     DYJetsToLL_M50_HT600toInf  
 fi
+#DYJetsToLL_M50_HT100to200,
+#DYJetsToLL_M50_HT200to400,
 
 
 #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL  TTJets_LO_HT2500toInf QCD_HT500to700 QCD_HT700to1000 QCD_HT1000to1500  
