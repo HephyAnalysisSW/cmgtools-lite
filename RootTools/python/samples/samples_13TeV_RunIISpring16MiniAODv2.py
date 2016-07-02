@@ -108,7 +108,7 @@ VHToNonbb,
 TTHbb_ext3   = kreator.makeMCComponent("TTHbb_ext3",      "/ttHJetTobb_M125_13TeV_amcatnloFXFX_madspin_pythia8/RunIISpring16MiniAODv2-PUSpring16RAWAODSIM_80X_mcRun2_asymptotic_2016_miniAODv2_v0_ext3-v2/MINIAODSIM", "CMS", ".*root", 0.5085*(0.577))
 
 Higgs += [
-#TTHbb,
+TTHbb,
 #TTHbb_ext1,
 #TTHbb_ext2,
 TTHbb_ext3,
