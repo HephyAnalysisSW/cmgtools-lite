@@ -161,13 +161,18 @@ for trigger in  triggers:
 jetAna.minLepPt = 5 #10
 
 ## JEC
-jetAna.mcGT   = "Spring16_25nsV3_MC"
-jetAna.dataGT = "Spring16_25nsV3_DATA"
+#jetAna.mcGT   = "Spring16_25nsV3_MC"
+#jetAna.dataGT = "Spring16_25nsV3_DATA"
+jetAna.mcGT   = "Spring16_25nsV6_MC"
+jetAna.dataGT = "Spring16_25nsV6_DATA"
+
+
 
 # add also JEC up/down shifts corrections
 jetAna.addJECShifts       = True
+jetAna.addJERShifts       = True
 jetAna.doQG               = True
-jetAna.smearJets          = False #should be false in susycore, already
+jetAna.smearJets          = True #should be false in susycore, already
 jetAna.recalibrateJets    = True # false for miniAOD v2!
 jetAna.applyL2L3Residual  = True
 
@@ -187,15 +192,15 @@ genAna.allGenTaus = True
 selectedComponents = []
 if getHeppyOption("loadSamples"):
 
-  test = 2
+  test = 2 
 
   #sample = 'data'
-  sample = 'data'
+  sample = 'MC'
   #sample = 'Signal'
 
   if sample == "MC":
     from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
-    selectedComponents = TTs + SingleTop #TTJets_SingleLepton
+    selectedComponents = [TTJets_LO]#[WJetsToLNu] #TTs + SingleTop #TTJets_SingleLepton
     print 'Going to process MC'
     isData = False
     isSignal = False
@@ -214,7 +219,8 @@ if getHeppyOption("loadSamples"):
   elif sample == "data":
     from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
 
-    selectedComponents = [ MET_Run2016B_PromptReco_v2 , SingleElectron_Run2016B_PromptReco_v2, SingleMuon_Run2016B_PromptReco_v2]
+    #selectedComponents = [ MET_Run2016B_PromptReco_v2 , SingleElectron_Run2016B_PromptReco_v2, SingleMuon_Run2016B_PromptReco_v2]
+    selectedComponents = [ SingleMuon_Run2016B_PromptReco_v2  ]
     print 'Going to process DATA'
     isData = True
     isSignal = False
@@ -226,6 +232,7 @@ if getHeppyOption("loadSamples"):
     if test==1:
       comp = selectedComponents[0]
       comp.files = comp.files[:1]
+      comp.fineSplitFactor = 1
       comp.splitFactor = 1
     elif test==2:
       for comp in selectedComponents:
@@ -281,13 +288,31 @@ hbheFilterAna = cfg.Analyzer(
     hbheAnalyzer, name = 'hbheAnalyzer',IgnoreTS4TS5ifJetInLowBVRegion=False
 )
 
+from CMGTools.SUSYAnalysis.analyzers.badChargedHadronAnalyzer import badChargedHadronAnalyzer
+badChargedHadronAna = cfg.Analyzer(
+    badChargedHadronAnalyzer, name = 'badChargedHadronAna',
+    muons='slimmedMuons',
+    packedCandidates = 'packedPFCandidates',
+)
+
+from CMGTools.SUSYAnalysis.analyzers.badMuonAnalyzer import badMuonAnalyzer
+badMuonAna = cfg.Analyzer(
+    badMuonAnalyzer, name = 'badMuonAna',
+    muons='slimmedMuons',
+    packedCandidates = 'packedPFCandidates',
+)
+
+
 
 sequence = cfg.Sequence(susyCoreSequence+[
     LHEAna,
     ttHEventAna,
     hbheFilterAna,
+    badChargedHadronAna,
+    badMuonAna,
     treeProducer,
 #   susyCounter
+
     ])
 
 
