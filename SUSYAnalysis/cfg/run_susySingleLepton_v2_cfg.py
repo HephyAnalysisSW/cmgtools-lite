@@ -227,14 +227,14 @@ if sample == "MC":
   # MiniAODv2
   #from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy import *
   #from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy_Compact import *
-  from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2_dummy import *
+  from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
 #  from CMGTools.RootTools.samples.samples_13TeV_MiniAODv2_Signals_desy import *
 #  selectedComponents = TTs + SingleTop #TTJets_SingleLepton
 
   selectedComponents = QCDHT
   if test==1:
     # test a single component, using a single thread.
-    comp = QCD_HT300to500
+    comp = TTJets_DiLepton
     comp.files = comp.files[:1]
     selectedComponents = [comp]
     comp.splitFactor = 2
