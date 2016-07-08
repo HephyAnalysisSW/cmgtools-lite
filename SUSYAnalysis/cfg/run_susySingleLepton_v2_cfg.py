@@ -179,9 +179,9 @@ jetAna.jetEta = 2.4
 jetAna.minLepPt = 10
 
 ## JEC
-jetAna.mcGT = "Spring16_25nsV1_MC"
+jetAna.mcGT = "Spring16_25nsV6_MC"
 #jetAna.dataGT = "Summer15_25nsV6_DATA"
-jetAna.dataGT = "Spring16_25nsV3_DATA"
+jetAna.dataGT = "Spring16_25nsV6_DATA"
 # add also JEC up/down shifts corrections
 jetAna.addJECShifts = True
 
@@ -203,9 +203,9 @@ genAna.allGenTaus = True
 #-------- HOW TO RUN
 isData = True # default, but will be overwritten below
 
-#sample = 'MC'
+sample = 'MC'
 #sample = 'data'
-sample = 'Signal'
+#sample = 'Signal'
 test = 1
 
 if sample == "MC":
