@@ -95,6 +95,18 @@ case $i in
     echo Will Process VV:  $vv 
     shift
     ;;
+
+    all)
+    vv=true
+    qcd=true
+    dy=true
+    z=true
+    tt=true
+    w=true
+    data=true
+    echo Will Process everything! 
+    shift
+    ;;
 esac
 done
 
