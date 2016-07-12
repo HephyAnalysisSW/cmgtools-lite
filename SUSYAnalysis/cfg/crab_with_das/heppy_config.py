@@ -125,33 +125,37 @@ triggerFlagsAna.triggerBits = {
 	'HT350MET120' : triggers_HT350MET120,
 	'HT350MET100' : triggers_HT350MET100,
 	'HTMET' : triggers_HT350MET100 + triggers_HT350MET120,
-	## muon
-	'SingleMu' : triggers_1mu,
-	'IsoMu27' : triggers_1mu,
-	'IsoMu20' : triggers_1mu20,
-	'Mu45eta2p1' : trigger_1mu_noiso_r,
-	'Mu50' : trigger_1mu_noiso_w,
-	'MuHT600' : triggers_mu_ht600,
-	'MuHT400MET70' : triggers_mu_ht400_met70,
-	'MuHT350MET70' : triggers_mu_ht350_met70,
-	'MuHT350MET50' : triggers_mu_ht350_met50,
-	'MuHT350' : triggers_mu_ht350,
-	'MuHTMET' : triggers_mu_ht350_met70 + triggers_mu_ht400_met70,
-	'MuMET120' : triggers_mu_met120,
-	'MuHT400B': triggers_mu_ht400_btag,
-	## electrons
-	'IsoEle32' : triggers_1el,
-	'IsoEle23' : triggers_1el23,
-	'IsoEle22' : triggers_1el22,
-	'Ele105' : trigger_1el_noiso,
-	'EleHT600' : triggers_el_ht600,
-	'EleHT400MET70' : triggers_el_ht400_met70,
-	'EleHT350MET70' : triggers_el_ht350_met70,
-	'EleHT350MET50' : triggers_el_ht350_met50,
-	'EleHT350' : triggers_el_ht350,
-	'EleHTMET' : triggers_el_ht350_met70 + triggers_el_ht400_met70,
-	'EleHT200' :triggers_el_ht200,
-	'EleHT400B': triggers_el_ht400_btag
+  ## muon
+  'SingleMu' : triggers_1mu,
+  'IsoMu27' : triggers_1mu,
+  'IsoMu20' : triggers_1mu20,
+  'Mu45eta2p1' : trigger_1mu_noiso_r,
+  'Mu50' : trigger_1mu_noiso_w,
+  'MuHT600' : triggers_mu_ht600,
+  'MuHT400MET70' : triggers_mu_ht400_met70,
+  'MuHT350MET70' : triggers_mu_ht350_met70,
+  'MuHT350MET50' : triggers_mu_ht350_met50,
+  'MuHT350' : triggers_mu_ht350,
+  'MuHT400' : triggers_mu_ht400,
+  'Mu50HT400' : triggers_mu50_ht400,
+  'MuHTMET' : triggers_mu_ht350_met70 + triggers_mu_ht400_met70,
+  'MuMET120' : triggers_mu_met120,
+  'MuHT400B': triggers_mu_ht400_btag,
+  ## electrons
+  'IsoEle32' : triggers_1el,
+  'IsoEle23' : triggers_1el23,
+  'IsoEle22' : triggers_1el22,
+  'Ele105' : trigger_1el_noiso,
+  'EleHT600' : triggers_el_ht600,
+  'EleHT400MET70' : triggers_el_ht400_met70,
+  'EleHT350MET70' : triggers_el_ht350_met70,
+  'EleHT350MET50' : triggers_el_ht350_met50,
+  'EleHT350' : triggers_el_ht350,
+  'EleHT400' : triggers_el_ht400,
+  'Ele50HT400' : triggers_el50_ht400,
+  'EleHTMET' : triggers_el_ht350_met70 + triggers_el_ht400_met70,
+  'EleHT200' :triggers_el_ht200,
+  'EleHT400B': triggers_el_ht400_btag
 	}
 
 #########################
@@ -175,17 +179,15 @@ jetAna.jetEta = 2.4
 jetAna.minLepPt = 10
 
 ## JEC
-#jetAna.mcGT = "Summer15_25nsV6_MC"
-jetAna.mcGT = "Spring16_25nsV1_MC"
+jetAna.mcGT = "Spring16_25nsV6_MC"
 #jetAna.dataGT = "Summer15_25nsV6_DATA"
-jetAna.dataGT = "Spring16_25nsV1_MC"
-
+jetAna.dataGT = "Spring16_25nsV6_DATA"
 # add also JEC up/down shifts corrections
 jetAna.addJECShifts = True
 
 jetAna.doQG = True
 jetAna.smearJets = False #should be false in susycore, already
-jetAna.recalibrateJets = True # false for miniAOD v2!
+jetAna.recalibrateJets = False # false for miniAOD v2!
 jetAna.applyL2L3Residual = True
 
 #jetAna.calculateType1METCorrection = True
@@ -201,8 +203,8 @@ genAna.allGenTaus = True
 #-------- HOW TO RUN
 isData = True # default, but will be overwritten below
 
-sample = 'MC'
-#sample = 'data'
+#sample = 'MC'
+sample = 'data'
 #sample = 'Signal'
 test = 0
 
@@ -337,14 +339,14 @@ elif sample == "data":
   ttHLepSkim.minLeptons = 0
 
   #For now no JEC  
-  print jetAna.shiftJEC , jetAna.recalibrateJets , jetAna.addJECShifts , jetAna.calculateSeparateCorrections , jetAna.calculateType1METCorrection
-  jetAna.addJECShifts = False
-  jetAna.doQG = False
-  jetAna.smearJets = False #should be false in susycore, already
-  jetAna.recalibrateJets = False # false for miniAOD v2!
-  jetAna.calculateSeparateCorrections = False
-  jetAna.applyL2L3Residual = False
-  print jetAna.shiftJEC , jetAna.recalibrateJets , jetAna.addJECShifts , jetAna.calculateSeparateCorrections , jetAna.calculateType1METCorrection
+  #print jetAna.shiftJEC , jetAna.recalibrateJets , jetAna.addJECShifts , jetAna.calculateSeparateCorrections , jetAna.calculateType1METCorrection
+  #jetAna.addJECShifts = False
+  #jetAna.doQG = False
+  #jetAna.smearJets = False #should be false in susycore, already
+  #jetAna.recalibrateJets = False # false for miniAOD v2!
+  #jetAna.calculateSeparateCorrections = False
+  #jetAna.applyL2L3Residual = False
+  #print jetAna.shiftJEC , jetAna.recalibrateJets , jetAna.addJECShifts , jetAna.calculateSeparateCorrections , jetAna.calculateType1METCorrection
 
 #  # central samples
 #  from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
