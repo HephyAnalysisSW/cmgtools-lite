@@ -204,8 +204,8 @@ genAna.allGenTaus = True
 isData = True # default, but will be overwritten below
 
 #sample = 'MC'
-sample = 'data'
-#sample = 'Signal'
+#sample = 'data'
+sample = 'Signal'
 test = 0
 
 if sample == "MC":
@@ -273,7 +273,7 @@ elif sample == "Signal":
 	# Set FastSim JEC
 	#jetAna.mcGT = "FastSim_MCRUN2_74_V9"
 	#jetAna.mcGT = "MCRUN2_74_V9"
-	jetAna.mcGT = "FastSim_Summer15_25nsV6_MC"
+	jetAna.mcGT = "Spring16_25nsFastsimV1_MC"
 
 	#### REMOVE JET ID FOR FASTSIM
 	jetAna.relaxJetId = True
@@ -297,34 +297,34 @@ elif sample == "Signal":
 	# Rest
 	#selectedComponents = mcSamplesT1tttt
 	#selectedComponents = [T1tttt_mGo_1000to1050_mLSP_1to800, T1tttt_mGo_1225to1250_mLSP_1to1025, T1tttt_mGo_1325to1350_mLSP_1to1125, T1tttt_mGo_600to625_mLSP_250to375]
-	selectedComponents = [T1tttt_mGo_1475to1500_mLSP_1to1250, T1tttt_mGo_1200_mLSP_1to825 ]
+	#selectedComponents = [T1tttt_mGo_1475to1500_mLSP_1to1250, T1tttt_mGo_1200_mLSP_1to825 ]
 
-	if test==1:
-		# test a single component, using a single thread.
-		comp = T1tttt_mGo_1475to1500_mLSP_1to1250
-		comp.files = comp.files[:1]
-		selectedComponents = [comp]
-		comp.splitFactor = 1
-	elif test==2:
-		# test all components (1 thread per component).
-		for comp in selectedComponents:
-			comp.splitFactor = 1
-			comp.fineSplitFactor = 1
-			comp.files = comp.files[:1]
-	elif test==3:
-		# run all components (1 thread per component).
-		for comp in selectedComponents:
-			comp.fineSplitFactor = 1
-			comp.splitFactor = len(comp.files)
-	elif test==0:
-		# PRODUCTION
-		# run on everything
+	#if test==1:
+	#	# test a single component, using a single thread.
+	#	comp = T1tttt_mGo_1475to1500_mLSP_1to1250
+	#	comp.files = comp.files[:1]
+	#	selectedComponents = [comp]
+	#	comp.splitFactor = 1
+	#elif test==2:
+	#	# test all components (1 thread per component).
+	#	for comp in selectedComponents:
+	#		comp.splitFactor = 1
+	#		comp.fineSplitFactor = 1
+	#		comp.files = comp.files[:1]
+	#elif test==3:
+	#	# run all components (1 thread per component).
+	#	for comp in selectedComponents:
+	#		comp.fineSplitFactor = 1
+	#		comp.splitFactor = len(comp.files)
+	#elif test==0:
+	#	# PRODUCTION
+	#	# run on everything
 
-		#selectedComponents = [ T1tttt_mGo_1200_mLSP_1to825, T1tttt_mGo_1900to1950_mLSP_0to1450 ]
+	#	#selectedComponents = [ T1tttt_mGo_1200_mLSP_1to825, T1tttt_mGo_1900to1950_mLSP_0to1450 ]
 
-		for comp in selectedComponents:
-			comp.fineSplitFactor = 1
-			comp.splitFactor = len(comp.files)
+	#	for comp in selectedComponents:
+	#		comp.fineSplitFactor = 1
+	#		comp.splitFactor = len(comp.files)
 
 
 elif sample == "data":
@@ -444,7 +444,7 @@ if isData:# or isSignal :
 if isSignal:
 #	sequence.remove(ttHHTSkimmer)
 #	sequence.remove(ttHSTSkimmer)
-	sequence.remove(eventFlagsAna)
+#	sequence.remove(eventFlagsAna) #problematic?
 	sequence.remove(hbheFilterAna)
 
 ## output histogram
