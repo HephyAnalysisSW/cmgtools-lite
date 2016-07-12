@@ -136,6 +136,8 @@ triggerFlagsAna.triggerBits = {
   'MuHT350MET70' : triggers_mu_ht350_met70,
   'MuHT350MET50' : triggers_mu_ht350_met50,
   'MuHT350' : triggers_mu_ht350,
+  'MuHT400' : triggers_mu_ht400,
+  'Mu50HT400' : triggers_mu50_ht400,
   'MuHTMET' : triggers_mu_ht350_met70 + triggers_mu_ht400_met70,
   'MuMET120' : triggers_mu_met120,
   'MuHT400B': triggers_mu_ht400_btag,
@@ -149,6 +151,8 @@ triggerFlagsAna.triggerBits = {
   'EleHT350MET70' : triggers_el_ht350_met70,
   'EleHT350MET50' : triggers_el_ht350_met50,
   'EleHT350' : triggers_el_ht350,
+  'EleHT400' : triggers_el_ht400,
+  'Ele50HT400' : triggers_el50_ht400,
   'EleHTMET' : triggers_el_ht350_met70 + triggers_el_ht400_met70,
   'EleHT200' :triggers_el_ht200,
   'EleHT400B': triggers_el_ht400_btag
@@ -176,9 +180,9 @@ jetAna.minLepPt = 10
 
 ## JEC
 #jetAna.mcGT = "Summer15_25nsV6_MC"
-jetAna.mcGT = "Spring16_25nsV3_MC"
+jetAna.mcGT = "Spring16_25nsV6_MC"
 #jetAna.dataGT = "Summer15_25nsV6_DATA"
-jetAna.dataGT = "Spring16_25nsV3_DATA"
+jetAna.dataGT = "Spring16_25nsV6_DATA"
 
 # add also JEC up/down shifts corrections
 jetAna.addJECShifts = True
@@ -201,8 +205,8 @@ genAna.allGenTaus = True
 #-------- HOW TO RUN
 isData = True # default, but will be overwritten below
 
-#sample = 'MC'
-sample = 'data'
+sample = 'MC'
+#sample = 'data'
 #sample = 'Signal'
 test = 1
 
@@ -231,7 +235,7 @@ if sample == "MC":
 
   if test==1:
     # test a single component, using a single thread.
-    comp = QCD_HT500to700 #WJetsToLNu
+    comp = WJetsToLNu
     comp.files = comp.files[:1]
     selectedComponents = [comp]
     comp.splitFactor = 1

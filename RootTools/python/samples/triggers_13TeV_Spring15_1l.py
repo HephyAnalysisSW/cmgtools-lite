@@ -25,6 +25,8 @@ triggers_mu_ht350_met50 = ["HLT_Mu15_IsoVVVL_PFHT350_PFMET50_v*"]
 triggers_mu_ht350 = ["HLT_Mu15_IsoVVVL_PFHT350_v*"]
 triggers_mu_met120 = ["HLT_PFMET120_NoiseCleaned_Mu5_v*"]
 triggers_mu_ht400_btag = ["HLT_Mu15_IsoVVVL_BTagCSV07_PFHT400_v*"]
+triggers_mu_ht400 = ["HLT_Mu15_IsoVVVL_PFHT400_v*"]
+triggers_mu50_ht400 = ["HLT_Mu50_IsoVVVL_PFHT400_v*"]
 
 ## electrons
 triggers_el_ht600 = ["HLT_Ele15_IsoVVVL_PFHT600_v*"]
@@ -34,6 +36,8 @@ triggers_el_ht350_met50 = ["HLT_Ele15_IsoVVVL_PFHT350_PFMET50_v*"]
 triggers_el_ht350 = ["HLT_Ele15_IsoVVVL_PFHT350_v*"]
 triggers_el_ht200 = ["HLT_Ele27_eta2p1_WP85_Gsf_HT200_v*"]
 triggers_el_ht400_btag = ["HLT_Ele15_IsoVVVL_BTagtop8CSV07_PFHT400_v*"]
+triggers_el_ht400 = ["HLT_Ele15_IsoVVVL_PFHT400_v*"]
+triggers_el50_ht400 = ["HLT_Ele50_IsoVVVL_PFHT400_v*"]
 
 ## hadronic
 triggers_HT350 = ["HLT_PFHT350_v*"] # prescaled!
