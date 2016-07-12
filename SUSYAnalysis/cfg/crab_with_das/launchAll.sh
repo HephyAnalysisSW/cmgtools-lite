@@ -130,6 +130,7 @@
 
 #python launch.py --remoteDir="MC25ns_1l" --unitsPerJob=1 --production_label="MC25ns" TTWToLNu
 #python launch.py --remoteDir="MC25ns_1l" --unitsPerJob=1 --production_label="MC25ns" TTZToLLNuNu
+#python launch.py --remoteDir="MC25ns_1l" --unitsPerJob=1 --production_label="MC25ns" TTWToQQ
 #python launch.py --remoteDir="MC25ns_1l" --unitsPerJob=1 --production_label="MC25ns" TTZqq
 #python launch.py --remoteDir="MC25ns_1l" --unitsPerJob=1 --production_label="MC25ns" TTHnobb
 #python launch.py --remoteDir="MC25ns_1l" --unitsPerJob=1 --production_label="MC25ns" TTHnobb_pow
@@ -143,6 +144,7 @@
 #python launch.py --remoteDir="MC25ns_1l_150921" --unitsPerJob=1 --production_label="MC25ns" TTJets_LO_HT800to1200 
 #python launch.py --remoteDir="MC25ns_1l_150921" --unitsPerJob=1 --production_label="MC25ns" TTJets_LO_HT1200to2500
 #python launch.py --remoteDir="MC25ns_1l_150921" --unitsPerJob=1 --production_label="MC25ns" TTJets_LO_HT2500toInf 
+python launch.py --remoteDir="MC25ns_1l_150921" --unitsPerJob=1 --production_label="MC25ns" TToLeptons_sch
 
 # 50ns MC
 #python launch.py --remoteDir="MC50ns_1l" --unitsPerJob=1 --production_label="MC50ns" DYJetsToLL_M50_50ns
