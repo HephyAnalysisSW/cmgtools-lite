@@ -5,8 +5,8 @@
 #from CMGTools.RootTools.samples.triggers_13TeV_Spring15 import *
 #from CMGTools.RootTools.samples.triggers_13TeV_Spring15_1l import *
 from CMGTools.RootTools.samples.samples_13TeV_80X_signals import *
-#from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
-#from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
+from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
+from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
 
 ###applying the correct json files to PrompReco and July17 samples
 #for sample in dataSamples_Run2015B:
@@ -18,7 +18,7 @@ from CMGTools.RootTools.samples.samples_13TeV_80X_signals import *
 #for sample in dataSamples_Run2015D:
 #  sample.json = "$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_246908-257599_13TeV_PromptReco_Collisions15_25ns_JSON.json"
 
-#for sample in dataSamples_Run2016_v2:
-#  #sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-273730_13TeV_PromptReco_Collisions16_JSON.txt"
-#  #sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-274443_13TeV_PromptReco_Collisions16_JSON.txt"
-#  sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-276097_13TeV_PromptReco_Collisions16_JSON_NoL1T_v2.txt"
+for sample in dataSamples_Run2016_v2:
+  #sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-273730_13TeV_PromptReco_Collisions16_JSON.txt"
+  #sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-274443_13TeV_PromptReco_Collisions16_JSON.txt"
+  sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-276097_13TeV_PromptReco_Collisions16_JSON_NoL1T_v2.txt"
