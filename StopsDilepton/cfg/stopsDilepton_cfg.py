@@ -44,6 +44,13 @@ elif eleID == "Incl": # as inclusive as possible
   lepAna.inclusive_electron_dxy    = 999. # no cut since embedded in ID
   lepAna.inclusive_electron_dz     = 999. # no cut since embedded in ID
 
+lepAna.doElectronScaleCorrections = {
+    'data' : 'EgammaAnalysis/ElectronTools/data/76X_16DecRereco_2015',
+    'GBRForest': ('$CMSSW_BASE/src/CMGTools/RootTools/data/egamma_epComb_GBRForest_76X.root',
+                  'gedelectron_p4combination_'+era),
+    'isSync': sync
+}
+
 ## MUONS
 lepAna.loose_muon_pt  = 5
 
@@ -66,7 +73,7 @@ elif isolation == "relIso03":
   lepAna.loose_muon_relIso = 0.5
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 0
+ttHLepSkim.minLeptons = 1
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
@@ -84,9 +91,9 @@ jetAna.recalibrateJets =  True #For data #FIXME
 jetAna.calculateSeparateCorrections = True #should be true if recalibrate, otherwise L1 inconsistent
 
 jetAna.calculateType1METCorrection = False
-jetAna.dataGT   = "Spring16_25nsV3_DATA"
-#jetAna.mcGT   = "Spring16_25nsV3_MC"
-jetAna.mcGT   = "Spring16_FastSimV1_MC"
+jetAna.dataGT   = "Spring16_25nsV6_DATA"
+jetAna.mcGT   = "Spring16_25nsV6_MC"
+#jetAna.mcGT   = "Spring16_FastSimV1_MC"
 
 metAna.recalibrate = False 
 
@@ -109,56 +116,43 @@ from PhysicsTools.Heppy.analyzers.gen.LHEAnalyzer import LHEAnalyzer
 LHEAna = LHEAnalyzer.defaultConfig
 
 
-from CMGTools.RootTools.samples.triggers_13TeV_Spring15 import *
-from CMGTools.RootTools.samples.triggers_13TeV_Spring15_1l import *
+from CMGTools.RootTools.samples.triggers_13TeV_DATA2016 import *
 triggerFlagsAna.triggerBits = {
-        ## hadronic
-        'HT350' : triggers_HT350,
-        'HT600' : triggers_HT600,
-        'HT800' : triggers_HT800,
-        'MET170' : triggers_MET170,
-        'HT350MET120' : triggers_HT350MET120,
-        'HT350MET100' : triggers_HT350MET100,
-        'HTMET' : triggers_HT350MET100 + triggers_HT350MET120,
+        # hadronic
+        'HT350_MET100': triggers_HT350_MET100,
+        "HT350":triggers_HT350,
+        "HT475":triggers_HT475,
+        "HT600":triggers_HT600,
+        "dijet":triggers_dijet,
+        "jet":triggers_jet,
+        "dijet70met120": triggers_dijet70met120,
+        "dijet55met110": triggers_dijet55met110,
+
+        'HT900'                :triggers_HT900,
+        'HT800'                :triggers_HT800,
+        'MET170_NotCleaned'    :triggers_MET170_NotCleaned,
+        'MET170_HBHECleaned'   :triggers_MET170_HBHECleaned,
+        'MET170_BeamHaloCleaned':triggers_MET170_BeamHaloCleaned,
+        'AllMET170'            :triggers_AllMET170,
+        'AllMET300'            :triggers_AllMET300,
+        'HT350_MET100'         :triggers_HT350_MET100,
+
         ## muon
-        'SingleMu' : triggers_1mu,
-        'IsoMu27' : triggers_1mu,
-        'IsoMu20' : triggers_1mu20,
-        'Mu45eta2p1' : trigger_1mu_noiso_r,
-        'Mu50' : trigger_1mu_noiso_w,
-        'MuHT600' : triggers_mu_ht600,
-        'MuHT400MET70' : triggers_mu_ht400_met70,
-        'MuHT350MET70' : triggers_mu_ht350_met70,
-        'MuHT350MET50' : triggers_mu_ht350_met50,
-        'MuHT350' : triggers_mu_ht350,
-        'MuHTMET' : triggers_mu_ht350_met70 + triggers_mu_ht400_met70,
-        'MuMET120' : triggers_mu_met120,
-        'MuHT400B': triggers_mu_ht400_btag,
-        ## electrons
-        'SingleEle': triggers_1e,
-        'SingleEle25ns': triggers_1e_25ns,
-        'SingleEle50ns': triggers_1e_50ns,
-        'IsoEle32' : triggers_1el,
-        'IsoEle23' : triggers_1el23,
-        'IsoEle22' : triggers_1el22,
-        'Ele105' : trigger_1el_noiso,
-        'EleHT600' : triggers_el_ht600,
-        'EleHT400MET70' : triggers_el_ht400_met70,
-        'EleHT350MET70' : triggers_el_ht350_met70,
-        'EleHT350MET50' : triggers_el_ht350_met50,
-        'EleHT350' : triggers_el_ht350,
-        'EleHTMET' : triggers_el_ht350_met70 + triggers_el_ht400_met70,
-        'EleHT200' :triggers_el_ht200,
-        'EleHT400B': triggers_el_ht400_btag,
+
+        'SingleMu_iso'     :triggers_1mu_iso,
+        'SingleMu_noniso'  :triggers_1mu_noniso ,
+
+        'SingleEle_noniso'   :triggers_1e_noniso,
+        'SingleEle'          :triggers_1e,
 
 #mumu
         'mumuIso' : triggers_mumu_iso,
-        'mumuNoniso_50ns' : triggers_mumu_noniso_50ns,
         'mumuNoiso' : triggers_mumu_noniso,
         'mumuSS' : triggers_mumu_ss,
         'mumuHT' : triggers_mumu_ht,
 # ee
-        'ee_DZ': triggers_ee, 
+        'ee_DZ': triggers_ee,
+        'ee_noDZ':triggers_ee_nodz ,
 #mue
         'mue':triggers_mue,
 #dilepton+HT
@@ -181,29 +175,6 @@ triggerFlagsAna.triggerBits = {
         'Jet80MET120'      :triggers_Jet80MET120     ,
         'MET120Mu5'        :triggers_MET120Mu5       ,
 
-        'MET170_pres'      :triggers_MET170_pres     , 
-        'MET250'           :triggers_MET250          ,
-        'MET90nc'          :triggers_MET90nc         ,
-        'MET120nc'         :triggers_MET120nc        ,
-        'MET90'            :triggers_MET90MHT90      ,
-        'MET120'           :triggers_MET120MHT120    ,
-        'PhysRates'        :triggers_PhysRate        ,
-        'Mu3erHT140MET125' :triggers_Mu3erHT140MET125,
-        'DiPFJetAve100_HFJEC': ["HLT_DiPFJetAve100_HFJEC_v*"],
-        'DiPFJetAve140': ["HLT_DiPFJetAve140_v*"],
-        'DiPFJetAve160_HFJEC': ["HLT_DiPFJetAve160_HFJEC_v*"],
-        'DiPFJetAve200': ["HLT_DiPFJetAve200_v*"],
-        'DiPFJetAve220_HFJEC': ["HLT_DiPFJetAve220_HFJEC_v*"],
-        'DiPFJetAve260': ["HLT_DiPFJetAve260_v*"],
-        'DiPFJetAve300_HFJEC': ["HLT_DiPFJetAve300_HFJEC_v*"],
-        'DiPFJetAve320': ["HLT_DiPFJetAve320_v*"],
-        'DiPFJetAve40': ["HLT_DiPFJetAve40_v*"],
-        'DiPFJetAve400': ["HLT_DiPFJetAve400_v*"],
-        'DiPFJetAve500': ["HLT_DiPFJetAve500_v*"],
-        'DiPFJetAve60_HFJEC': ["HLT_DiPFJetAve60_HFJEC_v*"],
-        'DiPFJetAve60': ["HLT_DiPFJetAve60_v*"],
-        'DiPFJetAve80_HFJEC': ["HLT_DiPFJetAve80_HFJEC_v*"],
-        'DiPFJetAve80': ["HLT_DiPFJetAve80_v*"],
         }
 
 # puppiMET
@@ -267,8 +238,8 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-274421_13TeV_PromptReco_Collisions16_JSON.txt"
     from CMGTools.StopsDilepton.samples import *
 
-    #selectedComponents = [TTJets, DoubleEG_Run2016B_PromptReco_v2]
-    selectedComponents = [SMS_T2tt_mStop_150to250]
+    selectedComponents = [TTJets, DoubleEG_Run2016B_PromptReco_v2]
+    #selectedComponents = [SMS_T2tt_mStop_150to250]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
     for comp in selectedComponents:
             comp.files = comp.files[:1]
