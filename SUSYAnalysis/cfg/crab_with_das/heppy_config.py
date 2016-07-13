@@ -275,7 +275,8 @@ elif sample == "Signal":
 	# Set FastSim JEC
 	#jetAna.mcGT = "FastSim_MCRUN2_74_V9"
 	#jetAna.mcGT = "MCRUN2_74_V9"
-	jetAna.mcGT = "Spring16_25nsFastsimV1_MC"
+	#jetAna.mcGT = "Spring16_25nsFastsimV1_MC"
+  jetAna.mcGT = ""
 
 	#### REMOVE JET ID FOR FASTSIM
 	jetAna.relaxJetId = True

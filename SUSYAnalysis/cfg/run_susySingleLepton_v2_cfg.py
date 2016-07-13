@@ -179,9 +179,7 @@ jetAna.jetEta = 2.4
 jetAna.minLepPt = 10
 
 ## JEC
-#jetAna.mcGT = "Summer15_25nsV6_MC"
 jetAna.mcGT = "Spring16_25nsV6_MC"
-#jetAna.dataGT = "Summer15_25nsV6_DATA"
 jetAna.dataGT = "Spring16_25nsV6_DATA"
 
 # add also JEC up/down shifts corrections
@@ -205,10 +203,10 @@ genAna.allGenTaus = True
 #-------- HOW TO RUN
 isData = True # default, but will be overwritten below
 
-sample = 'MC'
+#sample = 'MC'
 #sample = 'data'
-#sample = 'Signal'
-test = 1
+sample = 'Signal'
+test = 2
 
 if sample == "MC":
 
@@ -272,7 +270,7 @@ elif sample == "Signal":
   # Set FastSim JEC
   #jetAna.mcGT = "FastSim_MCRUN2_74_V9"
   #jetAna.mcGT = "MCRUN2_74_V9"
-  jetAna.mcGT = "FastSim_Summer15_25nsV6_MC"
+  jetAna.mcGT = "Spring16_25nsFastsimV1_MC"
 
   #### REMOVE JET ID FOR FASTSIM
   jetAna.relaxJetId = True
@@ -289,14 +287,15 @@ elif sample == "Signal":
   #from CMGTools.SUSYAnalysis.samples.samples_13TeV_74X_Signals_desy import *
   # MiniAODv2
   #from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy import *
-  from CMGTools.SUSYAnalysis.samples.samples_13TeV_MiniAODv2_Signals_AAA import *
+  #from CMGTools.SUSYAnalysis.samples.samples_13TeV_MiniAODv2_Signals_AAA import *
+  from CMGTools.RootTools.samples.samples_13TeV_80X_signals import *
 
   # Benchmarks
   #selectedComponents = [ T1tttt_mGo_1475to1500_mLSP_1to1250, T1tttt_mGo_1500to1525_mLSP_50to1125, T1tttt_mGo_1200_mLSP_1to825, T1tttt_mGo_1900to1950_mLSP_0to1450 ]
   # Rest
   #selectedComponents = mcSamplesT1tttt
   #selectedComponents = [T1tttt_mGo_1000to1050_mLSP_1to800, T1tttt_mGo_1225to1250_mLSP_1to1025, T1tttt_mGo_1325to1350_mLSP_1to1125, T1tttt_mGo_600to625_mLSP_250to375]
-  selectedComponents = [T1tttt_mGo_1475to1500_mLSP_1to1250, T1tttt_mGo_1200_mLSP_1to825 ]
+  selectedComponents = [SMS_T5qqqqVV_TuneCUETP8M1]
 
   if test==1:
     # test a single component, using a single thread.
@@ -445,9 +444,9 @@ if isData:# or isSignal :
 # sequence.remove(ttHSTSkimmer)
 
 if isSignal:
-# sequence.remove(ttHHTSkimmer)
-# sequence.remove(ttHSTSkimmer)
-  sequence.remove(eventFlagsAna)
+  sequence.remove(ttHHTSkimmer)
+#  sequence.remove(ttHSTSkimmer)
+#  sequence.remove(eventFlagsAna)
   sequence.remove(hbheFilterAna)
 
 ## output histogram
