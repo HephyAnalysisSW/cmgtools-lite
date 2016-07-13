@@ -266,11 +266,10 @@ elif sample == "Signal":
 
   isData = False
   isSignal = True
-
-  # Set FastSim JEC
-  #jetAna.mcGT = "FastSim_MCRUN2_74_V9"
-  #jetAna.mcGT = "MCRUN2_74_V9"
-  jetAna.mcGT = "Spring16_25nsFastsimV1_MC"
+  jetAna.applyL2L3Residual = 'Data' 
+  jetAna.doQG = False
+  jetAna.calculateType1METCorrection = False
+  jetAna.mcGT   = "Spring16_FastSimV1_MC"
 
   #### REMOVE JET ID FOR FASTSIM
   jetAna.relaxJetId = True

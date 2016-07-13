@@ -267,19 +267,17 @@ if sample == "MC":
 
 elif sample == "Signal":
 
-	print 'Going to process Signal'
+  print 'Going to process Signal'
 
-	isData = False
-	isSignal = True
+  isData = False
+  isSignal = True
+  jetAna.applyL2L3Residual = 'Data'
+  jetAna.doQG = False
+  jetAna.calculateType1METCorrection = False
+  jetAna.mcGT   = "Spring16_FastSimV1_MC"
 
-	# Set FastSim JEC
-	#jetAna.mcGT = "FastSim_MCRUN2_74_V9"
-	#jetAna.mcGT = "MCRUN2_74_V9"
-	#jetAna.mcGT = "Spring16_25nsFastsimV1_MC"
-  jetAna.mcGT = ""
-
-	#### REMOVE JET ID FOR FASTSIM
-	jetAna.relaxJetId = True
+  #### REMOVE JET ID FOR FASTSIM
+  jetAna.relaxJetId = True
 
 	# modify skim
 	anyLepSkim.minLeptons = 0
