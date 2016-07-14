@@ -44,13 +44,6 @@ elif eleID == "Incl": # as inclusive as possible
   lepAna.inclusive_electron_dxy    = 999. # no cut since embedded in ID
   lepAna.inclusive_electron_dz     = 999. # no cut since embedded in ID
 
-lepAna.doElectronScaleCorrections = {
-    'data' : 'EgammaAnalysis/ElectronTools/data/76X_16DecRereco_2015',
-    'GBRForest': ('$CMSSW_BASE/src/CMGTools/RootTools/data/egamma_epComb_GBRForest_76X.root',
-                  'gedelectron_p4combination_'+era),
-    'isSync': sync
-}
-
 ## MUONS
 lepAna.loose_muon_pt  = 5
 
