@@ -14,7 +14,7 @@ json='/afs/cern.ch/cms/CAF/CMSCOMM/COMM_DQM/certification/Collisions16/13TeV/ReR
 run_range = (273158, 284044)
 label = "_runs%s_%s"%(run_range[0], run_range[1])
 
-### ----------------------------- Run2016 PromptReco v1 ----------------------------------------
+### ----------------------------- Run2016B PromptReco v1 ----------------------------------------
 
 ## Commenting out, since it doesn't contain any run in the golden JSON so it's not useful
 
