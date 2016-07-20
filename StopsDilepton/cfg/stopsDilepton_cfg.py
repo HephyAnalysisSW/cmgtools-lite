@@ -15,6 +15,7 @@ lepAna.packedCandidates = 'packedPFCandidates'
 ## ELECTRONS
 lepAna.loose_electron_pt  = 5
 eleID = "CBID"
+doElectronScaleCorrections = True
 
 if eleID == "CBID":
   lepAna.loose_electron_id  = "POG_Cuts_ID_SPRING15_25ns_v1_ConvVetoDxyDz_Veto_full5x5"
@@ -65,6 +66,16 @@ elif isolation == "relIso03":
   lepAna.loose_electron_relIso = 0.5
   lepAna.loose_muon_relIso = 0.5
 
+if doElectronScaleCorrections:
+    era = '25ns'
+    lepAna.doElectronScaleCorrections = {
+    'data' : 'EgammaAnalysis/ElectronTools/data/ScalesSmearings/80X_Golden22June_approval',
+
+    'GBRForest': ('$CMSSW_BASE/src/CMGTools/RootTools/data/egamma_epComb_GBRForest_76X.root',
+    'gedelectron_p4combination_'+era),
+    'isSync': False
+    }
+
 # --- LEPTON SKIMMING ---
 ttHLepSkim.minLeptons = 1
 ttHLepSkim.maxLeptons = 999
@@ -87,6 +98,15 @@ jetAna.calculateType1METCorrection = False
 jetAna.dataGT   = "Spring16_25nsV6_DATA"
 jetAna.mcGT   = "Spring16_25nsV6_MC"
 #jetAna.mcGT   = "Spring16_FastSimV1_MC"
+
+## PHOTONS
+doPhotonScaleCorrections = True
+
+if doPhotonScaleCorrections:
+    photonAna.doPhotonScaleCorrections = {
+    'data' : 'EgammaAnalysis/ElectronTools/data/ScalesSmearings/80X_Golden22June_approval',
+    'isSync': False
+    }
 
 metAna.recalibrate = False 
 
@@ -146,8 +166,12 @@ triggerFlagsAna.triggerBits = {
 # ee
         'ee_DZ': triggers_ee,
         'ee_noDZ':triggers_ee_nodz ,
+        'ee_noniso':triggers_ee_noniso,
+        'ee_33': ['HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_v*'],
+        'ee_33_MW': ['HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_MW_v*'],
 #mue
         'mue':triggers_mue,
+        'mu30e30': ['HLT_Mu30_Ele30_CaloIdL_GsfTrkIdVL_v*'],
 #dilepton+HT
         'ee_ht':triggers_ee_ht,
         'mue_ht':triggers_mue_ht,
@@ -227,7 +251,7 @@ if getHeppyOption("loadSamples"):
     from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
     from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
     from CMGTools.RootTools.samples.samples_13TeV_signals import *
-    for sample in dataSamples_Run2016_v2:
+    for sample in dataSamples_Run2016B_v2 + dataSamples_Run2016C_v2:
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-274421_13TeV_PromptReco_Collisions16_JSON.txt"
     from CMGTools.StopsDilepton.samples import *
 
