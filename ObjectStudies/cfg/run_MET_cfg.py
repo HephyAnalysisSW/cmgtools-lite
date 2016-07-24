@@ -211,8 +211,8 @@ elif test==23:
 #            comp.triggers = triggers_mumu
 #        comp.splitFactor = 1
 #        comp.files = comp.files[:1]
-        comp.splitFactor = 1000
-        comp.files = comp.files[:]
+        comp.splitFactor = 1
+        comp.files = comp.files[:1]
 
 elif test==25:
     isDiJet=True

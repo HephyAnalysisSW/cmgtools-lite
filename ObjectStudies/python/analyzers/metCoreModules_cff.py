@@ -441,6 +441,8 @@ jetPuppiAnaScaleUp = jetPuppiAna.clone(name='jetAnalyzerPuppiScaleUp',
     shiftJEC = +1, # set to +1 or -1 to apply +/-1 sigma shift to the nominal jet energies
     collectionPostFix = "Puppi_jecUp",
     calculateType1METCorrection  = True,
+    copyJetsByValue = True,
+    cleanSelectedLeptons = False,
    )
 
 ## Jets Analyzer (generic)
@@ -449,6 +451,8 @@ jetPuppiAnaScaleDown = jetPuppiAna.clone(name='jetAnalyzerPuppiScaleDown',
     shiftJEC = -1, # set to +1 or -1 to apply +/-1 sigma shift to the nominal jet energies
     collectionPostFix = "Puppi_jecDown",
     calculateType1METCorrection  = True,
+    copyJetsByValue = True,
+    cleanSelectedLeptons = False,
     )
 
 

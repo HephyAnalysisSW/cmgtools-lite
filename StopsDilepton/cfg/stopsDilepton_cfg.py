@@ -77,13 +77,14 @@ if doElectronScaleCorrections:
     }
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 1
+ttHLepSkim.minLeptons = 0
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
 
 # --- JET-LEPTON CLEANING ---
 jetAna.minLepPt = 10
+jetAna.recalibrateJets =  True #For data #FIXME
 jetAna.applyL2L3Residual = 'Data' 
 jetAna.jetPt = 15
 jetAna.jetEta = 5.2
@@ -91,13 +92,14 @@ jetAna.addJECShifts = True
 jetAna.doQG = False
 jetAna.smearJets = False #should be false in susycore, already
 
-jetAna.recalibrateJets =  True #For data #FIXME
 jetAna.calculateSeparateCorrections = True #should be true if recalibrate, otherwise L1 inconsistent
+jetAna.calculateType1METCorrection = True
 
-jetAna.calculateType1METCorrection = False
 jetAna.dataGT   = "Spring16_25nsV6_DATA"
 jetAna.mcGT   = "Spring16_25nsV6_MC"
 #jetAna.mcGT   = "Spring16_FastSimV1_MC"
+
+metAna.recalibrate = "type1" 
 
 ## PHOTONS
 doPhotonScaleCorrections = True
@@ -108,10 +110,9 @@ if doPhotonScaleCorrections:
     'isSync': False
     }
 
-metAna.recalibrate = False 
 
-isoTrackAna.setOff=False
-genAna.allGenTaus = True
+isoTrackAna.setOff = False
+genAna.allGenTaus  = True
 
 from CMGTools.TTHAnalysis.analyzers.ttHLepEventAnalyzer import ttHLepEventAnalyzer
 ttHEventAna = cfg.Analyzer(
@@ -255,11 +256,12 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-274421_13TeV_PromptReco_Collisions16_JSON.txt"
     from CMGTools.StopsDilepton.samples import *
 
-    selectedComponents = [TTJets, DoubleEG_Run2016B_PromptReco_v2]
     #selectedComponents = [SMS_T2tt_mStop_150to250]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
+    #selectedComponents = [ DYJetsToLL_M50 ]
+    selectedComponents = [DoubleMuon_Run2016B_PromptReco_v2]
     for comp in selectedComponents:
-            comp.files = comp.files[:1]
+            comp.files = comp.files[10:11]
             comp.splitFactor = 1
 
 from CMGTools.TTHAnalysis.tools.EOSEventsWithDownload import EOSEventsWithDownload
@@ -268,8 +270,6 @@ event_class = Events
 if getHeppyOption("fetch"):
   event_class = EOSEventsWithDownload
 
-print "Components"
-print selectedComponents
 config = cfg.Config( components = selectedComponents,
                      sequence = sequence,
                      services = [],

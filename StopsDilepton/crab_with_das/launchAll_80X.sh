@@ -1,20 +1,28 @@
 #!/bin/sh
-#python launch.py --remoteDir="80X_1l_9" --unitsPerJob=5 --production_label="80X_1l_9" DoubleEG_Run2016B_PromptReco_v2
-#python launch.py --remoteDir="80X_1l_9" --unitsPerJob=5 --production_label="80X_1l_9" MuonEG_Run2016B_PromptReco_v2
-#python launch.py --remoteDir="80X_1l_9" --unitsPerJob=5 --production_label="80X_1l_9" DoubleMuon_Run2016B_PromptReco_v2
-#python launch.py --remoteDir="80X_1l_9" --unitsPerJob=5 --production_label="80X_1l_9" MET_Run2016B_PromptReco_v2
-#python launch.py --remoteDir="80X_1l_9" --unitsPerJob=5 --production_label="80X_1l_9" JetHT_Run2016B_PromptReco_v2
-#python launch.py --remoteDir="80X_1l_9" --unitsPerJob=5 --production_label="80X_1l_9" SingleMuon_Run2016B_PromptReco_v2
-#python launch.py --remoteDir="80X_1l_9" --unitsPerJob=5 --production_label="80X_1l_9" SingleElectron_Run2016B_PromptReco_v2
+#python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" DoubleEG_Run2016B_PromptReco_v2
+#python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" MuonEG_Run2016B_PromptReco_v2
+#python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" DoubleMuon_Run2016B_PromptReco_v2
+#python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" MET_Run2016B_PromptReco_v2
+#python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" JetHT_Run2016B_PromptReco_v2
+#python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" SingleMuon_Run2016B_PromptReco_v2
+#python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" SingleElectron_Run2016B_PromptReco_v2
 #
-#python launch.py --remoteDir="80X_1l_9" --unitsPerJob=5 --production_label="80X_1l_9" DoubleEG_Run2016C_PromptReco_v2
-#python launch.py --remoteDir="80X_1l_9" --unitsPerJob=5 --production_label="80X_1l_9" MuonEG_Run2016C_PromptReco_v2
-#python launch.py --remoteDir="80X_1l_9" --unitsPerJob=5 --production_label="80X_1l_9" DoubleMuon_Run2016C_PromptReco_v2
-#python launch.py --remoteDir="80X_1l_9" --unitsPerJob=5 --production_label="80X_1l_9" MET_Run2016C_PromptReco_v2
-#python launch.py --remoteDir="80X_1l_9" --unitsPerJob=5 --production_label="80X_1l_9" JetHT_Run2016C_PromptReco_v2
-#python launch.py --remoteDir="80X_1l_9" --unitsPerJob=5 --production_label="80X_1l_9" SingleMuon_Run2016C_PromptReco_v2
-#python launch.py --remoteDir="80X_1l_9" --unitsPerJob=5 --production_label="80X_1l_9" SingleElectron_Run2016C_PromptReco_v2
-#
+#python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" DoubleEG_Run2016C_PromptReco_v2
+#python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" MuonEG_Run2016C_PromptReco_v2
+#python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" DoubleMuon_Run2016C_PromptReco_v2
+#python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" MET_Run2016C_PromptReco_v2
+#python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" JetHT_Run2016C_PromptReco_v2
+#python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" SingleMuon_Run2016C_PromptReco_v2
+#python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" SingleElectron_Run2016C_PromptReco_v2
+
+python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" DoubleEG_Run2016D_PromptReco_v2
+python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" MuonEG_Run2016D_PromptReco_v2
+python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" DoubleMuon_Run2016D_PromptReco_v2
+python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" MET_Run2016D_PromptReco_v2
+python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" JetHT_Run2016D_PromptReco_v2
+python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" SingleMuon_Run2016D_PromptReco_v2
+python launch.py --remoteDir="80X_1l_10" --unitsPerJob=5 --production_label="80X_1l_10" SingleElectron_Run2016D_PromptReco_v2
+
 #
 ##python launch.py --remoteDir="80X_1l_2" --unitsPerJob=1 --production_label="80X_1l_2" SMS_T2tt_mStop_150to250
 ##python launch.py --remoteDir="80X_1l_2" --unitsPerJob=1 --production_label="80X_1l_2" SMS_T2tt_mStop_250to350
