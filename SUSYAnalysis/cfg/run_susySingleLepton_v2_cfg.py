@@ -204,9 +204,9 @@ genAna.allGenTaus = True
 isData = True # default, but will be overwritten below
 
 #sample = 'MC'
-#sample = 'data'
-sample = 'Signal'
-test = 1
+sample = 'data'
+#sample = 'Signal'
+test = 0
 
 if sample == "MC":
 
@@ -324,28 +324,14 @@ elif sample == "data":
   anyLepSkim.minLeptons = 1
   ttHLepSkim.minLeptons = 0
 
-  #For now no JEC  
-  #print jetAna.shiftJEC , jetAna.recalibrateJets , jetAna.addJECShifts , jetAna.calculateSeparateCorrections , jetAna.calculateType1METCorrection
-  #jetAna.addJECShifts = False
-  #jetAna.doQG = False
-  #jetAna.smearJets = False #should be false in susycore, already
-  #jetAna.recalibrateJets = False # false for miniAOD v2!
-  #jetAna.calculateSeparateCorrections = False
-  #jetAna.applyL2L3Residual = False
-  #print jetAna.shiftJEC , jetAna.recalibrateJets , jetAna.addJECShifts , jetAna.calculateSeparateCorrections , jetAna.calculateType1METCorrection
-
   # central samples
   from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
 
   selectedComponents = [SingleElectron_Run2016D_PromptReco_v2, SingleMuon_Run2016D_PromptReco_v2]
 
-  if test!=0 and jsonAna in susyCoreSequence: susyCoreSequence.remove(jsonAna)
+  #if test!=0 and jsonAna in susyCoreSequence: susyCoreSequence.remove(jsonAna)
   if test==1:
     comp = SingleElectron_Run2016B_PromptReco_v2
-#SingleElectron_Run2016B_PromptReco_v2
-#    comp.files = comp.files[:1]
-    #comp.files = comp.files[:1]
-#    comp.files = comp.files[10:11]
     selectedComponents = [comp]
     comp.splitFactor = 1
     comp.splitFactor = len(comp.files)
@@ -373,9 +359,6 @@ elif sample == "data":
 
 ## PDF weights
 PDFWeights = []
-#PDFWeights = [ ("CT10",53), ("MSTW2008lo68cl",41), ("NNPDF21_100",101) ]
-#PDFWeights = [ ("CT10nlo",53),("MSTW2008nlo68cl",41),("NNPDF30LO",101),("NNPDF30_nlo_nf_5_pdfas",103), ("NNPDF30_lo_as_0130",101)]
-#PDFWeights = [ ("NNPDF30_lo_as_0130",101) ]
 # see for TTJets  https://github.com/cms-sw/genproductions/blob/c41ab29f3d86c9e53df8b0d76c12cd519adbf013/bin/MadGraph5_aMCatNLO/cards/production/13TeV/tt0123j_5f_ckm_LO_MLM/tt0123j_5f_ckm_LO_MLM_run_card.dat#L52
 # and then https://lhapdf.hepforge.org/pdfsets.html
 
@@ -419,7 +402,7 @@ if isSignal:
 sequence = cfg.Sequence(susyCoreSequence+[
     LHEAna,
     ttHEventAna,
-#   ttHSTSkimmer,
+    ttHSTSkimmer,
     ttHHTSkimmer,
     hbheFilterAna,
     treeProducer,
@@ -427,15 +410,15 @@ sequence = cfg.Sequence(susyCoreSequence+[
     ])
 
 # remove skimming for Data or Signal
-if isData:# or isSignal :
- sequence.remove(ttHHTSkimmer)
+#if isData:# or isSignal :
+# sequence.remove(ttHHTSkimmer)
 # sequence.remove(ttHSTSkimmer)
 
-if isSignal:
-  sequence.remove(ttHHTSkimmer)
+#if isSignal:
+#  sequence.remove(ttHHTSkimmer)
 #  sequence.remove(ttHSTSkimmer)
 #  sequence.remove(eventFlagsAna)
-  sequence.remove(hbheFilterAna)
+#  sequence.remove(hbheFilterAna)
 
 ## output histogram
 outputService=[]
