@@ -190,17 +190,18 @@ genAna.allGenTaus = True
 
 
 selectedComponents = []
-if getHeppyOption("loadSamples"):
+#if getHeppyOption("loadSamples"):
+if getHeppyOption("loadSamples") or True:
 
-  test = 2 
+  test = 0 
 
   #sample = 'data'
-  sample = 'MC'
+  sample = 'data'
   #sample = 'Signal'
 
   if sample == "MC":
     from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
-    selectedComponents = [TTJets_LO]#[WJetsToLNu] #TTs + SingleTop #TTJets_SingleLepton
+    selectedComponents = [WJetsToLNu] #TTs + SingleTop #TTJets_SingleLepton
     print 'Going to process MC'
     isData = False
     isSignal = False
@@ -220,7 +221,7 @@ if getHeppyOption("loadSamples"):
     from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
 
     #selectedComponents = [ MET_Run2016B_PromptReco_v2 , SingleElectron_Run2016B_PromptReco_v2, SingleMuon_Run2016B_PromptReco_v2]
-    selectedComponents = [ SingleMuon_Run2016B_PromptReco_v2  ]
+    selectedComponents = [ SingleMuon_Run2016D_PromptReco_v2,  MET_Run2016D_PromptReco_v2,  SingleElectron_Run2016D_PromptReco_v2]
     print 'Going to process DATA'
     isData = True
     isSignal = False

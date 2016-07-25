@@ -30,11 +30,16 @@ for d in cfo.__dict__:
         if c.name in allComponents:
             print "Ignoring duplicate component: variable name = ",d," component name = ",c.name
         allComponents[c.name] = c
+        
 
 selectedComponents = [ ]
 for c in args:
     if c in allComponents:
         selectedComponents.append(allComponents[c])
+    elif c in cfo.__dict__ and type(cfo.__dict__[c]) == type([]):
+        for cc in cfo.__dict__[c]:
+          if cc in allComponents.itervalues():
+            selectedComponents.append(cc)
     else:
         print "*** Skipping undefined component: ",c
 if not selectedComponents:
@@ -77,6 +82,29 @@ for comp in selectedComponents:
 #    os.system("python tmp.py > tmp.lis")
     os.system("which crab")
     os.system("crab submit -c heppy_crab_config_env.py")
+
+
+
+def makeCMGComponentList(tag, selectedComponents, dpm_path =""):
+    #summary_file = "./%s_CMGComponents.pkl"%tag
+    summary_file = "./%s.pkl"%tag
+    if os.path.isfile(summary_file):
+        sample_summary = pickle.load(open(summary_file,'r'))
+    else:
+        sample_summary = {}
+    for comp in selectedComponents:
+        compName =  allComponents.keys()[allComponents.values().index(comp)]  
+        if not sample_summary.has_key(compName):
+            comp.production_label     = options.production_label
+            comp.remote_dir           = options.remoteDir
+            sample_summary[compName]  = comp
+    pickle.dump( sample_summary, open( summary_file, 'w' ) )
+    if dpm_path:
+        os.system("/usr/bin/rfcp  {summary_file}  {dpm_path}/{summary_file}".format(summary_file = summary_file , dpm_path = dpm_path))
+
+makeCMGComponentList( options.production_label , selectedComponents)
+
+
 
 #for comp in selectedComponents:
 #    print comp
