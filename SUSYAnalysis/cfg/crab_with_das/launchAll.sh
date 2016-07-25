@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#python launch.py --remoteDir="MC25ns_v1_v6_1l_July_Signal" --unitsPerJob=1 --production_label="MC25ns_v1_Signal_v2" SMS_T5qqqqVV_TuneCUETP8M1
+
 #python launch.py --unitsPerJob=1 --remoteDir="Data25ns_0l_10" --production_label="Data25ns_0l_10"  JetHT_Run2015D
 #python launch.py --unitsPerJob=1 --remoteDir="Data25ns_0l_10" --production_label="Data25ns_0l_10"  MET_Run2015D
 
@@ -46,10 +48,12 @@
 #python launch.py --unitsPerJob=1 --remoteDir="Data50ns_1l"  --production_label="Data50ns"  minBias_Run2015B_17Jul
 #python launch.py --unitsPerJob=1 --remoteDir="Data50ns_1l"  --production_label="Data50ns"  zeroBias_Run2015B_17Jul
 
-####python launch.py --unitsPerJob=20 --remoteDir="Data25ns_1l"  --production_label="Data25ns"  SingleMuon_Run2016B_PromptReco_v2
-####python launch.py --unitsPerJob=20 --remoteDir="Data25ns_1l"  --production_label="Data25ns"  SingleElectron_Run2016B_PromptReco_v2
-####python launch.py --unitsPerJob=20 --remoteDir="Data25ns_1l"  --production_label="Data25ns"  SingleMuon_Run2016C_PromptReco_v2
-####python launch.py --unitsPerJob=20 --remoteDir="Data25ns_1l"  --production_label="Data25ns"  SingleElectron_Run2016C_PromptReco_v2
+#python launch.py --unitsPerJob=40 --remoteDir="Data25ns_1l_latestv1"  --production_label="Data25ns_latestv1"  SingleMuon_Run2016B_PromptReco_v2
+#python launch.py --unitsPerJob=40 --remoteDir="Data25ns_1l_latestv1"  --production_label="Data25ns_latestv1"  SingleElectron_Run2016B_PromptReco_v2
+#python launch.py --unitsPerJob=40 --remoteDir="Data25ns_1l_latestv1"  --production_label="Data25ns_latestv1"  SingleMuon_Run2016C_PromptReco_v2
+#python launch.py --unitsPerJob=40 --remoteDir="Data25ns_1l_latestv1"  --production_label="Data25ns_latestv1"  SingleElectron_Run2016C_PromptReco_v2
+python launch.py --unitsPerJob=20 --remoteDir="Data25ns_1l_latestv1"  --production_label="Data25ns_latestv1"  SingleMuon_Run2016D_PromptReco_v2
+python launch.py --unitsPerJob=20 --remoteDir="Data25ns_1l_latestv1"  --production_label="Data25ns_latestv1"  SingleElectron_Run2016D_PromptReco_v2
 #python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" TTJets
 #python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" TT_pow_ext4
 #python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" TTJets_SingleLeptonFromTbar_ext
@@ -133,10 +137,10 @@
 ##python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" QCD_Pt2400to3200
 ##python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" QCD_Pt3200toInf
 #
-python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" TTWToLNu
-python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" TTWToQQ
-python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" TTZToLLNuNu
-python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" TTZToQQ
+#python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" TTWToLNu
+#python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" TTWToQQ
+#python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" TTZToLLNuNu
+#python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" TTZToQQ
 #python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" TTHnobb
 #python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" TTHnobb_pow
 #python launch.py --remoteDir="MC25ns_v1_v3_1l_July" --unitsPerJob=1 --production_label="MC25ns_v1" TTHbb_ext

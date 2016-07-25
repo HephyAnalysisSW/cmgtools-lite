@@ -179,9 +179,7 @@ jetAna.jetEta = 2.4
 jetAna.minLepPt = 10
 
 ## JEC
-#jetAna.mcGT = "Summer15_25nsV6_MC"
 jetAna.mcGT = "Spring16_25nsV6_MC"
-#jetAna.dataGT = "Summer15_25nsV6_DATA"
 jetAna.dataGT = "Spring16_25nsV6_DATA"
 
 # add also JEC up/down shifts corrections
@@ -206,8 +204,8 @@ genAna.allGenTaus = True
 isData = True # default, but will be overwritten below
 
 #sample = 'MC'
-#sample = 'data'
-sample = 'Signal'
+sample = 'data'
+#sample = 'Signal'
 test = 0
 
 if sample == "MC":
@@ -223,48 +221,6 @@ if sample == "MC":
 
 	if jsonAna in susyCoreSequence: susyCoreSequence.remove(jsonAna)
 
-
-	# -- new 74X samples
-	#from CMGTools.RootTools.samples.samples_13TeV_74X import *
-	# -- samples at DESY
-	# MiniAODv1
-	#from CMGTools.SUSYAnalysis.samples.samples_13TeV_74X_desy import *
-	# MiniAODv2
-	#from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy import *
-	#from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy_Compact import *
-	# from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
-
-	# selectedComponents = TTs + SingleTop #TTJets_SingleLepton
-
-#	if test==1:
-#		# test a single component, using a single thread.
-#		comp = WJetsToLNu
-#		comp.files = comp.files[:1]
-#		selectedComponents = [comp]
-#		comp.splitFactor = 1
-#	elif test==2:
-#		# test all components (1 thread per component).
-#		for comp in selectedComponents:
-#			comp.splitFactor = 1
-#			comp.fineSplitFactor = 1
-#			comp.files = comp.files[:1]
-#	elif test==3:
-#		# run all components (1 thread per component).
-#		for comp in selectedComponents:
-#			comp.fineSplitFactor = 1
-#			comp.splitFactor = len(comp.files)
-#	elif test==0:
-#		# PRODUCTION
-#		# run on everything
-#
-#		#selectedComponents =  [TTJets_LO , TTJets_LO_HT600to800, TTJets_LO_HT800to1200, TTJets_LO_HT1200to2500, TTJets_LO_HT2500toIn#f] + QCDHT + WJetsToLNuHT + SingleTop + DYJetsM50HT + TTV
-#		#selectedComponents =  #SingleTop + DYJetsM50HT + TTV
-#		#selectedComponents = [TTJets_SingleLeptonFromTbar, TTJets_SingleLeptonFromTbar_ext, TTJets_SingleLeptonFromT, TTJets_SingleL#eptonFromT_ext, TTJets_DiLepton, TTJets_DiLepton_ext]
-
-#		for comp in selectedComponents:
-#			comp.fineSplitFactor = 1
-#			comp.splitFactor = len(comp.files)
-
 elif sample == "Signal":
 
   print 'Going to process Signal'
@@ -273,60 +229,14 @@ elif sample == "Signal":
   isSignal = True
   jetAna.applyL2L3Residual = 'Data'
   jetAna.doQG = False
-  jetAna.calculateType1METCorrection = False
+  jetAna.calculateType1METCorrection = True
   jetAna.mcGT   = "Spring16_FastSimV1_MC"
-
   #### REMOVE JET ID FOR FASTSIM
   jetAna.relaxJetId = True
-
-	# modify skim
-	anyLepSkim.minLeptons = 0
-	ttHLepSkim.minLeptons = 0
-
-	# -- new 74X samples
-	#from CMGTools.RootTools.samples.samples_13TeV_74X import *
-	# -- samples at DESY
-	# MiniAODv1
-	#from CMGTools.SUSYAnalysis.samples.samples_13TeV_74X_desy import *
-	#from CMGTools.SUSYAnalysis.samples.samples_13TeV_74X_Signals_desy import *
-	# MiniAODv2
-	#from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy import *
-	# from CMGTools.SUSYAnalysis.samples.samples_13TeV_MiniAODv2_Signals_AAA import *
-
-	# Benchmarks
-	#selectedComponents = [ T1tttt_mGo_1475to1500_mLSP_1to1250, T1tttt_mGo_1500to1525_mLSP_50to1125, T1tttt_mGo_1200_mLSP_1to825, T1tttt_mGo_1900to1950_mLSP_0to1450 ]
-	# Rest
-	#selectedComponents = mcSamplesT1tttt
-	#selectedComponents = [T1tttt_mGo_1000to1050_mLSP_1to800, T1tttt_mGo_1225to1250_mLSP_1to1025, T1tttt_mGo_1325to1350_mLSP_1to1125, T1tttt_mGo_600to625_mLSP_250to375]
-#	selectedComponents = [T1tttt_mGo_1475to1500_mLSP_1to1250, T1tttt_mGo_1200_mLSP_1to825 ]
-#
-#	if test==1:
-#		# test a single component, using a single thread.
-#		comp = T1tttt_mGo_1475to1500_mLSP_1to1250
-#		comp.files = comp.files[:1]
-#		selectedComponents = [comp]
-#		comp.splitFactor = 1
-#	elif test==2:
-#		# test all components (1 thread per component).
-#		for comp in selectedComponents:
-#			comp.splitFactor = 1
-#			comp.fineSplitFactor = 1
-#			comp.files = comp.files[:1]
-#	elif test==3:
-#		# run all components (1 thread per component).
-#		for comp in selectedComponents:
-#			comp.fineSplitFactor = 1
-#			comp.splitFactor = len(comp.files)
-#	elif test==0:
-#		# PRODUCTION
-#		# run on everything
-#
-#		#selectedComponents = [ T1tttt_mGo_1200_mLSP_1to825, T1tttt_mGo_1900to1950_mLSP_0to1450 ]
-#
-#		for comp in selectedComponents:
-#			comp.fineSplitFactor = 1
-#			comp.splitFactor = len(comp.files)
-
+  # modify skim
+  anyLepSkim.minLeptons = 0
+  ttHLepSkim.minLeptons = 0
+  #print ttHLepSkim.minLeptons
 
 elif sample == "data":
 
@@ -421,8 +331,9 @@ if isSignal:
 
 
 	# change scn mass parameters
-	#susyCounter.SMS_mass_1 = "genSusyMGluino"
-	#susyCounter.SMS_mass_2 = "genSusyMNeutralino"
+  susyCounter.SUSYmodel = 'T5qqqq'
+	susyCounter.SMS_mass_1 = "genSusyMGluino"
+	susyCounter.SMS_mass_2 = "genSusyMNeutralino"
 	susyCounter.SMS_varying_masses = ['genSusyMGluino','genSusyMNeutralino']
 
 #-------- SEQUENCE
@@ -430,7 +341,7 @@ if isSignal:
 sequence = cfg.Sequence(susyCoreSequence+[
 		LHEAna,
 		ttHEventAna,
-#		ttHSTSkimmer,
+		ttHSTSkimmer,
 		ttHHTSkimmer,
 		hbheFilterAna,
 		treeProducer,
@@ -438,13 +349,13 @@ sequence = cfg.Sequence(susyCoreSequence+[
 		])
 
 # remove skimming for Data or Signal
-if isData:# or isSignal :
-	sequence.remove(ttHHTSkimmer)
+#if isData:# or isSignal :
+#	sequence.remove(ttHHTSkimmer)
 #	sequence.remove(ttHSTSkimmer)
 
 if isSignal:
-#	sequence.remove(ttHHTSkimmer)
-#	sequence.remove(ttHSTSkimmer)
+	sequence.remove(ttHHTSkimmer)
+	sequence.remove(ttHSTSkimmer)
 #	sequence.remove(eventFlagsAna)
 	sequence.remove(hbheFilterAna)
 

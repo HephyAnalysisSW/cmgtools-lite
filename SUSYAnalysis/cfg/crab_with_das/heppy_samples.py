@@ -21,4 +21,5 @@ from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
 for sample in dataSamples_Run2016_v2:
   #sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-273730_13TeV_PromptReco_Collisions16_JSON.txt"
   #sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-274443_13TeV_PromptReco_Collisions16_JSON.txt"
-  sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-276097_13TeV_PromptReco_Collisions16_JSON_NoL1T_v2.txt"
+  #sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-276097_13TeV_PromptReco_Collisions16_JSON_NoL1T_v2.txt"
+  sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-276811_13TeV_PromptReco_Collisions16_JSON_NoL1T.txt"

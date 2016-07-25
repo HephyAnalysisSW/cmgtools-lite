@@ -206,7 +206,7 @@ isData = True # default, but will be overwritten below
 #sample = 'MC'
 #sample = 'data'
 sample = 'Signal'
-test = 2
+test = 1
 
 if sample == "MC":
 
@@ -219,14 +219,6 @@ if sample == "MC":
   anyLepSkim.minLeptons = 1
   ttHLepSkim.minLeptons = 0
 
-  # -- new 74X samples
-  #from CMGTools.RootTools.samples.samples_13TeV_74X import *
-  # -- samples at DESY
-  # MiniAODv1
-  #from CMGTools.SUSYAnalysis.samples.samples_13TeV_74X_desy import *
-  # MiniAODv2
-  #from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy import *
-  #from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy_Compact import *
   from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
 
   selectedComponents = TTs + SingleTop #TTJets_SingleLepton
@@ -249,12 +241,6 @@ if sample == "MC":
       comp.fineSplitFactor = 1
       comp.splitFactor = len(comp.files)
   elif test==0:
-    # PRODUCTION
-    # run on everything
-
-    #selectedComponents =  [TTJets_LO , TTJets_LO_HT600to800, TTJets_LO_HT800to1200, TTJets_LO_HT1200to2500, TTJets_LO_HT2500toInf] + QCDHT + WJetsToLNuHT + SingleTop + DYJetsM50HT + TTV
-    #selectedComponents =  #SingleTop + DYJetsM50HT + TTV
-    #selectedComponents = [TTJets_SingleLeptonFromTbar, TTJets_SingleLeptonFromTbar_ext, TTJets_SingleLeptonFromT, TTJets_SingleLeptonFromT_ext, TTJets_DiLepton, TTJets_DiLepton_ext]
 
     for comp in selectedComponents:
       comp.fineSplitFactor = 1
@@ -266,9 +252,9 @@ elif sample == "Signal":
 
   isData = False
   isSignal = True
-  jetAna.applyL2L3Residual = 'Data' 
+  jetAna.applyL2L3Residual = False 
   jetAna.doQG = False
-  jetAna.calculateType1METCorrection = False
+  jetAna.calculateType1METCorrection = True
   jetAna.mcGT   = "Spring16_FastSimV1_MC"
 
   #### REMOVE JET ID FOR FASTSIM
@@ -298,10 +284,12 @@ elif sample == "Signal":
 
   if test==1:
     # test a single component, using a single thread.
-    comp = T1tttt_mGo_1475to1500_mLSP_1to1250
-    comp.files = comp.files[:1]
+    comp = SMS_T5qqqqVV_TuneCUETP8M1
+    #comp.files = comp.files[:300]  #0-299 dahil
+    #comp.files = comp.files[300:] 
+    comp.files = comp.files[:1] 
     selectedComponents = [comp]
-    comp.splitFactor = 1
+    comp.splitFactor = len(comp.files)
   elif test==2:
     # test all components (1 thread per component).
     for comp in selectedComponents:
@@ -421,8 +409,9 @@ if isSignal:
 
 
   # change scn mass parameters
-  #susyCounter.SMS_mass_1 = "genSusyMGluino"
-  #susyCounter.SMS_mass_2 = "genSusyMNeutralino"
+  susyCounter.SUSYmodel = 'T5qqqq'
+  susyCounter.SMS_mass_1 = "genSusyMGluino"
+  susyCounter.SMS_mass_2 = "genSusyMNeutralino"
   susyCounter.SMS_varying_masses = ['genSusyMGluino','genSusyMNeutralino']
 
 #-------- SEQUENCE
@@ -460,7 +449,6 @@ output_service = cfg.Service(
     option='recreate'
     )
 outputService.append(output_service)
-
 
 from PhysicsTools.HeppyCore.framework.eventsfwlite import Events
 config = cfg.Config( components = selectedComponents,
