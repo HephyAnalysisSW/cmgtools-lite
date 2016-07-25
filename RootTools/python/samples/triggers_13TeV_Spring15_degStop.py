@@ -211,30 +211,18 @@ SingleElPDTriggers = \
 
 SingleMuonPDTriggers=\
 [\
- 'HLT_DiMu9_Ele9_CaloIdL_TrackIdL_v*',
- 'HLT_Mu12_Photon25_CaloIdL_L1ISO_v*',
- 'HLT_Mu12_Photon25_CaloIdL_L1OR_v*',
- 'HLT_Mu12_Photon25_CaloIdL_v*',
- 'HLT_Mu17_Photon22_CaloIdL_L1ISO_v*',
- 'HLT_Mu17_Photon30_CaloIdL_L1ISO_v*',
- 'HLT_Mu17_Photon35_CaloIdL_L1ISO_v*',
- 'HLT_Mu17_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v*',
- 'HLT_Mu23NoFiltersNoVtx_Photon23_CaloIdL_v*',
- 'HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v*',
- 'HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_v*',
- 'HLT_Mu27_Ele37_CaloIdL_GsfTrkIdVL_v*',
- 'HLT_Mu28NoFiltersNoVtxDisplaced_Photon28_CaloIdL_v*',
- 'HLT_Mu30_Ele30_CaloIdL_GsfTrkIdVL_v*',
- 'HLT_Mu33NoFiltersNoVtxDisplaced_Photon33_CaloIdL_v*',
- 'HLT_Mu37_Ele27_CaloIdL_GsfTrkIdVL_v*',
- 'HLT_Mu38NoFiltersNoVtx_Photon38_CaloIdL_v*',
- 'HLT_Mu42NoFiltersNoVtx_Photon42_CaloIdL_v*',
- 'HLT_Mu8_DiEle12_CaloIdL_TrackIdL_v*',
- 'HLT_Mu8_Ele8_CaloIdM_TrackIdM_Mass8_PFHT250_v*',
- 'HLT_Mu8_Ele8_CaloIdM_TrackIdM_Mass8_PFHT300_v*',
- 'HLT_Mu8_TrkIsoVVL_Ele17_CaloIdL_TrackIdL_IsoVL_v*',
- 'HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_v*',
+   "HLT_IsoMu22_v*",
+   "HLT_IsoMu22_eta2p1_v*",
+   "HLT_IsoMu24_v*",
+   "HLT_IsoMu27_v*",
+   "HLT_IsoTkMu22_v*",
+   "HLT_IsoTkMu22_eta2p1_v*",
+   "HLT_IsoTkMu24_v*",
+   "HLT_IsoTkMu27_v*",
+   "HLT_Mu50_v*",
+
 ]
+
 
                                                   
 triggers = METTriggers + SingleMuonPDTriggers + SingleElPDTriggers
