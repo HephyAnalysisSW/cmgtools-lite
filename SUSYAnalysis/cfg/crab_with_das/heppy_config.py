@@ -204,8 +204,8 @@ genAna.allGenTaus = True
 isData = True # default, but will be overwritten below
 
 #sample = 'MC'
-sample = 'data'
-#sample = 'Signal'
+#sample = 'data'
+sample = 'Signal'
 test = 0
 
 if sample == "MC":
@@ -343,7 +343,7 @@ sequence = cfg.Sequence(susyCoreSequence+[
 		ttHEventAna,
 		ttHSTSkimmer,
 		ttHHTSkimmer,
-		hbheFilterAna,
+#		hbheFilterAna,
 		treeProducer,
 #		susyCounter
 		])
@@ -356,8 +356,8 @@ sequence = cfg.Sequence(susyCoreSequence+[
 if isSignal:
 	sequence.remove(ttHHTSkimmer)
 	sequence.remove(ttHSTSkimmer)
-#	sequence.remove(eventFlagsAna)
-	sequence.remove(hbheFilterAna)
+	sequence.remove(eventFlagsAna)
+#	sequence.remove(hbheFilterAna)
 
 ## output histogram
 outputService=[]
