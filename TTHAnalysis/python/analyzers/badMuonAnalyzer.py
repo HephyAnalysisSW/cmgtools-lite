@@ -82,4 +82,3 @@ setattr(badMuonAnalyzer,"defaultConfig", cfg.Analyzer(
         packedCandidates = 'packedPFCandidates',
         )
 )
-
