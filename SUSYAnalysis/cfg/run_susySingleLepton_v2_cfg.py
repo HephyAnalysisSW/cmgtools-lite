@@ -287,7 +287,7 @@ elif sample == "Signal":
     comp = SMS_T5qqqqVV_TuneCUETP8M1
     #comp.files = comp.files[:300]  #0-299 dahil
     #comp.files = comp.files[300:] 
-    comp.files = comp.files[:1] 
+    #comp.files = comp.files[:1] 
     selectedComponents = [comp]
     comp.splitFactor = len(comp.files)
   elif test==2:
@@ -337,14 +337,14 @@ elif sample == "data":
   # central samples
   from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
 
-  selectedComponents = [SingleElectron_Run2016B_PromptReco_v2, SingleMuon_Run2016B_PromptReco_v2]
+  selectedComponents = [SingleElectron_Run2016D_PromptReco_v2, SingleMuon_Run2016D_PromptReco_v2]
 
   if test!=0 and jsonAna in susyCoreSequence: susyCoreSequence.remove(jsonAna)
   if test==1:
     comp = SingleElectron_Run2016B_PromptReco_v2
 #SingleElectron_Run2016B_PromptReco_v2
 #    comp.files = comp.files[:1]
-    comp.files = comp.files[:1]
+    #comp.files = comp.files[:1]
 #    comp.files = comp.files[10:11]
     selectedComponents = [comp]
     comp.splitFactor = 1
