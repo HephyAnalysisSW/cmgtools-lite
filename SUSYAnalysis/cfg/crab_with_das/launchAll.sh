@@ -1,8 +1,11 @@
-PROD_LABEL="8011_mAODv2_v1_1"  
-REMOTE_DIR_DATA="${PROD_LABEL}/Data25ns"
-REMOTE_DIR_MC="${PROD_LABEL}/RunIISpring16MiniAODv2"
+#PROD_LABEL="8011_mAODv2_v1_1"  
 #REMOTE_DIR_DATA="8011/Data25ns"
 #REMOTE_DIR_MC="8011/RunIISpring16MiniAODv2"
+
+PROD_LABEL="mAODv2_v2"  
+REMOTE_DIR_DATA="8011_${PROD_LABEL}/Data25ns"
+REMOTE_DIR_MC="8011_${PROD_LABEL}/RunIISpring16MiniAODv2"
+
 
 echo --------------------------------------------
 echo 
@@ -145,7 +148,10 @@ if  $z
 then
   echo ----------------------  Submitting ZJets  -----------------------
   #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   ZJetsToNuNu_HT100to200  ZJetsToNuNu_HT200to400  ZJetsToNuNu_HT400to600  ZJetsToNuNu_HT600toInf     
-  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL    ZJetsToNuNu_HT100to200_ext  ZJetsToNuNu_HT200to400_ext  ZJetsToNuNu_HT400to600    ZJetsToNuNu_HT600to800 ZJetsToNuNu_HT800to1200 ZJetsToNuNu_HT1200to2500 ZJetsToNuNu_HT1200to2500_ext  ZJetsToNuNu_HT2500toInf  
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL    ZJetsToNuNu_HT100to200_ext  ZJetsToNuNu_HT200to400_ext  ZJetsToNuNu_HT400to600    ZJetsToNuNu_HT600to800 ZJetsToNuNu_HT800to1200 ZJetsToNuNu_HT1200to2500 ZJetsToNuNu_HT1200to2500_ext  ZJetsToNuNu_HT2500toInf  
+
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL     ZJetsToNuNu_HT800to1200  
+
 
 fi
 
