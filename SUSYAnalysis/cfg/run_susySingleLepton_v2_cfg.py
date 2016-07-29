@@ -204,8 +204,8 @@ genAna.allGenTaus = True
 isData = True # default, but will be overwritten below
 
 #sample = 'MC'
-sample = 'data'
-#sample = 'Signal'
+#sample = 'data'
+sample = 'Signal'
 test = 0
 
 if sample == "MC":
@@ -402,9 +402,9 @@ if isSignal:
 sequence = cfg.Sequence(susyCoreSequence+[
     LHEAna,
     ttHEventAna,
-    ttHSTSkimmer,
-    ttHHTSkimmer,
-    hbheFilterAna,
+#    ttHSTSkimmer,
+#    ttHHTSkimmer,
+#   hbheFilterAna,
     treeProducer,
 #   susyCounter
     ])
