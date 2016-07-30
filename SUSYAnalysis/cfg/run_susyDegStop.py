@@ -196,7 +196,7 @@ if getHeppyOption("loadSamples") or True:
   test = 0 
 
   #sample = 'data'
-  sample = 'MC'
+  sample = 'Signal'
   #sample = 'Signal'
 
   if sample == "MC":
@@ -207,8 +207,9 @@ if getHeppyOption("loadSamples") or True:
     isSignal = False
   
   elif sample == "Signal":
-    from CMGTools.SUSYAnalysis.samples.samples_13TeV_MiniAODv2_Signals_AAA import *
+    from CMGTools.RootTools.samples.samples_13TeV_signals import *
     #selectedComponents = [T1tttt_mGo_1475to1500_mLSP_1to1250, T1tttt_mGo_1200_mLSP_1to825 ]
+    selectedComponents = [ SMS_T2tt_dM_10to80_2Lfilter , ]
     #susyCounter.SMS_varying_masses = ['genSusyMGluino','genSusyMNeutralino']
     print 'Going to process Signal'
     isData = False
@@ -253,11 +254,11 @@ if getHeppyOption("loadSamples") or True:
   
 
 
-  if isData:# or isSignal :
-    pass
-  if isSignal:
-    sequence.remove(eventFlagsAna)
-    sequence.remove(hbheFilterAna)
+  #if isData:# or isSignal :
+  #  pass
+  #if isSignal:
+  #  sequence.remove(eventFlagsAna)
+  #  sequence.remove(hbheFilterAna)
 
 
 
@@ -290,19 +291,22 @@ hbheFilterAna = cfg.Analyzer(
     hbheAnalyzer, name = 'hbheAnalyzer',IgnoreTS4TS5ifJetInLowBVRegion=False
 )
 
-from CMGTools.SUSYAnalysis.analyzers.badChargedHadronAnalyzer import badChargedHadronAnalyzer
-badChargedHadronAna = cfg.Analyzer(
-    badChargedHadronAnalyzer, name = 'badChargedHadronAna',
-    muons='slimmedMuons',
-    packedCandidates = 'packedPFCandidates',
-)
+#from CMGTools.SUSYAnalysis.analyzers.badChargedHadronAnalyzer import badChargedHadronAnalyzer
+#badChargedHadronAna = cfg.Analyzer(
+#    badChargedHadronAnalyzer, name = 'badChargedHadronAna',
+#    muons='slimmedMuons',
+#    packedCandidates = 'packedPFCandidates',
+#)
+#
+#from CMGTools.SUSYAnalysis.analyzers.badMuonAnalyzer import badMuonAnalyzer
+#badMuonAna = cfg.Analyzer(
+#    badMuonAnalyzer, name = 'badMuonAna',
+#    muons='slimmedMuons',
+#    packedCandidates = 'packedPFCandidates',
+#)
+#
 
-from CMGTools.SUSYAnalysis.analyzers.badMuonAnalyzer import badMuonAnalyzer
-badMuonAna = cfg.Analyzer(
-    badMuonAnalyzer, name = 'badMuonAna',
-    muons='slimmedMuons',
-    packedCandidates = 'packedPFCandidates',
-)
+
 
 
 
@@ -310,12 +314,34 @@ sequence = cfg.Sequence(susyCoreSequence+[
     LHEAna,
     ttHEventAna,
     hbheFilterAna,
-    badChargedHadronAna,
-    badMuonAna,
     treeProducer,
 #   susyCounter
 
     ])
+
+
+
+if isSignal:
+  ## SUSY Counter
+  ## histo counter
+  #susyCoreSequence.insert(susyCoreSequence.index(skimAnalyzer),
+  susyCoreSequence.insert(susyCoreSequence.index(susyScanAna)+1,
+        susyCounter)
+  #susyCoreSequence.append(susyCounter)
+
+
+  jetAna.applyL2L3Residual = False
+  jetAna.doQG = False
+  jetAna.calculateType1METCorrection = True
+  jetAna.mcGT = "Spring16_FastSimV1_MC"
+
+
+  # change scn mass parameters
+  susyCounter.SUSYmodel = 'T2tt_dM_10to80'
+  susyCounter.SMS_mass_1 = "genSusyMStop"
+  susyCounter.SMS_mass_2 = "genSusyMNeutralino"
+  susyCounter.SMS_varying_masses = ['genSusyMStop','genSusyMNeutralino']
+
 
 
 print "Selected Components: "
