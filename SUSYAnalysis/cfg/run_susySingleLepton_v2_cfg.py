@@ -136,6 +136,8 @@ triggerFlagsAna.triggerBits = {
   'MuHT350MET70' : triggers_mu_ht350_met70,
   'MuHT350MET50' : triggers_mu_ht350_met50,
   'MuHT350' : triggers_mu_ht350,
+  'MuHT400' : triggers_mu_ht400,
+  'Mu50HT400' : triggers_mu50_ht400,
   'MuHTMET' : triggers_mu_ht350_met70 + triggers_mu_ht400_met70,
   'MuMET120' : triggers_mu_met120,
   'MuHT400B': triggers_mu_ht400_btag,
@@ -149,6 +151,8 @@ triggerFlagsAna.triggerBits = {
   'EleHT350MET70' : triggers_el_ht350_met70,
   'EleHT350MET50' : triggers_el_ht350_met50,
   'EleHT350' : triggers_el_ht350,
+  'EleHT400' : triggers_el_ht400,
+  'Ele50HT400' : triggers_el50_ht400,
   'EleHTMET' : triggers_el_ht350_met70 + triggers_el_ht400_met70,
   'EleHT200' :triggers_el_ht200,
   'EleHT400B': triggers_el_ht400_btag
@@ -175,10 +179,8 @@ jetAna.jetEta = 2.4
 jetAna.minLepPt = 10
 
 ## JEC
-#jetAna.mcGT = "Summer15_25nsV6_MC"
-jetAna.mcGT = "Spring16_25nsV3_MC"
-#jetAna.dataGT = "Summer15_25nsV6_DATA"
-jetAna.dataGT = "Spring16_25nsV3_DATA"
+jetAna.mcGT = "Spring16_25nsV6_MC"
+jetAna.dataGT = "Spring16_25nsV6_DATA"
 
 # add also JEC up/down shifts corrections
 jetAna.addJECShifts = True
@@ -202,9 +204,9 @@ genAna.allGenTaus = True
 isData = True # default, but will be overwritten below
 
 #sample = 'MC'
-sample = 'data'
-#sample = 'Signal'
-test = 1
+#sample = 'data'
+sample = 'Signal'
+test = 0
 
 if sample == "MC":
 
@@ -217,21 +219,13 @@ if sample == "MC":
   anyLepSkim.minLeptons = 1
   ttHLepSkim.minLeptons = 0
 
-  # -- new 74X samples
-  #from CMGTools.RootTools.samples.samples_13TeV_74X import *
-  # -- samples at DESY
-  # MiniAODv1
-  #from CMGTools.SUSYAnalysis.samples.samples_13TeV_74X_desy import *
-  # MiniAODv2
-  #from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy import *
-  #from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy_Compact import *
   from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
 
   selectedComponents = TTs + SingleTop #TTJets_SingleLepton
 
   if test==1:
     # test a single component, using a single thread.
-    comp = QCD_HT500to700 #WJetsToLNu
+    comp = WJetsToLNu
     comp.files = comp.files[:1]
     selectedComponents = [comp]
     comp.splitFactor = 1
@@ -247,12 +241,6 @@ if sample == "MC":
       comp.fineSplitFactor = 1
       comp.splitFactor = len(comp.files)
   elif test==0:
-    # PRODUCTION
-    # run on everything
-
-    #selectedComponents =  [TTJets_LO , TTJets_LO_HT600to800, TTJets_LO_HT800to1200, TTJets_LO_HT1200to2500, TTJets_LO_HT2500toInf] + QCDHT + WJetsToLNuHT + SingleTop + DYJetsM50HT + TTV
-    #selectedComponents =  #SingleTop + DYJetsM50HT + TTV
-    #selectedComponents = [TTJets_SingleLeptonFromTbar, TTJets_SingleLeptonFromTbar_ext, TTJets_SingleLeptonFromT, TTJets_SingleLeptonFromT_ext, TTJets_DiLepton, TTJets_DiLepton_ext]
 
     for comp in selectedComponents:
       comp.fineSplitFactor = 1
@@ -264,11 +252,10 @@ elif sample == "Signal":
 
   isData = False
   isSignal = True
-
-  # Set FastSim JEC
-  #jetAna.mcGT = "FastSim_MCRUN2_74_V9"
-  #jetAna.mcGT = "MCRUN2_74_V9"
-  jetAna.mcGT = "FastSim_Summer15_25nsV6_MC"
+  jetAna.applyL2L3Residual = False 
+  jetAna.doQG = False
+  jetAna.calculateType1METCorrection = True
+  jetAna.mcGT   = "Spring16_FastSimV1_MC"
 
   #### REMOVE JET ID FOR FASTSIM
   jetAna.relaxJetId = True
@@ -285,21 +272,24 @@ elif sample == "Signal":
   #from CMGTools.SUSYAnalysis.samples.samples_13TeV_74X_Signals_desy import *
   # MiniAODv2
   #from CMGTools.SUSYAnalysis.samples.samples_13TeV_RunIISpring15MiniAODv2_desy import *
-  from CMGTools.SUSYAnalysis.samples.samples_13TeV_MiniAODv2_Signals_AAA import *
+  #from CMGTools.SUSYAnalysis.samples.samples_13TeV_MiniAODv2_Signals_AAA import *
+  from CMGTools.RootTools.samples.samples_13TeV_80X_signals import *
 
   # Benchmarks
   #selectedComponents = [ T1tttt_mGo_1475to1500_mLSP_1to1250, T1tttt_mGo_1500to1525_mLSP_50to1125, T1tttt_mGo_1200_mLSP_1to825, T1tttt_mGo_1900to1950_mLSP_0to1450 ]
   # Rest
   #selectedComponents = mcSamplesT1tttt
   #selectedComponents = [T1tttt_mGo_1000to1050_mLSP_1to800, T1tttt_mGo_1225to1250_mLSP_1to1025, T1tttt_mGo_1325to1350_mLSP_1to1125, T1tttt_mGo_600to625_mLSP_250to375]
-  selectedComponents = [T1tttt_mGo_1475to1500_mLSP_1to1250, T1tttt_mGo_1200_mLSP_1to825 ]
+  selectedComponents = [SMS_T5qqqqVV_TuneCUETP8M1]
 
   if test==1:
     # test a single component, using a single thread.
-    comp = T1tttt_mGo_1475to1500_mLSP_1to1250
-    comp.files = comp.files[:1]
+    comp = SMS_T5qqqqVV_TuneCUETP8M1
+    #comp.files = comp.files[:300]  #0-299 dahil
+    #comp.files = comp.files[300:] 
+    #comp.files = comp.files[:1] 
     selectedComponents = [comp]
-    comp.splitFactor = 1
+    comp.splitFactor = len(comp.files)
   elif test==2:
     # test all components (1 thread per component).
     for comp in selectedComponents:
@@ -334,28 +324,14 @@ elif sample == "data":
   anyLepSkim.minLeptons = 1
   ttHLepSkim.minLeptons = 0
 
-  #For now no JEC  
-  #print jetAna.shiftJEC , jetAna.recalibrateJets , jetAna.addJECShifts , jetAna.calculateSeparateCorrections , jetAna.calculateType1METCorrection
-  #jetAna.addJECShifts = False
-  #jetAna.doQG = False
-  #jetAna.smearJets = False #should be false in susycore, already
-  #jetAna.recalibrateJets = False # false for miniAOD v2!
-  #jetAna.calculateSeparateCorrections = False
-  #jetAna.applyL2L3Residual = False
-  #print jetAna.shiftJEC , jetAna.recalibrateJets , jetAna.addJECShifts , jetAna.calculateSeparateCorrections , jetAna.calculateType1METCorrection
-
   # central samples
   from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
 
-  selectedComponents = [SingleElectron_Run2016B_PromptReco_v2, SingleMuon_Run2016B_PromptReco_v2]
+  selectedComponents = [SingleElectron_Run2016D_PromptReco_v2, SingleMuon_Run2016D_PromptReco_v2]
 
-  if test!=0 and jsonAna in susyCoreSequence: susyCoreSequence.remove(jsonAna)
+  #if test!=0 and jsonAna in susyCoreSequence: susyCoreSequence.remove(jsonAna)
   if test==1:
     comp = SingleElectron_Run2016B_PromptReco_v2
-#SingleElectron_Run2016B_PromptReco_v2
-#    comp.files = comp.files[:1]
-    comp.files = comp.files[:1]
-#    comp.files = comp.files[10:11]
     selectedComponents = [comp]
     comp.splitFactor = 1
     comp.splitFactor = len(comp.files)
@@ -383,9 +359,6 @@ elif sample == "data":
 
 ## PDF weights
 PDFWeights = []
-#PDFWeights = [ ("CT10",53), ("MSTW2008lo68cl",41), ("NNPDF21_100",101) ]
-#PDFWeights = [ ("CT10nlo",53),("MSTW2008nlo68cl",41),("NNPDF30LO",101),("NNPDF30_nlo_nf_5_pdfas",103), ("NNPDF30_lo_as_0130",101)]
-#PDFWeights = [ ("NNPDF30_lo_as_0130",101) ]
 # see for TTJets  https://github.com/cms-sw/genproductions/blob/c41ab29f3d86c9e53df8b0d76c12cd519adbf013/bin/MadGraph5_aMCatNLO/cards/production/13TeV/tt0123j_5f_ckm_LO_MLM/tt0123j_5f_ckm_LO_MLM_run_card.dat#L52
 # and then https://lhapdf.hepforge.org/pdfsets.html
 
@@ -419,8 +392,9 @@ if isSignal:
 
 
   # change scn mass parameters
-  #susyCounter.SMS_mass_1 = "genSusyMGluino"
-  #susyCounter.SMS_mass_2 = "genSusyMNeutralino"
+  susyCounter.SUSYmodel = 'T5qqqq'
+  susyCounter.SMS_mass_1 = "genSusyMGluino"
+  susyCounter.SMS_mass_2 = "genSusyMNeutralino"
   susyCounter.SMS_varying_masses = ['genSusyMGluino','genSusyMNeutralino']
 
 #-------- SEQUENCE
@@ -428,23 +402,23 @@ if isSignal:
 sequence = cfg.Sequence(susyCoreSequence+[
     LHEAna,
     ttHEventAna,
-#   ttHSTSkimmer,
-    ttHHTSkimmer,
-    hbheFilterAna,
+#    ttHSTSkimmer,
+#    ttHHTSkimmer,
+#   hbheFilterAna,
     treeProducer,
 #   susyCounter
     ])
 
 # remove skimming for Data or Signal
-if isData:# or isSignal :
- sequence.remove(ttHHTSkimmer)
-# sequence.remove(ttHSTSkimmer)
-
-if isSignal:
+#if isData:# or isSignal :
 # sequence.remove(ttHHTSkimmer)
 # sequence.remove(ttHSTSkimmer)
-  sequence.remove(eventFlagsAna)
-  sequence.remove(hbheFilterAna)
+
+#if isSignal:
+#  sequence.remove(ttHHTSkimmer)
+#  sequence.remove(ttHSTSkimmer)
+#  sequence.remove(eventFlagsAna)
+#  sequence.remove(hbheFilterAna)
 
 ## output histogram
 outputService=[]
@@ -458,7 +432,6 @@ output_service = cfg.Service(
     option='recreate'
     )
 outputService.append(output_service)
-
 
 from PhysicsTools.HeppyCore.framework.eventsfwlite import Events
 config = cfg.Config( components = selectedComponents,

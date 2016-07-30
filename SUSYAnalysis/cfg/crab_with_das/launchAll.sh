@@ -2,7 +2,7 @@
 #REMOTE_DIR_DATA="8011/Data25ns"
 #REMOTE_DIR_MC="8011/RunIISpring16MiniAODv2"
 
-PROD_LABEL="mAODv2_v2"  
+PROD_LABEL="mAODv2_v1_1"  
 REMOTE_DIR_DATA="8011_${PROD_LABEL}/Data25ns"
 REMOTE_DIR_MC="8011_${PROD_LABEL}/RunIISpring16MiniAODv2"
 
@@ -172,7 +172,14 @@ fi
 if  $scan
 then
   echo ------------------------------- Signal Mass Scan -----------------
-  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL  SMS_T2_4bd_mStop_100_mLSP_20to90  SMS_T2_4bd_mStop_125_mLSP_45to115      SMS_T2_4bd_mStop_150_mLSP_45to115      SMS_T2_4bd_mStop_175_mLSP_95to165      SMS_T2_4bd_mStop_200_mLSP_120to190     SMS_T2_4bd_mStop_225_mLSP_145to225     SMS_T2_4bd_mStop_250_mLSP_170to240     SMS_T2_4bd_mStop_275_mLSP_195to265      SMS_T2_4bd_mStop_300_mLSP_220to290     SMS_T2_4bd_mStop_325_mLSP_245to315     SMS_T2_4bd_mStop_350_mLSP_270to340     SMS_T2_4bd_mStop_375_mLSP_295to365     SMS_T2_4bd_mStop_400_mLSP_320to390     SMS_T2_4bd_mStop_425to475_mLSP_345to465 SMS_T2_4bd_mStop_500to550_mLSP_420to540  SMS_T2_4bd_mStop_550to600_mLSP_470to590 
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL  SMS_T2_4bd_mStop_100_mLSP_20to90  SMS_T2_4bd_mStop_125_mLSP_45to115      SMS_T2_4bd_mStop_150_mLSP_45to115      SMS_T2_4bd_mStop_175_mLSP_95to165      SMS_T2_4bd_mStop_200_mLSP_120to190     SMS_T2_4bd_mStop_225_mLSP_145to225     SMS_T2_4bd_mStop_250_mLSP_170to240     SMS_T2_4bd_mStop_275_mLSP_195to265      SMS_T2_4bd_mStop_300_mLSP_220to290     SMS_T2_4bd_mStop_325_mLSP_245to315     SMS_T2_4bd_mStop_350_mLSP_270to340     SMS_T2_4bd_mStop_375_mLSP_295to365     SMS_T2_4bd_mStop_400_mLSP_320to390     SMS_T2_4bd_mStop_425to475_mLSP_345to465 SMS_T2_4bd_mStop_500to550_mLSP_420to540  SMS_T2_4bd_mStop_550to600_mLSP_470to590 
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   SMS_T2tt_dM_10to80_genHT_160_genMET_80 #SMS_T2_4bd_mStop_100_mLSP_20to90  SMS_T2_4bd_mStop_125_mLSP_45to115      SMS_T2_4bd_mStop_150_mLSP_45to115      SMS_T2_4bd_mStop_175_mLSP_95to165      SMS_T2_4bd_mStop_200_mLSP_120to190     SMS_T2_4bd_mStop_225_mLSP_145to225     SMS_T2_4bd_mStop_250_mLSP_170to240     SMS_T2_4bd_mStop_275_mLSP_195to265      SMS_T2_4bd_mStop_300_mLSP_220to290     SMS_T2_4bd_mStop_325_mLSP_245to315     SMS_T2_4bd_mStop_350_mLSP_270to340     SMS_T2_4bd_mStop_375_mLSP_295to365     SMS_T2_4bd_mStop_400_mLSP_320to390     SMS_T2_4bd_mStop_425to475_mLSP_345to465 SMS_T2_4bd_mStop_500to550_mLSP_420to540  SMS_T2_4bd_mStop_550to600_mLSP_470to590 
+
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   SMS_T2tt_dM_10to80_genHT_160_genMET_80 
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   SMS_T2tt_dM_10to80_2Lfilter
+
+
+
 fi
 
 if  $st

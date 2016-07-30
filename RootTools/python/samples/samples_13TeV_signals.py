@@ -40,6 +40,7 @@ dataDir = "$CMSSW_BASE/src/CMGTools/TTHAnalysis/data"
 for comp in signalSamples:
     comp.isMC = True
     comp.isData = False
+    comp.isFastSim = True
     comp.splitFactor = 250 #  if comp.name in [ "WJets", "DY3JetsM50", "DY4JetsM50","W1Jets","W2Jets","W3Jets","W4Jets","TTJetsHad" ] else 100
     comp.puFileMC=dataDir+"/puProfile_Summer12_53X.root"
     comp.puFileData=dataDir+"/puProfile_Data12.root"
