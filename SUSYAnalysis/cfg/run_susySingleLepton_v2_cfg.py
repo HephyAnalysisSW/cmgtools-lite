@@ -116,47 +116,47 @@ ttHHTSkimmer = cfg.Analyzer(
 from CMGTools.RootTools.samples.triggers_13TeV_Spring15_1l import *
 
 #-------- TRIGGERS -----------
-triggerFlagsAna.triggerBits = {
-  ## hadronic
-  'HT350' : triggers_HT350,
-  'HT600' : triggers_HT600,
-  'HT800' : triggers_HT800,
-  'MET170' : triggers_MET170,
-  'HT350MET120' : triggers_HT350MET120,
-  'HT350MET100' : triggers_HT350MET100,
-  'HTMET' : triggers_HT350MET100 + triggers_HT350MET120,
-  ## muon
-  'SingleMu' : triggers_1mu,
-  'IsoMu27' : triggers_1mu,
-  'IsoMu20' : triggers_1mu20,
-  'Mu45eta2p1' : trigger_1mu_noiso_r,
-  'Mu50' : trigger_1mu_noiso_w,
-  'MuHT600' : triggers_mu_ht600,
-  'MuHT400MET70' : triggers_mu_ht400_met70,
-  'MuHT350MET70' : triggers_mu_ht350_met70,
-  'MuHT350MET50' : triggers_mu_ht350_met50,
-  'MuHT350' : triggers_mu_ht350,
-  'MuHT400' : triggers_mu_ht400,
-  'Mu50HT400' : triggers_mu50_ht400,
-  'MuHTMET' : triggers_mu_ht350_met70 + triggers_mu_ht400_met70,
-  'MuMET120' : triggers_mu_met120,
-  'MuHT400B': triggers_mu_ht400_btag,
-  ## electrons
-  'IsoEle32' : triggers_1el,
-  'IsoEle23' : triggers_1el23,
-  'IsoEle22' : triggers_1el22,
-  'Ele105' : trigger_1el_noiso,
-  'EleHT600' : triggers_el_ht600,
-  'EleHT400MET70' : triggers_el_ht400_met70,
-  'EleHT350MET70' : triggers_el_ht350_met70,
-  'EleHT350MET50' : triggers_el_ht350_met50,
-  'EleHT350' : triggers_el_ht350,
-  'EleHT400' : triggers_el_ht400,
-  'Ele50HT400' : triggers_el50_ht400,
-  'EleHTMET' : triggers_el_ht350_met70 + triggers_el_ht400_met70,
-  'EleHT200' :triggers_el_ht200,
-  'EleHT400B': triggers_el_ht400_btag
-  }
+#triggerFlagsAna.triggerBits = {
+#  ## hadronic
+#  'HT350' : triggers_HT350,
+#  'HT600' : triggers_HT600,
+#  'HT800' : triggers_HT800,
+#  'MET170' : triggers_MET170,
+#  'HT350MET120' : triggers_HT350MET120,
+#  'HT350MET100' : triggers_HT350MET100,
+#  'HTMET' : triggers_HT350MET100 + triggers_HT350MET120,
+#  ## muon
+#  'SingleMu' : triggers_1mu,
+#  'IsoMu27' : triggers_1mu,
+#  'IsoMu20' : triggers_1mu20,
+#  'Mu45eta2p1' : trigger_1mu_noiso_r,
+#  'Mu50' : trigger_1mu_noiso_w,
+#  'MuHT600' : triggers_mu_ht600,
+#  'MuHT400MET70' : triggers_mu_ht400_met70,
+#  'MuHT350MET70' : triggers_mu_ht350_met70,
+#  'MuHT350MET50' : triggers_mu_ht350_met50,
+#  'MuHT350' : triggers_mu_ht350,
+#  'MuHT400' : triggers_mu_ht400,
+#  'Mu50HT400' : triggers_mu50_ht400,
+#  'MuHTMET' : triggers_mu_ht350_met70 + triggers_mu_ht400_met70,
+#  'MuMET120' : triggers_mu_met120,
+#  'MuHT400B': triggers_mu_ht400_btag,
+#  ## electrons
+#  'IsoEle32' : triggers_1el,
+#  'IsoEle23' : triggers_1el23,
+#  'IsoEle22' : triggers_1el22,
+#  'Ele105' : trigger_1el_noiso,
+#  'EleHT600' : triggers_el_ht600,
+#  'EleHT400MET70' : triggers_el_ht400_met70,
+#  'EleHT350MET70' : triggers_el_ht350_met70,
+#  'EleHT350MET50' : triggers_el_ht350_met50,
+#  'EleHT350' : triggers_el_ht350,
+#  'EleHT400' : triggers_el_ht400,
+#  'Ele50HT400' : triggers_el50_ht400,
+#  'EleHTMET' : triggers_el_ht350_met70 + triggers_el_ht400_met70,
+#  'EleHT200' :triggers_el_ht200,
+#  'EleHT400B': triggers_el_ht400_btag
+#  }
 
 #########################
 # --- LEPTON SKIMMING ---
