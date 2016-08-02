@@ -165,7 +165,7 @@ jetAna.minLepPt = 5 #10
 #jetAna.dataGT = "Spring16_25nsV3_DATA"
 jetAna.mcGT   = "Spring16_25nsV6_MC"
 jetAna.dataGT = "Spring16_25nsV6_DATA"
-
+jetAna.calculateType1METCorrection = True
 
 
 # add also JEC up/down shifts corrections
@@ -210,12 +210,12 @@ if getHeppyOption("loadSamples") or True:
     from CMGTools.RootTools.samples.samples_13TeV_signals import *
     #selectedComponents = [T1tttt_mGo_1475to1500_mLSP_1to1250, T1tttt_mGo_1200_mLSP_1to825 ]
     selectedComponents = [ SMS_T2tt_dM_10to80_2Lfilter , ]
+    selectedComponents = [ SMS_T2tt_dM_10to80_genHT_160_genMET_80 ]
     #susyCounter.SMS_varying_masses = ['genSusyMGluino','genSusyMNeutralino']
     print 'Going to process Signal'
     isData = False
     isSignal = True
     #jetAna.mcGT = "FastSim_Summer15_25nsV6_MC"
-    jetAna.relaxJetId = True
 
 
   elif sample == "data":
@@ -320,7 +320,7 @@ sequence = cfg.Sequence(susyCoreSequence+[
     ])
 
 
-
+isSignal=True
 if isSignal:
   ## SUSY Counter
   ## histo counter
@@ -332,8 +332,8 @@ if isSignal:
 
   jetAna.applyL2L3Residual = False
   jetAna.doQG = False
-  jetAna.calculateType1METCorrection = True
   jetAna.mcGT = "Spring16_FastSimV1_MC"
+  jetAna.relaxJetId = True
 
 
   # change scn mass parameters

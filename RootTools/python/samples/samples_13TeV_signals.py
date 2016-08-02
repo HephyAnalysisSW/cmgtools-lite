@@ -11,7 +11,6 @@ SMS_T1tttt_mGluino1500_mLSP100 = kreator.makeMCComponent("SMS_T1tttt_mGluino1500
 
 SMS_T2tt_dM_10to80_genHT_160_genMET_80  = kreator.makeMCComponent("SMS_T2tt_dM_10to80_genHT_160_genMET_80", "/SMS-T2tt_dM-10to80_genHT-160_genMET-80_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM",  "CMS", ".*root", )
 
-
 SMS_T2tt_dM_10to80_2Lfilter  = kreator.makeMCComponent("SMS_T2tt_dM_10to80_2Lfilter", "/SMS-T2tt_dM-10to80_2Lfilter_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM" , "CMS", ".*root", )
 
 
