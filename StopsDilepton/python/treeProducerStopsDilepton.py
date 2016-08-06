@@ -2,14 +2,9 @@ from CMGTools.TTHAnalysis.analyzers.treeProducerSusyCore import *
 from CMGTools.TTHAnalysis.analyzers.ntupleTypes import *
 
 susySingleLepton_globalVariables = susyCore_globalVariables + [
-#susySingleLepton_globalVariables = [
 
-#            NTupleVariable("met_rawPt", lambda ev : ev.met.uncorPt(), help="raw met p_{T}"),
-#            NTupleVariable("met_rawPhi", lambda ev : ev.met.uncorPhi(), help="raw met phi"),
-#            NTupleVariable("met_rawSumEt", lambda ev : ev.met.uncorSumEt(), help="raw met sumEt"),
-#            NTupleVariable("metNoHF_rawPt", lambda ev : ev.metNoHF.uncorPt(), help="raw metNoHF p_{T}"),
-#            NTupleVariable("metNoHF_rawPhi", lambda ev : ev.metNoHF.uncorPhi(), help="raw metNoHF phi"),
-#            NTupleVariable("metNoHF_rawSumetNoHF", lambda ev : ev.metNoHF.uncorSumEt(), help="raw metNoHF sumetNoHF"),
+            NTupleVariable("nIsr",  lambda ev : ev.nIsr, int, mcOnly=True, help="number of ISR Jets"),
+
             NTupleVariable("met_caloPt", lambda ev : ev.met.caloMETPt(), help="calo met p_{T}"),
             NTupleVariable("met_caloPhi", lambda ev : ev.met.caloMETPhi(), help="calo met phi"),
             NTupleVariable("met_caloSumEt", lambda ev : ev.met.caloMETSumEt(), help="calo met sumEt"),

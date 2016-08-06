@@ -77,7 +77,7 @@ if doElectronScaleCorrections:
     }
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 1
+ttHLepSkim.minLeptons = 0
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
@@ -123,6 +123,15 @@ susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
                         ttHFatJetAna)
 susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
                         ttHSVAna)
+
+#ISR jet counting
+from CMGTools.TTHAnalysis.analyzers.nIsrAnalyzer import NIsrAnalyzer
+nISRAna = cfg.Analyzer(
+    NIsrAnalyzer, name="NIsrAnalyzer",
+    minJets25 = 0,
+    )
+susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
+                        nISRAna)
 
 from PhysicsTools.Heppy.analyzers.gen.LHEAnalyzer import LHEAnalyzer 
 LHEAna = LHEAnalyzer.defaultConfig
