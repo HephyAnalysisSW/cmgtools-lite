@@ -85,7 +85,7 @@ ttHLepSkim.maxLeptons = 999
 # --- JET-LEPTON CLEANING ---
 jetAna.minLepPt = 10
 jetAna.recalibrateJets =  True #For data #FIXME
-jetAna.applyL2L3Residual = True 
+jetAna.applyL2L3Residual = "Data" 
 jetAna.jetPt = 15
 jetAna.jetEta = 5.2
 jetAna.addJECShifts = True
