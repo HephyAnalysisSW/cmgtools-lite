@@ -77,7 +77,7 @@ if doElectronScaleCorrections:
     }
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 1
+ttHLepSkim.minLeptons = 0
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
@@ -96,8 +96,8 @@ jetAna.calculateSeparateCorrections = True #should be true if recalibrate, other
 jetAna.calculateType1METCorrection = True
 
 jetAna.dataGT   = "Spring16_25nsV6_DATA"
-jetAna.mcGT   = "Spring16_25nsV6_MC"
-#jetAna.mcGT   = "Spring16_FastSimV1_MC"
+#jetAna.mcGT   = "Spring16_25nsV6_MC"
+jetAna.mcGT   = "Spring16_FastSimV1_MC"
 
 metAna.recalibrate = "type1" 
 
@@ -125,6 +125,15 @@ susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
                         ttHFatJetAna)
 susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
                         ttHSVAna)
+
+#ISR jet counting
+from CMGTools.TTHAnalysis.analyzers.nIsrAnalyzer import NIsrAnalyzer
+nISRAna = cfg.Analyzer(
+    NIsrAnalyzer, name="NIsrAnalyzer",
+    minJets25 = 0,
+    )
+susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
+                        nISRAna)
 
 from PhysicsTools.Heppy.analyzers.gen.LHEAnalyzer import LHEAnalyzer 
 LHEAna = LHEAnalyzer.defaultConfig
@@ -256,10 +265,10 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-274421_13TeV_PromptReco_Collisions16_JSON.txt"
     from CMGTools.StopsDilepton.samples import *
 
-    #selectedComponents = [SMS_T2tt_mStop_150to250]
+    selectedComponents = [SMS_T2tt_mStop_150to250]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
     #selectedComponents = [ DYJetsToLL_M50 ]
-    selectedComponents = [DoubleMuon_Run2016B_PromptReco_v2]
+    #selectedComponents = [DoubleMuon_Run2016B_PromptReco_v2]
     for comp in selectedComponents:
             comp.files = comp.files[10:11]
             comp.splitFactor = 1
