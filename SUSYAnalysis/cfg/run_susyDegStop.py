@@ -48,6 +48,19 @@ lepAna.mu_isoCorr = "rhoArea"
 lepAna.loose_muon_isoCut     =  lambda mu: (   mu.absIso03 < absIsoCut  ) or ( mu.relIso03 <  relIsoCut ) 
 lepAna.loose_electron_isoCut =  lambda el: (   el.absIso03 < absIsoCut ) or ( el.relIso03  <  relIsoCut )  
 
+###
+
+#lepAna.inclusive_electron_dxy = 2.5
+#lepAna.inclusive_electron_dz  = 2.5
+#lepAna.inclusive_muon_dxy    = 2.5
+#lepAna.inclusive_muon_dz     = 2.5
+
+
+lepAna.loose_electron_dxy     = 0.02
+lepAna.loose_electron_dz      = 0.5
+lepAna.loose_muon_dxy         = 0.02
+lepAna.loose_muon_dz          = 0.5
+
 
 
 ########################
@@ -165,7 +178,7 @@ jetAna.minLepPt = 5 #10
 #jetAna.dataGT = "Spring16_25nsV3_DATA"
 jetAna.mcGT   = "Spring16_25nsV6_MC"
 jetAna.dataGT = "Spring16_25nsV6_DATA"
-jetAna.calculateType1METCorrection = True
+jetAna.calculateType1METCorrection = False
 
 
 # add also JEC up/down shifts corrections
@@ -175,6 +188,10 @@ jetAna.doQG               = True
 jetAna.smearJets          = True #should be false in susycore, already
 jetAna.recalibrateJets    = True # false for miniAOD v2!
 jetAna.applyL2L3Residual  = True
+
+#jetAna.jetPt = 20
+#jetAna.jetEta = 2.4
+
 
 #jetAna.calculateType1METCorrection = True
 ## MET (can be used for MiniAODv2)
@@ -190,13 +207,13 @@ genAna.allGenTaus = True
 
 
 selectedComponents = []
-#if getHeppyOption("loadSamples") :
-if getHeppyOption("loadSamples") or True:
+if getHeppyOption("loadSamples") :
+#if getHeppyOption("loadSamples") or True:
 
-  test = 0 
+  test = 1 
 
   #sample = 'data'
-  sample = 'Signal'
+  sample = 'MC'
   #sample = 'Signal'
 
   if sample == "MC":
@@ -234,6 +251,7 @@ if getHeppyOption("loadSamples") or True:
   
     if test==1:
       comp = selectedComponents[0]
+      selectedComponents = selectedComponents[:1]
       comp.files = comp.files[:1]
       comp.fineSplitFactor = 1
       comp.splitFactor = 1
@@ -320,7 +338,7 @@ sequence = cfg.Sequence(susyCoreSequence+[
     ])
 
 
-isSignal=True
+isSignal=False
 if isSignal:
   ## SUSY Counter
   ## histo counter
@@ -331,13 +349,14 @@ if isSignal:
 
 
   jetAna.applyL2L3Residual = False
+  jetAna.calculateType1METCorrection = True
   jetAna.doQG = False
   jetAna.mcGT = "Spring16_FastSimV1_MC"
-  jetAna.relaxJetId = True
+  jetAna.relaxJetId = True  # relax jetId for FastSIM
 
 
   # change scn mass parameters
-  susyCounter.SUSYmodel = 'T2tt_dM_10to80'
+  susyCounter.SUSYmodel = 'T2tt_dM_10to80_genHT_160_genMET_80'
   susyCounter.SMS_mass_1 = "genSusyMStop"
   susyCounter.SMS_mass_2 = "genSusyMNeutralino"
   susyCounter.SMS_varying_masses = ['genSusyMStop','genSusyMNeutralino']
