@@ -205,15 +205,19 @@ genAna.allGenTaus = True
 
 
 
+##
+## Read LHE weights
+pdfwAna.doLHEWeights = True
+
 
 selectedComponents = []
-if getHeppyOption("loadSamples") :
-#if getHeppyOption("loadSamples") or True:
+#if getHeppyOption("loadSamples") :
+if getHeppyOption("loadSamples") or True:
 
-  test = 1 
+  test = 0 
 
   #sample = 'data'
-  sample = 'MC'
+  sample = 'Signal'
   #sample = 'Signal'
 
   if sample == "MC":
@@ -225,9 +229,12 @@ if getHeppyOption("loadSamples") :
   
   elif sample == "Signal":
     from CMGTools.RootTools.samples.samples_13TeV_signals import *
-    #selectedComponents = [T1tttt_mGo_1475to1500_mLSP_1to1250, T1tttt_mGo_1200_mLSP_1to825 ]
-    selectedComponents = [ SMS_T2tt_dM_10to80_2Lfilter , ]
-    selectedComponents = [ SMS_T2tt_dM_10to80_genHT_160_genMET_80 ]
+
+
+    from CMGTools.RootTools.samples.samples_13TeV_80X_susySignalsPriv import *
+    #selectedComponents = [ T2tt_dM_30to80_genHT_160_genMET_80 ]
+    selectedComponents = [ T2tt_dM_30to80_genHT_160_genMET_80 , T2tt_dM_30to80 ] 
+    #selectedComponents = [ SMS_T2tt_dM_10to80_genHT_160_genMET_80 ]
     #susyCounter.SMS_varying_masses = ['genSusyMGluino','genSusyMNeutralino']
     print 'Going to process Signal'
     isData = False
@@ -337,9 +344,10 @@ sequence = cfg.Sequence(susyCoreSequence+[
 
     ])
 
-
-isSignal=False
+isFastSIM=False
+isSignal=True
 if isSignal:
+  isFastSIM = True
   ## SUSY Counter
   ## histo counter
   #susyCoreSequence.insert(susyCoreSequence.index(skimAnalyzer),
@@ -348,11 +356,6 @@ if isSignal:
   #susyCoreSequence.append(susyCounter)
 
 
-  jetAna.applyL2L3Residual = False
-  jetAna.calculateType1METCorrection = True
-  jetAna.doQG = False
-  jetAna.mcGT = "Spring16_FastSimV1_MC"
-  jetAna.relaxJetId = True  # relax jetId for FastSIM
 
 
   # change scn mass parameters
@@ -361,7 +364,13 @@ if isSignal:
   susyCounter.SMS_mass_2 = "genSusyMNeutralino"
   susyCounter.SMS_varying_masses = ['genSusyMStop','genSusyMNeutralino']
 
-
+if isFastSIM:
+  jetAna.applyL2L3Residual = False
+  jetAna.calculateType1METCorrection = True
+  jetAna.doQG = False
+  jetAna.mcGT = "Spring16_FastSimV1_MC"
+  jetAna.relaxJetId = True  # relax jetId for FastSIM
+   
 
 print "Selected Components: "
 for comp in selectedComponents:

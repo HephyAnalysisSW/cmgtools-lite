@@ -1,9 +1,13 @@
 from CMGTools.TTHAnalysis.analyzers.treeProducerSusyCore import *
 from CMGTools.TTHAnalysis.analyzers.ntupleTypes import *
 
+def p(x):
+  print(x)
+  return True
 susySingleLepton_globalVariables = susyCore_globalVariables + [
 
             NTupleVariable("LHEweight_original", lambda ev: ev.LHE_originalWeight if  hasattr(ev,'LHE_originalWeight') else 0, mcOnly=True, help="original LHE weight"),
+            #NTupleVariable("LHEWeights"        , lambda ev: getattr(ev,'LHEWeights', 0)  if p(ev.LHEWeights) else 0              , 1000, mcOnly=True, help="LHE weights read from GenEventInfoProduct"),
 
             ##-------- custom jets ------------------------------------------
             #NTupleVariable("htJet25", lambda ev : ev.htJet25, help="H_{T} computed from leptons and jets (with |eta|<2.4, pt > 25 GeV)"),
@@ -128,6 +132,7 @@ susySingleLepton_collections.update({
             #"discardedJets"    : NTupleCollection("DiscJet", jetTypeSusy, 15, help="Jets discarted in the jet-lepton cleaning"),
             ##------------------------------------------------
             #"ivf"       : NTupleCollection("SV",     svType, 20, help="SVs from IVF"),
-            "LHE_weights"    : NTupleCollection("LHEweight",  weightsInfoType, 1000, mcOnly=True, help="LHE weight info"),
+            #"LHE_weights"    : NTupleCollection("LHEweight" ,  weightsInfoType, 1000, mcOnly=True, help="LHE weight info"),
+            "LHEWeights"     : NTupleCollection("LHEWeights",  weightsInfoType, 1000, mcOnly=True, help="LHE weight info read from GenEventInfoProduct"),
 })
 
