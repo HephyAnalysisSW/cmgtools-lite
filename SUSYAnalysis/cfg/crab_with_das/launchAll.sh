@@ -1,4 +1,4 @@
-PROD_LABEL="8012_mAODv2_v3"  
+PROD_LABEL="8012_mAODv2_v3_1"  
 REMOTE_DIR_DATA="${PROD_LABEL}/Data25ns"
 REMOTE_DIR_MC="${PROD_LABEL}/RunIISpring16MiniAODv2"
 
@@ -22,6 +22,7 @@ dy=false
 qcdpt=false
 vv=false
 st=false
+ttx=false
 scan=false
 
 
@@ -136,8 +137,11 @@ if  $tt
 then
   echo ----------------------  Submitting TTJets  -----------------------
   ## still missing some for 80x
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   TTJets_FastSIM 
+
   python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   TTJets_LO  TTJets_LO_HT600to800_ext  TTJets_LO_HT800to1200_ext   TTJets_LO_HT1200to2500_ext TTJets_LO_HT2500toInf  #  TTJets_LO_HT600to800  TTJets_LO_HT800to1200   TTJets_LO_HT1200to2500  
   python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   TTJets_SingleLeptonFromT TTJets_SingleLeptonFromTbar TTJets_DiLepton    
+
 fi
 
 if  $w
@@ -201,9 +205,6 @@ if  $ttx
 then
   echo ----------------------  Submitting Dibosons  -----------------------
   python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL  TTWToLNu TTWToQQ TTW_LO TTZToQQ TTZToLLNuNu TTZ_LO TTGJets 
-
-
-
 fi
 
 if  $dy
