@@ -15,6 +15,7 @@ jsonAna.useLumiBlocks = True
 ####### Leptons  #####
 # lep collection
 lepAna.packedCandidates = 'packedPFCandidates'
+lepAna.match_inclusiveLeptons = True # match to all inclusive leptons
 
 
 
