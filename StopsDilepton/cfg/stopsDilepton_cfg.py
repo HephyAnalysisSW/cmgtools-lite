@@ -266,6 +266,7 @@ if getHeppyOption("loadSamples"):
     from CMGTools.StopsDilepton.samples import *
 
     selectedComponents = [SMS_T2tt_mStop_150to250]
+    #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
     #selectedComponents = [ DYJetsToLL_M50 ]
     #selectedComponents = [DoubleMuon_Run2016B_PromptReco_v2]
