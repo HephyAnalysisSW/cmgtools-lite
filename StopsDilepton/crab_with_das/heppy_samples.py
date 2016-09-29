@@ -4,6 +4,7 @@
 from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
 from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
 from CMGTools.RootTools.samples.samples_13TeV_signals import *
+from CMGTools.RootTools.samples.TTbarDMJets_signals_RunIISpring16MiniAODv2 import *
 #from CMGTools.RootTools.samples.TTbarDMJets_signals_RunIISpring15MiniAODv2 import *
 #from CMGTools.RootTools.samples.samples_13TeV_DATA2015 import *
 #from CMGTools.RootTools.samples.triggers_13TeV_Spring15 import *
