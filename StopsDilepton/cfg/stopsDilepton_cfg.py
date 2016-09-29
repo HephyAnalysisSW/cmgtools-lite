@@ -292,6 +292,7 @@ if getHeppyOption("loadSamples"):
     from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
     from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
     from CMGTools.RootTools.samples.samples_13TeV_signals import *
+    from CMGTools.RootTools.samples.TTbarDMJets_signals_RunIISpring16MiniAODv2 import *
     for sample in dataSamples_Run2016B_v2 + dataSamples_Run2016C_v2:
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-274421_13TeV_PromptReco_Collisions16_JSON.txt"
     from CMGTools.StopsDilepton.samples import *
