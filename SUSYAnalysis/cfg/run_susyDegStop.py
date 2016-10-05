@@ -18,6 +18,7 @@ lepAna.packedCandidates = 'packedPFCandidates'
 lepAna.match_inclusiveLeptons = True # match to all inclusive leptons
 
 
+lepAna.match_inclusiveLeptons = True
 
 #
 # Electrons:
@@ -212,8 +213,8 @@ pdfwAna.doLHEWeights = True
 
 
 selectedComponents = []
-#if getHeppyOption("loadSamples") :
-if getHeppyOption("loadSamples") or True:
+if getHeppyOption("loadSamples") :
+#if getHeppyOption("loadSamples") or True:
 
   test = 0 
 
@@ -223,18 +224,26 @@ if getHeppyOption("loadSamples") or True:
 
   if sample == "MC":
     from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
-    selectedComponents = [ ZJetsToNuNu_HT800to1200 ] #TTs + SingleTop #TTJets_SingleLepton
+    #selectedComponents = [ ZJetsToNuNu_HT800to1200 ] #TTs + SingleTop #TTJets_SingleLepton
+
+    selectedComponents = [  TTJets_FastSIM ] 
+    #selectedComponents = [  TTJets_LO      ]
+
+
+
     print 'Going to process MC'
     isData = False
     isSignal = False
   
   elif sample == "Signal":
     from CMGTools.RootTools.samples.samples_13TeV_signals import *
+    #selectedComponents = [SMS_T5qqqqVV_TuneCUETP8M1]
+    selectedComponents = [SMS_T1tttt_mGluino1500_mLSP100]
 
 
     from CMGTools.RootTools.samples.samples_13TeV_80X_susySignalsPriv import *
     #selectedComponents = [ T2tt_dM_30to80_genHT_160_genMET_80 ]
-    selectedComponents = [ T2tt_dM_30to80_genHT_160_genMET_80 , T2tt_dM_30to80 ] 
+    #selectedComponents = [ T2tt_dM_30to80_genHT_160_genMET_80 , T2tt_dM_30to80 ] 
     #selectedComponents = [ SMS_T2tt_dM_10to80_genHT_160_genMET_80 ]
     #susyCounter.SMS_varying_masses = ['genSusyMGluino','genSusyMNeutralino']
     print 'Going to process Signal'
