@@ -23,8 +23,8 @@ qcdpt=false
 vv=false
 st=false
 ttx=false
-scan=false
-
+degstop=false
+ewikino=false
 
 
 for i in "$@"
@@ -35,9 +35,15 @@ case $i in
     echo Will Process Priv Signals:  $sig 
     shift
     ;;
-    scan)
-    scan=true
-    echo Will Process Official Signals:  $scan 
+    degstop)
+    degstop=true
+    echo Will Process Official Signals:  $degstop 
+    shift
+    ;;
+
+    ewikino)
+    ewikino=true
+    echo Will Process Official Signals:  $ewikino 
     shift
     ;;
 
@@ -112,7 +118,7 @@ case $i in
     st=true
     ttx=true
     #sig=true
-    #scan=true
+    #degstop=true
     echo Will Process everything! 
     shift
     ;;
@@ -137,10 +143,11 @@ if  $tt
 then
   echo ----------------------  Submitting TTJets  -----------------------
   ## still missing some for 80x
-  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   TTJets_FastSIM 
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   TTJets_FastSIM   
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL                   TTJets_LO
 
-  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   TTJets_LO  TTJets_LO_HT600to800_ext  TTJets_LO_HT800to1200_ext   TTJets_LO_HT1200to2500_ext TTJets_LO_HT2500toInf  #  TTJets_LO_HT600to800  TTJets_LO_HT800to1200   TTJets_LO_HT1200to2500  
-  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   TTJets_SingleLeptonFromT TTJets_SingleLeptonFromTbar TTJets_DiLepton    
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   TTJets_LO  TTJets_LO_HT600to800_ext  TTJets_LO_HT800to1200_ext   TTJets_LO_HT1200to2500_ext TTJets_LO_HT2500toInf  #  TTJets_LO_HT600to800  TTJets_LO_HT800to1200   TTJets_LO_HT1200to2500  
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   TTJets_SingleLeptonFromT TTJets_SingleLeptonFromTbar TTJets_DiLepton    
 
 fi
 
@@ -175,13 +182,16 @@ then
   python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL --inputDBS="phys03"    T2DegStop_300_270
 fi
 
-if  $scan
+if  $degstop
 then
-  echo ------------------------------- Signal Mass Scan -----------------
+  echo ------------------------------- Signal Deg Stop -----------------
   python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   SMS_T2tt_dM_10to80_genHT_160_genMET_80
+fi
 
-
-
+if  $ewikino
+then
+  echo ------------------------------- Signal EWikino -----------------
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   SMS_TChiWZ_ZToLL   SMS_TChipmWW 
 fi
 
 if  $st
