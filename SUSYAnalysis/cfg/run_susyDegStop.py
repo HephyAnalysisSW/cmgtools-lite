@@ -9,26 +9,45 @@ from CMGTools.TTHAnalysis.analyzers.susyCore_modules_cff import *
 from PhysicsTools.HeppyCore.framework.heppy_loop import getHeppyOption
 
 
+
+
+#absIsoCut   = 5
+#ptSwitch    = 25
+#relIsoCut   = 1.*absIsoCut/ptSwitch
+absIsoCut   = 20
+ptSwitch    = 25
+relIsoCut   = 1.*absIsoCut/ptSwitch
+
+
+
+
 #JSON
 jsonAna.useLumiBlocks = True
+
+
+
+
 
 ####### Leptons  #####
 # lep collection
 lepAna.packedCandidates = 'packedPFCandidates'
 lepAna.match_inclusiveLeptons = True # match to all inclusive leptons
-
-
 lepAna.match_inclusiveLeptons = True
 
 #
 # Electrons:
 #
 
-lepAna.loose_electron_eta = 2.5
-lepAna.inclusive_electron_pt  = 5
-lepAna.loose_electron_pt  = 5
-lepAna.inclusive_electron_id  = "" # same as in susyCore
-lepAna.loose_electron_id = "POG_MVA_ID_Spring15_NonTrig_VLoose" # Spring15 25ns era
+
+lepAna.loose_electron_eta      = 2.5
+lepAna.inclusive_electron_pt   = 3
+lepAna.loose_electron_pt       = 3
+lepAna.inclusive_electron_id   = "" # same as in susyCore
+lepAna.loose_electron_id       = "POG_MVA_ID_Spring15_NonTrig_VLoose" # Spring15 25ns era
+
+lepAna.loose_electron_lostHits = 0.0
+lepAna.loose_electron_lostHits = 0.0
+
 
 #
 # Muons
@@ -38,30 +57,32 @@ lepAna.inclusive_muon_id  = ""
 lepAna.inclusive_muon_pt  = 3 
 lepAna.loose_muon_pt      = 3 
 
-# Isolation
-
-absIsoCut   = 5
-ptSwitch    = 25
-relIsoCut   = 1.*absIsoCut/ptSwitch
-
-lepAna.doMiniIsolation = False
-lepAna.ele_isoCorr = "rhoArea"
-lepAna.mu_isoCorr = "rhoArea"
-lepAna.loose_muon_isoCut     =  lambda mu: (   mu.absIso03 < absIsoCut  ) or ( mu.relIso03 <  relIsoCut ) 
-lepAna.loose_electron_isoCut =  lambda el: (   el.absIso03 < absIsoCut ) or ( el.relIso03  <  relIsoCut )  
-
 ###
 
-#lepAna.inclusive_electron_dxy = 2.5
-#lepAna.inclusive_electron_dz  = 2.5
-#lepAna.inclusive_muon_dxy    = 2.5
-#lepAna.inclusive_muon_dz     = 2.5
+#
+# IP:
+#
 
+#LepOther
+lepAna.loose_electron_dxy     = 0.5
+lepAna.loose_electron_dz      = 1.0
+lepAna.loose_muon_dxy         = 0.5
+lepAna.loose_muon_dz          = 1.0
 
-lepAna.loose_electron_dxy     = 0.02
+#LepGood
+lepAna.loose_electron_dxy     = 0.2
 lepAna.loose_electron_dz      = 0.5
-lepAna.loose_muon_dxy         = 0.02
+lepAna.loose_muon_dxy         = 0.2
 lepAna.loose_muon_dz          = 0.5
+
+# Isolation
+
+
+lepAna.doMiniIsolation       =  False
+lepAna.ele_isoCorr           =  "rhoArea"
+lepAna.mu_isoCorr            =  "rhoArea"
+lepAna.loose_muon_isoCut     =  lambda mu: (   mu.absIso03 < absIsoCut )  or ( mu.relIso03  <  relIsoCut ) 
+lepAna.loose_electron_isoCut =  lambda el: (   el.absIso03 < absIsoCut )  or ( el.relIso03  <  relIsoCut )  
 
 
 
@@ -191,7 +212,7 @@ jetAna.smearJets          = True #should be false in susycore, already
 jetAna.recalibrateJets    = True # false for miniAOD v2!
 jetAna.applyL2L3Residual  = True
 
-#jetAna.jetPt = 20
+jetAna.jetPt = 20
 #jetAna.jetEta = 2.4
 
 
@@ -214,22 +235,14 @@ pdfwAna.doLHEWeights = True
 
 selectedComponents = []
 if getHeppyOption("loadSamples") :
-#if getHeppyOption("loadSamples") or True:
 
-  test = 0 
-
-  #sample = 'data'
-  sample = 'Signal'
-  #sample = 'Signal'
-
+  test = 1 
+  sample = 'MC'
   if sample == "MC":
     from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
     #selectedComponents = [ ZJetsToNuNu_HT800to1200 ] #TTs + SingleTop #TTJets_SingleLepton
-
-    selectedComponents = [  TTJets_FastSIM ] 
-    #selectedComponents = [  TTJets_LO      ]
-
-
+    #selectedComponents = [  TTJets_FastSIM ] 
+    selectedComponents = [  TTJets_LO      ]
 
     print 'Going to process MC'
     isData = False
@@ -246,68 +259,47 @@ if getHeppyOption("loadSamples") :
     #selectedComponents = [ T2tt_dM_30to80_genHT_160_genMET_80 , T2tt_dM_30to80 ] 
     #selectedComponents = [ SMS_T2tt_dM_10to80_genHT_160_genMET_80 ]
     #susyCounter.SMS_varying_masses = ['genSusyMGluino','genSusyMNeutralino']
-    print 'Going to process Signal'
-    isData = False
+    print  'Going to process Signal'
+    isData   = False
     isSignal = True
-    #jetAna.mcGT = "FastSim_Summer15_25nsV6_MC"
-
 
   elif sample == "data":
     from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
 
-    #selectedComponents = [ MET_Run2016B_PromptReco_v2 , SingleElectron_Run2016B_PromptReco_v2, SingleMuon_Run2016B_PromptReco_v2]
     selectedComponents = [ SingleMuon_Run2016D_PromptReco_v2,  SingleElectron_Run2016D_PromptReco_v2]
-    #selectedComponents = [  MET_Run2016D_PromptReco_v2 ]
     print 'Going to process DATA'
     isData = True
     isSignal = False
-    if test!=0 and jsonAna in susyCoreSequence: susyCoreSequence.remove(jsonAna)
+  if test!=0 and jsonAna in susyCoreSequence: susyCoreSequence.remove(jsonAna)
   
-  
-    # Benchmarks
-  
-    if test==1:
-      comp = selectedComponents[0]
-      selectedComponents = selectedComponents[:1]
+  # Benchmarks
+  if test==1:
+    selectedComponents = selectedComponents[:1]
+
+    for comp in selectedComponents:
       comp.files = comp.files[:1]
-      comp.fineSplitFactor = 1
+  elif test==2:
+    for comp in selectedComponents:
       comp.splitFactor = 1
-    elif test==2:
-      for comp in selectedComponents:
-        comp.splitFactor = 1
-        comp.fineSplitFactor = 1
-        comp.files = comp.files[:1]
-    elif test==3:
-      for comp in selectedComponents:
-        comp.fineSplitFactor = 1
-        comp.splitFactor = len(comp.files)
-    elif test==0:
-      for comp in selectedComponents:
-        comp.fineSplitFactor = 1
-        comp.splitFactor = len(comp.files)
+      comp.fineSplitFactor = 1
+      comp.files = comp.files[:1]
+  elif test==3:
+    for comp in selectedComponents:
+      comp.fineSplitFactor = 1
+      comp.splitFactor = len(comp.files)
+  elif test==0:
+    for comp in selectedComponents:
+      comp.fineSplitFactor = 1
+      comp.splitFactor = len(comp.files)
   
   
 
 
-  #if isData:# or isSignal :
-  #  pass
-  #if isSignal:
-  #  sequence.remove(eventFlagsAna)
-  #  sequence.remove(hbheFilterAna)
-
-
-
-
-## PDF weights
 PDFWeights = []
-#PDFWeights = [ ("CT10",53), ("MSTW2008lo68cl",41), ("NNPDF21_100",101) ]
-#PDFWeights = [ ("CT10nlo",53),("MSTW2008nlo68cl",41),("NNPDF30LO",101),("NNPDF30_nlo_nf_5_pdfas",103), ("NNPDF30_lo_as_0130",101)]
-#PDFWeights = [ ("NNPDF30_lo_as_0130",101) ]
-# see for TTJets  https://github.com/cms-sw/genproductions/blob/c41ab29f3d86c9e53df8b0d76c12cd519adbf013/bin/MadGraph5_aMCatNLO/cards/production/13TeV/tt0123j_5f_ckm_LO_MLM/tt0123j_5f_ckm_LO_MLM_run_card.dat#L52
-# and then https://lhapdf.hepforge.org/pdfsets.html
 
 #--------- Tree Producer
-from CMGTools.TTHAnalysis.analyzers.treeProducerSusySingleLepton import *
+#from CMGTools.TTHAnalysis.analyzers.treeProducerSusySingleLepton import *
+from CMGTools.SUSYAnalysis.analyzers.treeProducerSusyDegStop import *
 treeProducer = cfg.Analyzer(
   AutoFillTreeProducer, name='treeProducerSusySingleLepton',
   vectorTree = True,
@@ -351,11 +343,10 @@ sequence = cfg.Sequence(susyCoreSequence+[
     hbheFilterAna,
     treeProducer,
 #   susyCounter
-
     ])
 
 isFastSIM=False
-isSignal=True
+isSignal=False
 if isSignal:
   isFastSIM = True
   ## SUSY Counter
@@ -384,7 +375,7 @@ if isFastSIM:
 
 print "Selected Components: "
 for comp in selectedComponents:
-  print comp.name
+  print "   ", comp.name , "nFiles:", len(comp.files)
 
 
 ## output histogram
