@@ -8,82 +8,76 @@ from CMGTools.TTHAnalysis.analyzers.susyCore_modules_cff import *
 
 from PhysicsTools.HeppyCore.framework.heppy_loop import getHeppyOption
 
-
-
-
-#absIsoCut   = 5
-#ptSwitch    = 25
-#relIsoCut   = 1.*absIsoCut/ptSwitch
-absIsoCut   = 20
-ptSwitch    = 25
-relIsoCut   = 1.*absIsoCut/ptSwitch
-
-
-
-
 #JSON
 jsonAna.useLumiBlocks = True
 
 
-
-
-
 ####### Leptons  #####
-# lep collection
+
+#
+# Lepton collection:
+#
+
 lepAna.packedCandidates = 'packedPFCandidates'
-lepAna.match_inclusiveLeptons = True # match to all inclusive leptons
-lepAna.match_inclusiveLeptons = True
+lepAna.match_inclusiveLeptons = True # MC matching to all inclusive leptons
 
 #
-# Electrons:
+#      Electrons:
 #
 
+# LepOther
+lepAna.inclusive_electron_eta =      2.5
+lepAna.inclusive_electron_pt =       3
+lepAna.inclusive_electron_id =       "" # same as in susyCore
+lepAna.inclusive_electron_relIso =   0.0 # No cut NOTE: overwritten by HI nevertheless?
+lepAna.inclusive_electron_lostHits = 0.0 # No cut
+lepAna.inclusive_electron_dxy =      0.5
+lepAna.inclusive_electron_dz =       1.0
 
-lepAna.loose_electron_eta      = 2.5
-lepAna.inclusive_electron_pt   = 3
-lepAna.loose_electron_pt       = 3
-lepAna.inclusive_electron_id   = "" # same as in susyCore
-lepAna.loose_electron_id       = "POG_MVA_ID_Spring15_NonTrig_VLoose" # Spring15 25ns era
-
-lepAna.loose_electron_lostHits = 0.0
-lepAna.loose_electron_lostHits = 0.0
-
-
-#
-# Muons
-#
-
-lepAna.inclusive_muon_id  = ""
-lepAna.inclusive_muon_pt  = 3 
-lepAna.loose_muon_pt      = 3 
-
-###
+# LepGood = Loose Collection
+lepAna.loose_electron_eta =          2.5
+lepAna.loose_electron_pt =           3
+lepAna.loose_electron_id =           "POG_Cuts_ID_SPRING15_25ns_v1_ConvVeto_Veto" # Spring15 25ns era
+lepAna.loose_electron_lostHits =     0.0 # No cut
+lepAna.loose_electron_relIso =       0.0 # No cut
+lepAna.loose_electron_dxy =          0.1
+lepAna.loose_electron_dz =           0.5
 
 #
-# IP:
+#       Muons:
 #
 
-#LepOther
-lepAna.loose_electron_dxy     = 0.5
-lepAna.loose_electron_dz      = 1.0
-lepAna.loose_muon_dxy         = 0.5
-lepAna.loose_muon_dz          = 1.0
+# LepOther
+lepAna.inclusive_muon_eta =          2.4
+lepAna.inclusive_muon_pt =           3 
+lepAna.inclusive_muon_id =           ""
+lepAna.inclusive_muon_relIso =       0.0 # No cut
+lepAna.inclusive_muon_dxy =          0.5
+lepAna.inclusive_muon_dz =           1.0
 
-#LepGood
-lepAna.loose_electron_dxy     = 0.2
-lepAna.loose_electron_dz      = 0.5
-lepAna.loose_muon_dxy         = 0.2
-lepAna.loose_muon_dz          = 0.5
+# LepGood = Loose Collection
+lepAna.loose_muon_eta =              2.4
+lepAna.loose_muon_pt =               3 
+lepAna.loose_muon_id =               "POG_ID_Loose"
+lepAna.loose_muon_relIso =           0.0 # No cut
+lepAna.loose_muon_dxy =              0.1
+lepAna.loose_muon_dz =               0.5
 
-# Isolation
-
+#
+# Isolation:
+#
 
 lepAna.doMiniIsolation       =  False
 lepAna.ele_isoCorr           =  "rhoArea"
 lepAna.mu_isoCorr            =  "rhoArea"
-lepAna.loose_muon_isoCut     =  lambda mu: (   mu.absIso03 < absIsoCut )  or ( mu.relIso03  <  relIsoCut ) 
-lepAna.loose_electron_isoCut =  lambda el: (   el.absIso03 < absIsoCut )  or ( el.relIso03  <  relIsoCut )  
 
+#Hybrid Isolation
+absIsoCut   = 20 #5
+ptSwitch    = 25
+relIsoCut   = 1.*absIsoCut/ptSwitch
+
+lepAna.loose_muon_isoCut     =  lambda mu: (mu.absIso03 < absIsoCut) or (mu.relIso03 < relIsoCut)
+lepAna.loose_electron_isoCut =  lambda el: (el.absIso03 < absIsoCut) or (el.relIso03 < relIsoCut) 
 
 
 ########################
