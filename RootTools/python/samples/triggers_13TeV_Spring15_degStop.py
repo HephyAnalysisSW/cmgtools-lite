@@ -116,12 +116,47 @@ SingleMuonPDTriggers=\
    "HLT_IsoTkMu24_v*",
    "HLT_IsoTkMu27_v*",
    "HLT_Mu50_v*",
-
 ]
 
-
-                                                  
-triggers = METTriggers + SingleMuonPDTriggers + SingleElPDTriggers
+JetHTPDTriggers=\
+[\
+   "HLT_PFHT125_v*",
+   "HLT_PFHT200_v*",
+   "HLT_PFHT250_v*", #prescaled
+   "HLT_PFHT300_v*", #prescaled
+   "HLT_PFHT350_v*", #prescaled
+   "HLT_PFHT400_v*", #prescaled
+   "HLT_PFHT475_v*", #prescaled
+   "HLT_PFHT600_v*", #prescaled
+   "HLT_PFHT650_v*", #prescaled
+   "HLT_PFHT800_v*",
+   "HLT_PFHT900_v*",
+   "HLT_HT2000_v*",
+   "HLT_HT2500_v*",
+   #"HLT_AK8PFJet500_v*",
+   #"HLT_DiPFJetAve100_HFJEC_v*",
+   #"HLT_AK8PFHT700_TrimR0p1PT0p03Mass50_v*",
+   #"HLT_AK8PFJet450_v*",
+   #"HLT_PFJet500_v*",
+   #"HLT_DiPFJetAve60_HFJEC_v*",
+   #"HLT_DiCentralPFJet430_v*",
+   #"HLT_AK8DiPFJet280_200_TrimMass30_BTagCSV_p20_v*",
+   #"HLT_PFHT400_SixJet30_DoubleBTagCSV_p056_v*",
+   #"HLT_AK8PFJet360_TrimMass30_v*",
+   #"HLT_CaloJet500_NoJetID_v*",
+   #"HLT_PFHT750_4JetPt50_v*",
+   #"HLT_DiPFJetAve300_HFJEC_v*",
+   #"HLT_DiCentralPFJet330_CFMax0p5_v*",
+   #"HLT_PFHT650_WideJetMJJ950DEtaJJ1p5_v*",
+   #"HLT_PFJet450_v*",
+   #"HLT_PFHT450_SixJet40_BTagCSV_p056_v*",
+   #"HLT_DiCentralPFJet170_v*",
+   #"HLT_DiCentralPFJet220_CFMax0p3_v*",
+   #"HLT_PFHT650_WideJetMJJ900DEtaJJ1p5_v*",
+   #"HLT_DiCentralPFJet170_CFMax0p1_v*",
+]
+                                               
+triggers = METTriggers + SingleMuonPDTriggers + SingleElPDTriggers + JetHIPDTriggers
 
 for trigger in  triggers:
   trigger_name = "trigger_{trig}".format(trig=trigger.replace("_v*","") )
