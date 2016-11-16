@@ -103,7 +103,7 @@ susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
 
 
 #from CMGTools.RootTools.samples.triggers_13TeV_Spring15 import * # central trigger list
-from CMGTools.RootTools.samples.triggers_13TeV_Spring15_degStop import *
+from CMGTools.RootTools.samples.triggers_13TeV_Spring16_degStop import *
 
 #-------- TRIGGERS -----------
 triggerFlagsAna.triggerBits = {}
@@ -188,7 +188,9 @@ for trigger in  triggers:
 
 # --- JET-LEPTON CLEANING ---
 #jetAna.cleanSelectedLeptons = True
-jetAna.minLepPt = 5 #10
+jetAna.minLepPt   = -1     #10
+jetAna.lepSelCut  = lambda lep: ( abs(lep.pdgId()) == 11 and lep.pt() > 5 ) or ( abs(lep.pdgId()) == 13 and lep.pt() > 3 ) 
+
 
 ## JEC
 #jetAna.mcGT   = "Spring16_25nsV3_MC"
@@ -222,9 +224,6 @@ genAna.allGenTaus = True
 
 
 
-##
-## Read LHE weights
-pdfwAna.doLHEWeights = True
 
 
 selectedComponents = []
@@ -235,8 +234,8 @@ if getHeppyOption("loadSamples") :
   if sample == "MC":
     from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
     #selectedComponents = [ ZJetsToNuNu_HT800to1200 ] #TTs + SingleTop #TTJets_SingleLepton
-    #selectedComponents = [  TTJets_FastSIM ] 
-    selectedComponents = [  TTJets_LO      ]
+    selectedComponents = [  TTJets_FastSIM ] 
+    #selectedComponents = [  TTJets_LO      ]
 
     print 'Going to process MC'
     isData = False
@@ -259,7 +258,9 @@ if getHeppyOption("loadSamples") :
 
   elif sample == "data":
     from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
+    from CMGTools.RootTools.samples.samples_13TeV_DATA2016_ReReco import *
 
+    
     selectedComponents = [ SingleMuon_Run2016D_PromptReco_v2,  SingleElectron_Run2016D_PromptReco_v2]
     print 'Going to process DATA'
     isData = True
@@ -290,6 +291,18 @@ if getHeppyOption("loadSamples") :
 
 
 PDFWeights = []
+#
+#  overwrite the SusyCore PDF Analyzer in order to read LHEWeights : 
+#
+from CMGTools.SUSYAnalysis.analyzers.PDFWeightsAnalyzer import PDFWeightsAnalyzer
+pdfLHEWeightsAna = cfg.Analyzer(
+    PDFWeightsAnalyzer, name="PDFLHEWeightsAnalyzer",
+    PDFWeights = [ pdf for pdf,num in PDFWeights ],
+    doLHEWeights = True,
+    )
+susyCoreSequence.insert(susyCoreSequence.index(pdfwAna), pdfLHEWeightsAna)
+susyCoreSequence.remove(pdfwAna)
+
 
 #--------- Tree Producer
 #from CMGTools.TTHAnalysis.analyzers.treeProducerSusySingleLepton import *

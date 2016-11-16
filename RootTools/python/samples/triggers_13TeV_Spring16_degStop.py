@@ -27,15 +27,15 @@ METTriggers = \
  # CLEANUP # 'HLT_MET75_IsoTrk50_v*',
  # CLEANUP # 'HLT_MET90_IsoTrk50_v*',
  # CLEANUP # 'HLT_Mu14er_PFMET100_v*',
- # CLEANUP # 'HLT_Mu3er_PFHT140_PFMET125_v*',
+ 'HLT_Mu3er_PFHT140_PFMET125_v*',
  # CLEANUP # 'HLT_Mu6_PFHT200_PFMET100_v*',
  # CLEANUP # 'HLT_Mu6_PFHT200_PFMET80_BTagCSV_p067_v*',
  # CLEANUP # 'HLT_PFMET120_BTagCSV_p067_v*',
- # CLEANUP # 'HLT_PFMET120_Mu5_v*',
+ 'HLT_PFMET120_Mu5_v*',
  # CLEANUP # 'HLT_PFMET170_BeamHaloCleaned_v*',
  # CLEANUP # 'HLT_PFMET170_HBHECleaned_v*',
  # CLEANUP # 'HLT_PFMET170_JetIdCleaned_v*',
- # CLEANUP # 'HLT_PFMET170_NoiseCleaned_v*',
+ 'HLT_PFMET170_NoiseCleaned_v*',
  # CLEANUP # 'HLT_PFMET170_NotCleaned_v*',
  # CLEANUP # 'HLT_PFMET300_v*',
  # CLEANUP # 'HLT_PFMET400_v*',
@@ -61,47 +61,47 @@ METTriggers = \
 
 SingleElPDTriggers = \
 [\
- 'HLT_Ele105_CaloIdVT_GsfTrkIdT_v*',
- 'HLT_Ele115_CaloIdVT_GsfTrkIdT_v*',
- 'HLT_Ele15_IsoVVVL_BTagCSV_p067_PFHT400_v*',
- 'HLT_Ele15_IsoVVVL_PFHT350_PFMET50_v*',
- 'HLT_Ele15_IsoVVVL_PFHT350_v*',
- 'HLT_Ele15_IsoVVVL_PFHT400_PFMET50_v*',
- 'HLT_Ele15_IsoVVVL_PFHT400_v*',
- 'HLT_Ele15_IsoVVVL_PFHT600_v*',
- 'HLT_Ele22_eta2p1_WPLoose_Gsf_LooseIsoPFTau20_SingleL1_v*',
+ # CLEANUP #  'HLT_Ele105_CaloIdVT_GsfTrkIdT_v*',
+ # CLEANUP #  'HLT_Ele115_CaloIdVT_GsfTrkIdT_v*',
+ # CLEANUP #  'HLT_Ele15_IsoVVVL_BTagCSV_p067_PFHT400_v*',
+ # CLEANUP #  'HLT_Ele15_IsoVVVL_PFHT350_PFMET50_v*',
+ # CLEANUP #  'HLT_Ele15_IsoVVVL_PFHT350_v*',
+ # CLEANUP #  'HLT_Ele15_IsoVVVL_PFHT400_PFMET50_v*',
+ # CLEANUP #  'HLT_Ele15_IsoVVVL_PFHT400_v*',
+ # CLEANUP #  'HLT_Ele15_IsoVVVL_PFHT600_v*',
+ # CLEANUP #  'HLT_Ele22_eta2p1_WPLoose_Gsf_LooseIsoPFTau20_SingleL1_v*',
  'HLT_Ele22_eta2p1_WPLoose_Gsf_v*',
- 'HLT_Ele23_WPLoose_Gsf_WHbbBoost_v*',
- 'HLT_Ele23_WPLoose_Gsf_v*',
- 'HLT_Ele24_eta2p1_WPLoose_Gsf_LooseIsoPFTau20_SingleL1_v*',
- 'HLT_Ele24_eta2p1_WPLoose_Gsf_LooseIsoPFTau20_v*',
+ # CLEANUP #  'HLT_Ele23_WPLoose_Gsf_WHbbBoost_v*',
+ # CLEANUP #  'HLT_Ele23_WPLoose_Gsf_v*',
+ # CLEANUP #  'HLT_Ele24_eta2p1_WPLoose_Gsf_LooseIsoPFTau20_SingleL1_v*',
+ # CLEANUP #  'HLT_Ele24_eta2p1_WPLoose_Gsf_LooseIsoPFTau20_v*',
  'HLT_Ele24_eta2p1_WPLoose_Gsf_v*',
- 'HLT_Ele250_CaloIdVT_GsfTrkIdT_v*',
+ # CLEANUP #  'HLT_Ele250_CaloIdVT_GsfTrkIdT_v*',
  'HLT_Ele25_WPTight_Gsf_v*',
  'HLT_Ele25_eta2p1_WPLoose_Gsf_v*',
  'HLT_Ele25_eta2p1_WPTight_Gsf_v*',
- 'HLT_Ele27_WPLoose_Gsf_WHbbBoost_v*',
- 'HLT_Ele27_WPLoose_Gsf_v*',
- 'HLT_Ele27_WPTight_Gsf_L1JetTauSeeded_v*',
+ # CLEANUP #  'HLT_Ele27_WPLoose_Gsf_WHbbBoost_v*',
+ # CLEANUP #  'HLT_Ele27_WPLoose_Gsf_v*',
+ # CLEANUP #  'HLT_Ele27_WPTight_Gsf_L1JetTauSeeded_v*',
  'HLT_Ele27_WPTight_Gsf_v*',
- 'HLT_Ele27_eta2p1_WPLoose_Gsf_DoubleMediumIsoPFTau32_Trk1_eta2p1_Reg_v*',
- 'HLT_Ele27_eta2p1_WPLoose_Gsf_DoubleMediumIsoPFTau35_Trk1_eta2p1_Reg_v*',
- 'HLT_Ele27_eta2p1_WPLoose_Gsf_DoubleMediumIsoPFTau40_Trk1_eta2p1_Reg_v*',
+ # CLEANUP #  'HLT_Ele27_eta2p1_WPLoose_Gsf_DoubleMediumIsoPFTau32_Trk1_eta2p1_Reg_v*',
+ # CLEANUP #  'HLT_Ele27_eta2p1_WPLoose_Gsf_DoubleMediumIsoPFTau35_Trk1_eta2p1_Reg_v*',
+ # CLEANUP #  'HLT_Ele27_eta2p1_WPLoose_Gsf_DoubleMediumIsoPFTau40_Trk1_eta2p1_Reg_v*',
  'HLT_Ele27_eta2p1_WPLoose_Gsf_HT200_v*',
- 'HLT_Ele27_eta2p1_WPLoose_Gsf_LooseIsoPFTau20_SingleL1_v*',
- 'HLT_Ele27_eta2p1_WPLoose_Gsf_v*',
+ # CLEANUP #  'HLT_Ele27_eta2p1_WPLoose_Gsf_LooseIsoPFTau20_SingleL1_v*',
+ # CLEANUP #  'HLT_Ele27_eta2p1_WPLoose_Gsf_v*',
  'HLT_Ele27_eta2p1_WPTight_Gsf_v*',
- 'HLT_Ele300_CaloIdVT_GsfTrkIdT_v*',
- 'HLT_Ele32_eta2p1_WPLoose_Gsf_LooseIsoPFTau20_SingleL1_v*',
+ # CLEANUP #  'HLT_Ele300_CaloIdVT_GsfTrkIdT_v*',
+ # CLEANUP #  'HLT_Ele32_eta2p1_WPLoose_Gsf_LooseIsoPFTau20_SingleL1_v*',
  'HLT_Ele32_eta2p1_WPTight_Gsf_v*',
- 'HLT_Ele35_CaloIdVT_GsfTrkIdT_PFJet150_PFJet50_v*',
- 'HLT_Ele35_WPLoose_Gsf_v*',
- 'HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50_v*',
- 'HLT_Ele45_WPLoose_Gsf_L1JetTauSeeded_v*',
- 'HLT_Ele45_WPLoose_Gsf_v*',
- 'HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet140_v*',
- 'HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165_v*',
- 'HLT_Ele50_IsoVVVL_PFHT400_v*'
+ # CLEANUP #  'HLT_Ele35_CaloIdVT_GsfTrkIdT_PFJet150_PFJet50_v*',
+ # CLEANUP #  'HLT_Ele35_WPLoose_Gsf_v*',
+ # CLEANUP #  'HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50_v*',
+ # CLEANUP #  'HLT_Ele45_WPLoose_Gsf_L1JetTauSeeded_v*',
+ # CLEANUP #  'HLT_Ele45_WPLoose_Gsf_v*',
+ # CLEANUP #  'HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet140_v*',
+ # CLEANUP #  'HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165_v*',
+ # CLEANUP #  'HLT_Ele50_IsoVVVL_PFHT400_v*'
 ]
 
 
@@ -120,15 +120,15 @@ SingleMuonPDTriggers=\
 
 JetHTPDTriggers=\
 [\
-   "HLT_PFHT125_v*",
-   "HLT_PFHT200_v*",
-   "HLT_PFHT250_v*", #prescaled
-   "HLT_PFHT300_v*", #prescaled
-   "HLT_PFHT350_v*", #prescaled
-   "HLT_PFHT400_v*", #prescaled
-   "HLT_PFHT475_v*", #prescaled
-   "HLT_PFHT600_v*", #prescaled
-   "HLT_PFHT650_v*", #prescaled
+   #"HLT_PFHT125_v*",
+   #"HLT_PFHT200_v*",
+   #"HLT_PFHT250_v*", #prescaled
+   #"HLT_PFHT300_v*", #prescaled
+   #"HLT_PFHT350_v*", #prescaled
+   #"HLT_PFHT400_v*", #prescaled
+   #"HLT_PFHT475_v*", #prescaled
+   #"HLT_PFHT600_v*", #prescaled
+   #"HLT_PFHT650_v*", #prescaled
    "HLT_PFHT800_v*",
    "HLT_PFHT900_v*",
    "HLT_HT2000_v*",
@@ -156,7 +156,7 @@ JetHTPDTriggers=\
    #"HLT_DiCentralPFJet170_CFMax0p1_v*",
 ]
                                                
-triggers = METTriggers + SingleMuonPDTriggers + SingleElPDTriggers + JetHIPDTriggers
+triggers = METTriggers + SingleMuonPDTriggers + SingleElPDTriggers + JetHTPDTriggers
 
 for trigger in  triggers:
   trigger_name = "trigger_{trig}".format(trig=trigger.replace("_v*","") )
