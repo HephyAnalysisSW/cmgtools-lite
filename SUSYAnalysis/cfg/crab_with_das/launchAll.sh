@@ -1,4 +1,4 @@
-PROD_LABEL="8012_mAODv2_v3_1"  
+PROD_LABEL="8020_mAODv2_v0"  
 REMOTE_DIR_DATA="${PROD_LABEL}/Data25ns"
 REMOTE_DIR_MC="${PROD_LABEL}/RunIISpring16MiniAODv2"
 
@@ -134,7 +134,26 @@ then
   #python launch.py --unitsPerJob=1 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL       MET_Run2015D_v4  MET_Run2015D_05Oct SingleMuon_Run2015D_v4  SingleMuon_Run2015D_05Oct SingleElectron_Run2015D_05Oct  SingleElectron_Run2015D_v4  
   echo ----------------------  Submitting DATA  ------ -----------------
   # fixed for 80x
-  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleMuon_Run2016B_PromptReco_v2     MET_Run2016B_PromptReco_v2  SingleElectron_Run2016B_PromptReco_v2   SingleMuon_Run2016C_PromptReco_v2  MET_Run2016C_PromptReco_v2  SingleElectron_Run2016C_PromptReco_v2  SingleMuon_Run2016D_PromptReco_v2  MET_Run2016D_PromptReco_v2  SingleElectron_Run2016D_PromptReco_v2
+
+  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleMuon_Run2016B_PromptReco_v2     MET_Run2016B_PromptReco_v2  SingleElectron_Run2016B_PromptReco_v2   
+  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleMuon_Run2016C_PromptReco_v2     MET_Run2016C_PromptReco_v2  SingleElectron_Run2016C_PromptReco_v2  
+  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleMuon_Run2016D_PromptReco_v2     MET_Run2016D_PromptReco_v2  SingleElectron_Run2016D_PromptReco_v2
+
+  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleMuon_Run2016E_PromptReco_v2     MET_Run2016E_PromptReco_v2  SingleElectron_Run2016E_PromptReco_v2 
+  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleMuon_Run2016F_PromptReco_v1     MET_Run2016F_PromptReco_v1  SingleElectron_Run2016F_PromptReco_v1 
+  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleMuon_Run2016G_PromptReco_v1     MET_Run2016G_PromptReco_v1  SingleElectron_Run2016G_PromptReco_v1 
+
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      JetHT_Run2016B_23Sep2016_v1  JetHT_Run2016B_23Sep2016_v3  JetHT_Run2016C_23Sep2016_v1  JetHT_Run2016D_23Sep2016_v1  JetHT_Run2016E_23Sep2016_v1  JetHT_Run2016F_23Sep2016_v1  JetHT_Run2016G_23Sep2016_v1  
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      MET_Run2016B_23Sep2016_v2  MET_Run2016B_23Sep2016_v3  MET_Run2016C_23Sep2016_v1  MET_Run2016D_23Sep2016_v1  MET_Run2016E_23Sep2016_v1  MET_Run2016F_23Sep2016_v1  MET_Run2016G_23Sep2016_v1  
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleElectron_Run2016B_23Sep2016_v2  SingleElectron_Run2016B_23Sep2016_v3  SingleElectron_Run2016C_23Sep2016_v1  SingleElectron_Run2016D_23Sep2016_v1  SingleElectron_Run2016E_23Sep2016_v1  SingleElectron_Run2016F_23Sep2016_v1  SingleElectron_Run2016G_23Sep2016_v1  
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleMuon_Run2016B_23Sep2016_v1  SingleMuon_Run2016B_23Sep2016_v3  SingleMuon_Run2016C_23Sep2016_v1  SingleMuon_Run2016D_23Sep2016_v1  SingleMuon_Run2016E_23Sep2016_v1  SingleMuon_Run2016F_23Sep2016_v1  SingleMuon_Run2016G_23Sep2016_v1
+
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      JetHT_Run2016H_PromptReco_v1  JetHT_Run2016H_PromptReco_v2  JetHT_Run2016H_PromptReco_v3  
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      MET_Run2016H_PromptReco_v1  MET_Run2016H_PromptReco_v2  MET_Run2016H_PromptReco_v3  
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleElectron_Run2016H_PromptReco_v1  SingleElectron_Run2016H_PromptReco_v2  SingleElectron_Run2016H_PromptReco_v3  
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleMuon_Run2016H_PromptReco_v1  SingleMuon_Run2016H_PromptReco_v2  SingleMuon_Run2016H_PromptReco_v3 
+
+
   #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL         MET_Run2016D_PromptReco_v2  
   #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      MET_Run2016D_PromptReco_v2 SingleMuon_Run2016D_PromptReco_v2   SingleElectron_Run2016D_PromptReco_v2 
 fi
@@ -144,9 +163,9 @@ then
   echo ----------------------  Submitting TTJets  -----------------------
   ## still missing some for 80x
   #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   TTJets_FastSIM   
-  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL                   TTJets_LO
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL                   TTJets_LO
 
-  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   TTJets_LO  TTJets_LO_HT600to800_ext  TTJets_LO_HT800to1200_ext   TTJets_LO_HT1200to2500_ext TTJets_LO_HT2500toInf  #  TTJets_LO_HT600to800  TTJets_LO_HT800to1200   TTJets_LO_HT1200to2500  
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   TTJets_LO  TTJets_LO_HT600to800_ext  TTJets_LO_HT800to1200_ext   TTJets_LO_HT1200to2500_ext TTJets_LO_HT2500toInf  #  TTJets_LO_HT600to800  TTJets_LO_HT800to1200   TTJets_LO_HT1200to2500  
   #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   TTJets_SingleLeptonFromT TTJets_SingleLeptonFromTbar TTJets_DiLepton    
 
 fi
@@ -156,6 +175,7 @@ then
   echo ----------------------  Submitting WJets  -----------------------
   # fixed for 80x
   python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   WJetsToLNu WJetsToLNu_LO  WJetsToLNu_HT100to200  WJetsToLNu_HT100to200_ext WJetsToLNu_HT200to400  WJetsToLNu_HT200to400_ext  WJetsToLNu_HT400to600 WJetsToLNu_HT600to800 WJetsToLNu_HT800to1200 WJetsToLNu_HT800to1200_ext  WJetsToLNu_HT1200to2500  WJetsToLNu_HT2500toInf 
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   WJetsToQQ_HT600toInf      WJetsToQQ_HT180
 fi
 
 if  $z
@@ -186,6 +206,8 @@ if  $degstop
 then
   echo ------------------------------- Signal Deg Stop -----------------
   python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   SMS_T2tt_dM_10to80_genHT_160_genMET_80
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   SMS_T2tt_dM_10to80_genHT_160_genMET_80_mWMin0p1
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   SMS_T2bW_X05_dM_10to80_genHT_160_genMET_80_mWMin_0p1
 fi
 
 if  $ewikino
