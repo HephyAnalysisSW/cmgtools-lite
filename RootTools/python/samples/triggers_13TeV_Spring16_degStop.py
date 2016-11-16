@@ -120,15 +120,15 @@ SingleMuonPDTriggers=\
 
 JetHTPDTriggers=\
 [\
-   "HLT_PFHT125_v*",
-   "HLT_PFHT200_v*",
-   "HLT_PFHT250_v*", #prescaled
-   "HLT_PFHT300_v*", #prescaled
-   "HLT_PFHT350_v*", #prescaled
-   "HLT_PFHT400_v*", #prescaled
-   "HLT_PFHT475_v*", #prescaled
-   "HLT_PFHT600_v*", #prescaled
-   "HLT_PFHT650_v*", #prescaled
+   #"HLT_PFHT125_v*",
+   #"HLT_PFHT200_v*",
+   #"HLT_PFHT250_v*", #prescaled
+   #"HLT_PFHT300_v*", #prescaled
+   #"HLT_PFHT350_v*", #prescaled
+   #"HLT_PFHT400_v*", #prescaled
+   #"HLT_PFHT475_v*", #prescaled
+   #"HLT_PFHT600_v*", #prescaled
+   #"HLT_PFHT650_v*", #prescaled
    "HLT_PFHT800_v*",
    "HLT_PFHT900_v*",
    "HLT_HT2000_v*",
@@ -156,7 +156,7 @@ JetHTPDTriggers=\
    #"HLT_DiCentralPFJet170_CFMax0p1_v*",
 ]
                                                
-triggers = METTriggers + SingleMuonPDTriggers + SingleElPDTriggers + JetHIPDTriggers
+triggers = METTriggers + SingleMuonPDTriggers + SingleElPDTriggers + JetHTPDTriggers
 
 for trigger in  triggers:
   trigger_name = "trigger_{trig}".format(trig=trigger.replace("_v*","") )

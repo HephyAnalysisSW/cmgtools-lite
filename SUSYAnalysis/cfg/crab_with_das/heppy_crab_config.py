@@ -12,7 +12,9 @@ config.JobType.psetName = 'heppy_crab_fake_pset.py'
 config.JobType.scriptExe = 'heppy_crab_script.sh'
 # config.JobType.sendPythonFolder = True  #doesn't work, not supported yet? do it by hand
 import os
+print "\n------------ tarring....."
 os.system("tar czf python.tar.gz --dereference --directory $CMSSW_BASE python --exclude '*.root' --exclude '*.pdf'")
+print "\n------  done tarring ...."
 #os.system("tar czf cmgdataset.tar.gz --directory $HOME .cmgdataset")
 #os.system("tar czf cafpython.tar.gz --directory /afs/cern.ch/cms/caf/ python")
 #config.JobType.inputFiles = ['FrameworkJobReport.xml','heppy_config.py','heppy_crab_script.py','cmgdataset.tar.gz', 'python.tar.gz', 'cafpython.tar.gz']

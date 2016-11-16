@@ -103,7 +103,7 @@ susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
 
 
 #from CMGTools.RootTools.samples.triggers_13TeV_Spring15 import * # central trigger list
-from CMGTools.RootTools.samples.triggers_13TeV_Spring15_degStop import *
+from CMGTools.RootTools.samples.triggers_13TeV_Spring16_degStop import *
 
 #-------- TRIGGERS -----------
 triggerFlagsAna.triggerBits = {}

@@ -148,6 +148,11 @@ then
   python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleElectron_Run2016B_23Sep2016_v2  SingleElectron_Run2016B_23Sep2016_v3  SingleElectron_Run2016C_23Sep2016_v1  SingleElectron_Run2016D_23Sep2016_v1  SingleElectron_Run2016E_23Sep2016_v1  SingleElectron_Run2016F_23Sep2016_v1  SingleElectron_Run2016G_23Sep2016_v1  
   python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleMuon_Run2016B_23Sep2016_v1  SingleMuon_Run2016B_23Sep2016_v3  SingleMuon_Run2016C_23Sep2016_v1  SingleMuon_Run2016D_23Sep2016_v1  SingleMuon_Run2016E_23Sep2016_v1  SingleMuon_Run2016F_23Sep2016_v1  SingleMuon_Run2016G_23Sep2016_v1
 
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      JetHT_Run2016H_PromptReco_v1  JetHT_Run2016H_PromptReco_v2  JetHT_Run2016H_PromptReco_v3  
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      MET_Run2016H_PromptReco_v1  MET_Run2016H_PromptReco_v2  MET_Run2016H_PromptReco_v3  
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleElectron_Run2016H_PromptReco_v1  SingleElectron_Run2016H_PromptReco_v2  SingleElectron_Run2016H_PromptReco_v3  
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleMuon_Run2016H_PromptReco_v1  SingleMuon_Run2016H_PromptReco_v2  SingleMuon_Run2016H_PromptReco_v3 
+
 
   #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL         MET_Run2016D_PromptReco_v2  
   #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      MET_Run2016D_PromptReco_v2 SingleMuon_Run2016D_PromptReco_v2   SingleElectron_Run2016D_PromptReco_v2 
