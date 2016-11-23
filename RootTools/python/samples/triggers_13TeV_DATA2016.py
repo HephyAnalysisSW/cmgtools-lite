@@ -19,7 +19,7 @@ triggers_ee_noniso = ["HLT_DoubleEle33_CaloIdL_v*",
                       "HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_v" ]
 
 # warning: ee trigger without DZ is prescaled
-triggers_ee_nodz = [ "HLT_Ele17_Ele12_CaloIdL_TrackIdL_IsoVL_v*" ]
+triggers_ee_nodz = [ "HLT_Ele17_Ele12_CaloIdL_TrackIdL_IsoVL_v*","HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v*" ]
 
 triggers_mue_run1   = [ "HLT_Mu17_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v*", 
                         "HLT_Mu8_TrkIsoVVL_Ele17_CaloIdL_TrackIdL_IsoVL_v*" ]

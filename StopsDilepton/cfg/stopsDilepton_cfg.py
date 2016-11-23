@@ -86,7 +86,7 @@ ttHLepSkim.maxLeptons = 999
 jetAna.minLepPt = 10
 jetAna.applyL2L3Residual = 'Data' 
 jetAna.jetPt = 15
-jetAna.jetEta = 5.2
+jetAna.jetEta = 5.2 #FIXME
 jetAna.addJECShifts = True
 jetAna.doQG = False
 jetAna.smearJets = False #should be false in susycore, already
@@ -291,8 +291,10 @@ sequence = cfg.Sequence(
 if getHeppyOption("loadSamples"):
     from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
     from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
-    from CMGTools.RootTools.samples.samples_13TeV_signals import *
-    from CMGTools.RootTools.samples.TTbarDMJets_signals_RunIISpring16MiniAODv2 import *
+    #from CMGTools.StopsDilepton.samplesReReco import *
+    from CMGTools.StopsDilepton.samples_13TeV_Moriond2017 import *
+    #from CMGTools.RootTools.samples.samples_13TeV_signals import *
+    #from CMGTools.RootTools.samples.TTbarDMJets_signals_RunIISpring16MiniAODv2 import *
     for sample in dataSamples_Run2016B_v2 + dataSamples_Run2016C_v2:
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-274421_13TeV_PromptReco_Collisions16_JSON.txt"
     from CMGTools.StopsDilepton.samples import *
@@ -301,6 +303,7 @@ if getHeppyOption("loadSamples"):
     selectedComponents = [ QCD_Pt_15to3000_M2_0_500 ] #, QCD_Pt_15to3000_M2_5_100]
     for comp in selectedComponents:
             comp.files = comp.files[:1]
+            #comp.files = ['root://eoscms.cern.ch//eos/cms/store/data/Run2016C/DoubleMuon/MINIAOD/23Sep2016-v1/80000/005599F4-5787-E611-A034-0025905C54C6.root']
             comp.splitFactor = 1
 
 from CMGTools.TTHAnalysis.tools.EOSEventsWithDownload import EOSEventsWithDownload
