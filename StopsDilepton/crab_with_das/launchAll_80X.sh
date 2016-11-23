@@ -1,4 +1,63 @@
 #!/bin/sh
+
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v4" DoubleEG_Run2016B_23Sep2016
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v4" MuonEG_Run2016B_23Sep2016
+python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v4" DoubleMuon_Run2016B_23Sep2016
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" MET_Run2016B_23Sep2016
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" JetHT_Run2016B_23Sep2016
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" SingleMuon_Run2016B_23Sep2016
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v4" SingleElectron_Run2016B_23Sep2016
+
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" DoubleEG_Run2016B_23Sep2016_v2
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" MuonEG_Run2016B_23Sep2016_v2
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" DoubleMuon_Run2016B_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" MET_Run2016B_23Sep2016_v2
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" JetHT_Run2016B_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" SingleMuon_Run2016B_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" SingleElectron_Run2016B_23Sep2016_v2
+
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" DoubleEG_Run2016C_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" MuonEG_Run2016C_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" DoubleMuon_Run2016C_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" MET_Run2016C_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" JetHT_Run2016C_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" SingleMuon_Run2016C_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" SingleElectron_Run2016C_23Sep2016_v1
+
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" DoubleEG_Run2016D_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" MuonEG_Run2016D_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" DoubleMuon_Run2016D_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" MET_Run2016D_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" JetHT_Run2016D_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" SingleMuon_Run2016D_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" SingleElectron_Run2016D_23Sep2016_v1
+
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" DoubleEG_Run2016E_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" MuonEG_Run2016E_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" DoubleMuon_Run2016E_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" MET_Run2016E_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" JetHT_Run2016E_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" SingleMuon_Run2016E_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" SingleElectron_Run2016E_23Sep2016_v1
+
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" DoubleEG_Run2016F_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" MuonEG_Run2016F_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" DoubleMuon_Run2016F_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" MET_Run2016F_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" JetHT_Run2016F_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" SingleMuon_Run2016F_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" SingleElectron_Run2016F_23Sep2016_v1
+
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" DoubleEG_Run2016G_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" MuonEG_Run2016G_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" DoubleMuon_Run2016G_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" MET_Run2016G_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" JetHT_Run2016G_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" SingleMuon_Run2016G_23Sep2016_v1
+#python launch.py --remoteDir="80X_stopsDilep" --unitsPerJob=5 --production_label="80X_1l_13_v3" SingleElectron_Run2016G_23Sep2016_v1
+
+
+
 #python launch.py --remoteDir="80X_1l_13" --unitsPerJob=5 --production_label="80X_1l_13" DoubleEG_Run2016B_PromptReco_v2
 #python launch.py --remoteDir="80X_1l_13" --unitsPerJob=5 --production_label="80X_1l_13" MuonEG_Run2016B_PromptReco_v2
 #python launch.py --remoteDir="80X_1l_13" --unitsPerJob=5 --production_label="80X_1l_13" DoubleMuon_Run2016B_PromptReco_v2
@@ -162,40 +221,40 @@
 #python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=5 --production_label="80X_0l_TTDM" TTZ_LO
 #python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=5 --production_label="80X_0l_TTDM" TTGJets
 #python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=5 --production_label="80X_0l_TTDM" TTTT_ext
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_10
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_20
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_50
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_100
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_200
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_300
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_500
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_10000
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_10_Mphi_10
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_10_Mphi_15
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_10_Mphi_50
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_10_Mphi_100
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_50_Mphi_10
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_50_Mphi_50
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_50_Mphi_95
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_50_Mphi_200
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_50_Mphi_300
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_10
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_20
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_50
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_100
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_200
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_300
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_500
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_10000
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_10_Mphi_10
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_10_Mphi_15
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_10_Mphi_50
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_10_Mphi_100
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_50_Mphi_10
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_50_Mphi_50
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_50_Mphi_95
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_50_Mphi_200
-python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_50_Mphi_300
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_10
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_20
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_50
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_100
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_200
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_300
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_500
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_1_Mphi_10000
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_10_Mphi_10
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_10_Mphi_15
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_10_Mphi_50
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_10_Mphi_100
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_50_Mphi_10
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_50_Mphi_50
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_50_Mphi_95
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_50_Mphi_200
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_pseudoscalar_Mchi_50_Mphi_300
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_10
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_20
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_50
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_100
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_200
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_300
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_500
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_1_Mphi_10000
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_10_Mphi_10
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_10_Mphi_15
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_10_Mphi_50
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_10_Mphi_100
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_50_Mphi_10
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_50_Mphi_50
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_50_Mphi_95
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_50_Mphi_200
+#python launch.py --remoteDir="80X_0l_TTDM" --unitsPerJob=1 --production_label="80X_0l_TTDM" TTbarDMJets_scalar_Mchi_50_Mphi_300
 
 
 
