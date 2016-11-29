@@ -18,7 +18,7 @@ eleID = "CBID"
 doElectronScaleCorrections = True
 
 if eleID == "CBID":
-  lepAna.loose_electron_id  = "POG_Cuts_ID_SPRING15_25ns_v1_ConvVetoDxyDz_Veto_full5x5"
+  lepAna.loose_electron_id  = "POG_Cuts_ID_SPRING16_25ns_v1_Tight" # no Iso
   lepAna.loose_electron_lostHits = 999. # no cut
   lepAna.loose_electron_dxy    = 999.
   lepAna.loose_electron_dz     = 999.
@@ -49,7 +49,7 @@ elif eleID == "Incl": # as inclusive as possible
 lepAna.loose_muon_pt  = 5
 
 # Isolation
-isolation = "miniIso"
+isolation = "relIso03"
 
 if isolation == "miniIso":
   # do miniIso
@@ -61,10 +61,10 @@ if isolation == "miniIso":
 elif isolation == "relIso03":
   # normal relIso03
   lepAna.ele_isoCorr = "rhoArea"
-  lepAna.mu_isoCorr = "rhoArea"
+  lepAna.mu_isoCorr = "deltaBeta"
 
-  lepAna.loose_electron_relIso = 0.5
-  lepAna.loose_muon_relIso = 0.5
+  lepAna.loose_electron_relIso = 0.4
+  lepAna.loose_muon_relIso = 0.4
 
 if doElectronScaleCorrections:
     era = '25ns'
@@ -270,11 +270,11 @@ if getHeppyOption("loadSamples"):
     from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
     from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
     #from CMGTools.StopsDilepton.samplesReReco import *
-    from CMGTools.StopsDilepton.samples_13TeV_Moriond2017 import *
+    #from CMGTools.StopsDilepton.samples_13TeV_Moriond2017 import *
     #from CMGTools.RootTools.samples.samples_13TeV_signals import *
     #from CMGTools.RootTools.samples.TTbarDMJets_signals_RunIISpring16MiniAODv2 import *
-    for sample in dataSamples_Run2016B_v2 + dataSamples_Run2016C_v2:
-        sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-274421_13TeV_PromptReco_Collisions16_JSON.txt"
+    for sample in dataSamples:
+        sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
     from CMGTools.StopsDilepton.samples import *
 
     #selectedComponents = [TTbarDMJets_scalar_Mchi_50_Mphi_300]
@@ -282,7 +282,7 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
     #selectedComponents = [QCD_Pt_15to3000]
     #selectedComponents = [DoubleMuon_Run2016C_23Sep2016_v1]
-    selectedComponents = [MuonEG_Run2016G_23Sep2016_v1]
+    selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
     #selectedComponents = [ DYJetsToLL_M50 ]
     #selectedComponents = [DoubleMuon_Run2016B_PromptReco_v2]
