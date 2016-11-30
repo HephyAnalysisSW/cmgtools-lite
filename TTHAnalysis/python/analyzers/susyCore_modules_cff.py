@@ -98,6 +98,15 @@ badMuonAna = cfg.Analyzer(
     badMuonAnalyzerSummer2016, name = 'badMuonAnaSummer2016',
     muons='slimmedMuons',
     packedCandidates = 'packedPFCandidates',
+    minMuPt=100,
+    postFix='',
+)
+badMuonAna_pt20 = cfg.Analyzer(
+    badMuonAnalyzerSummer2016, name = 'badMuonAnaSummer2016_pt20',
+    muons='slimmedMuons',
+    packedCandidates = 'packedPFCandidates',
+    minMuPt=20,
+    postFix = 'pt20' 
 )
 
 from CMGTools.TTHAnalysis.analyzers.badMuonAnalyzerMoriond2017 import badMuonAnalyzerMoriond2017
