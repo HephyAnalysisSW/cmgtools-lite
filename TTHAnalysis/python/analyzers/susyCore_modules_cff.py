@@ -543,7 +543,7 @@ susyCoreSequence = [
     genHiggsAna,
     genHFAna,
     pdfwAna,
-    susyScanAna,
+    # susyScanAna,
     vertexAna,
     lepAna,
     tauAna,
