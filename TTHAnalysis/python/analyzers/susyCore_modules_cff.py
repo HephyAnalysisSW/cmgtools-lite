@@ -86,16 +86,16 @@ eventFlagsAna = cfg.Analyzer(
     }
     )
 
-from CMGTools.TTHAnalysis.analyzers.badChargedHadronAnalyzer import badChargedHadronAnalyzer
+from CMGTools.TTHAnalysis.analyzers.badChargedHadronAnalyzerSummer2016 import badChargedHadronAnalyzerSummer2016
 badChargedHadronAna = cfg.Analyzer(
-    badChargedHadronAnalyzer, name = 'badChargedHadronAna',
+    badChargedHadronAnalyzerSummer2016, name = 'badChargedHadronAnaSummer2016',
     muons='slimmedMuons',
     packedCandidates = 'packedPFCandidates',
 )
 
-from CMGTools.TTHAnalysis.analyzers.badMuonAnalyzer import badMuonAnalyzer
+from CMGTools.TTHAnalysis.analyzers.badMuonAnalyzerSummer2016 import badMuonAnalyzerSummer2016
 badMuonAna = cfg.Analyzer(
-    badMuonAnalyzer, name = 'badMuonAna',
+    badMuonAnalyzerSummer2016, name = 'badMuonAnaSummer2016',
     muons='slimmedMuons',
     packedCandidates = 'packedPFCandidates',
 )
