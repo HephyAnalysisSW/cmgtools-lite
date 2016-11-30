@@ -12,9 +12,10 @@ from CMGTools.TTHAnalysis.tools.functionsRAX import _susy2lss_idEmu_cuts_obj,_su
 ##------------------------------------------  
 ## LEPTON
 ##------------------------------------------  
-
 leptonTypeSusy = NTupleObjectType("leptonSusy", baseObjectTypes = [ leptonTypeExtra ], variables = [
     NTupleVariable("mvaIdSpring15",   lambda lepton : lepton.mvaRun2("NonTrigSpring15MiniAOD") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG MVA ID for non-triggering electrons, Spring15 re-training; 1 for muons"),
+    #NTupleVariable("mvaIdSpring16",   lambda lepton : lepton.mvaRun2("Spring16") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG Spring16 MVA discriminator value; 1 for muons"),
+    NTupleVariable("eleCutId_Spring2016_25ns_v1_ConvVetoDxyDz",     lambda x : (1*x.electronID("POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Veto") + 1*x.electronID("POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Loose") + 1*x.electronID("POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Medium") + 1*x.electronID("POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Tight")) if abs(x.pdgId()) == 11 else -1, int, help="Electron cut-based ID Spring2016 25ns v1 ConvVetoDxyDz: 0=none, 1=veto, 2=loose, 3=medium, 4=tight"),
     # Lepton MVA-id related variables
     NTupleVariable("mvaTTH",    lambda lepton : getattr(lepton, 'mvaValueTTH', -1), help="Lepton MVA (TTH version)"),
     NTupleVariable("mvaSUSY",    lambda lepton : getattr(lepton, 'mvaValueSUSY', -1), help="Lepton MVA (SUSY version)"),

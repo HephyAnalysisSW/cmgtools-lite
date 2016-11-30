@@ -18,10 +18,10 @@ eleID = "CBID"
 doElectronScaleCorrections = True
 
 if eleID == "CBID":
-  lepAna.loose_electron_id  = "POG_Cuts_ID_SPRING16_25ns_v1_Tight" # no Iso
+  lepAna.loose_electron_id  = "POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Veto" # no Iso
   lepAna.loose_electron_lostHits = 999. # no cut
-  lepAna.loose_electron_dxy    = 999.
-  lepAna.loose_electron_dz     = 999.
+  lepAna.loose_electron_dxy    = 0.1
+  lepAna.loose_electron_dz     = 0.2
 
   lepAna.inclusive_electron_id  = ""#"POG_Cuts_ID_SPRING15_25ns_v1_ConvVetoDxyDz_Veto_full5x5"
   lepAna.inclusive_electron_lostHits = 999. # no cut since embedded in ID
@@ -282,13 +282,16 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
     #selectedComponents = [QCD_Pt_15to3000]
     #selectedComponents = [DoubleMuon_Run2016C_23Sep2016_v1]
+    #selectedComponents = [DoubleEG_Run2016E_23Sep2016]
     selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
     #selectedComponents = [ DYJetsToLL_M50 ]
     #selectedComponents = [DoubleMuon_Run2016B_PromptReco_v2]
     for comp in selectedComponents:
-            comp.files = comp.files[:1]
+            sample.json = None
+            comp.files = comp.files[:3]
             #comp.files = ['root://eoscms.cern.ch//eos/cms/store/data/Run2016C/DoubleMuon/MINIAOD/23Sep2016-v1/80000/005599F4-5787-E611-A034-0025905C54C6.root']
+            #comp.files = ['root://eoscms.cern.ch//store/group/phys_jetmet/MetScanners/bobak_pickevents_miniAOD.root']
             comp.splitFactor = 1
 
 from CMGTools.TTHAnalysis.tools.EOSEventsWithDownload import EOSEventsWithDownload
