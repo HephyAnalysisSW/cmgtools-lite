@@ -63,8 +63,8 @@ elif isolation == "relIso03":
   lepAna.ele_isoCorr = "rhoArea"
   lepAna.mu_isoCorr = "deltaBeta"
 
-  lepAna.loose_electron_relIso = 0.4
-  lepAna.loose_muon_relIso = 0.4
+  lepAna.loose_electron_relIso = 0.5
+  lepAna.loose_muon_relIso = 0.5
 
 if doElectronScaleCorrections:
     era = '25ns'
@@ -77,7 +77,7 @@ if doElectronScaleCorrections:
     }
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 0
+ttHLepSkim.minLeptons = 1
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
@@ -303,7 +303,7 @@ if getHeppyOption("loadSamples"):
     selectedComponents = [ QCD_Pt_15to3000_M2_0_500 ] #, QCD_Pt_15to3000_M2_5_100]
     for comp in selectedComponents:
             sample.json = None
-            comp.files = comp.files[:3]
+            comp.files = comp.files[:1]
             #comp.files = ['root://eoscms.cern.ch//eos/cms/store/data/Run2016C/DoubleMuon/MINIAOD/23Sep2016-v1/80000/005599F4-5787-E611-A034-0025905C54C6.root']
             #comp.files = ['root://eoscms.cern.ch//store/group/phys_jetmet/MetScanners/bobak_pickevents_miniAOD.root']
             comp.splitFactor = 1
