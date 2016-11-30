@@ -12,6 +12,8 @@ class badMuonAnalyzerSummer2016( Analyzer ):
 
     def __init__(self, cfg_ana, cfg_comp, looperName ):
         super(badMuonAnalyzerSummer2016,self).__init__(cfg_ana,cfg_comp,looperName)
+        self.minMuPt = cfg_ana.minMuPt
+        self.flagName = 'badMuonSummer2016_'+cfg_ana.postFix if cfg_ana.postFix!='' else 'badMuonSummer2016'
 
     def declareHandles(self):
         super(badMuonAnalyzerSummer2016, self).declareHandles()
@@ -27,7 +29,6 @@ class badMuonAnalyzerSummer2016( Analyzer ):
         maxDR = 0.001
         suspiciousAlgo=14
         minDZ = 0.1
-        minMuPt = 100
         minPtErr = 2.0
         innerTrackRelErr = 1.0
         maxSegmentCompatibility = 0.3
@@ -39,7 +40,7 @@ class badMuonAnalyzerSummer2016( Analyzer ):
             if muon.innerTrack().isNonnull():
                 it = muon.innerTrack()
                 muonBestTrack = muon.muonBestTrack()
-                if muon.pt()<minMuPt and it.pt()<minMuPt : continue
+                if muon.pt()<self.minMuPt and it.pt()<self.minMuPt : continue
                 if not (it.originalAlgo()==suspiciousAlgo and it.algo()==suspiciousAlgo ): continue
                 if not muon.isGlobalMuon(): continue
                 if muon.segmentCompatibility() > maxSegmentCompatibility and \
@@ -48,14 +49,15 @@ class badMuonAnalyzerSummer2016( Analyzer ):
 
                 for c in self.handles['packedCandidates'].product():
                     if abs(c.pdgId()) == 13:
-                        if c.pt()<minMuPt : continue
+                        if c.pt()<self.minMuPt : continue
                         if deltaR( muon.eta(), muon.phi(), c.eta(), c.phi() ) < maxDR:
                             flagged = True
                             event.crazyMuon.append(muon)
                             break
             if flagged: break
-        event.badMuonSummer2016 = (not flagged)
-        #self.printInfo(event)
+
+                
+        setattr( event, self.flagName,  (not flagged) )
         return True
 
     def printInfo(self, event):
@@ -79,5 +81,7 @@ class badMuonAnalyzerSummer2016( Analyzer ):
 setattr(badMuonAnalyzerSummer2016,"defaultConfig", cfg.Analyzer(
         class_object = badMuonAnalyzerSummer2016,
         packedCandidates = 'packedPFCandidates',
+        minMuPt = 100,
+        postFix = '',
         )
 )
