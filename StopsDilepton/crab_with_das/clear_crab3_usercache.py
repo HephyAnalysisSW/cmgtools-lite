@@ -23,7 +23,7 @@ class UserCacheHelper:
          if not user:
             raise Crab3ToolsException('could not get username from sitedb, returned %r' % user)
       self.user = user
-
+      print "User is %s" % self.user
    def _curl(self, url):
       buf = StringIO()
       c = pycurl.Curl()
@@ -69,7 +69,7 @@ class UserCacheHelper:
 
 if __name__ == '__main__':
    h = UserCacheHelper()
-   if False:
+   if True:
       for x in h.filelist():
          if '.log' in x or x == '18420b98cfaa556dc2c94fe2acb83b451806144b5d284763eae5f0a354b3f34b':
             continue
