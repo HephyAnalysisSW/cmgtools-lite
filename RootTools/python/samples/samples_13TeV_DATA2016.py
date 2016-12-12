@@ -162,7 +162,6 @@ dataSamples_Run2016H_v3 = [JetHT_Run2016H_PromptReco_v3, HTMHT_Run2016H_PromptRe
 ### ----------------------------- summary of prompt reco ----------------------------------------
 dataSamples_PromptReco = dataSamples_Run2016_v1 + dataSamples_Run2016B_v2 + dataSamples_Run2016C_v2 + dataSamples_Run2016D_v2 + dataSamples_Run2016E_v2 + dataSamples_Run2016F_v1 + dataSamples_Run2016G_v1 + dataSamples_Run2016H_v2 + dataSamples_Run2016H_v3
 
-
 ### ----------------------------- Run2016B 23Sep2016 ----------------------------------------
 
 JetHT_Run2016B_23Sep2016          = kreator.makeDataComponent("JetHT_Run2016B_23Sep2016"         , "/JetHT/Run2016B-23Sep2016-v3/MINIAOD"         , "CMS", ".*root", json)
