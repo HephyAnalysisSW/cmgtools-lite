@@ -95,8 +95,8 @@ ttHEventAna = cfg.Analyzer(
   )
 
 ## Insert the FatJet, SV, HeavyFlavour analyzers in the sequence
-susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
-      ttHFatJetAna)
+#susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
+#      ttHFatJetAna)
 
 #susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
 #     ttHSVAna)
@@ -188,8 +188,33 @@ for trigger in  triggers:
 
 # --- JET-LEPTON CLEANING ---
 #jetAna.cleanSelectedLeptons = True
+
+
+
+
 jetAna.minLepPt   = -1     #10
 jetAna.lepSelCut  = lambda lep: ( abs(lep.pdgId()) == 11 and lep.pt() > 5 ) or ( abs(lep.pdgId()) == 13 and lep.pt() > 3 ) 
+
+## apply lepPt/jetPt > 0.5:
+#
+#  
+# 
+jetAna.jetLepArbitration = lambda jet,lepton: lepton 
+
+def jetLepRatio( jet, lepton):
+    
+    lep_jet_ratio = lepton.pt()/jet.pt()
+    
+    if lep_jet_ratio < 0.5 :
+        return (jet, lepton)
+
+    else:
+        return 
+#
+#
+
+
+
 
 
 ## JEC
@@ -212,6 +237,29 @@ jetAna.jetPt = 20
 #jetAna.jetEta = 2.4
 
 
+
+doOldJetCleaning = False
+if doOldJetCleaning:
+
+    from CMGTools.TTHAnalysis.analyzers.ttHJetMETSkimmer import ttHJetMETSkimmer
+    skimAna = cfg.Analyzer(
+    ttHJetMETSkimmer, name='ttHJetMETSkimmer',
+    metCut = 200,
+    )
+
+    susyCoreSequence.insert(susyCoreSequence.index(metAna)+1,
+                          skimAna)
+
+
+    absIsoCut   = 5
+    ptSwitch    = 25
+    relIsoCut   = 1.*absIsoCut/ptSwitch
+
+    jetAna.minLepPt=5
+    jetAna.lepSelCut = lambda lep: (   lep.absIso03 < absIsoCut  ) or ( lep.relIso03 <  relIsoCut ) 
+    jetAna.jetPt = 20
+
+
 #jetAna.calculateType1METCorrection = True
 ## MET (can be used for MiniAODv2)
 metAna.recalibrate = True
@@ -230,11 +278,11 @@ selectedComponents = []
 if getHeppyOption("loadSamples") :
 
   test = 1 
-  sample = 'MC'
+  sample = 'Signal'
   if sample == "MC":
     from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
     #selectedComponents = [ ZJetsToNuNu_HT800to1200 ] #TTs + SingleTop #TTJets_SingleLepton
-    selectedComponents = [  TTJets_FastSIM ] 
+    selectedComponents = [  ZJetsToNuNu_HT800to1200 ] 
     #selectedComponents = [  TTJets_LO      ]
 
     print 'Going to process MC'
@@ -244,13 +292,13 @@ if getHeppyOption("loadSamples") :
   elif sample == "Signal":
     from CMGTools.RootTools.samples.samples_13TeV_signals import *
     #selectedComponents = [SMS_T5qqqqVV_TuneCUETP8M1]
-    selectedComponents = [SMS_T1tttt_mGluino1500_mLSP100]
+    #selectedComponents = [SMS_T1tttt_mGluino1500_mLSP100]
 
 
-    from CMGTools.RootTools.samples.samples_13TeV_80X_susySignalsPriv import *
+    #from CMGTools.RootTools.samples.samples_13TeV_80X_susySignalsPriv import *
     #selectedComponents = [ T2tt_dM_30to80_genHT_160_genMET_80 ]
     #selectedComponents = [ T2tt_dM_30to80_genHT_160_genMET_80 , T2tt_dM_30to80 ] 
-    #selectedComponents = [ SMS_T2tt_dM_10to80_genHT_160_genMET_80 ]
+    selectedComponents = [ SMS_T2tt_dM_10to80_genHT_160_genMET_80 ]
     #susyCounter.SMS_varying_masses = ['genSusyMGluino','genSusyMNeutralino']
     print  'Going to process Signal'
     isData   = False
@@ -343,6 +391,33 @@ hbheFilterAna = cfg.Analyzer(
 
 
 
+#
+# For Soft Tracks (Reco and GEN)
+#
+
+addSoftTracks = False
+if addSoftTracks:
+  from CMGTools.SUSYAnalysis.analyzers.TrackAnalyzer import TrackAnalyzer
+  trackAna = cfg.Analyzer(
+      TrackAnalyzer, name='TrackAnalyzer',
+      setOff=False,
+      trackOpt="reco",
+      do_mc_match=True,
+      #ptMin  = 1.0,
+      #ptMax  = None, 
+      )
+  genTrackAna = cfg.Analyzer(
+      TrackAnalyzer, name='GenTrackAnalyzer',
+      setOff=False,
+      trackOpt="gen",
+      )
+  
+  ## Insert TrackAna in the sequence:
+  susyCoreSequence.insert(susyCoreSequence.index(metAna)+1,
+                          genTrackAna)
+  susyCoreSequence.insert(susyCoreSequence.index(genTrackAna)+1,
+                          trackAna)
+
 
 sequence = cfg.Sequence(susyCoreSequence+[
     LHEAna,
@@ -359,18 +434,18 @@ if isSignal:
   ## SUSY Counter
   ## histo counter
   #susyCoreSequence.insert(susyCoreSequence.index(skimAnalyzer),
-  susyCoreSequence.insert(susyCoreSequence.index(susyScanAna)+1,
-        susyCounter)
-  #susyCoreSequence.append(susyCounter)
 
-
-
+  #if doOldJetCleaning == "False":
+  if False:
+    sequence.insert(sequence.index(susyScanAna)+1,
+          susyCounter)
+    susyCounter.SUSYmodel = 'T2tt_dM_10to80_genHT_160_genMET_80'
+    susyCounter.SMS_mass_1 = "genSusyMStop"
+    susyCounter.SMS_mass_2 = "genSusyMNeutralino"
+    susyCounter.SMS_varying_masses = ['genSusyMStop','genSusyMNeutralino']
+    #susyCoreSequence.append(susyCounter)
 
   # change scn mass parameters
-  susyCounter.SUSYmodel = 'T2tt_dM_10to80_genHT_160_genMET_80'
-  susyCounter.SMS_mass_1 = "genSusyMStop"
-  susyCounter.SMS_mass_2 = "genSusyMNeutralino"
-  susyCounter.SMS_varying_masses = ['genSusyMStop','genSusyMNeutralino']
 
 if isFastSIM:
   jetAna.applyL2L3Residual = False
@@ -378,7 +453,7 @@ if isFastSIM:
   jetAna.doQG = False
   jetAna.mcGT = "Spring16_FastSimV1_MC"
   jetAna.relaxJetId = True  # relax jetId for FastSIM
-   
+
 
 print "Selected Components: "
 for comp in selectedComponents:
