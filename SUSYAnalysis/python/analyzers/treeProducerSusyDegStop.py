@@ -94,10 +94,11 @@ susySingleLepton_collections.update({
             "otherLeptons"    : NTupleCollection("LepOther", leptonTypeDegStop, 8, help="Leptons after the preselection"),
             "selectedTaus"    : NTupleCollection("TauGood", tauType, 3, help="Taus after the preselection"),
             ##------------------------------------------------
-            "cleanJetsAll"       : NTupleCollection("Jet",     jetTypeSusy, 25, help="Cental jets after full selection and cleaning, sorted by pt"),
+            "cleanJetsAll"       : NTupleCollection("Jet",          jetTypeSusy, 25, help="Cental jets after full selection and cleaning, sorted by pt"),
+            "jets"               : NTupleCollection("JetDirty",     genJetType, 25, help="Cental jets after full selection but before cleaning, sorted by pt"),
             ## DegStop:
             "cleanGenJets"    : NTupleCollection("GenJet",  genJetType,  30, help="Clean Gen Jets, sorted by pt"),
-            "genJets"         : NTupleCollection("GenJetDirty",  genJetType,  30, help="Gen Jets before cleaning, sorted by pt"),
+            # "genJets"         : NTupleCollection("GenJetDirty",  genJetType,  30, help="Gen Jets before cleaning, sorted by pt"),
             #"Tracks"              : NTupleCollection("Tracks",      trackTypeSusy, 150, help="all Tracks from PackedPFCandidates (pt>1) , sorted by pt"),
             #"GenTracks"           : NTupleCollection("GenTracks",   genTrackTypeSusy, 150, mcOnly=True, help="all Tracks from PackedPFCandidates (pt>1) , sorted by pt"),
             ####
