@@ -1,5 +1,5 @@
 #PROD_LABEL="8020_mAODv2_v0"  
-PROD_LABEL="8020_mAODv2_v0"  
+PROD_LABEL="8020_mAODv2_v5"  
 #PROD_LABEL="8020_mAODv2_OldJetClean_v2"  
 REMOTE_DIR_DATA="${PROD_LABEL}/Data25ns"
 REMOTE_DIR_MC="${PROD_LABEL}/RunIISpring16MiniAODv2"
@@ -137,8 +137,13 @@ then
   echo ----------------------  Submitting DATA  ------ -----------------
   # fixed for 80x
 
-  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL       JetHT_Run2016E_23Sep2016
+  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL       JetHT_Run2016E_23Sep2016
 
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      JetHT_Run2016B_23Sep2016          JetHT_Run2016C_23Sep2016          JetHT_Run2016D_23Sep2016          JetHT_Run2016E_23Sep2016           JetHT_Run2016F_23Sep2016            JetHT_Run2016G_23Sep2016               JetHT_Run2016H_PromptReco_v2            JetHT_Run2016H_PromptReco_v3           
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      MET_Run2016B_23Sep2016            MET_Run2016C_23Sep2016            MET_Run2016D_23Sep2016            MET_Run2016E_23Sep2016             MET_Run2016F_23Sep2016              MET_Run2016G_23Sep2016                 MET_Run2016H_PromptReco_v2              MET_Run2016H_PromptReco_v3                
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleElectron_Run2016B_23Sep2016 SingleElectron_Run2016C_23Sep2016 SingleElectron_Run2016D_23Sep2016 SingleElectron_Run2016E_23Sep2016  SingleElectron_Run2016F_23Sep2016   SingleElectron_Run2016G_23Sep2016      SingleElectron_Run2016H_PromptReco_v2   SingleElectron_Run2016H_PromptReco_v3       
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleMuon_Run2016B_23Sep2016     SingleMuon_Run2016C_23Sep2016     SingleMuon_Run2016D_23Sep2016     SingleMuon_Run2016E_23Sep2016      SingleMuon_Run2016F_23Sep2016       SingleMuon_Run2016G_23Sep2016          SingleMuon_Run2016H_PromptReco_v2       SingleMuon_Run2016H_PromptReco_v3         
+  
   #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      JetHT_Run2016B_23Sep2016_v1  JetHT_Run2016B_23Sep2016_v3  JetHT_Run2016C_23Sep2016_v1  JetHT_Run2016D_23Sep2016_v1  JetHT_Run2016E_23Sep2016_v1  JetHT_Run2016F_23Sep2016_v1  JetHT_Run2016G_23Sep2016_v1  
   #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      MET_Run2016B_23Sep2016_v2  MET_Run2016B_23Sep2016_v3  MET_Run2016C_23Sep2016_v1  MET_Run2016D_23Sep2016_v1  MET_Run2016E_23Sep2016_v1  MET_Run2016F_23Sep2016_v1  MET_Run2016G_23Sep2016_v1  
   #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleElectron_Run2016B_23Sep2016_v2  SingleElectron_Run2016B_23Sep2016_v3  SingleElectron_Run2016C_23Sep2016_v1  SingleElectron_Run2016D_23Sep2016_v1  SingleElectron_Run2016E_23Sep2016_v1  SingleElectron_Run2016F_23Sep2016_v1  SingleElectron_Run2016G_23Sep2016_v1  
