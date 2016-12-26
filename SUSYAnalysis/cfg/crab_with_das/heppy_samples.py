@@ -24,7 +24,8 @@ for sample in dataSamples:
   #sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-275125_13TeV_PromptReco_Collisions16_JSON.txt"
   #sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-276811_13TeV_PromptReco_Collisions16_JSON_NoL1T.txt"
   #sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-280385_13TeV_PromptReco_Collisions16_JSON.txt"
-  sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-284044_13TeV_PromptReco_Collisions16_JSON_NoL1T.txt"
+  #sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-284044_13TeV_PromptReco_Collisions16_JSON_NoL1T.txt"
+  sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
 
   #sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-274443_13TeV_PromptReco_Collisions16_JSON.txt"
   #sample.json = "$CMSSW_BASE/src/CMGTools/SUSYAnalysis/data/Cert_271036-273730_13TeV_PromptReco_Collisions16_JSON.txt"

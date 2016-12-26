@@ -199,19 +199,16 @@ jetAna.lepSelCut  = lambda lep: ( abs(lep.pdgId()) == 11 and lep.pt() > 5 ) or (
 #
 #  
 # 
-jetAna.jetLepArbitration = lambda jet,lepton: lepton 
 
 def jetLepRatio( jet, lepton):
-    
     lep_jet_ratio = lepton.pt()/jet.pt()
-    
     if lep_jet_ratio < 0.5 :
-        return (jet, lepton)
-
+        return (jet, lepton)   ## Don't Clean Jet
     else:
-        return 
-#
-#
+        return lepton             ## Clean Jet
+jetAna.jetLepArbitration = jetLepRatio
+
+
 
 
 
@@ -277,7 +274,7 @@ genAna.allGenTaus = True
 selectedComponents = []
 if getHeppyOption("loadSamples") :
 
-  test = 1 
+  test = 2 
   sample = 'Signal'
   if sample == "MC":
     from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
@@ -322,10 +319,10 @@ if getHeppyOption("loadSamples") :
     for comp in selectedComponents:
       comp.files = comp.files[:1]
   elif test==2:
-    for comp in selectedComponents:
+    for comp in selectedComponents[:20]:
       comp.splitFactor = 1
       comp.fineSplitFactor = 1
-      comp.files = comp.files[:1]
+      comp.files = comp.files[:20]
   elif test==3:
     for comp in selectedComponents:
       comp.fineSplitFactor = 1
