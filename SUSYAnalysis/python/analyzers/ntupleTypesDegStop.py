@@ -133,36 +133,36 @@ genParticleWithMotherIndex = NTupleObjectType("genParticleWithMotherIndex", base
 ##------------------------------------------  
 
 
-#genTrackTypeSusy = NTupleObjectType("genTrackSusy",  baseObjectTypes = [ isoTrackType ], variables = [
-#    
-#    NTupleVariable("matchedJetIndex",     lambda x : x.matchedJetIndex , help="index of the matched Jet to the track"),
-#    NTupleVariable("matchedJetDr",        lambda x : x.matchedJetDr    , help="deltaR of the matched Jet to the track"),
-#    NTupleVariable("matchedLepIndex",     lambda x : x.matchedLepIndex , help="index of the matched Lepton to the track"),
-#    NTupleVariable("matchedLepDr",        lambda x : x.matchedLepDr    , help="deltaR of the matched Lepton to the track"),
-#    NTupleVariable("matchedGenPartIndex", lambda x : x.matchedGenPartIndex , mcOnly=True, help="index of the matched GenParticle to the track"),
-#    NTupleVariable("matchedGenPartDr",    lambda x : x.matchedGenPartDr    , mcOnly=True, help="deltaR of the matched GenPartricle to the track"),
-#    NTupleVariable("CosPhiMet",          lambda x : x.CosPhiMet   , help="Cos Track Phi with Met"     ),
-#    NTupleVariable("CosPhiJet1",          lambda x : x.CosPhiJet1   , help="Cos Track Phi with the Leading Jet"     ),
-#    NTupleVariable("CosPhiJet12",          lambda x : x.CosPhiJet12   , help="Cos Track Phi with the Leading + SubJet"),
-#    NTupleVariable("CosPhiJetAll",        lambda x : x.CosPhiJetAll , help="Cos Track Phi with the All Jets"     ),
-#])  
-#    
-#trackTypeSusy = NTupleObjectType("trackSusy",  baseObjectTypes = [ genTrackTypeSusy ], variables = [
-#    
-#    NTupleVariable("dxy",                 lambda x : x.dxy() , help="d_{xy} of lead track with respect to PV, in cm (with sign)"), 
-#    NTupleVariable("dxyError",            lambda x : x.dxyError() , help="d_{xy}Err of lead track with respect to PV, in cm (with sign)"),
-#    NTupleVariable("dzError",             lambda x : x.dzError() , help="d_{z}Err of lead track with respect to PV, in cm (with sign)"),
-#    NTupleVariable("fromPV",              lambda x : x.fromPV()  , help="is fromPV"),
-#    NTupleVariable("isJet",               lambda x : x.isJet()),
-#    NTupleVariable("numberOfPixleHits",   lambda x : x.numberOfPixelHits(), int),
-#    NTupleVariable("numberOfHits",        lambda x : x.numberOfHits(), int ),
-#    NTupleVariable("trackHighPurity",     lambda x : x.trackHighPurity(), int),
-#    NTupleVariable("puppiWeight",         lambda x : x.puppiWeight()  ),
-#    NTupleVariable("mcMatchIndex",        lambda x : x.mcMatchIndex ),
-#    NTupleVariable("mcMatchDr",           lambda x : x.mcMatchDr ),
-#    NTupleVariable("mcMatchPtRatio",           lambda x : x.mcMatchPtRatio ),
-#
-#])
+genTrackTypeSusy = NTupleObjectType("genTrackSusy",  baseObjectTypes = [ isoTrackType ], variables = [
+    
+    NTupleVariable("matchedJetIndex",     lambda x : x.matchedJetIndex , help="index of the matched Jet to the track"),
+    NTupleVariable("matchedJetDr",        lambda x : x.matchedJetDr    , help="deltaR of the matched Jet to the track"),
+    NTupleVariable("matchedLepIndex",     lambda x : x.matchedLepIndex , help="index of the matched Lepton to the track"),
+    NTupleVariable("matchedLepDr",        lambda x : x.matchedLepDr    , help="deltaR of the matched Lepton to the track"),
+    NTupleVariable("matchedGenPartIndex", lambda x : x.matchedGenPartIndex , mcOnly=True, help="index of the matched GenParticle to the track"),
+    NTupleVariable("matchedGenPartDr",    lambda x : x.matchedGenPartDr    , mcOnly=True, help="deltaR of the matched GenPartricle to the track"),
+    NTupleVariable("CosPhiMet",          lambda x : x.CosPhiMet   , help="Cos Track Phi with Met"     ),
+    NTupleVariable("CosPhiJet1",          lambda x : x.CosPhiJet1   , help="Cos Track Phi with the Leading Jet"     ),
+    NTupleVariable("CosPhiJet12",          lambda x : x.CosPhiJet12   , help="Cos Track Phi with the Leading + SubJet"),
+    NTupleVariable("CosPhiJetAll",        lambda x : x.CosPhiJetAll , help="Cos Track Phi with the All Jets"     ),
+])  
+    
+trackTypeSusy = NTupleObjectType("trackSusy",  baseObjectTypes = [ genTrackTypeSusy ], variables = [
+    
+    NTupleVariable("dxy",                 lambda x : x.dxy() , help="d_{xy} of lead track with respect to PV, in cm (with sign)"), 
+    NTupleVariable("dxyError",            lambda x : x.dxyError() , help="d_{xy}Err of lead track with respect to PV, in cm (with sign)"),
+    NTupleVariable("dzError",             lambda x : x.dzError() , help="d_{z}Err of lead track with respect to PV, in cm (with sign)"),
+    NTupleVariable("fromPV",              lambda x : x.fromPV()  , help="is fromPV"),
+    NTupleVariable("isJet",               lambda x : x.isJet()),
+    NTupleVariable("numberOfPixleHits",   lambda x : x.numberOfPixelHits(), int),
+    NTupleVariable("numberOfHits",        lambda x : x.numberOfHits(), int ),
+    NTupleVariable("trackHighPurity",     lambda x : x.trackHighPurity(), int),
+    NTupleVariable("puppiWeight",         lambda x : x.puppiWeight()  ),
+    NTupleVariable("mcMatchIndex",        lambda x : x.mcMatchIndex ),
+    NTupleVariable("mcMatchDr",           lambda x : x.mcMatchDr ),
+    NTupleVariable("mcMatchPtRatio",           lambda x : x.mcMatchPtRatio ),
+
+])
 
 
 
