@@ -48,6 +48,7 @@ if options.state and options.state not in crab_states:
 #status = { state:{'%':0, 'r':'(0/0)'} for state in crab_states}
 all_status  = OrderedDict()
 all_stdouts = OrderedDict()
+dirs_of_interest = []
 for crab_dir in crab_dirs:
 
   subproc_stdout = subprocess.Popen( crab_status +[crab_dir], stdout=subprocess.PIPE )
@@ -60,7 +61,8 @@ for crab_dir in crab_dirs:
           a1 = a.pop(0)
           a2 = a.pop(0)
           a3 = ''.join(a)
-          assert all( [a1 == state , r'%' in a2] )
+          print a
+          #assert all( [a1 == state , r'%' in a2] )
           status[state]={}
           status[state]['%'] = a2.replace(r'%','')
           status[state]['r'] = a3
@@ -83,6 +85,7 @@ for crab_dir in crab_dirs:
 
 
   if doPrint: 
+      dirs_of_interest.append(crab_dir)
       print "-----  ", crab_dir
       print stdout
       print

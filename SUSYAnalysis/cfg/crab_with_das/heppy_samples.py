@@ -7,7 +7,10 @@
 #from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
 #from CMGTools.RootTools.samples.samples_13TeV_DATA2016_ReReco import *
 from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
+
 from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
+#from CMGTools.RootTools.samples.samples_13TeV_RunIISummer16MiniAODv2 import *
+
 from CMGTools.RootTools.samples.samples_13TeV_signals import *
 
 ###applying the correct json files to PrompReco and July17 samples
