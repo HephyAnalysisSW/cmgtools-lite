@@ -60,8 +60,8 @@ if "INPUT_DBS" in os.environ:
   config.Data.inputDBS = os.environ["INPUT_DBS"]
 
 import site_white_list
-whitelist = site_white_list.site_white_list( dataset )
-print "Using whitelist from DAS to enforce data locality:", whitelist
+whitelist = filter( lambda s:s.startswith("T2_") or s.startswith("T3_"), site_white_list.site_white_list( dataset ) )
+print "Using whitelist from DAS (only T2, T3) to enforce data locality:", whitelist
 config.Site.whitelist = whitelist 
 
 ## if NEVENTS variable is set then only nevents will be run
