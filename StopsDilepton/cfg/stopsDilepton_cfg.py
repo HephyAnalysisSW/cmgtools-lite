@@ -46,6 +46,13 @@ elif eleID == "Incl": # as inclusive as possible
   lepAna.inclusive_electron_dz     = 999. # no cut since embedded in ID
 
 ## MUONS
+# store everything
+lepAna.inclusive_muon_dxy = 999.
+lepAna.inclusive_muon_dz  = 999.
+lepAna.inclusive_muon_eta = 999.
+lepAna.inclusive_muon_id = None#   POG_ID_Loose
+lepAna.inclusive_muon_pt = 0.
+
 lepAna.loose_muon_pt  = 5
 
 # Isolation
@@ -77,7 +84,7 @@ if doElectronScaleCorrections:
     }
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 0
+ttHLepSkim.minLeptons = 1
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
