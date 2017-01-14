@@ -46,6 +46,13 @@ elif eleID == "Incl": # as inclusive as possible
   lepAna.inclusive_electron_dz     = 999. # no cut since embedded in ID
 
 ## MUONS
+# store everything
+lepAna.inclusive_muon_dxy = 999.
+lepAna.inclusive_muon_dz  = 999.
+lepAna.inclusive_muon_eta = 999.
+lepAna.inclusive_muon_id = None#   POG_ID_Loose
+lepAna.inclusive_muon_pt = 0.
+
 lepAna.loose_muon_pt  = 5
 
 # Isolation
@@ -77,7 +84,7 @@ if doElectronScaleCorrections:
     }
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 0
+ttHLepSkim.minLeptons = 1
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
@@ -278,11 +285,12 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
     from CMGTools.StopsDilepton.samples import *
 
-    selectedComponents = [TTbarDMJets_scalar_Mchi_50_Mphi_300]
-    # selectedComponents = [SMS_T2tt_mStop_150to250]
+    #selectedComponents = [TTbarDMJets_scalar_Mchi_50_Mphi_300]
+    #selectedComponents = [SMS_T2tt_mStop_150to250]
+    #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p05]
     #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
     #selectedComponents = [QCD_Pt_15to3000]
-    #selectedComponents = [DoubleMuon_Run2016C_23Sep2016_v1]
+    selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [DoubleEG_Run2016E_23Sep2016]
     #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
