@@ -5,7 +5,7 @@ def site_white_list( dataset ):
     '''Get all sites where a dataset is stored from DAS
     '''
     query='site dataset=%s'%dataset
-    print "das_client.py", "--format=plain", "--limit=0", "--query='%s'"%query
+    print "das_client.py", "--format=json", "--limit=0", "--query='%s'"%query
     #p = subprocess.Popen(["das_client.py", "--format=plain", "--limit=0", "--query='%s'"%query], shell = True , stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     txt = subprocess.check_output(["das_client.py", "--format=json", "--limit=0", "--query=%s"%query])
     data = json.loads(txt)
