@@ -116,6 +116,7 @@ badCloneMuonAnaMoriond2017 = cfg.Analyzer(
     vertices         = 'offlineSlimmedPrimaryVertices',
     minMuPt = 20,
     selectClones = True,
+    #postFix = 'clones',
     postFix = '',
 )
 
