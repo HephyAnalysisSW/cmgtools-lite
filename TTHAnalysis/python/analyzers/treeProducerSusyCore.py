@@ -4,8 +4,8 @@ susyCore_globalVariables = [
             NTupleVariable("Flag_badChargedHadronSummer2016",  lambda ev: ev.badChargedHadronSummer2016, int, help="badChargedHadron filter result"),
             NTupleVariable("Flag_badMuonSummer2016",  lambda ev: ev.badMuonSummer2016, int, help="badMuon filter result"),
             NTupleVariable("Flag_badMuonSummer2016_pt20",  lambda ev: ev.badMuonSummer2016_pt20, int, help="badMuon filter result"),
-            NTupleVariable("Flag_badMuonMoriond2017_passBadMuon",  lambda ev: ev.badMuonMoriond2017_passBadMuon, int, help="bad muon found in event (Moriond 2017 filter)?"),
-            NTupleVariable("Flag_badMuonMoriond2017_passCloneMuon",  lambda ev: ev.badMuonMoriond2017_passCloneMuon, int, help="clone muon found in event (Moriond 2017 filter)?"),
+            NTupleVariable("Flag_badMuonMoriond2017",  lambda ev: ev.badMuonMoriond2017, int, help="bad muon found in event (Moriond 2017 filter)?"),
+            NTupleVariable("Flag_badMuonMoriond2017_clones",  lambda ev: ev.badMuonMoriond2017_clones, int, help="clone muon found in event (Moriond 2017 filter)?"),
 
             NTupleVariable("rho",  lambda ev: ev.rho, float, help="kt6PFJets rho"),
             NTupleVariable("rhoCN",  lambda ev: ev.rhoCN, float, help="fixed grid rho central neutral"),
