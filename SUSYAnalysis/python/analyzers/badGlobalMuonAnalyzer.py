@@ -99,9 +99,16 @@ class badGlobalMuonAnalyzer( Analyzer ):
 
         badMuons = self.tagBadGlobalMuons( allMuons, allVertices )
 
+        #nmus = len(allMuons)
+        #if nmus:
+        #  print "%s Muons"%nmus
+        #  print allMuons
+
         if badMuons:
+            print "-------------------------------------------"
             print "Found Bad Muons (%s) in the Event!"%len(badMuons)
             print badMuons
+            print "-------------------------------------------"
 
         return True
 
