@@ -12,6 +12,7 @@ class badGlobalMuonAnalyzer( Analyzer ):
         super(badGlobalMuonAnalyzer,self).__init__(cfg_ana,cfg_comp,looperName)
         self.ptCut_                     = getattr(cfg_ana , "muonPtCut" )
         self.selectClones_              = getattr(cfg_ana , "selectClones" )
+        self.badMuonTag                 = getattr(cfg_ana , "badMuonTag" , "badGlobalMuon" )
 
     def declareHandles(self):
         super(badGlobalMuonAnalyzer, self).declareHandles()
@@ -82,8 +83,10 @@ class badGlobalMuonAnalyzer( Analyzer ):
                         bad = True;
                         break;
             if (bad):
-                muons[i].isBadGlobalMuon = 1
+                setattr( muons[i], self.badMuonTag ) = 1
                 out.append(muons[i]);
+            else:
+                setattr( muons[i], self.badMuonTag ) = 0
         return out
 
 
@@ -98,11 +101,6 @@ class badGlobalMuonAnalyzer( Analyzer ):
         allVertices = event.vertices
 
         badMuons = self.tagBadGlobalMuons( allMuons, allVertices )
-
-        #nmus = len(allMuons)
-        #if nmus:
-        #  print "%s Muons"%nmus
-        #  print allMuons
 
         if badMuons:
             print "-------------------------------------------"
