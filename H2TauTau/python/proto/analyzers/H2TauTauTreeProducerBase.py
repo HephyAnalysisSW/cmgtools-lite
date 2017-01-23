@@ -1,7 +1,7 @@
 from PhysicsTools.Heppy.analyzers.core.TreeAnalyzerNumpy import TreeAnalyzerNumpy
 
 from CMGTools.H2TauTau.proto.analyzers.varsDictionary import vars as var_dict
-from CMGTools.H2TauTau.proto.analyzers.TreeVariables import event_vars, ditau_vars, particle_vars, lepton_vars, electron_vars, muon_vars, tau_vars, jet_vars, jet_vars_extra, geninfo_vars, vbf_vars, svfit_vars
+from CMGTools.H2TauTau.proto.analyzers.TreeVariables import event_vars, ditau_vars, particle_vars, lepton_vars, electron_vars, muon_vars, tau_vars, tau_vars_extra, jet_vars, jet_vars_extra, geninfo_vars, vbf_vars, svfit_vars
 
 from CMGTools.H2TauTau.proto.physicsobjects.DiObject import DiTau
 
@@ -53,8 +53,12 @@ class H2TauTauTreeProducerBase(TreeAnalyzerNumpy):
     def fillGeneric(self, tree, var_list, obj, obj_name=None):
         for var in var_list:
             names = [obj_name, var.name] if obj_name else [var.name]
-            self.fill(tree, '_'.join(names), var.function(obj))
-
+            try:
+                self.fill(tree, '_'.join(names), var.function(obj))
+            except TypeError:
+                print 'Problem in filling value into tree'
+                print var.name, var.function(obj), obj
+                raise
 
     def declareVariables(self, setup):
         ''' Declare all variables here in derived calss
@@ -99,19 +103,21 @@ class H2TauTauTreeProducerBase(TreeAnalyzerNumpy):
         self.fill(tree, '{p_name}_pdgId'.format(p_name=p_name), particle.pdgId() if not hasattr(particle, 'detFlavour') else particle.detFlavour)
 
     # di-tau
-    def bookDiLepton(self, tree, fill_svfit=True):
+    def bookDiLepton(self, tree, fill_svfit=True, svfit_extra=False):
         # RIC: to add
         # svfit 'fittedDiTauSystem', 'fittedMET', 'fittedTauLeptons'
         self.bookGeneric(tree, ditau_vars)
         if fill_svfit:
             self.bookGeneric(tree, svfit_vars)
+        if svfit_extra:
             self.bookParticle(tree, 'svfit_l1')
             self.bookParticle(tree, 'svfit_l2')
 
-    def fillDiLepton(self, tree, diLepton, fill_svfit=True):
+    def fillDiLepton(self, tree, diLepton, fill_svfit=True, svfit_extra=False):
         self.fillGeneric(tree, ditau_vars, diLepton)
         if fill_svfit:
             self.fillGeneric(tree, svfit_vars, diLepton)
+        if svfit_extra:
             if hasattr(diLepton, 'svfit_Taus'):
                 for i, tau in enumerate(diLepton.svfitTaus()):
                     self.fillParticle(tree, 'svfit_l' + str(i + 1), tau)
@@ -147,13 +153,17 @@ class H2TauTauTreeProducerBase(TreeAnalyzerNumpy):
         self.fillGeneric(tree, electron_vars, ele, p_name)
 
     # tau
-    def bookTau(self, tree, p_name):
+    def bookTau(self, tree, p_name, fill_extra=False):
         self.bookLepton(tree, p_name)
         self.bookGeneric(tree, tau_vars, p_name)
+        if fill_extra:
+            self.bookGeneric(tree, tau_vars_extra, p_name)
 
-    def fillTau(self, tree, p_name, tau):
+    def fillTau(self, tree, p_name, tau, fill_extra=False):
         self.fillLepton(tree, p_name, tau)
         self.fillGeneric(tree, tau_vars, tau, p_name)
+        if fill_extra:
+            self.fillGeneric(tree, tau_vars_extra, tau, p_name)
 
     # jet
     def bookJet(self, tree, p_name, fill_extra=False):
@@ -161,7 +171,7 @@ class H2TauTauTreeProducerBase(TreeAnalyzerNumpy):
         self.bookGeneric(tree, jet_vars, p_name)
         if fill_extra:
             self.bookGeneric(tree, jet_vars_extra, p_name)
-        
+
     def fillJet(self, tree, p_name, jet, fill_extra=False):
         self.fillParticle(tree, p_name, jet)
         self.fillGeneric(tree, jet_vars, jet, p_name)
@@ -182,18 +192,19 @@ class H2TauTauTreeProducerBase(TreeAnalyzerNumpy):
     def fillGenInfo(self, tree, event):
         self.fillGeneric(tree, geninfo_vars, event)
 
-
     # additional METs
     def bookExtraMetInfo(self, tree):
         self.var(tree, 'puppimet_pt')
         self.var(tree, 'puppimet_phi')
         self.var(tree, 'puppimet_mt1')
         self.var(tree, 'puppimet_mt2')
+        self.var(tree, 'puppimet_mttotal')
 
         self.var(tree, 'pfmet_pt')
         self.var(tree, 'pfmet_phi')
         self.var(tree, 'pfmet_mt1')
         self.var(tree, 'pfmet_mt2')
+        self.var(tree, 'pfmet_mttotal')
 
     def fillExtraMetInfo(self, tree, event):
         self.fill(tree, 'puppimet_pt', event.puppimet.pt())
@@ -206,18 +217,38 @@ class H2TauTauTreeProducerBase(TreeAnalyzerNumpy):
         self.fill(tree, 'pfmet_mt1', DiTau.calcMT(event.pfmet, event.leg1))
         self.fill(tree, 'pfmet_mt2', DiTau.calcMT(event.pfmet, event.leg2))
 
+    # TauSpinner information
+    def bookTauSpinner(self, tree):
+        self.var(tree, 'TauSpinnerWTisValid')
+        self.var(tree, 'TauSpinnerWT')
+        self.var(tree, 'TauSpinnerWThminus')
+        self.var(tree, 'TauSpinnerWThplus')
+        self.var(tree, 'TauSpinnerTauPolFromZ')
+        self.var(tree, 'TauSpinnerWRight')
+        self.var(tree, 'TauSpinnerWLeft')
+        self.var(tree, 'TauSpinnerIsRightLeft')
 
-    # quark and gluons
-    def bookQG(self, tree, maxNGenJets=2):
-        for i in range(0, maxNGenJets):
-            self.bookGenParticle(self.tree, 'genqg_{i}'.format(i=i))
+    def fillTauSpinner(self, tree, event):
+        self.fill(tree, 'TauSpinnerWTisValid', event.TauSpinnerWTisValid)
+        self.fill(tree, 'TauSpinnerWT', float(event.TauSpinnerWT))
+        self.fill(tree, 'TauSpinnerWThminus', float(event.TauSpinnerWThminus))
+        self.fill(tree, 'TauSpinnerWThplus', float(event.TauSpinnerWThplus))
+        self.fill(tree, 'TauSpinnerTauPolFromZ', float(event.TauSpinnerTauPolFromZ))
+        self.fill(tree, 'TauSpinnerWRight', float(event.TauSpinnerWRight))
+        self.fill(tree, 'TauSpinnerWLeft', float(event.TauSpinnerWLeft))
+        self.fill(tree, 'TauSpinnerIsRightLeft', float(event.TauSpinnerIsRightLeft))
 
-    def fillQG(self, tree, event, maxNGenJets=2):
-        # Fill hard quarks/gluons
-        quarksGluons = [p for p in event.genParticles if abs(p.pdgId()) in (1, 2, 3, 4, 5, 21) and
-                        p.status() == 3 and
-                        (p.numberOfDaughters() == 0 or p.daughter(0).status() != 3)]
-        quarksGluons.sort(key=lambda x: -x.pt())
-        for i in range(0, min(maxNGenJets, len(quarksGluons))):
-            self.fillGenParticle(
-                tree, 'genqg_{i}'.format(i=i), quarksGluons[i])
+    def bookTopPtReweighting(self, tree):
+        self.var(tree, 'gen_top_1_pt')
+        self.var(tree, 'gen_top_2_pt')
+        self.var(tree, 'gen_top_weight')
+
+    def fillTopPtReweighting(self, tree, event):
+        '''FIXME: Move this to extra class - only do inline calculations here'''
+        if not self.cfg_comp.isMC:
+            self.fill(tree, 'gen_top_weight', 1.)
+            return
+
+        self.fill(tree, 'gen_top_1_pt', getattr(event, 'top_1_pt', -999.))
+        self.fill(tree, 'gen_top_2_pt', getattr(event, 'top_2_pt', -999.))
+        self.fill(tree, 'gen_top_weight', getattr(event, 'topweight', 1.))

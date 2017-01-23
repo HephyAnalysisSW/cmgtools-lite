@@ -5,6 +5,9 @@ from ROOT import gSystem
 from ROOT import LorentzVector
 from PhysicsTools.Heppy.analyzers.core.Analyzer import Analyzer
 
+from CMGTools.H2TauTau.proto.analyzers.HTTGenAnalyzer import HTTGenAnalyzer
+p4sum = HTTGenAnalyzer.p4sum
+
 gSystem.Load("libCMGToolsH2TauTau")
 
 from ROOT import HTTRecoilCorrector as RC
@@ -16,19 +19,21 @@ class RecoilCorrector(Analyzer):
     def __init__(self, cfg_ana, cfg_comp, looperName):
         super(RecoilCorrector, self).__init__(cfg_ana, cfg_comp, looperName)
 
-        self.rcMVAMET = RC('CMGTools/H2TauTau/data/recoilMvaMEt_76X_newTraining_MG5.root')
-        self.rcPFMET = RC('CMGTools/H2TauTau/data/recoilPFMEt_76X_MG5.root')
+        self.rcMVAMET = RC('CMGTools/H2TauTau/data/MvaMET_2016BCD.root')
+        self.rcPFMET = RC('CMGTools/H2TauTau/data/TypeIPFMET_2016BCD.root')
 
         wpat = re.compile('W\d?Jet.*')
         match = wpat.match(self.cfg_comp.name)
         self.isWJets = not (match is None)
 
         # Apply to signal, DY, and W+jets samples
-        self.apply = 'Higgs' in self.cfg_comp.name or 'DY' in self.cfg_comp.name or self.isWJets
+        self.apply = getattr(self.cfg_ana, 'apply', False) and ('Higgs' in self.cfg_comp.name or 'DY' in self.cfg_comp.name or self.isWJets)
+
 
 
     def getGenP4(self, event):
-        leptons_prompt = [p for p in event.generatorSummary if abs(p.pdgId()) in [11, 12, 13, 14] and p.fromHardProcessFinalState()]
+        leptons_prompt = [p for p in event.genParticles if abs(p.pdgId()) in [11, 12, 13, 14] and p.fromHardProcessFinalState()]
+        leptons_prompt_vis = [p for p in leptons_prompt if abs(p.pdgId()) not in [12, 14]]
 
         taus_prompt = [p for p in event.genParticles if p.statusFlags().isDirectHardProcessTauDecayProduct()]
 
@@ -39,19 +44,11 @@ class RecoilCorrector(Analyzer):
                 print 'ERROR: No 2 prompt leptons found'
                 # import pdb; pdb.set_trace()
 
-        vis = leptons_prompt + taus_prompt_vis
+        vis = leptons_prompt_vis + taus_prompt_vis
         all = leptons_prompt + taus_prompt
 
         if len(vis) == 0 or len(all) == 0:
             return 0., 0., 0., 0.
-
-        def p4sum(ps):
-            if not ps:
-                return None
-            p4 = ps[0].p4()
-            for i in xrange(len(ps) - 1):
-                p4 += ps[i + 1].p4()
-            return p4
 
         taus = []
         for t in taus_prompt:
@@ -66,11 +63,22 @@ class RecoilCorrector(Analyzer):
 
         p4 = p4sum(all)
         p4_vis = p4sum(vis)
+
+        event.parentBoson = p4
+        event.parentBoson.detFlavour = 0
+
         return p4.px(), p4.py(), p4_vis.px(), p4_vis.py()
 
 
     def process(self, event):
-        if not self.cfg_comp.isMC or not self.apply:
+        if not self.cfg_comp.isMC:
+            return
+
+        # Calculate generator four-momenta even if not applying corrections
+        # to save them in final trees
+        gen_z_px, gen_z_py, gen_vis_z_px, gen_vis_z_py = self.getGenP4(event)
+
+        if not self.apply:
             return
 
         dil = event.diLepton
@@ -80,7 +88,6 @@ class RecoilCorrector(Analyzer):
         if self.isWJets:
             n_jets_30 += 1
 
-        gen_z_px, gen_z_py, gen_vis_z_px, gen_vis_z_py = self.getGenP4(event)
 
         # Correct MVA MET
         px_old = dil.met().px()

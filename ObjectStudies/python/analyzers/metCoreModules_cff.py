@@ -49,6 +49,22 @@ triggerFlagsAna = cfg.Analyzer(
         # "<name>" : [ 'HLT_<Something>_v*', 'HLT_<SomethingElse>_v*' ] 
     }
     )
+
+from CMGTools.TTHAnalysis.analyzers.badChargedHadronAnalyzer import badChargedHadronAnalyzer
+badChargedHadronAna = cfg.Analyzer(
+    badChargedHadronAnalyzer, name = 'badChargedHadronAna',
+    muons='slimmedMuons',
+    packedCandidates = 'packedPFCandidates',
+)
+
+from CMGTools.TTHAnalysis.analyzers.badMuonAnalyzer import badMuonAnalyzer
+badMuonAna = cfg.Analyzer(
+    badMuonAnalyzer, name = 'badMuonAna',
+    muons='slimmedMuons',
+    packedCandidates = 'packedPFCandidates',
+)
+
+
 # Create flags for MET filter bits
 eventFlagsAna = cfg.Analyzer(
     TriggerBitAnalyzer, name="EventFlags",
@@ -60,6 +76,7 @@ eventFlagsAna = cfg.Analyzer(
         "HBHENoiseIsoFilter" : [ "Flag_HBHENoiseIsoFilter" ],
         "CSCTightHaloFilter" : [ "Flag_CSCTightHaloFilter" ],
         "CSCTightHalo2015Filter" : [ "Flag_CSCTightHalo2015Filter" ],
+        "globalTightHalo2016Filter" : [ "Flag_globalTightHalo2016Filter" ],
         "eeBadScFilter" : [ "Flag_eeBadScFilter" ],
         "EcalDeadCellTriggerPrimitiveFilter" : [ "Flag_EcalDeadCellTriggerPrimitiveFilter" ],
     }
@@ -112,6 +129,7 @@ genAna = cfg.Analyzer(
 
 lheWeightAna = cfg.Analyzer(
     LHEWeightAnalyzer, name="LHEWeightAnalyzer",
+    useLumiInfo=False
 )
 
 
@@ -135,7 +153,13 @@ lepAna = cfg.Analyzer(
     rhoElectron = 'fixedGridRhoFastjetCentralNeutral',
     # energy scale corrections and ghost muon suppression (off by default)
     doMuonScaleCorrections=False,
-    doElectronScaleCorrections=False, # "embedded" in 5.18 for regression
+    doElectronScaleCorrections=False,
+#    doElectronScaleCorrections = {
+#        'data' : 'EgammaAnalysis/ElectronTools/data/ScalesSmearings/80X_Golden22June_approval',
+#        'GBRForest': ('$CMSSW_BASE/src/CMGTools/RootTools/data/egamma_epComb_GBRForest_76X.root',
+#                      'gedelectron_p4combination_25ns'),
+#        'isSync': False
+#        },
     doSegmentBasedMuonCleaning=False,
     # inclusive very loose muon selection
     inclusive_muon_id  = "POG_ID_Loose",
@@ -152,14 +176,14 @@ lepAna = cfg.Analyzer(
     loose_muon_relIso = 0.5,
     muon_dxydz_track = "innerTrack",
     # inclusive very loose electron selection
-    inclusive_electron_id  = "POG_Cuts_ID_SPRING15_25ns_v1_ConvVetoDxyDz_Veto_full5x5",
+    inclusive_electron_id  = "POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Loose",
     inclusive_electron_pt  = 10,
     inclusive_electron_eta = 2.5,
     inclusive_electron_dxy = 0.5,
     inclusive_electron_dz  = 1.0,
     inclusive_electron_lostHits = 1.0,
     # loose electron selection
-    loose_electron_id     = "POG_Cuts_ID_SPRING15_25ns_v1_ConvVetoDxyDz_Veto_full5x5",
+    loose_electron_id     = "POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Loose",
     loose_electron_pt     = 10,
     loose_electron_eta    = 2.4,
     loose_electron_dxy    = 0.05,
@@ -171,8 +195,8 @@ lepAna = cfg.Analyzer(
     mu_effectiveAreas = "Spring15_25ns_v1", #(can be 'Data2012' or 'Phys14_25ns_v1')
     # electron isolation correction method (can be "rhoArea" or "deltaBeta")
     ele_isoCorr = "deltaBeta" ,
-    ele_effectiveAreas = "Spring15_25ns_v1" , #(can be 'Data2012' or 'Phys14_25ns_v1')
-    ele_tightId = "Cuts_PHYS14_25ns_v1_ConvVetoDxyDz" ,
+    ele_effectiveAreas = "Spring16_25ns_v1" , #(can be 'Data2012' or 'Phys14_25ns_v1')
+    ele_tightId = "Cuts_SPRING16_25ns_v1_ConvVetoDxyDz" ,
     # Mini-isolation, with pT dependent cone: will fill in the miniRelIso, miniRelIsoCharged, miniRelIsoNeutral variables of the leptons (see https://indico.cern.ch/event/368826/ )
     doMiniIsolation = False, # off by default since it requires access to all PFCandidates 
     packedCandidates = 'packedPFCandidates',
@@ -181,7 +205,7 @@ lepAna = cfg.Analyzer(
     # minimum deltaR between a loose electron and a loose muon (on overlaps, discard the electron)
     min_dr_electron_muon = 0.02,
     # do MC matching 
-    do_mc_match = True, # note: it will in any case try it only on MC, not on data
+    do_mc_match = False, # note: it will in any case try it only on MC, not on data
     match_inclusiveLeptons = False, # match to all inclusive leptons
     do_mc_match_photons = False, # do not do MC matching of electrons to photons
     )
@@ -200,11 +224,11 @@ ttHLepSkim = cfg.Analyzer(
 photonAna = cfg.Analyzer(
     PhotonAnalyzer, name='photonAnalyzer',
     photons='slimmedPhotons',
-#    doPhotonScaleCorrections=False,
-    doPhotonScaleCorrections = {
-        'data' : 'EgammaAnalysis/ElectronTools/data/76X_16DecRereco_2015',
-        'isSync': False
-        },
+    doPhotonScaleCorrections=False,
+#    doPhotonScaleCorrections = {
+#        'data' : 'EgammaAnalysis/ElectronTools/data/ScalesSmearings/80X_Golden22June_approval',
+#        'isSync': False
+#        },
     ptMin = 30,
     etaMax = 2.5,
     gammaID = "POG_SPRING15_25ns_Tight",
@@ -225,8 +249,8 @@ photonAna = cfg.Analyzer(
 
 metAna = cfg.Analyzer(
     METAnalyzer, name="metAnalyzer",
-    metCollection     = "slimmedMETs",
-    noPUMetCollection = "slimmedMETs",    
+    metCollection     = ("slimmedMETs","","RERUN"),
+    noPUMetCollection = ("slimmedMETs","","RERUN"),
     copyMETsByValue = False,
     doTkMet = True,
     includeTkMetCHS = True,
@@ -263,8 +287,8 @@ metAnaScaleDown = metAna.clone(name="metAnalyzerScaleDown",
 
 metPuppiAna = cfg.Analyzer(
     METAnalyzer, name="metAnalyzerPuppi",
-    metCollection     = "slimmedMETsPuppi",
-    noPUMetCollection = "slimmedMETsPuppi",    
+    metCollection     = ("slimmedMETsPuppi","","RERUN"),
+    noPUMetCollection = ("slimmedMETsPuppi","","RERUN"),
     copyMETsByValue = False,
     doTkMet = False,
     includeTkMetCHS = False,
@@ -274,24 +298,25 @@ metPuppiAna = cfg.Analyzer(
     doMetNoMu = False,
     doMetNoEle = False,
     doMetNoPhoton = False,
-    recalibrate = "type1", # or "type1", or True
+##    recalibrate = "type1", # or "type1", or True
+    recalibrate = False, # or "type1", or True or False if pre-processor is used
     applyJetSmearing = False, # does nothing unless the jet smearing is turned on in the jet analyzer
     old74XMiniAODs = False, # set to True to get the correct Raw MET when running on old 74X MiniAODs
-    jetAnalyzerCalibrationPostFix = "Puppi",
+    jetAnalyzerPostFix = "Puppi",
     candidates='packedPFCandidates',
     candidatesTypes='std::vector<pat::PackedCandidate>',
     dzMax = 0.1,
     collectionPostFix = "Puppi",
     )
 
-metPuppiAnaScaleUp = metAna.clone(name="metAnalyzerPuppiScaleUp",
+metPuppiAnaScaleUp = metPuppiAna.clone(name="metAnalyzerPuppiScaleUp",
     copyMETsByValue = True,
     recalibrate = "type1",
     jetAnalyzerPostFix = "Puppi_jecUp",
     collectionPostFix = "Puppi_jecUp",
     )
 
-metPuppiAnaScaleDown = metAna.clone(name="metAnalyzerPuppiScaleDown",
+metPuppiAnaScaleDown = metPuppiAna.clone(name="metAnalyzerPuppiScaleDown",
     copyMETsByValue = True,
     recalibrate = "type1",
     jetAnalyzerPostFix = "Puppi_jecDown",
@@ -304,6 +329,40 @@ metPuppiAnaScaleDown = metAna.clone(name="metAnalyzerPuppiScaleDown",
 ##------------------------------------------
 
 from CMGTools.TTHAnalysis.analyzers.ttHmllSkimmer import ttHmllSkimmer
+
+genZtautau = cfg.Analyzer(
+            ttHmllSkimmer, name='ttHmllSkimmer',
+            lepId=[15],
+            idCut  = "", # not used
+            maxLeps=10, # not used
+            massMin=81, # not used
+            massMax=101, # not used
+            doZGen = True,
+            doZReco = False
+            )
+
+genZmumu = cfg.Analyzer(
+            ttHmllSkimmer, name='ttHmllSkimmer',
+            lepId=[13],
+            idCut  = "", # not used
+            maxLeps=10, # not used
+            massMin=81, # not used
+            massMax=101, # not used
+            doZGen = True,
+            doZReco = False
+            )
+
+genZee = cfg.Analyzer(
+            ttHmllSkimmer, name='ttHmllSkimmer',
+            lepId=[11],
+            idCut  = "", # not used
+            maxLeps=10, # not used
+            massMin=81, # not used
+            massMax=101, # not used
+            doZGen = True,
+            doZReco = False
+            )
+
 # Tree Producer                                                                                                                                                                         
 ttHZskim = cfg.Analyzer(
             ttHmllSkimmer, name='ttHmllSkimmer',
@@ -330,17 +389,18 @@ jetAna = cfg.Analyzer(
     jetPt = 25.,
     jetEta = 4.7,
     jetEtaCentral = 2.4,
+    cleanJetsFromLeptons = True,
     jetLepDR = 0.4,
     jetLepArbitration = (lambda jet,lepton : lepton), # you can decide which to keep in case of overlaps; e.g. if the jet is b-tagged you might want to keep the jet
     cleanSelectedLeptons = True, #Whether to clean 'selectedLeptons' after disambiguation. Treat with care (= 'False') if running Jetanalyzer more than once
     minLepPt = 10,
-    relaxJetId = False,
+    relaxJetId = True,
     doPuId = False, # Not commissioned in 7.0.X
     recalibrateJets = True, #'MC', # True, False, 'MC', 'Data'
     applyL2L3Residual = True, # Switch to 'Data' when they will become available for Data
     recalibrationType = "AK4PFchs",
-    mcGT     = "Fall15_25nsV2_MC",
-    dataGT   = "Fall15_25nsV2_DATA",
+    mcGT     = "Spring16_25nsV10_MC",
+    dataGT   = "Spring16_25nsV10_DATA",
     jecPath = "${CMSSW_BASE}/src/CMGTools/RootTools/data/jec/",
     shiftJEC = 0, # set to +1 or -1 to apply +/-1 sigma shift to the nominal jet energies
     addJECShifts = False, # if true, add  "corr", "corrJECUp", and "corrJECDown" for each jet (requires uncertainties to be available!)
@@ -356,23 +416,28 @@ jetAna = cfg.Analyzer(
     calculateSeparateCorrections = True, # should be True if recalibrateJets is True, otherwise L1s will be inconsistent
     calculateType1METCorrection  = True,
     type1METParams = { 'jetPtThreshold':15., 'skipEMfractionThreshold':0.9, 'skipMuons':True },
-    collectionPostFix = ""
+    collectionPostFix = "",
+    storeLowPtJets = False,
     )
 
 ## Jets Analyzer (generic)
 jetAnaScaleUp = jetAna.clone(name='jetAnalyzerScaleUp',
+    copyJetsByValue = True,
     jetCol = 'slimmedJets',
     shiftJEC = +1, # set to +1 or -1 to apply +/-1 sigma shift to the nominal jet energies
     collectionPostFix = "_jecUp",
     calculateType1METCorrection  = True,
+    cleanSelectedLeptons = False,
    )
 
 ## Jets Analyzer (generic)
 jetAnaScaleDown = jetAna.clone(name='jetAnalyzerScaleDown',
+    copyJetsByValue = True,
     jetCol = 'slimmedJets',
     shiftJEC = -1, # set to +1 or -1 to apply +/-1 sigma shift to the nominal jet energies
     collectionPostFix = "_jecDown",
     calculateType1METCorrection  = True,
+    cleanSelectedLeptons = False,
     )
 
 
@@ -385,6 +450,7 @@ jetPuppiAna = cfg.Analyzer(
     jetPt = 25.,
     jetEta = 4.7,
     jetEtaCentral = 2.4,
+    cleanJetsFromLeptons = True,
     jetLepDR = 0.4,
     jetLepArbitration = (lambda jet,lepton : lepton), # you can decide which to keep in case of overlaps; e.g. if the jet is b-tagged you might want to keep the jet
     cleanSelectedLeptons = True, #Whether to clean 'selectedLeptons' after disambiguation. Treat with care (= 'False') if running Jetanalyzer more than once
@@ -394,8 +460,8 @@ jetPuppiAna = cfg.Analyzer(
     recalibrateJets = True, #'MC', # True, False, 'MC', 'Data'
     applyL2L3Residual = True, # Switch to 'Data' when they will become available for Data
     recalibrationType = "AK4PFPuppi", ## waiting for JEC those not exist yet
-    mcGT     = "Fall15_25nsV2_MC",
-    dataGT   = "Fall15_25nsV2_DATA",
+    mcGT     = "Spring16_25nsV10_MC",
+    dataGT   = "Spring16_25nsV10_DATA",
     jecPath = "${CMSSW_BASE}/src/CMGTools/RootTools/data/jec/",
     shiftJEC = 0, # set to +1 or -1 to apply +/-1 sigma shift to the nominal jet energies
     addJECShifts = False, # if true, add  "corr", "corrJECUp", and "corrJECDown" for each jet (requires uncertainties to be available!)
@@ -411,23 +477,28 @@ jetPuppiAna = cfg.Analyzer(
     calculateSeparateCorrections = True, # should be True if recalibrateJets is True, otherwise L1s will be inconsistent
     calculateType1METCorrection  = True,
     type1METParams = { 'jetPtThreshold':15., 'skipEMfractionThreshold':0.9, 'skipMuons':True },
-    collectionPostFix = "Puppi"
+    collectionPostFix = "Puppi",
+    storeLowPtJets = False,
     )
 
 ## Jets Analyzer (generic)
 jetPuppiAnaScaleUp = jetPuppiAna.clone(name='jetAnalyzerPuppiScaleUp',
+    copyJetsByValue = True,
     jetCol = 'slimmedJetsPuppi',
     shiftJEC = +1, # set to +1 or -1 to apply +/-1 sigma shift to the nominal jet energies
     collectionPostFix = "Puppi_jecUp",
     calculateType1METCorrection  = True,
+    cleanSelectedLeptons = False
    )
 
 ## Jets Analyzer (generic)
 jetPuppiAnaScaleDown = jetPuppiAna.clone(name='jetAnalyzerPuppiScaleDown',
+    copyJetsByValue = True,
     jetCol = 'slimmedJetsPuppi',
     shiftJEC = -1, # set to +1 or -1 to apply +/-1 sigma shift to the nominal jet energies
     collectionPostFix = "Puppi_jecDown",
     calculateType1METCorrection  = True,
+    cleanSelectedLeptons = False
     )
 
 
@@ -480,6 +551,8 @@ metCoreSequence = [
     metPuppiAna,
     metPuppiAnaScaleUp,
     metPuppiAnaScaleDown,
+    badChargedHadronAna,
+    badMuonAna,
     eventFlagsAna,
 ##    hbheFilterAna,
 ##### tree
