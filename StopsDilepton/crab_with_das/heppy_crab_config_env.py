@@ -59,6 +59,16 @@ config.JobType.inputFiles.append("sample_"+datasetname+".pkl")
 if "INPUT_DBS" in os.environ:
   config.Data.inputDBS = os.environ["INPUT_DBS"]
 
+#import CMGTools.StopsDilepton.crab_with_das.site_white_list as site_white_list
+#vetolist=["T3_KR_KISTI"]
+#def isOK( site ):
+#    return ( not site.startswith("T1") ) and ( not site in vetolist )
+#
+#whitelist = filter( lambda site:isOK(site), site_white_list.site_white_list( dataset ) )
+#
+#print "Using whitelist from DAS (only T2, T3) to enforce data locality:", whitelist
+#config.Site.whitelist = whitelist 
+
 
 ## if NEVENTS variable is set then only nevents will be run
 #try: 

@@ -1,6 +1,6 @@
 #-------- SAMPLES AND TRIGGERS -----------
 #from CMGTools.TTHAnalysis.samples.samples_13TeV_PHYS14 import *
-#from CMGTools.StopsDilepton.samples import *
+from CMGTools.StopsDilepton.samples import *
 from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
 from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
 from CMGTools.RootTools.samples.samples_13TeV_signals import *

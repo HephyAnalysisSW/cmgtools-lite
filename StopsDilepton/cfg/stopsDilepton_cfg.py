@@ -8,6 +8,7 @@ from PhysicsTools.HeppyCore.framework.heppy_loop import getHeppyOption
 #Load all analyzers
 from CMGTools.TTHAnalysis.analyzers.susyCore_modules_cff import *
 
+storePackedCandidates = True
 ####### Leptons  #####
 # lep collection
 lepAna.packedCandidates = 'packedPFCandidates'
@@ -84,7 +85,7 @@ if doElectronScaleCorrections:
     }
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 1
+ttHLepSkim.minLeptons = 0
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
@@ -150,6 +151,20 @@ nISRAna = cfg.Analyzer(
     )
 susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
                         nISRAna)
+
+# Tree Producer
+from CMGTools.StopsDilepton.treeProducerStopsDilepton import *
+
+if storePackedCandidates:
+    from CMGTools.TTHAnalysis.analyzers.packedCandidateAnalyzer import packedCandidateAnalyzer
+    packedCandidateAna = cfg.Analyzer(
+        packedCandidateAnalyzer, name = 'packedCandidateAnalyzer',
+        packedCandidates = 'packedPFCandidates',
+    )
+    susyCoreSequence.append( packedCandidateAna )
+
+    susySingleLepton_collections.update( { "packedCandidates" : NTupleCollection("pf",     particleType, 15000, help="packed candidates (pf)")} )
+
 
 from PhysicsTools.Heppy.analyzers.gen.LHEAnalyzer import LHEAnalyzer 
 LHEAna = LHEAnalyzer.defaultConfig
@@ -244,9 +259,6 @@ metPuppiAna = cfg.Analyzer(
     collectionPostFix = "Puppi",
     )
 
-
-# Tree Producer
-from CMGTools.StopsDilepton.treeProducerStopsDilepton import *
 ## Tree Producer
 treeProducer = cfg.Analyzer(
      AutoFillTreeProducer, name='treeProducerSusySingleLepton',
@@ -289,8 +301,8 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [SMS_T2tt_mStop_150to250]
     #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p05]
     #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
-    #selectedComponents = [QCD_Pt_15to3000]
-    selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
+    selectedComponents = [QCD_flat_80X_noPU]
+    #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [DoubleEG_Run2016E_23Sep2016]
     #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]

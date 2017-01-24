@@ -129,7 +129,6 @@ badMuonAnaMoriond2017 = cfg.Analyzer(
     postFix = '',
 )
 
-
 # Select a list of good primary vertices (generic)
 vertexAna = cfg.Analyzer(
     VertexAnalyzer, name="VertexAnalyzer",
@@ -577,7 +576,7 @@ susyCoreSequence = [
     genHiggsAna,
     genHFAna,
     pdfwAna,
-    susyScanAna,
+    #susyScanAna,
     vertexAna,
     lepAna,
     tauAna,
