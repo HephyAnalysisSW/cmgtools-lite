@@ -8,6 +8,7 @@ from PhysicsTools.HeppyCore.framework.heppy_loop import getHeppyOption
 #Load all analyzers
 from CMGTools.TTHAnalysis.analyzers.susyCore_modules_cff import *
 
+storePackedCandidates = True
 ####### Leptons  #####
 # lep collection
 lepAna.packedCandidates = 'packedPFCandidates'
@@ -84,7 +85,7 @@ if doElectronScaleCorrections:
     }
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 1
+ttHLepSkim.minLeptons = 0
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
@@ -139,6 +140,20 @@ nISRAna = cfg.Analyzer(
     )
 susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
                         nISRAna)
+
+# Tree Producer
+from CMGTools.StopsDilepton.treeProducerStopsDilepton import *
+
+if storePackedCandidates:
+    from CMGTools.TTHAnalysis.analyzers.packedCandidateAnalyzer import packedCandidateAnalyzer
+    packedCandidateAna = cfg.Analyzer(
+        packedCandidateAnalyzer, name = 'packedCandidateAnalyzer',
+        packedCandidates = 'packedPFCandidates',
+    )
+    susyCoreSequence.append( packedCandidateAna )
+
+    susySingleLepton_collections.update( { "packedCandidates" : NTupleCollection("pf",     particleType, 15000, help="packed candidates (pf)")} )
+
 
 from PhysicsTools.Heppy.analyzers.gen.LHEAnalyzer import LHEAnalyzer 
 LHEAna = LHEAnalyzer.defaultConfig
@@ -266,9 +281,6 @@ metPuppiAna = cfg.Analyzer(
     collectionPostFix = "Puppi",
     )
 
-
-# Tree Producer
-from CMGTools.StopsDilepton.treeProducerStopsDilepton import *
 ## Tree Producer
 treeProducer = cfg.Analyzer(
      AutoFillTreeProducer, name='treeProducerSusySingleLepton',

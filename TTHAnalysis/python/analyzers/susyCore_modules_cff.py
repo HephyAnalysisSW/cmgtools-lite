@@ -129,7 +129,6 @@ badMuonAnaMoriond2017 = cfg.Analyzer(
     postFix = '',
 )
 
-
 # Select a list of good primary vertices (generic)
 vertexAna = cfg.Analyzer(
     VertexAnalyzer, name="VertexAnalyzer",
