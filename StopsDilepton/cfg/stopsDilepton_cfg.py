@@ -8,6 +8,7 @@ from PhysicsTools.HeppyCore.framework.heppy_loop import getHeppyOption
 #Load all analyzers
 from CMGTools.TTHAnalysis.analyzers.susyCore_modules_cff import *
 
+storePackedCandidates = True
 ####### Leptons  #####
 # lep collection
 lepAna.packedCandidates = 'packedPFCandidates'
@@ -46,6 +47,13 @@ elif eleID == "Incl": # as inclusive as possible
   lepAna.inclusive_electron_dz     = 999. # no cut since embedded in ID
 
 ## MUONS
+# store everything
+lepAna.inclusive_muon_dxy = 999.
+lepAna.inclusive_muon_dz  = 999.
+lepAna.inclusive_muon_eta = 999.
+lepAna.inclusive_muon_id = None#   POG_ID_Loose
+lepAna.inclusive_muon_pt = 0.
+
 lepAna.loose_muon_pt  = 5
 
 # Isolation
@@ -144,6 +152,20 @@ nISRAna = cfg.Analyzer(
 susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
                         nISRAna)
 
+# Tree Producer
+from CMGTools.StopsDilepton.treeProducerStopsDilepton import *
+
+if storePackedCandidates:
+    from CMGTools.TTHAnalysis.analyzers.packedCandidateAnalyzer import packedCandidateAnalyzer
+    packedCandidateAna = cfg.Analyzer(
+        packedCandidateAnalyzer, name = 'packedCandidateAnalyzer',
+        packedCandidates = 'packedPFCandidates',
+    )
+    susyCoreSequence.append( packedCandidateAna )
+
+    susySingleLepton_collections.update( { "packedCandidates" : NTupleCollection("pf",     particleType, 15000, help="packed candidates (pf)")} )
+
+
 from PhysicsTools.Heppy.analyzers.gen.LHEAnalyzer import LHEAnalyzer 
 LHEAna = LHEAnalyzer.defaultConfig
 
@@ -237,9 +259,6 @@ metPuppiAna = cfg.Analyzer(
     collectionPostFix = "Puppi",
     )
 
-
-# Tree Producer
-from CMGTools.StopsDilepton.treeProducerStopsDilepton import *
 ## Tree Producer
 treeProducer = cfg.Analyzer(
      AutoFillTreeProducer, name='treeProducerSusySingleLepton',
@@ -278,11 +297,12 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
     from CMGTools.StopsDilepton.samples import *
 
-    selectedComponents = [TTbarDMJets_scalar_Mchi_50_Mphi_300]
-    # selectedComponents = [SMS_T2tt_mStop_150to250]
+    #selectedComponents = [TTbarDMJets_scalar_Mchi_50_Mphi_300]
+    #selectedComponents = [SMS_T2tt_mStop_150to250]
+    #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p05]
     #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
-    #selectedComponents = [QCD_Pt_15to3000]
-    #selectedComponents = [DoubleMuon_Run2016C_23Sep2016_v1]
+    selectedComponents = [QCD_flat_80X_noPU]
+    #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [DoubleEG_Run2016E_23Sep2016]
     #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
