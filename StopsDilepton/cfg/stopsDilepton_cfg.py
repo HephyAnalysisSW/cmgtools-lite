@@ -117,6 +117,14 @@ if isTTDM:
     susyCoreSequence.remove( triggerFlagsAna )
 
 metAna.recalibrate = "type1" 
+#metAna.doTkMet = True # for chs met
+from CMGTools.TTHAnalysis.analyzers.chsMETAnalyzer import chsMETAnalyzer
+chsMETAna = cfg.Analyzer(
+    chsMETAnalyzer,
+    maxDz=0.1,
+    packedCandidates = 'packedPFCandidates', 
+    )
+susyCoreSequence.append( chsMETAna )
 
 ## PHOTONS
 doPhotonScaleCorrections = True
