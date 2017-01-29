@@ -8,7 +8,7 @@ from PhysicsTools.HeppyCore.framework.heppy_loop import getHeppyOption
 #Load all analyzers
 from CMGTools.TTHAnalysis.analyzers.susyCore_modules_cff import *
 
-storePackedCandidates = True
+storePackedCandidates = False
 ####### Leptons  #####
 # lep collection
 lepAna.packedCandidates = 'packedPFCandidates'
@@ -16,7 +16,7 @@ lepAna.packedCandidates = 'packedPFCandidates'
 ## ELECTRONS
 lepAna.loose_electron_pt  = 5
 eleID = "CBID"
-doElectronScaleCorrections = True
+doElectronScaleCorrections = False
 
 if eleID == "CBID":
   lepAna.loose_electron_id  = "POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Veto" # no Iso
@@ -103,7 +103,7 @@ jetAna.smearJets = False #should be false in susycore, already
 jetAna.calculateSeparateCorrections = True #should be true if recalibrate, otherwise L1 inconsistent
 jetAna.calculateType1METCorrection = True
 
-isFastSim = False
+isFastSim = True
 
 jetAna.dataGT   = "Spring16_25nsV6_DATA"
 #jetAna.dataGT   = "80X_dataRun2_2016SeptRepro_v3"
@@ -119,7 +119,7 @@ if isTTDM:
 metAna.recalibrate = "type1" 
 
 ## PHOTONS
-doPhotonScaleCorrections = True
+doPhotonScaleCorrections = False
 
 if doPhotonScaleCorrections:
     photonAna.doPhotonScaleCorrections = {
@@ -284,8 +284,8 @@ sequence = cfg.Sequence(
         treeProducer,
         ])
 
-#if True or getHeppyOption("loadSamples"):
-if getHeppyOption("loadSamples"):
+if True or getHeppyOption("loadSamples"):
+#if getHeppyOption("loadSamples"):
     from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
     from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
     #from CMGTools.StopsDilepton.samplesReReco import *
@@ -299,9 +299,9 @@ if getHeppyOption("loadSamples"):
 
     #selectedComponents = [TTbarDMJets_scalar_Mchi_50_Mphi_300]
     #selectedComponents = [SMS_T2tt_mStop_150to250]
-    #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p05]
+    selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p05]
     #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
-    selectedComponents = [QCD_flat_80X_noPU]
+    #selectedComponents = [QCD_flat_80X_noPU]
     #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [DoubleEG_Run2016E_23Sep2016]
     #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
