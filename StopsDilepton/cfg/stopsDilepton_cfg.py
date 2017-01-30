@@ -85,7 +85,7 @@ if doElectronScaleCorrections:
     }
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 0
+ttHLepSkim.minLeptons = 1
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
@@ -306,9 +306,10 @@ sequence = cfg.Sequence(
         treeProducer,
         ])
 
-if True or getHeppyOption("loadSamples"):
-#if getHeppyOption("loadSamples"):
-    from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
+#if True or getHeppyOption("loadSamples"):
+if getHeppyOption("loadSamples"):
+    #from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
+    from CMGTools.RootTools.samples.samples_13TeV_RunIISummer16MiniAODv2 import *
     from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
     #from CMGTools.StopsDilepton.samplesReReco import *
     #from CMGTools.StopsDilepton.samples_13TeV_Moriond2017 import *
