@@ -127,12 +127,9 @@ susySingleLepton_collections.update({
             ####
 
 
-            #"fatJets"         : NTupleCollection("FatJet",  fatJetType,  15, help="AK8 jets, sorted by pt"),
-            #"reclusteredFatJets" : NTupleCollection("RCFatJet",     fourVectorType,20, help="FatJets1.2 reclusterd from ak4 cleanJetsAll pT > 30, eta <5 "),
             #"discardedJets"    : NTupleCollection("DiscJet", jetTypeSusy, 15, help="Jets discarted in the jet-lepton cleaning"),
             ##------------------------------------------------
             #"ivf"       : NTupleCollection("SV",     svType, 20, help="SVs from IVF"),
-            #"LHE_weights"    : NTupleCollection("LHEweight" ,  weightsInfoType, 1000, mcOnly=True, help="LHE weight info"),
-            "LHEWeights"     : NTupleCollection("LHEWeights",  weightsInfoType, 1000, mcOnly=True, help="LHE weight info read from GenEventInfoProduct"),
+            "LHE_weights"    : NTupleCollection("LHEweight" ,  weightsInfoType, 1000, mcOnly=True, help="LHE weight info"),
 })
 

@@ -64,6 +64,21 @@ else:
 if options.inputDBS:
     os.environ["INPUT_DBS"] = options.inputDBS
 
+###
+# passing options
+from PhysicsTools.HeppyCore.framework.heppy_loop import _heppyGlobalOptions
+import json
+_heppyGlobalOptions["isCrab"] = True
+optjsonfile = open('options.json','w')
+optjsonfile.write(json.dumps(_heppyGlobalOptions))
+optjsonfile.close()
+print '------------------------------', _heppyGlobalOptions
+###
+
+#from CMGTools.RootTools.samples.autoAAAconfig import *
+#autoAAA(selectedComponents)
+
+
 #from PhysicsTools.HeppyCore.framework.heppy import split
 import pickle
 for comp in selectedComponents:
@@ -103,6 +118,8 @@ def makeCMGComponentList(tag, selectedComponents, dpm_path =""):
         os.system("/usr/bin/rfcp  {summary_file}  {dpm_path}/{summary_file}".format(summary_file = summary_file , dpm_path = dpm_path))
 
 makeCMGComponentList( options.production_label , selectedComponents)
+
+
 
 
 

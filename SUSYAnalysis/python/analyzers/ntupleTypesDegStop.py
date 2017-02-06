@@ -85,6 +85,21 @@ photonTypeSusy = NTupleObjectType("gammaSusy", baseObjectTypes = [ photonType ],
 ##------------------------------------------  
 
 jetTypeSusy = NTupleObjectType("jetSusy",  baseObjectTypes = [ jetType ], variables = [
+
+    #NTupleVariable("DFudsg", lambda x : x.btag('deepFlavourJetTags:probudsg'), float, help="Deep flavor discriminator: udsg"),
+    #NTupleVariable("DFb",    lambda x : x.btag('deepFlavourJetTags:probb'),    float, help="Deep flavor discriminator: b"),
+    #NTupleVariable("DFc",    lambda x : x.btag('deepFlavourJetTags:probc'),    float, help="Deep flavor discriminator: c"),
+    #NTupleVariable("DFbb",   lambda x : x.btag('deepFlavourJetTags:probbb'),   float, help="Deep flavor discriminator: bb"),
+    #NTupleVariable("DFcc",   lambda x : x.btag('deepFlavourJetTags:probcc'),   float, help="Deep flavor discriminator: cc"),
+
+    #NTupleVariable("DFCMVAudsg", lambda x : x.btag('deepFlavourCMVAJetTags:probudsg'), float, help="Deep flavor discriminator: udsg"),
+    #NTupleVariable("DFCMVAb",    lambda x : x.btag('deepFlavourCMVAJetTags:probb'),    float, help="Deep flavor discriminator: b"),
+    #NTupleVariable("DFCMVAc",    lambda x : x.btag('deepFlavourCMVAJetTags:probc'),    float, help="Deep flavor discriminator: c"),
+    #NTupleVariable("DFCMVAbb",   lambda x : x.btag('deepFlavourCMVAJetTags:probbb'),   float, help="Deep flavor discriminator: bb"),
+    #NTupleVariable("DFCMVAcc",   lambda x : x.btag('deepFlavourCMVAJetTags:probcc'),   float, help="Deep flavor discriminator: cc"),
+
+
+
     NTupleVariable("mcMatchFlav",  lambda x : getattr(x,'mcMatchFlav',-99), int, mcOnly=True, help="Flavour of associated parton from hard scatter (if any)"),
     NTupleVariable("chHEF", lambda x : x.chargedHadronEnergyFraction(), float, mcOnly = False, help="chargedHadronEnergyFraction (relative to uncorrected jet energy)"),
     NTupleVariable("neHEF", lambda x : x.neutralHadronEnergyFraction(), float, mcOnly = False,help="neutralHadronEnergyFraction (relative to uncorrected jet energy)"),

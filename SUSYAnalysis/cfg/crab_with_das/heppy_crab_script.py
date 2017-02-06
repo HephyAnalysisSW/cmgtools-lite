@@ -43,11 +43,29 @@ cfo = imp.load_source("heppy_config", "heppy_config.py", handle)
 cfg = cfo.cfg
 seq = cfo.sequence
 pre = getattr(cfo, "preprocessor", None)
+print '=========== preprocessor', pre
 handle.close()
 
 from PhysicsTools.HeppyCore.framework.eventsfwlite import Events
 print "creating config with ",[comp],seq
-config = cfg.Config(components=[comp],sequence=seq,preprocessor=pre,services=[],events_class=Events)
+
+
+outputService=[]
+from PhysicsTools.HeppyCore.framework.services.tfile import TFileService
+output_service = cfg.Service(
+    TFileService,
+    'outputfile',
+    name="outputfile",
+    fname='treeProducerSusySingleLepton/tree.root',
+    #fname='susyCounter/counts.root',
+    option='recreate'
+    )
+outputService.append(output_service)
+
+
+
+
+config = cfg.Config(components=[comp],sequence=seq,preprocessor=pre,services=outputService,events_class=Events)
 
 #replace files with crab ones
 config.components[0].files=crabFiles
@@ -101,7 +119,10 @@ print "-"*25
 print "printing output txt files"
 os.system('for i in Output/*/*.txt; do echo $i; cat $i; echo "---------"; done')
 # pack job log files to be sent to output site
+
 os.system("tar czf output.log.tgz Output/")
+#taroutput = os.popen("tar czf output.log.tgz Output/")
+
 
 import ROOT
 f=ROOT.TFile.Open('tree.root')
