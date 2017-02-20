@@ -59,10 +59,11 @@ config.JobType.inputFiles.append("sample_"+datasetname+".pkl")
 if "INPUT_DBS" in os.environ:
   config.Data.inputDBS = os.environ["INPUT_DBS"]
 
-#import CMGTools.StopsDilepton.crab_with_das.site_white_list as site_white_list
-#vetolist=["T3_KR_KISTI"]
+#import CMGTools.StopsDilepton.site_white_list as site_white_list
+##vetolist=["T3_KR_KISTI"]
 #def isOK( site ):
-#    return ( not site.startswith("T1") ) and ( not site in vetolist )
+#    return True
+#    # return ( not site.startswith("T1") ) and ( not site in vetolist )
 #
 #whitelist = filter( lambda site:isOK(site), site_white_list.site_white_list( dataset ) )
 #

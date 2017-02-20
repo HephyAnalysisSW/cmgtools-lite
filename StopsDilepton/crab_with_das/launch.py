@@ -77,7 +77,6 @@ for comp in selectedComponents:
     os.system("which crab")
     os.system("crab submit -c heppy_crab_config_env.py")
 
-
 os.system("rm -f python.tar.gz")
 os.system("rm -f cmgdataset.tar.gz")
 os.system("rm -f cafpython.tar.gz")

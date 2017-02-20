@@ -8,6 +8,9 @@ from PhysicsTools.HeppyCore.framework.heppy_loop import getHeppyOption
 #Load all analyzers
 from CMGTools.TTHAnalysis.analyzers.susyCore_modules_cff import *
 
+# WTF?
+jsonAna.useLumiBlocks = True
+
 storePackedCandidates = False
 ####### Leptons  #####
 # lep collection
@@ -85,7 +88,7 @@ if doElectronScaleCorrections:
     }
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 1
+ttHLepSkim.minLeptons = 0
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
@@ -105,17 +108,20 @@ jetAna.calculateType1METCorrection = True
 
 isFastSim = False
 
-jetAna.dataGT = "Summer16_23Sep2016BCDV3_DATA Summer16_23Sep2016EFV3_DATA Summer16_23Sep2016GV3_DATA Summer16_23Sep2016HV3_DATA"
-jetAna.runsDataJEC = [276811, 278801, 280385]
+#jetAna.dataGT = "Summer16_23Sep2016BCDV3_DATA Summer16_23Sep2016EFV3_DATA Summer16_23Sep2016GV3_DATA Summer16_23Sep2016HV3_DATA"
+#jetAna.runsDataJEC = [276811, 278801, 280385]
+jetAna.dataGT = [ ( -1, "Summer16_23Sep2016BCDV3_DATA"), (276811, "Summer16_23Sep2016EFV3_DATA"), (278801, "Summer16_23Sep2016GV3_DATA"), (280385, "Summer16_23Sep2016HV3_DATA") ]
+
 #jetAna.dataGT   = "80X_dataRun2_2016SeptRepro_v3"
 if isFastSim:
     jetAna.mcGT   = "Spring16_FastSimV1_MC"
 else:
     jetAna.mcGT   = "Summer16_23Sep2016V3_MC"
 
+# if isData: ## not going to work on MC
+eventFlagsAna.triggerBits.update( {'badMuons':['Flag_badMuons'], 'duplicateMuons':['Flag_duplicateMuons'], 'noBadMuons':['Flag_noBadMuons'] })
 
 #JECdb = '/afs/hephy.at/work/d/dspitzbart/stops/CMSSW_8_0_25/src/CMGTools/RootTools/data/jec/Summer16_25nsV5_MC.db'
-
 
 isTTDM = False
 if isTTDM:
@@ -311,13 +317,13 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
     from CMGTools.StopsDilepton.samples import *
 
-    #selectedComponents = [TTbarDMJets_scalar_Mchi_50_Mphi_300]
-    selectedComponents = [WJetsToLNu]
+    selectedComponents = [QCD_Pt_15to7000]
+    #selectedComponents = [WJetsToLNu]
     #selectedComponents = [SMS_T2tt_mStop_150to250]
     #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p05]
     #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
     #selectedComponents = [QCD_flat_80X_noPU]
-    #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
+    #selectedComponents = [DoubleMuon_Run2016E_03Feb2017]
     #selectedComponents = [DoubleEG_Run2016E_23Sep2016]
     #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
