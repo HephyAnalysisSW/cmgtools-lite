@@ -27,6 +27,8 @@ JetHT_260431,
 QCD_Pt_15to3000 = kreator.makeMyPrivateMCComponent("QCD_Pt_15to3000", "/QCD_Pt-15to3000_TuneCUETP8M1_Flat_13TeV_pythia8/schoef-crab_QCD_Pt-15to3000_TuneCUETP8M1_Flat_13TeV_pythia8-5dafd396af9e4f54f380247389303774/USER", "PRIVATE", ".*root", "phys03", 1, useAAA=True)
 QCD_Pt_15to3000_M2_5_500 = kreator.makeMyPrivateMCComponent("QCD_Pt_15to3000_M2_5_500", "/QCD_Pt-15to3000_TuneCUETP8M1_Flat_13TeV_pythia8/schoef-crab_QCD_Pt-15to3000_TuneCUETP8M1_Flat_13TeV_pythia8_M2_5_500-5dafd396af9e4f54f380247389303774/USER", "PRIVATE", ".*root", "phys03", 1, useAAA=True)
 
+QCD_Pt_15to7000 =  kreator.makeMCComponent("QCD_Pt_15to7000", "/QCD_Pt-15to7000_TuneCUETP8M1_Flat_13TeV_pythia8/RunIISummer16MiniAODv2-NoPU_magnetOn_80X_mcRun2_asymptotic_2016_TrancheIV_v4-v2/MINIAODSIM", "CMS", ".*root", 1.0)
+
 QCD_Pt_15to3000_M0   = kreator.makeMyPrivateMCComponent("QCD_Pt_15to3000_M0", "/QCD_Pt-15to3000_TuneCUETP8M1_Flat_13TeV_pythia8/schoef-crab_QCD_Pt-15to3000_TuneCUETP8M1_Flat_13TeV_pythia8_M0-5dafd396af9e4f54f380247389303774/USER", "PRIVATE", ".*root", "phys03", 1, useAAA=True)
 QCD_Pt_15to3000_M21p = kreator.makeMyPrivateMCComponent("QCD_Pt_15to3000_M21p", "/QCD_Pt-15to3000_TuneCUETP8M1_Flat_13TeV_pythia8/schoef-crab_QCD_Pt-15to3000_TuneCUETP8M1_Flat_13TeV_pythia8_M21p-5dafd396af9e4f54f380247389303774/USER", "PRIVATE", ".*root", "phys03", 1, useAAA=True)
 QCD_Pt_15to3000_M23p = kreator.makeMyPrivateMCComponent("QCD_Pt_15to3000_M23p", "/QCD_Pt-15to3000_TuneCUETP8M1_Flat_13TeV_pythia8/schoef-crab_QCD_Pt-15to3000_TuneCUETP8M1_Flat_13TeV_pythia8_M23p-5dafd396af9e4f54f380247389303774/USER", "PRIVATE", ".*root", "phys03", 1, useAAA=True)
@@ -37,6 +39,7 @@ QCD_flat_80X = kreator.makeMCComponent("QCD_flat_80X", "/QCD_Pt-15to7000_TuneCUE
 samples_mc_private = [
 QCD_Pt_15to3000,
 QCD_Pt_15to3000_M2_5_500,
+QCD_Pt_15to7000,
 #QCD_Pt_15to3000_M2_0_500,
 #QCD_Pt_15to3000_M2_5_100,
 QCD_Pt_15to3000_M0,

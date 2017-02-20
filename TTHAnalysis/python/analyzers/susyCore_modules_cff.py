@@ -595,9 +595,13 @@ susyCoreSequence = [
     photonAna,
     isoTrackAna,
     jetAna,
+    #jetAnaScaleUp,
+    #jetAnaScaleDown,
     #ttHFatJetAna,  # out of core sequence for now
     #ttHSVAna, # out of core sequence for now
     metAna,
+    #metAnaScaleUp,
+    #metAnaScaleDown,
     ttHCoreEventAna,
     # ttHJetMETSkim,
     # susyLeptonMatchAna,

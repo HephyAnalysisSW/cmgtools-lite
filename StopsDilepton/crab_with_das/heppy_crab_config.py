@@ -59,3 +59,7 @@ if os.environ['USER'] in ['tomc']: #T2_BE specific configuration
   config.Site.storageSite = 'T2_BE_IIHE'
   config.section_("User")
   config.User.voGroup = 'becms'
+
+## No overflow of the queues. Whitelists should be restrictive. Let's try without that and use xrootd fallback
+#config.section_("Debug")
+#config.Debug.extraJDL = ['+CMS_ALLOW_OVERFLOW=False']
