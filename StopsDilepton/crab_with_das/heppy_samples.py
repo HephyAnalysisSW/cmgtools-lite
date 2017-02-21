@@ -5,7 +5,7 @@ from CMGTools.StopsDilepton.samples import *
 from CMGTools.RootTools.samples.samples_13TeV_RunIISummer16MiniAODv2 import *
 from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
 from CMGTools.RootTools.samples.samples_13TeV_signals import *
-from CMGTools.StopsDilepton.TTbarDMJets_signals_RunIISpring16MiniAODv2 import *
+from CMGTools.StopsDilepton.TTbarDMJets_signals_RunIISummer16MiniAODv2 import *
 #from CMGTools.StopsDilepton.samples_13TeV_Moriond2017 import *
 
 #from CMGTools.RootTools.samples.TTbarDMJets_signals_RunIISpring15MiniAODv2 import *

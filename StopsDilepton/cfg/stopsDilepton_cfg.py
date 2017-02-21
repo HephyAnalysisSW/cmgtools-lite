@@ -305,14 +305,15 @@ if getHeppyOption("loadSamples"):
     #from CMGTools.StopsDilepton.samplesReReco import *
     #from CMGTools.StopsDilepton.samples_13TeV_Moriond2017 import *
     from CMGTools.RootTools.samples.samples_13TeV_signals import *
-    from CMGTools.StopsDilepton.TTbarDMJets_signals_RunIISpring16MiniAODv2 import *
+    from CMGTools.StopsDilepton.TTbarDMJets_signals_RunIISummer16MiniAODv2 import *
     for sample in dataSamples:
         #sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
     from CMGTools.StopsDilepton.samples import *
-
+    
+    selectedComponents = [TTbarDMJets_scalar_Mchi_10_Mphi_100_ext1]
     #selectedComponents = [TTbarDMJets_scalar_Mchi_50_Mphi_300]
-    selectedComponents = [WJetsToLNu]
+    #selectedComponents = [WJetsToLNu]
     #selectedComponents = [SMS_T2tt_mStop_150to250]
     #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p05]
     #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
