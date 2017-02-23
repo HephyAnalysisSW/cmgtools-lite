@@ -2,9 +2,10 @@ from CMGTools.TTHAnalysis.analyzers.treeProducerSusyCore import *
 #from CMGTools.TTHAnalysis.analyzers.ntupleTypes import *
 from CMGTools.SUSYAnalysis.analyzers.ntupleTypesDegStop import *
 
+
 susySingleLepton_globalVariables = susyCore_globalVariables + [
 
-            # CLEANUP # NTupleVariable("LHEweight_original", lambda ev: ev.LHE_originalWeight if  hasattr(ev,'LHE_originalWeight') else 0, mcOnly=True, help="original LHE weight"),
+            NTupleVariable("LHEweight_original", lambda ev: ev.LHE_originalWeight if  hasattr(ev,'LHE_originalWeight') else 0, mcOnly=True, help="original LHE weight"),
             #NTupleVariable("LHEWeights"        , lambda ev: getattr(ev,'LHEWeights', 0)  if p(ev.LHEWeights) else 0              , 1000, mcOnly=True, help="LHE weights read from GenEventInfoProduct"),
 
 
@@ -103,5 +104,6 @@ susySingleLepton_collections.update({
             #"GenTracks"           : NTupleCollection("GenTracks",   genTrackTypeSusy, 150, mcOnly=True, help="all Tracks from PackedPFCandidates (pt>1) , sorted by pt"),
             ####
             #"LHEWeights"     : NTupleCollection("LHEWeights",  weightsInfoType, 10, mcOnly=True, help="LHE weight info read from GenEventInfoProduct"),
+            "LHE_weights"    : NTupleCollection("LHEweight" ,  weightsInfoType, 1000, mcOnly=True, help="LHE weight info"),
 })
 

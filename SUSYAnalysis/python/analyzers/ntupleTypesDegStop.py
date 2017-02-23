@@ -4,6 +4,8 @@ from PhysicsTools.Heppy.analyzers.core.autovars import NTupleObjectType
 from PhysicsTools.Heppy.analyzers.objects.autophobj import  *
 from PhysicsTools.HeppyCore.utils.deltar import deltaR
 
+#from CMGTools.TTHAnalysis.analyzers.treeProducerSusyCore import *
+from CMGTools.TTHAnalysis.analyzers.ntupleTypes import *
 #from CMGTools.TTHAnalysis.signedSip import *
 
 ##------------------------------------------  

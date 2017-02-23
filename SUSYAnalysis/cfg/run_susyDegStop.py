@@ -11,12 +11,13 @@ from PhysicsTools.HeppyCore.framework.heppy_loop import getHeppyOption
 
 runSMS    = False
 isFastSim = False 
-
+doSV      = True
 
 runData= False
 
-
+skim           =  getHeppyOption("skim",False)
 test           =  getHeppyOption("test",0)
+doSV           =  getHeppyOption("doSV", doSV )        # not tested yet
 deepFlavour    =  getHeppyOption("deepFlavour", False )        # not tested yet
 loadSamples    =  getHeppyOption("loadSamples", False ) 
 selectedEvents =  getHeppyOption("selectEvents", "")        # not tested yet
@@ -237,6 +238,60 @@ susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
 
 
 
+def preselOrLTSkim(event):
+    met_pt  = event.met.pt()
+    jets    = event.cleanJetsAll
+    leps    = event.selectedLeptons
+
+    njets   = len(jets) 
+    nleps   = len(leps)
+
+    lt_cut  = 120
+    ht_cut  = 200
+    met_cut = 200
+    isr_cut = 90
+
+    print "\n \n ---------------------"
+    print "leps", leps
+
+    passed = False
+
+    if leps:
+        lt = leps[0].pt() + met_pt
+        print "lt", lt
+        if lt < lt_cut:
+            passed = True 
+    if not passed:
+        print "met_pt", met_pt
+        if met_pt <  met_cut:
+            return False
+        print "jets", jets
+        if jets:
+            return False
+        print 'isr pt', jets[0].pt()
+        if jets[0].pt() < isr_cut:
+            return False
+        ht = sum( [j.pt() for j in jets if j.pt()>30 and abs(j.eta())<2.4] )
+        print "ht", ht
+        if ht < ht_cut:
+            return False
+        print "Event Passed!!"
+    return True 
+  
+
+if skim:
+    from CMGTools.SUSYAnalysis.analyzers.degStopSkimmer import DegStopSkimmer
+    degSkim = cfg.Analyzer(
+        DegStopSkimmer, name = "DegStopSkimmer",
+        )
+    degSkim.selection_function =  preselOrLTSkim 
+    skimAnalyzer.useLumiInfo = False
+    susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
+                            degSkim)
+
+
+
+     
 
 
 selectedComponents = []
@@ -256,8 +311,8 @@ if loadSamples:
     #from CMGTools.RootTools.samples.samples_13TeV_RunIISummer16MiniAODv2 import *
     #selectedComponents = [  ZJetsToNuNu_HT800to1200 ] #TTs + SingleTop #TTJets_SingleLepton
     #selectedComponents = [  ZJetsToNuNu_HT800to1200 ] 
-    #selectedComponents = [  WJetsToLNu_LO      ]
-    selectedComponents  =  QCDHT     
+    selectedComponents = [  WJetsToLNu_LO      ]
+    #selectedComponents  =  QCDHT     
     #selectedComponents =  [ TT_pow ] 
 
     print 'Going to process MC'
@@ -270,7 +325,8 @@ if loadSamples:
     from CMGTools.RootTools.samples.samples_13TeV_signals import *
     #from CMGTools.RootTools.samples.samples_13TeV_80X_susySignalsPriv import *
     #selectedComponents = [ SMS_T2tt_genHT_160_genMET_80_mStop_275_mLSP_205 ]
-    selectedComponents = [ SMS_T2tt_dM_10to80_genHT_160_genMET_80_mWMin_0p1 ] 
+    #selectedComponents = [ SMS_T2tt_dM_10to80_genHT_160_genMET_80_mWMin_0p1 ] 
+    selectedComponents = [ SMS_T2tt_dM_10to80_genHT_160_genMET_80 ] 
     print  'Going to process Signal'
 
   elif sample == "data":
@@ -398,8 +454,7 @@ isSignal=runSMS
 
 if runSMS:
     isFastSIM = True
-
-    keepLHEWeights = False
+    keepLHEWeights = True
     lheWeightAna.useLumiInfo=True
     susyScanAna.useLumiInfo=True
     susyScanAna.doLHE=True
@@ -433,6 +488,16 @@ for comp in selectedComponents:
   print "   ", comp.name , "nFiles:", len(comp.files)
 
 
+if doSV:
+    ttHSVAna.associatedJetsByRef = False
+    ttHSVAna.preselection = lambda sv : abs(sv.dxy.value()) < 3 and sv.cosTheta > 0.98
+    #ttHSVAna.vertexChoice = "vertices" #FIXME
+    ttHSVAna.jets = 'cleanJets'
+    treeProducer.collections.update({
+            "ivf"            : NTupleCollection("SV",     svType, 20, help="SVs from IVF"),
+            })
+    susyCoreSequence.insert(susyCoreSequence.index(jetAna)+1, ttHSVAna)
+
 
 ## Auto-AAA
 #from CMGTools.RootTools.samples.autoAAAconfig import *
@@ -447,6 +512,7 @@ sequence = cfg.Sequence(susyCoreSequence+[
     ])
 
 
+print sequence
 
 
 preprocessor = None
