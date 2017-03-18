@@ -317,7 +317,7 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
     from CMGTools.StopsDilepton.samples import *
     
-    selectedComponents = [TTbarDMJets_scalar_Mchi_10_Mphi_100_ext1]
+    #selectedComponents = [TTbarDMJets_scalar_Mchi_10_Mphi_100_ext1]
     #selectedComponents = [QCD_Pt_15to7000]
     #selectedComponents = [WJetsToLNu]
     #selectedComponents = [SMS_T2tt_mStop_150to250]
@@ -329,13 +329,16 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
     #selectedComponents = [ tWnunu ]
-    #selectedComponents = [DoubleMuon_Run2016B_PromptReco_v2]
-    for comp in selectedComponents:
-            sample.json = None
-            comp.files = comp.files[:1]
-            #comp.files = ['root://eoscms.cern.ch//eos/cms/store/data/Run2016C/DoubleMuon/MINIAOD/23Sep2016-v1/80000/005599F4-5787-E611-A034-0025905C54C6.root']
-            #comp.files = ['root://eoscms.cern.ch//store/group/phys_jetmet/MetScanners/bobak_pickevents_miniAOD.root']
-            comp.splitFactor = 1
+    from files import doubleMu_files
+    DoubleMuon_Run2016B_23Sep2016.files = ['root://cms-xrd-global.cern.ch/%s'%s for s in doubleMu_files]
+    print DoubleMuon_Run2016B_23Sep2016.files
+    DoubleMuon_Run2016B_23Sep2016.json="$CMSSW_BASE/src/CMGTools/StopsDilepton/cfg/json.json"
+    selectedComponents = [DoubleMuon_Run2016B_23Sep2016]
+#    for comp in selectedComponents:
+#            comp.files = comp.files
+#            #comp.files = ['root://eoscms.cern.ch//eos/cms/store/data/Run2016C/DoubleMuon/MINIAOD/23Sep2016-v1/80000/005599F4-5787-E611-A034-0025905C54C6.root']
+#            #comp.files = ['root://eoscms.cern.ch//store/group/phys_jetmet/MetScanners/bobak_pickevents_miniAOD.root']
+#            comp.splitFactor = 1
 
 from CMGTools.TTHAnalysis.tools.EOSEventsWithDownload import EOSEventsWithDownload
 from PhysicsTools.HeppyCore.framework.eventsfwlite import Events
