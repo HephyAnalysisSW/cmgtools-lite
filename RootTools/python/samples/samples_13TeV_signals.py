@@ -62,8 +62,11 @@ SMS_TChiSlepSnuTEx0p95,
 SMS_T8bbllnunu_XCha0p5_XSlep0p05,
 SMS_T8bbllnunu_XCha0p5_XSlep0p09,
 SMS_T8bbllnunu_XCha0p5_XSlep0p5,
+SMS_T8bbllnunu_XCha0p5_XSlep0p5_mN1_700_1000,
 SMS_T8bbllnunu_XCha0p5_XSlep0p95,
-]
+SMS_T8bbllnunu_XCha0p5_XSlep0p95_mN1_700_1300,
+SMS_T2bW,
+SMS_T2bt]
 
 ### ----------------------------- summary ----------------------------------------
 

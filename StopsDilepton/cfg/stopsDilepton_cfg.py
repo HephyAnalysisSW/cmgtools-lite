@@ -161,6 +161,7 @@ if storePackedCandidates:
 from PhysicsTools.Heppy.analyzers.gen.LHEAnalyzer import LHEAnalyzer 
 LHEAna = LHEAnalyzer.defaultConfig
 
+#lheWeightAna.useLumiInfo=True
 
 from CMGTools.RootTools.samples.triggers_13TeV_Spring15 import *
 from CMGTools.RootTools.samples.triggers_13TeV_Spring15_1l import *
@@ -303,7 +304,8 @@ selectedComponents = [
 
 sequence = cfg.Sequence(
   susyCoreSequence+
-      [ LHEAna,
+      [ 
+        LHEAna,
         metPuppiAna,
         ttHEventAna,
         treeProducer,
