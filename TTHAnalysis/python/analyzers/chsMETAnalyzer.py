@@ -36,7 +36,7 @@ class chsMETAnalyzer( Analyzer ):
         for pfcand in self.handles['packedCandidates'].product():
 
             # CHS definition
-            if pfcand.fromPV(): chs_fromPV.append( ( pfcand.px(), pfcand.py() ) )
+            if pfcand.fromPV()>0: chs_fromPV.append( ( pfcand.px(), pfcand.py() ) )
 
             # W mass definition (dz)
             if (pfcand.charge()!=0 and abs(pfcand.pdgId())==211):
@@ -45,7 +45,7 @@ class chsMETAnalyzer( Analyzer ):
 
             chs_dz.append( (pfcand.px(), pfcand.py()) )
 
-        setattr(event, "chsMET",    sumXY(chs_fromPV))
+        setattr(event, "chsMET",   sumXY(chs_fromPV))
         setattr(event, "chsMETDz", sumXY(chs_dz))
 
         return True
