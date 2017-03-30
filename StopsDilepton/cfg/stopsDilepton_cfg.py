@@ -88,7 +88,7 @@ if doElectronScaleCorrections:
     }
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 1
+ttHLepSkim.minLeptons = 0
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
@@ -312,10 +312,11 @@ if getHeppyOption("loadSamples"):
     #from CMGTools.StopsDilepton.samples_13TeV_Moriond2017 import *
     from CMGTools.RootTools.samples.samples_13TeV_signals import *
     from CMGTools.StopsDilepton.TTbarDMJets_signals_RunIISummer16MiniAODv2 import *
-    for sample in dataSamples:
+    from CMGTools.StopsDilepton.samples import *
+    from CMGTools.StopsDilepton.samples import *
+    for sample in dataSamples + samples_data_private:
         #sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
-    from CMGTools.StopsDilepton.samples import *
     
     #selectedComponents = [TTbarDMJets_scalar_Mchi_10_Mphi_100_ext1]
     #selectedComponents = [QCD_Pt_15to7000]
@@ -324,11 +325,12 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p05]
     #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
     #selectedComponents = [QCD_flat_80X_noPU]
-    selectedComponents = [DoubleMuon_Run2016E_03Feb2017]
+    #selectedComponents = [DoubleMuon_Run2016E_03Feb2017]
     #selectedComponents = [DoubleEG_Run2016E_23Sep2016]
     #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
     #selectedComponents = [ tWnunu ]
+    selectedComponents = [JetHT_Run2016H_22Feb2017]
     #from files import doubleMu_files
     #DoubleMuon_Run2016B_23Sep2016.files = ['root://cms-xrd-global.cern.ch/%s'%s for s in doubleMu_files]
     #print DoubleMuon_Run2016B_23Sep2016.files
