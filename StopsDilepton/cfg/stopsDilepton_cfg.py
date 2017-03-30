@@ -188,6 +188,7 @@ if storePackedCandidates:
 from PhysicsTools.Heppy.analyzers.gen.LHEAnalyzer import LHEAnalyzer 
 LHEAna = LHEAnalyzer.defaultConfig
 
+#lheWeightAna.useLumiInfo=True
 
 from CMGTools.RootTools.samples.triggers_13TeV_DATA2016 import *
 triggerFlagsAna.triggerBits = {
@@ -297,7 +298,8 @@ selectedComponents = [
 
 sequence = cfg.Sequence(
   susyCoreSequence+
-      [ LHEAna,
+      [ 
+        LHEAna,
         metPuppiAna,
         ttHEventAna,
         treeProducer,
@@ -318,6 +320,10 @@ if getHeppyOption("loadSamples"):
         #sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
     
+    selectedComponents = [TTJets_LO]
+    #selectedComponents = [TTbarDMJets_DiLept_pseudoscalar_Mchi_50_Mphi_10]
+    #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p5_mN1_700_1000]
+    #selectedComponents = [SMS_T2bW]    
     #selectedComponents = [TTbarDMJets_scalar_Mchi_10_Mphi_100_ext1]
     #selectedComponents = [QCD_Pt_15to7000]
     #selectedComponents = [WJetsToLNu]
