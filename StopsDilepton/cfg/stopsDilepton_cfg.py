@@ -88,7 +88,7 @@ if doElectronScaleCorrections:
     }
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 0
+ttHLepSkim.minLeptons = 1
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
@@ -127,7 +127,8 @@ isTTDM = False
 if isTTDM:
     susyCoreSequence.remove( triggerFlagsAna )
 
-metAna.recalibrate = "type1" 
+metAna.recalibrate = "type1"
+metAna.storePuppiExtra = False # False for MC, True for re-MiniAOD??
 #metAna.doTkMet = True # for chs met
 from CMGTools.TTHAnalysis.analyzers.chsMETAnalyzer import chsMETAnalyzer
 chsMETAna = cfg.Analyzer(
@@ -277,6 +278,7 @@ metPuppiAna = cfg.Analyzer(
     candidatesTypes='std::vector<pat::PackedCandidate>',
     dzMax = 0.1,
     collectionPostFix = "Puppi",
+    storePuppiExtra = False,
     )
 
 ## Tree Producer
@@ -326,7 +328,7 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [SMS_T2bW]    
     #selectedComponents = [TTbarDMJets_scalar_Mchi_10_Mphi_100_ext1]
     #selectedComponents = [QCD_Pt_15to7000]
-    selectedComponents = [WJetsToLNu]
+    #selectedComponents = [WJetsToLNu]
     #selectedComponents = [SMS_T2tt_mStop_150to250]
     #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p05]
     #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
@@ -336,7 +338,7 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
     #selectedComponents = [ tWnunu ]
-    selectedComponents = [JetHT_Run2016H_22Feb2017]
+    #selectedComponents = [JetHT_Run2016H_22Feb2017]
     #from files import doubleMu_files
     #DoubleMuon_Run2016B_23Sep2016.files = ['root://cms-xrd-global.cern.ch/%s'%s for s in doubleMu_files]
     #print DoubleMuon_Run2016B_23Sep2016.files
