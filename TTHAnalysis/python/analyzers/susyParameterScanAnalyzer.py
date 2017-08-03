@@ -31,6 +31,7 @@ class susyParameterScanAnalyzer( Analyzer ):
         self.lumiCounter=-1
         self.currentLumi=0
 
+        print "********************* RUNNING HTIS!"
     #---------------------------------------------
     # DECLARATION OF HANDLES OF GEN LEVEL OBJECTS 
     #---------------------------------------------
@@ -117,12 +118,16 @@ class susyParameterScanAnalyzer( Analyzer ):
         scanlineT1tttt = re.compile(r"([A-Za-z0-9]+)_((\d+\.?\d*)(_\d+\.?\d*)*)(\s+(\d+\.?\d*))*\s*")
         scanlineTChi = re.compile(r"([A-Za-z0-9]+)_([A-Za-z0-9]+)_((\d+\.?\d*)(_\d+\.?\d*)*)(\s+(\d+\.?\d*))*\s*")
         scanlineT2tt = re.compile(r"([A-Za-z0-9]+)_([A-Za-z0-9]+)-([A-Za-z0-9]+)_([A-Za-z0-9]+)_((\d+\.?\d*)(_\d+\.?\d*)*)(\s+(\d+\.?\d*))*\s*")
+        scanlineHino = re.compile(r'([A-Za-z0-9]+)-([A-Za-z0-9]+)_((\d+\.?\d*)(_\d+\.?\d*)*)(\s+(\d+\.?\d*))*\s*')
 
         mT1tttt = re.match(scanlineT1tttt, lheprod)
         mTChi   = re.match(scanlineTChi, lheprod)
         mT2tt   = re.match(scanlineT2tt, lheprod)
+        mHino   = re.match(scanlineHino, lheprod)
 
-        #print lheprod, mT1tttt, mTChi, mT2tt
+
+        print "READLHELUMIINFO"
+        print lheprod, mT1tttt, mTChi, mT2tt, mHino
 
         if mT1tttt:
             event.susyModel = mT1tttt.group(1)
@@ -141,6 +146,13 @@ class susyParameterScanAnalyzer( Analyzer ):
         elif mT2tt:
             event.susyModel = mT2tt.group(1)
             masses = [float(x) for x in mT2tt.group(5).split("_")]
+            if len(masses) >= 1: event.genSusyMScan1 = masses[0]
+            if len(masses) >= 2: event.genSusyMScan2 = masses[1]
+            if len(masses) >= 3: event.genSusyMScan3 = masses[2]
+            if len(masses) >= 4: event.genSusyMScan4 = masses[3]
+        elif mHino:
+            event.susyModel = mHino.group(1)
+            masses = [float(x) for x in mHino.group(3).split("_")]
             if len(masses) >= 1: event.genSusyMScan1 = masses[0]
             if len(masses) >= 2: event.genSusyMScan2 = masses[1]
             if len(masses) >= 3: event.genSusyMScan3 = masses[2]

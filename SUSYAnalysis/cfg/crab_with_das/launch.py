@@ -101,8 +101,8 @@ for comp in selectedComponents:
 
 
 def makeCMGComponentList(tag, selectedComponents, dpm_path =""):
-    #summary_file = "./%s_CMGComponents.pkl"%tag
     summary_file = "./%s.pkl"%tag
+    print summary_file
     if os.path.isfile(summary_file):
         sample_summary = pickle.load(open(summary_file,'r'))
     else:

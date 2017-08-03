@@ -26,14 +26,34 @@ comp = pickle.load(open("sample_"+datasetname+".pkl","rb"))
 crabFiles=PSet.process.source.fileNames
 print crabFiles
 firstInput = crabFiles[0]
+tested=False
+forceaaa=False
+
 print "--------------- using edmFileUtil to convert PFN to LFN -------------------------"
 for i in xrange(0,len(crabFiles)) :
-     pfn=os.popen("edmFileUtil -d %s"%(crabFiles[i])).read() 
-     pfn=re.sub("\n","",pfn)
-     print crabFiles[i],"->",pfn
-     crabFiles[i]=pfn
-     #crabFiles[i]="root://xrootd-cms.infn.it:1194/"+crabFiles[i]
-
+     if os.getenv("GLIDECLIENT_Group","") != "overflow" and  os.getenv("GLIDECLIENT_Group","") != "overflow_conservative" and not forceaaa:
+       print "Data is local"
+       pfn=os.popen("edmFileUtil -d %s"%(crabFiles[i])).read() 
+       pfn=re.sub("\n","",pfn)
+       print crabFiles[i],"->",pfn
+       if not tested:
+         print "Testing file open"
+         import ROOT
+         testfile=ROOT.TFile.Open(pfn)
+         if testfile and testfile.IsOpen() :
+            print "Test OK"
+            crabFiles[i]=pfn
+            testfile.Close()
+            #tested=True
+         else :
+            print "Test open failed, forcing AAA"
+            crabFiles[i]="root://cms-xrd-global.cern.ch/"+crabFiles[i]
+            forceaaa=True
+       else :
+        crabFiles[i]=pfn
+     else:
+       print "Data is not local, using AAA/xrootd"
+       crabFiles[i]="root://cms-xrd-global.cern.ch/"+crabFiles[i]
 
 import imp
 handle = open("heppy_config.py", 'r')
@@ -42,8 +62,7 @@ cfo = imp.load_source("heppy_config", "heppy_config.py", handle)
 #config = cfo.config
 cfg = cfo.cfg
 seq = cfo.sequence
-pre = getattr(cfo, "preprocessor", None)
-print '=========== preprocessor', pre
+pre = cfo.preprocessor if hasattr(cfo, "preprocessor") else None
 handle.close()
 
 from PhysicsTools.HeppyCore.framework.eventsfwlite import Events

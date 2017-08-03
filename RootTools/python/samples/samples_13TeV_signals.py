@@ -11,22 +11,34 @@ SMS_T1tttt_mGluino1500_mLSP100 = kreator.makeMCComponent("SMS_T1tttt_mGluino1500
 
 
 SMS_T2tt_dM_10to80_genHT_160_genMET_80                = kreator.makeMCComponent("SMS_T2tt_dM_10to80_genHT_160_genMET_80",               "/SMS-T2tt_dM-10to80_genHT-160_genMET-80_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM",  "CMS", ".*root" )  
+
 SMS_T2tt_dM_10to80_genHT_160_genMET_80_mWMin_0p1      = kreator.makeMCComponent("SMS_T2tt_dM_10to80_genHT_160_genMET_80_mWMin_0p1",    "/SMS-T2tt_dM-10to80_genHT-160_genMET-80_mWMin-0p1_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM" ,  "CMS", ".*root", useAAA = True)
 SMS_T2bW_X05_dM_10to80_genHT_160_genMET_80_mWMin_0p1  = kreator.makeMCComponent("SMS_T2bW_X05_dM_10to80_genHT_160_genMET_80_mWMin_0p1", "/SMS-T2bW_X05_dM-10to80_genHT-160_genMET-80_mWMin-0p1_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM" ,  "CMS", ".*root", useAAA = True )
 
 
+## BenchMark Points
+SMS_TChiWZ_genHT_160_genMET_80_3p         =  kreator.makeMCComponent( "SMS_TChiWZ_genHT_160_genMET_80_3p"         ,"/TChiWZ_genHT-160_genMET-80_3points_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUSummer16Fast_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM",  "CMS", ".*root" , useAAA=True)
+SMS_N2N1_higgsino_genHT_160_genMET_80_3p  =  kreator.makeMCComponent( "SMS_N2N1_higgsino_genHT_160_genMET_80_3p"  ,"/SMS-N2N1-higgsino_genHT-160_genMET-80_3points_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUSummer16Fast_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM",  "CMS", ".*root", useAAA=True)
+SMS_N2C1_higgsino_genHT_160_genMET_80_3p  =  kreator.makeMCComponent( "SMS_N2C1_higgsino_genHT_160_genMET_80_3p"  ,"/SMS-N2C1-higgsino_genHT-160_genMET-80_3points_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUSummer16Fast_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM",  "CMS", ".*root", useAAA=True)
+SMS_C1N1_higgsino_genHT_160_genMET_80_3p  =  kreator.makeMCComponent( "SMS_C1N1_higgsino_genHT_160_genMET_80_3p"  ,"/SMS-C1N1-higgsino_genHT-160_genMET-80_3points_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUSummer16Fast_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM",  "CMS", ".*root", useAAA=True)
+SMS_C1C1_higgsino_genHT_160_genMET_80_3p  =  kreator.makeMCComponent( "SMS_C1C1_higgsino_genHT_160_genMET_80_3p"  ,"/SMS-C1C1-higgsino_genHT-160_genMET-80_3points_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUSummer16Fast_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM",  "CMS", ".*root", useAAA=True)
+MSSM_higgsino_genHT_160_genMET_80_3p      =  kreator.makeMCComponent( "MSSM_higgsino_genHT_160_genMET_80_3p"      ,"/MSSM-higgsino_genHT-160_genMET-80_3points_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUSummer16Fast_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM",  "CMS", ".*root", useAAA=True)
+
+
+MSSM_higgsino_genHT_160_genMET_80         =  kreator.makeMCComponent( "MSSM_higgsino_genHT_160_genMET_80" , "/MSSM-higgsino_genHT-160_genMET-80_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUSummer16Fast_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM", "CMS", ".*root", useAAA=True ) 
+SMS_TChiWZ_genHT_160_genMET_80            =  kreator.makeMCComponent( "SMS_TChiWZ_genHT_160_genMET_80" , "/TChiWZ_genHT-160_genMET-80_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUSummer16Fast_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM", "CMS", ".*root", useAAA=True ) 
+
+
 
 ## FullSIM ###
-SMS_T2tt_genHT_160_genMET_80_mStop_275_mLSP_205   =    kreator.makeMCComponent( "SMS_T2tt_genHT_160_genMET_80_mStop_275_mLSP_205"  ,  "/SMS-T2-4bd_genMET-80_mStop-275_mLSP-205_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM", "CMS", ".*root" , xSec=13.32)
-SMS_T2tt_genHT_160_genMET_80_mStop_350_mLSP_330   =    kreator.makeMCComponent( "SMS_T2tt_genHT_160_genMET_80_mStop_350_mLSP_330"  ,  "/SMS-T2-4bd_genMET-80_mStop-350_mLSP-330_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM", "CMS", ".*root" , xSec=3.786)
-SMS_T2tt_genHT_160_genMET_80_mStop_400_mLSP_350   =    kreator.makeMCComponent( "SMS_T2tt_genHT_160_genMET_80_mStop_400_mLSP_350"  ,  "/SMS-T2-4bd_genMET-80_mStop-400_mLSP-350_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM", "CMS", ".*root" , xSec=1.835)
+SMS_T2tt_genHT_160_genMET_80_mStop_275_mLSP_205   =    kreator.makeMCComponent( "SMS_T2tt_genHT_160_genMET_80_mStop_275_mLSP_205"  ,  "/SMS-T2-4bd_genMET-80_mStop-275_mLSP-205_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM", "CMS", ".*root" , xSec=13.32, useAAA=True)
+SMS_T2tt_genHT_160_genMET_80_mStop_350_mLSP_330   =    kreator.makeMCComponent( "SMS_T2tt_genHT_160_genMET_80_mStop_350_mLSP_330"  ,  "/SMS-T2-4bd_genMET-80_mStop-350_mLSP-330_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM", "CMS", ".*root" , xSec=3.786, useAAA=True)
+SMS_T2tt_genHT_160_genMET_80_mStop_400_mLSP_350   =    kreator.makeMCComponent( "SMS_T2tt_genHT_160_genMET_80_mStop_400_mLSP_350"  ,  "/SMS-T2-4bd_genMET-80_mStop-400_mLSP-350_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM", "CMS", ".*root" , xSec=1.835, useAAA=True)
 
 signalFullSim= [SMS_T2tt_genHT_160_genMET_80_mStop_275_mLSP_205, SMS_T2tt_genHT_160_genMET_80_mStop_350_mLSP_330, SMS_T2tt_genHT_160_genMET_80_mStop_400_mLSP_350]
 
-
-SMS_TChiWZ_ZToLL  = kreator.makeMCComponent("SMS_TChiWZ_ZToLL", "/SMS-TChiWZ_ZToLL_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v2/MINIAODSIM",  "CMS", ".*root", )
-SMS_TChipmWW      = kreator.makeMCComponent("SMS_TChipmWW"    , "/SMS-TChipmWW_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM", "CMS", ".*root" )
-
+SMS_TChiWZ_ZToLL_mZMin_0p1  = kreator.makeMCComponent("SMS_TChiWZ_ZToLL_mZMin_0p1", "/SMS-TChiWZ_ZToLL_mZMin-0p1_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUSummer16Fast_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM",  "CMS", ".*root", )
+SMS_TChipmWW                = kreator.makeMCComponent("SMS_TChipmWW"    , "/SMS-TChipmWW_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM", "CMS", ".*root" )
 
 
 SMS_T2tt_dM_10to80_2Lfilter  = kreator.makeMCComponent("SMS_T2tt_dM_10to80_2Lfilter", "/SMS-T2tt_dM-10to80_2Lfilter_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM" , "CMS", ".*root", )
