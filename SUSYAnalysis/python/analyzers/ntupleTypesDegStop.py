@@ -86,7 +86,7 @@ photonTypeSusy = NTupleObjectType("gammaSusy", baseObjectTypes = [ photonType ],
 ## JET
 ##------------------------------------------  
 
-jetTypeSusy = NTupleObjectType("jetSusy",  baseObjectTypes = [ jetType ], variables = [
+jetTypeSusy = NTupleObjectType("jetSusy",  baseObjectTypes = [ jetTypeExtra ], variables = [
 
     #NTupleVariable("DFudsg", lambda x : x.btag('deepFlavourJetTags:probudsg'), float, help="Deep flavor discriminator: udsg"),
     #NTupleVariable("DFb",    lambda x : x.btag('deepFlavourJetTags:probb'),    float, help="Deep flavor discriminator: b"),
@@ -117,9 +117,11 @@ jetTypeSusy = NTupleObjectType("jetSusy",  baseObjectTypes = [ jetType ], variab
     NTupleVariable("muMult", lambda x : x.muonMultiplicity(), int, mcOnly = False,help="muonMultiplicity from PFJet.h"),
     NTupleVariable("HFHMult", lambda x : x.HFHadronMultiplicity(), int, mcOnly = False,help="HFHadronMultiplicity from PFJet.h"),
     NTupleVariable("HFEMMult", lambda x : x.HFEMMultiplicity(), int, mcOnly = False,help="HFEMMultiplicity from PFJet.h"),
+    
+    NTupleVariable("isISR",  lambda x : getattr(x,'isISR',0), int, mcOnly=True, help="Flag whether jet is considered ISR"),
 ])
 
-      
+
 ##------------------------------------------  
 ## MET
 ##------------------------------------------  
@@ -157,7 +159,7 @@ genTrackTypeSusy = NTupleObjectType("genTrackSusy",  baseObjectTypes = [ isoTrac
     NTupleVariable("matchedLepIndex",     lambda x : x.matchedLepIndex , help="index of the matched Lepton to the track"),
     NTupleVariable("matchedLepDr",        lambda x : x.matchedLepDr    , help="deltaR of the matched Lepton to the track"),
     NTupleVariable("matchedGenPartIndex", lambda x : x.matchedGenPartIndex , mcOnly=True, help="index of the matched GenParticle to the track"),
-    NTupleVariable("matchedGenPartDr",    lambda x : x.matchedGenPartDr    , mcOnly=True, help="deltaR of the matched GenPartricle to the track"),
+    NTupleVariable("matchedGenPartDr",    lambda x : x.matchedGenPartDr    , mcOnly=True, help="deltaR of the matched GenParticle to the track"),
     NTupleVariable("CosPhiMet",          lambda x : x.CosPhiMet   , help="Cos Track Phi with Met"     ),
     NTupleVariable("CosPhiJet1",          lambda x : x.CosPhiJet1   , help="Cos Track Phi with the Leading Jet"     ),
     NTupleVariable("CosPhiJet12",          lambda x : x.CosPhiJet12   , help="Cos Track Phi with the Leading + SubJet"),
@@ -182,10 +184,14 @@ trackTypeSusy = NTupleObjectType("trackSusy",  baseObjectTypes = [ genTrackTypeS
 ])
 
 
-
+##------------------------------------------  
+## GENJETS
+##------------------------------------------  
 
 genJetType = NTupleObjectType("genJets",  baseObjectTypes = [ fourVectorType ], mcOnly=True, variables = [
     NTupleVariable("nConstituents", lambda x : x.nConstituents() ,help="Number of Constituents"),
+    #NTupleVariable("emEnergy", lambda x : x.emEnergy() ,help="EM energy"),
+    #NTupleVariable("hadEnergy", lambda x : x.hadEnergy() ,help="Hadronic energy"),
 ])
 
 

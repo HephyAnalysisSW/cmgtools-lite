@@ -8,16 +8,6 @@ susySingleLepton_globalVariables = susyCore_globalVariables + [
             NTupleVariable("LHEweight_original", lambda ev: ev.LHE_originalWeight if  hasattr(ev,'LHE_originalWeight') else 0, mcOnly=True, help="original LHE weight"),
             #NTupleVariable("LHEWeights"        , lambda ev: getattr(ev,'LHEWeights', 0)  if p(ev.LHEWeights) else 0              , 1000, mcOnly=True, help="LHE weights read from GenEventInfoProduct"),
 
-
-            # CLEANUP # NTupleVariable("metNoHF_rawPt", lambda ev : ev.metNoHF.uncorPt() if  hasattr(ev,'metNoHF') else  0, help="raw noHF met p_{T}"),
-            # CLEANUP # NTupleVariable("metNoHF_rawPhi", lambda ev : ev.metNoHF.uncorPhi() if  hasattr(ev,'metNoHF') else  0, help="raw noHF met phi"),
-            # CLEANUP # NTupleVariable("metNoHF_rawSumEt", lambda ev : ev.metNoHF.uncorSumEt() if  hasattr(ev,'metNoHF') else  0, help="raw noHF met sumEt"),
-
-            # CLEANUP # NTupleVariable("met_caloPt", lambda ev : ev.met.caloMETPt(), help="calo met p_{T}"),
-            # CLEANUP # NTupleVariable("met_caloPhi", lambda ev : ev.met.caloMETPhi(), help="calo met phi"),
-            # CLEANUP # NTupleVariable("met_caloSumEt", lambda ev : ev.met.caloMETSumEt(), help="calo met sumEt"),
-
-
             NTupleVariable("met_JetEnUp_Pt", lambda ev : ev.met.shiftedPt(ev.met.JetEnUp), help="type1, JetEnUp, pt"),
             NTupleVariable("met_JetEnUp_Phi", lambda ev : ev.met.shiftedPhi(ev.met.JetEnUp), help="type1, JetEnUp, phi"),
             NTupleVariable("met_JetResUp_Pt", lambda ev : ev.met.shiftedPt(ev.met.JetResUp), help="type1, JetResUp, pt"),
@@ -61,10 +51,6 @@ susySingleLepton_globalVariables = susyCore_globalVariables + [
             #NTupleVariable("metNoHF_JetEnDown_Pt", lambda ev : ev.metNoHF.shiftedPt(ev.met.JetEnDown) if hasattr(ev,'metNoHF') else -999, help="type1 noHF , JetEnDown, pt"),
             #NTupleVariable("metNoHF_JetEnDown_Phi", lambda ev : ev.metNoHF.shiftedPhi(ev.met.JetEnDown) if hasattr(ev,'metNoHF') else -999, help="type1 noHF , JetEnDown, phi"),
 
-
-
-
-
             ##--------------------------------------------------
             ## MET filter information (temporary)
             ##--------------------------------------------------
@@ -79,8 +65,8 @@ susySingleLepton_globalVariables = susyCore_globalVariables + [
             #ISR jet counting for SUSY reweighting
             NTupleVariable("nIsr", lambda ev : getattr(ev,"nIsr",-999) , help="Number of ISR jets not matched to gen particles"),
 
-
 ]
+
 susySingleLepton_globalObjects = susyCore_globalObjects.copy()
 susySingleLepton_globalObjects.update({
             # put more here
@@ -100,11 +86,13 @@ susySingleLepton_collections.update({
             ## DegStop:
             "cleanGenJets"        : NTupleCollection("GenJet",  genJetType,  30, help="Clean Gen Jets, sorted by pt"),
             "selectedIsoTrack"    : NTupleCollection("isoTrack", isoTrackType, 50, help="isoTrack, sorted by pt"),
-            # "genJets"         : NTupleCollection("GenJetDirty",  genJetType,  30, help="Gen Jets before cleaning, sorted by pt"),
+            "fatJets"             : NTupleCollection("FatJet",  fatJetType,  15, help="AK8 jets, sorted by pt"),
+            #"reclusteredFatJets"  : NTupleCollection("RCFatJet",     fourVectorType,20, help="FatJets1.2 reclusterd from ak4 cleanJetsAll pT > 30, eta <5 "),
+            #"genJets"             : NTupleCollection("GenJetDirty",  genJetType,  30, help="Gen Jets before cleaning, sorted by pt"),
             #"Tracks"              : NTupleCollection("Tracks",      trackTypeSusy, 150, help="all Tracks from PackedPFCandidates (pt>1) , sorted by pt"),
             #"GenTracks"           : NTupleCollection("GenTracks",   genTrackTypeSusy, 150, mcOnly=True, help="all Tracks from PackedPFCandidates (pt>1) , sorted by pt"),
             ####
-            #"LHEWeights"     : NTupleCollection("LHEWeights",  weightsInfoType, 10, mcOnly=True, help="LHE weight info read from GenEventInfoProduct"),
-            "LHE_weights"    : NTupleCollection("LHEweight" ,  weightsInfoType, 1000, mcOnly=True, help="LHE weight info"),
+            #"LHEWeights"          : NTupleCollection("LHEWeights",  weightsInfoType, 10, mcOnly=True, help="LHE weight info read from GenEventInfoProduct"),
+            "LHE_weights"         : NTupleCollection("LHEweight" ,  weightsInfoType, 1000, mcOnly=True, help="LHE weight info"),
 })
 
