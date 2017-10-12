@@ -23,7 +23,7 @@ config.JobType.allowUndistributedCMSSW = True
 
 config.section_("Data")
 config.Data.ignoreLocality = False
-#config.Data.inputDBS = 'phys03'
+config.Data.inputDBS = 'phys03'
 config.Data.splitting = 'FileBased'
 
 import subprocess
@@ -50,6 +50,8 @@ config.Data.unitsPerJob = 5
 config.section_("Site")
 #config.Site.blacklist = ['T2_US_Purdue', 'T2_BE_IIHE', 'T2_US_Wisconsin', 'T2_UK_SGrid_Bristol', 'T2_US_Nebraska', 'T2_US_UCSD', 'T2_US_Florida', 'T2_US_Caltech', 'T2_UK_London_IC', 'T2_KR_KNU', 'T2_IT_Legnaro', 'T2_US_UCSD']
 #config.Site.whitelist=  ['T2_DE_DESY', 'T2_FR_IPHC', 'T2_BE_UCL', 'T2_CH_CERN', 'T2_BR_SPRACE', 'T2_FR_IPHC', 'T2_CH_CSCS', 'T2_FR_GRIF_LLR', 'T2_AT_Vienna', 'T3_KR_KISTI',]
+config.Site.ignoreGlobalBlacklist = True
+
 
 ## Turning off the overflow which causes the white/blacklist to be ignored
 #config.section_("Debug")

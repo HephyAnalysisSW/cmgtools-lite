@@ -18,7 +18,7 @@ lepAna.packedCandidates = 'packedPFCandidates'
 
 ## ELECTRONS
 lepAna.loose_electron_pt  = 5
-eleID = "CBID"
+eleID = "Incl"
 doElectronScaleCorrections = False
 
 if eleID == "CBID":
@@ -321,6 +321,7 @@ if getHeppyOption("loadSamples"):
     #from CMGTools.StopsDilepton.samples_13TeV_Moriond2017 import *
     from CMGTools.RootTools.samples.samples_13TeV_signals import *
     from CMGTools.StopsDilepton.TTbarDMJets_signals_RunIISummer16MiniAODv2 import *
+    from CMGTools.StopsDilepton.ewkDM_signals_RunIISummer16MiniAODv2 import *
     from CMGTools.StopsDilepton.samples import *
     from CMGTools.StopsDilepton.samples import *
     for sample in dataSamples + samples_data_private:
