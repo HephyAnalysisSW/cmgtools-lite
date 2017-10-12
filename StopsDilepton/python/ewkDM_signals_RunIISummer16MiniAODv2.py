@@ -2,7 +2,7 @@ import PhysicsTools.HeppyCore.framework.config as cfg
 import subprocess
 import os.path
 
-from RootTools.core.database import database
+from RootTools.fwlite.Database import Database
 
 def makePrivateMCComponentFromDPM(name,dataset,dpmdir,subdirs=[''],xSec=1,server= "hephyse.oeaw.ac.at",verbose=False):
     getFilesFunc=makeDPMGetFileListFunction(name, dpmdir, subdirs, server, verbose)
@@ -30,7 +30,7 @@ def makeDPMGetFileListFunction(name, dpmdir, subdirs, server, verbose):
         lscommand= prot + " " + server + "  ls  " +dpmdir
         dirs={}
         allfiles=[]
-        cache = database("signal_cache.db", "fileCache", ["name"])
+        cache = Database("signal_cache.db", "fileCache", ["name"])
         nFiles = cache.contains({'name':name})
         if nFiles:
             print 'Found sample in cache, adding %i file'%nFiles
