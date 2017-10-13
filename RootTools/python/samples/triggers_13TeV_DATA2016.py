@@ -54,6 +54,9 @@ triggers_1mu_iso = [ 'HLT_IsoMu20_v*',
                      'HLT_IsoTkMu22_v*',
                      'HLT_IsoMu24_v*', 
                      'HLT_IsoTkMu24_v*']  # Mu20's prescaled in column 0
+
+triggers_1mu_iso_TTZ = ['HLT_IsoMu24_v*','HLT_IsoTkMu24_v*']
+
 triggers_1mu_noniso = [ 'HLT_Mu45_eta2p1_v*', 
                         'HLT_Mu50_v*', 
                         'HLT_TkMu50_v*' ]
@@ -69,6 +72,8 @@ triggers_1e      = [
         "HLT_Ele27_eta2p1_WPLoose_Gsf_v*",
         "HLT_Ele45_WPLoose_Gsf_v*" ]
 triggers_1e_noniso      = [ "HLT_Ele105_CaloIdVT_GsfTrkIdT_v*","HLT_Ele115_CaloIdVT_GsfTrkIdT_v*"]
+
+triggers_1e_iso_TTZ = ["HLT_Ele27_WPTight_Gsf_v*"]
 
 # Lepton fake rate triggers (prescaled)
 triggers_FR_1mu_iso = [ "HLT_Mu%d_TrkIsoVVL_v*" % pt for pt in (8,17) ] # DoubleMu PD
