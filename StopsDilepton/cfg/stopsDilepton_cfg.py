@@ -216,9 +216,11 @@ triggerFlagsAna.triggerBits = {
 
         'SingleMu_iso'     :triggers_1mu_iso,
         'SingleMu_noniso'  :triggers_1mu_noniso ,
+        'SingleMuTTZ'      :triggers_1mu_iso_TTZ,
 
         'SingleEle_noniso'   :triggers_1e_noniso,
         'SingleEle'          :triggers_1e,
+        'SingleEleTTZ'       :triggers_1e_iso_TTZ,
 
 #mumu
         'mumuIso' : triggers_mumu_iso,
