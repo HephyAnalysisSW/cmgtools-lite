@@ -26,7 +26,7 @@ doQG           =  getHeppyOption("doQG",           True)  # quark-gluon likeliho
 deepFlavour    =  getHeppyOption("deepFlavour",    False) # deepFlavour b-tagging #TODO: testing required 
 addFatJets     =  getHeppyOption("addFatJets",     True)
 addSoftTracks  =  getHeppyOption("addSoftTracks",  False)
-allGenParts    =  getHeppyOption("allGenParts",    True) #FIXME
+allGenParts    =  getHeppyOption("allGenParts",    False)
 verbose  =        getHeppyOption("verbose",        False)
 
 if runSMS:

@@ -12,7 +12,7 @@ class NIsrAnalyzer(Analyzer):
 
         event.nIsr = 0
 
-        for i, jet in enumerate(event.cleanJetsAll):
+        for jet in event.cleanJetsAll:
 
             if jet.pt()<30.0: continue
             if abs(jet.eta())>2.4: continue
