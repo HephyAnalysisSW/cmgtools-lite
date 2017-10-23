@@ -589,6 +589,7 @@ susyCoreSequence = [
     susyScanAna,
     vertexAna,
     lepAna,
+    #ttHCoreEventAna, #inserted here
     tauAna,
     ttHLepSkim,
     #ttHLepMCAna,
@@ -602,7 +603,7 @@ susyCoreSequence = [
     metAna,
     #metAnaScaleUp,
     #metAnaScaleDown,
-    ttHCoreEventAna,
+    ttHCoreEventAna, #commented out here
     # ttHJetMETSkim,
     # susyLeptonMatchAna,
     triggerFlagsAna,
