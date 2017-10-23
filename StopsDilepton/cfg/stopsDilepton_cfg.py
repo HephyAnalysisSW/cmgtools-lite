@@ -361,7 +361,7 @@ event_class = Events
 if getHeppyOption("fetch"):
   event_class = EOSEventsWithDownload
 
-preprocessorFile = "$CMSSW_BASE/src/CMGTools/StopsDilepton/data/runBTaggingSlimPreprocessor_cfg.py"
+preprocessorFile = "$CMSSW_BASE/python/CMGTools/StopsDilepton/preprocessor/runBTaggingSlimPreprocessor_cfg.py"
 from PhysicsTools.Heppy.utils.cmsswPreprocessor import CmsswPreprocessor
 preprocessor = CmsswPreprocessor(preprocessorFile)
 jetAna.jetCol = 'selectedUpdatedPatJets'

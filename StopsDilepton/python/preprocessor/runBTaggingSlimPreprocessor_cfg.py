@@ -68,11 +68,11 @@ updateJetCollection(
    jetSource = cms.InputTag('slimmedJets'),                                                                                                                                                
    jetCorrections = ('AK4PFchs', cms.vstring(['L1FastJet', 'L2Relative', 'L3Absolute']), 'None'),
    btagDiscriminators = [
-    'deepFlavourJetTags:probudsg'        ,
-    'deepFlavourJetTags:probb'           ,
-    'deepFlavourJetTags:probc'           ,
-    'deepFlavourJetTags:probbb'          ,
-    'deepFlavourJetTags:probcc'          ,
+    'pfDeepCSVJetTags:probudsg'        ,
+    'pfDeepCSVJetTags:probb'           ,
+    'pfDeepCSVJetTags:probc'           ,
+    'pfDeepCSVJetTags:probbb'          ,
+    'pfDeepCSVJetTags:probcc'          ,
     ]
 )
 
