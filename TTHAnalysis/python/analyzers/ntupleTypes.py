@@ -212,6 +212,12 @@ jetTypeSusyExtra = NTupleObjectType("jetSusyExtra",  baseObjectTypes = [ jetType
     # ---------------
     NTupleVariable("mcEta",   lambda x : x.mcJet.eta() if getattr(x,"mcJet",None) else 0., mcOnly=True, help="eta of associated gen jet"),
     NTupleVariable("mcPhi",   lambda x : x.mcJet.phi() if getattr(x,"mcJet",None) else 0., mcOnly=True, help="phi of associated gen jet"),
+    # --------------- Deep CSV
+    NTupleVariable("DFudsg", lambda x : x.btag('deepFlavourJetTags:probudsg'), float, help="Deep flavor discriminator: udsg"),
+    NTupleVariable("DFb",    lambda x : x.btag('deepFlavourJetTags:probb'),    float, help="Deep flavor discriminator: b"),
+    NTupleVariable("DFc",    lambda x : x.btag('deepFlavourJetTags:probc'),    float, help="Deep flavor discriminator: c"),
+    NTupleVariable("DFbb",   lambda x : x.btag('deepFlavourJetTags:probbb'),   float, help="Deep flavor discriminator: bb"),
+    NTupleVariable("DFcc",   lambda x : x.btag('deepFlavourJetTags:probcc'),   float, help="Deep flavor discriminator: cc"),
 ])
 
 genParticleWithMotherIndex = NTupleObjectType("genParticleWithMotherIndex", baseObjectTypes = [ genParticleWithMotherId ], mcOnly=True, variables = [

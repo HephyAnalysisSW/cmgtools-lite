@@ -350,6 +350,6 @@ print selectedComponents
 config = cfg.Config( components = selectedComponents,
                      sequence = sequence,
                      services = [],
-#                     preprocessor=preprocessor, # comment if pre-processor non needed
+                     preprocessor=preprocessor, # comment if pre-processor non needed
                      events_class = event_class)
 
