@@ -20,6 +20,7 @@ lepAna.packedCandidates = 'packedPFCandidates'
 lepAna.loose_electron_pt  = 5
 eleID = "Incl"
 doElectronScaleCorrections = False
+lepAna.doMiniIsolation = True
 
 if eleID == "CBID":
   lepAna.loose_electron_id  = "POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Veto" # no Iso
