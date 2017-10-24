@@ -366,7 +366,7 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
     
     #selectedComponents = [ewkDM_ttZ_ll_DC2A_0p200000_DC2V_0p200000]
-    selectedComponents = [TTZToLLNuNu_ext]
+    selectedComponents = [WpWpJJ]
     #selectedComponents = [TTbarDMJets_DiLept_pseudoscalar_Mchi_50_Mphi_10]
     #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p5_mN1_700_1000]
     #selectedComponents = [SMS_T2bW]    
@@ -400,9 +400,14 @@ event_class = Events
 if getHeppyOption("fetch"):
   event_class = EOSEventsWithDownload
 
+preprocessorFile = "$CMSSW_BASE/python/CMGTools/StopsDilepton/preprocessor/runBTaggingSlimPreprocessor_cfg.py"
+from PhysicsTools.Heppy.utils.cmsswPreprocessor import CmsswPreprocessor
+preprocessor = CmsswPreprocessor(preprocessorFile)
+jetAna.jetCol = 'selectedUpdatedPatJets'
+
 config = cfg.Config( components = selectedComponents,
                      sequence = sequence,
                      services = [],
-#                     preprocessor=preprocessor, # comment if pre-processor non needed
+                     preprocessor=preprocessor, # comment if pre-processor non needed
                      events_class = event_class)
 

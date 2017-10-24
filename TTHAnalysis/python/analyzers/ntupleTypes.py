@@ -7,6 +7,8 @@ from PhysicsTools.HeppyCore.utils.deltar import deltaR
 from CMGTools.TTHAnalysis.signedSip import *
 from CMGTools.TTHAnalysis.tools.functionsTTH import _ttH_idEmu_cuts_E2_obj,_soft_MuonId_2016ICHEP,_medium_MuonId_2016ICHEP
 from CMGTools.TTHAnalysis.tools.functionsRAX import _susy2lss_idEmu_cuts_obj,_susy2lss_idIsoEmu_cuts_obj
+
+
 #from CMGTools.TTHAnalysis.tools.leptonChoiceRA5 import _susy2lss_idEmu_cuts_obj,_susy2lss_idIsoEmu_cuts_obj
 
 ##------------------------------------------  
@@ -16,6 +18,7 @@ leptonTypeSusy = NTupleObjectType("leptonSusy", baseObjectTypes = [ leptonTypeEx
     NTupleVariable("mvaIdSpring15",   lambda lepton : lepton.mvaRun2("NonTrigSpring15MiniAOD") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG MVA ID for non-triggering electrons, Spring15 re-training; 1 for muons"),
     NTupleVariable("mvaIdSpring16HZZ",   lambda lepton : lepton.mvaRun2("Spring16HZZ") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG MVA ID, Spring16; 1 for muons"),
     NTupleVariable("mvaIdSpring16",   lambda lepton : lepton.mvaRun2("Spring16GP") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG MVA ID, Spring16; 1 for muons"),
+    #NTupleVariable("mvaValueTTH",   lambda lepton : lepton.mvaValueTTH if hasattr(lepton, 'miniAbsIsoCharged') else -999, help="LeptonMVA"),
     #NTupleVariable("mvaIdSpring16",   lambda lepton : lepton.mvaRun2("Spring16") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG Spring16 MVA discriminator value; 1 for muons"),
     NTupleVariable("eleCutId_Spring2016_25ns_v1_ConvVetoDxyDz",     lambda x : (1*x.electronID("POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Veto") + 1*x.electronID("POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Loose") + 1*x.electronID("POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Medium") + 1*x.electronID("POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Tight")) if abs(x.pdgId()) == 11 else -1, int, help="Electron cut-based ID Spring2016 25ns v1 ConvVetoDxyDz: 0=none, 1=veto, 2=loose, 3=medium, 4=tight"),
     # Lepton MVA-id related variables
@@ -212,6 +215,17 @@ jetTypeSusyExtra = NTupleObjectType("jetSusyExtra",  baseObjectTypes = [ jetType
     # ---------------
     NTupleVariable("mcEta",   lambda x : x.mcJet.eta() if getattr(x,"mcJet",None) else 0., mcOnly=True, help="eta of associated gen jet"),
     NTupleVariable("mcPhi",   lambda x : x.mcJet.phi() if getattr(x,"mcJet",None) else 0., mcOnly=True, help="phi of associated gen jet"),
+    # --------------- Deep CSV
+    #NTupleVariable("DFudsg", lambda x : x.btag('pfDeepCSVJetTags:probudsg'), float, help="Deep flavor discriminator: udsg"),
+    #NTupleVariable("DFb",    lambda x : x.btag('pfDeepCSVJetTags:probb'),    float, help="Deep flavor discriminator: b"),
+    #NTupleVariable("DFc",    lambda x : x.btag('pfDeepCSVJetTags:probc'),    float, help="Deep flavor discriminator: c"),
+    #NTupleVariable("DFbb",   lambda x : x.btag('pfDeepCSVJetTags:probbb'),   float, help="Deep flavor discriminator: bb"),
+    #NTupleVariable("DFcc",   lambda x : x.btag('pfDeepCSVJetTags:probcc'),   float, help="Deep flavor discriminator: cc"),
+    NTupleVariable("DFudsg", lambda x : x.btag('deepFlavourJetTags:probudsg'), float, help="Deep flavor discriminator: udsg"),
+    NTupleVariable("DFb",    lambda x : x.btag('deepFlavourJetTags:probb'),    float, help="Deep flavor discriminator: b"),
+    NTupleVariable("DFc",    lambda x : x.btag('deepFlavourJetTags:probc'),    float, help="Deep flavor discriminator: c"),
+    NTupleVariable("DFbb",   lambda x : x.btag('deepFlavourJetTags:probbb'),   float, help="Deep flavor discriminator: bb"),
+    NTupleVariable("DFcc",   lambda x : x.btag('deepFlavourJetTags:probcc'),   float, help="Deep flavor discriminator: cc"),
 ])
 
 genParticleWithMotherIndex = NTupleObjectType("genParticleWithMotherIndex", baseObjectTypes = [ genParticleWithMotherId ], mcOnly=True, variables = [
