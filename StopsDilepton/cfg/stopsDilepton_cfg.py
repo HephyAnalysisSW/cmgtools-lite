@@ -234,6 +234,7 @@ triggerFlagsAna.triggerBits = {
         'ee_noniso':triggers_ee_noniso,
         'ee_33': ['HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_v*'],
         'ee_33_MW': ['HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_MW_v*'],
+        'eeSS' : triggers_ee_ss,
 #mue
         'mue':triggers_mue,
         'mu30e30': ['HLT_Mu30_Ele30_CaloIdL_GsfTrkIdVL_v*'],
