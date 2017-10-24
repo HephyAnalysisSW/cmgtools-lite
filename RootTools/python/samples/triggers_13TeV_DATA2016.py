@@ -17,6 +17,11 @@ triggers_ee = [ "HLT_Ele17_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*",
 triggers_ee_noniso = ["HLT_DoubleEle33_CaloIdL_v*", 
                       "HLT_DoubleEle37_Ele27_CaloIdL_GsfTrkIdVL_v*", 
                       "HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_v" ]
+triggers_ee_ss = [ "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*",
+                   "HLT_Ele27_WPTight_Gsf_v*",      
+                   "HLT_Ele25_eta2p1_WPLoose_Gsf_v*", # not in column 0 
+                   "HLT_Ele25_eta2p1_WPTight_Gsf_v*", 
+    ] 
 
 # warning: ee trigger without DZ is prescaled
 triggers_ee_nodz = [ "HLT_Ele17_Ele12_CaloIdL_TrackIdL_IsoVL_v*","HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v*" ]
@@ -48,10 +53,10 @@ triggers_3mu_alt = [ "HLT_TrkMu15_DoubleTrkMu5NoFiltersNoVtx_v*" ]
 triggers_2mu1e = [ "HLT_DiMu9_Ele9_CaloIdL_TrackIdL_v*" ]
 triggers_2e1mu = [ "HLT_Mu8_DiEle12_CaloIdL_TrackIdL_v*" ]
 
-triggers_1mu_iso = [ 'HLT_IsoMu20_v*', 
-                     'HLT_IsoTkMu20_v*', 
-                     'HLT_IsoMu22_v*', 
-                     'HLT_IsoTkMu22_v*',
+triggers_1mu_iso = [ 'HLT_IsoMu22_v*', 
+                     'HLT_IsoTkMu22_v*', 
+                     'HLT_IsoMu22_eta2p1_v*'
+                     'HLT_IsoTkMu22_eta2p1_v*', 
                      'HLT_IsoMu24_v*', 
                      'HLT_IsoTkMu24_v*']  # Mu20's prescaled in column 0
 
