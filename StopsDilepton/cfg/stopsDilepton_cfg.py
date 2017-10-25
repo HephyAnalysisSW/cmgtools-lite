@@ -367,7 +367,7 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
     
     #selectedComponents = [ewkDM_ttZ_ll_DC2A_0p200000_DC2V_0p200000]
-    selectedComponents = [WpWpJJ]
+    #selectedComponents = [WpWpJJ]
     #selectedComponents = [TTbarDMJets_DiLept_pseudoscalar_Mchi_50_Mphi_10]
     #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p5_mN1_700_1000]
     #selectedComponents = [SMS_T2bW]    
@@ -378,7 +378,7 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p05]
     #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
     #selectedComponents = [QCD_flat_80X_noPU]
-    #selectedComponents = [DoubleMuon_Run2016E_03Feb2017]
+    selectedComponents = [DoubleMuon_Run2016E_03Feb2017]
     #selectedComponents = [DoubleEG_Run2016E_23Sep2016]
     #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
