@@ -70,7 +70,7 @@ ewkDM_ttZ_ll_DC1A_0p500000_DC1V_m1p000000 = makePrivateMCComponentFromDPM(
                         name    = 'ewkDM_ttZ_ll_DC1A_0p500000_DC1V_m1p000000',
                         dataset =  '/ewkDM_ttZ_ll_DC1A_0p500000_DC1V_m1p000000/schoef-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
                         dpmdir  =  '/store/user/schoef/ewkDM_ttZ_ll_DC1A_0p500000_DC1V_m1p000000/ewkDM_mAOD/170908_200353/0000',
-                        xSec    = 1.9281 * TTZToLLNuNuXsec,
+                        xSec    = 0.9281 * TTZToLLNuNuXsec,
                     )
 
 ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_0p176700_DC2V_0p176700 = makePrivateMCComponentFromDPM(
