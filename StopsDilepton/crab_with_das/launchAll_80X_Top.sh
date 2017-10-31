@@ -90,23 +90,23 @@
 
 
 ## 2016 Data
-#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016B_03Feb2017_v2
-#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016C_03Feb2017
-#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016D_03Feb2017
-#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016E_03Feb2017
-#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016F_03Feb2017
-#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016G_03Feb2017
-#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016H_03Feb2017_v2
-#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016H_03Feb2017_v3
+python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016B_03Feb2017_v2
+python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016C_03Feb2017
+python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016D_03Feb2017
+python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016E_03Feb2017
+python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016F_03Feb2017
+python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016G_03Feb2017
+python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016H_03Feb2017_v2
+python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleMuon_Run2016H_03Feb2017_v3
 
-python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016B_03Feb2017_v2
-python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016C_03Feb2017
-python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016D_03Feb2017
-python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016E_03Feb2017
-python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016F_03Feb2017
-python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016G_03Feb2017
-python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016H_03Feb2017_v2
-python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016H_03Feb2017_v3
+#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016B_03Feb2017_v2
+#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016C_03Feb2017
+#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016D_03Feb2017
+#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016E_03Feb2017
+#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016F_03Feb2017
+#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016G_03Feb2017
+#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016H_03Feb2017_v2
+#python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" SingleElectron_Run2016H_03Feb2017_v3
 
 #python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" DoubleMuon_Run2016B_03Feb2017_v2
 #python launch.py --remoteDir="80X_2l_v6" --unitsPerJob=1 --production_label="80X_2l_v6" DoubleMuon_Run2016C_03Feb2017
