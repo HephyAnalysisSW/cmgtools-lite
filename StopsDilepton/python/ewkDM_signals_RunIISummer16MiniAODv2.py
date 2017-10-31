@@ -143,6 +143,55 @@ ewkDM_ttZ_ll = makePrivateMCComponentFromDPM(
                         xSec    = TTZToLLNuNuXsec,
                     )
 
+ewkDM_ttZ_ll_noH = makePrivateMCComponentFromDPM(
+                        name    = 'ewkDM_ttZ_ll_noH',
+                        dataset = '/ewkDM_ttZ_ll_noH/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
+                        dpmdir  = '/store/user/dspitzba/ewkDM_ttZ_ll_noH/ewkDM_mAOD/171026_165719/0000',
+                        xSec    = TTZToLLNuNuXsec,
+                    )
+
+ewkDM_ttZ_ll_noH_DC2V_0p050000 = makePrivateMCComponentFromDPM(
+                        name    = 'ewkDM_ttZ_ll_noH_DC2V_0p050000',
+                        dataset = '/ewkDM_ttZ_ll_noH_DC2V_0p050000/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
+                        dpmdir  = '/store/user/dspitzba/ewkDM_ttZ_ll_noH_DC2V_0p050000/ewkDM_mAOD/171026_165755/0000',
+                        xSec    = 1.02 * TTZToLLNuNuXsec,
+                    )
+
+ewkDM_ttZ_ll_noH_DC2V_0p100000 = makePrivateMCComponentFromDPM(
+                        name    = 'ewkDM_ttZ_ll_noH_DC2V_0p100000',
+                        dataset = '/ewkDM_ttZ_ll_noH_DC2V_0p100000/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
+                        dpmdir  = '/store/user/dspitzba/ewkDM_ttZ_ll_noH_DC2V_0p100000/ewkDM_mAOD/171027_194703/0000',
+                        xSec    = 1.08 * TTZToLLNuNuXsec,
+                    )
+
+ewkDM_ttZ_ll_noH_DC2V_0p200000 = makePrivateMCComponentFromDPM(
+                        name    = 'ewkDM_ttZ_ll_noH_DC2V_0p200000',
+                        dataset = '/ewkDM_ttZ_ll_noH_DC2V_0p200000/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
+                        dpmdir  = '/store/user/dspitzba/ewkDM_ttZ_ll_noH_DC2V_0p200000/ewkDM_mAOD/171026_150024/0000',
+                        xSec    = 1.32 * TTZToLLNuNuXsec,
+                    )
+
+ewkDM_ttZ_ll_noH_DC2V_0p300000 = makePrivateMCComponentFromDPM(
+                        name    = 'ewkDM_ttZ_ll_noH_DC2V_0p300000',
+                        dataset = '/ewkDM_ttZ_ll_noH_DC2V_0p300000/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
+                        dpmdir  = '/store/user/dspitzba/ewkDM_ttZ_ll_noH_DC2V_0p300000/ewkDM_mAOD/171026_165831/0000',
+                        xSec    = 1.71 * TTZToLLNuNuXsec,
+                    )
+
+ewkDM_ttZ_ll_noH_DC2V_m0p150000 = makePrivateMCComponentFromDPM(
+                        name    = 'ewkDM_ttZ_ll_noH_DC2V_m0p150000',
+                        dataset = '/ewkDM_ttZ_ll_noH_DC2V_m0p150000/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
+                        dpmdir  = '/store/user/dspitzba/ewkDM_ttZ_ll_noH_DC2V_m0p150000/ewkDM_mAOD/171026_165907/0000',
+                        xSec    = 1.17 * TTZToLLNuNuXsec,
+                    )
+
+ewkDM_ttZ_ll_noH_DC2V_m0p250000 = makePrivateMCComponentFromDPM(
+                        name    = 'ewkDM_ttZ_ll_noH_DC2V_m0p250000',
+                        dataset = '/ewkDM_ttZ_ll_noH_DC2V_m0p250000/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
+                        dpmdir  = '/store/user/dspitzba/ewkDM_ttZ_ll_noH_DC2V_m0p250000/ewkDM_mAOD/171027_195120/0000',
+                        xSec    = 1.48 * TTZToLLNuNuXsec,
+                    )
+
 signalSamples = [\
     ewkDM_ttZ_ll,
     ewkDM_ttZ_ll_DC2A_0p200000_DC2V_0p200000,
@@ -155,4 +204,12 @@ signalSamples = [\
     ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_0p176700_DC2V_m0p176700,
     ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_0p176700_DC2V_0p176700,
     ewkDM_ttZ_ll_DC1A_0p500000_DC1V_m1p000000,
-    ewkDM_ttZ_ll_DC1A_0p500000_DC1V_0p500000]
+    ewkDM_ttZ_ll_DC1A_0p500000_DC1V_0p500000,
+    ewkDM_ttZ_ll_noH,
+    ewkDM_ttZ_ll_noH_DC2V_0p050000,
+    ewkDM_ttZ_ll_noH_DC2V_0p100000,
+    ewkDM_ttZ_ll_noH_DC2V_0p200000,
+    ewkDM_ttZ_ll_noH_DC2V_0p300000,
+    ewkDM_ttZ_ll_noH_DC2V_m0p150000,
+    ewkDM_ttZ_ll_noH_DC2V_m0p250000,
+]
