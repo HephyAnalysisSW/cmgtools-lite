@@ -364,7 +364,7 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p05]
     #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
     #selectedComponents = [QCD_flat_80X_noPU]
-    #selectedComponents = [DoubleMuon_Run2016E_03Feb2017]
+    selectedComponents = [DoubleMuon_Run2016E_03Feb2017]
     #selectedComponents = [DoubleEG_Run2016E_23Sep2016]
     #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]

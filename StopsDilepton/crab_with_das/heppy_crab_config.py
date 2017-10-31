@@ -23,7 +23,7 @@ config.JobType.allowUndistributedCMSSW = True
 
 config.section_("Data")
 config.Data.ignoreLocality = False
-#config.Data.inputDBS = 'phys03'
+
 config.Data.splitting = 'FileBased'
 
 import subprocess
