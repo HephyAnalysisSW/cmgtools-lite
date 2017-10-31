@@ -16,6 +16,9 @@ storePackedCandidates = False
 # lep collection
 lepAna.packedCandidates = 'packedPFCandidates'
 
+lepAna.rhoMuon = 'fixedGridRhoFastjetAll'
+lepAna.rhoElectron = 'fixedGridRhoFastjetAll'
+
 ## ELECTRONS
 lepAna.loose_electron_pt  = 5
 eleID = "Incl"
