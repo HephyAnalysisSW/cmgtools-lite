@@ -16,6 +16,9 @@ storePackedCandidates = False
 # lep collection
 lepAna.packedCandidates = 'packedPFCandidates'
 
+lepAna.rhoMuon = 'fixedGridRhoFastjetAll'
+lepAna.rhoElectron = 'fixedGridRhoFastjetAll'
+
 ## ELECTRONS
 lepAna.loose_electron_pt  = 5
 eleID = "Incl"
@@ -275,28 +278,10 @@ triggerFlagsAna.triggerBits = {
        'Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ': ['HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
        'Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL': ['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_v*'],
        'Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ': ['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
-       'IsoMu22': ['HLT_IsoMu22_v*'],
-       'IsoTkMu22': ['HLT_IsoTkMu22_v*'],
-       'IsoMu22_eta2p1': ['HLT_IsoMu22_eta2p1_v*'],
-       'IsoTkMu22_eta2p1': ['HLT_IsoTkMu22_eta2p1_v*'],
-       'IsoMu24': ['HLT_IsoMu24_v*'],
-       'IsoTkMu24': ['HLT_IsoTkMu24_v*'],
-       'Ele27_WPTight_Gsf': ['HLT_Ele27_WPTight_Gsf_v*'],
-       'Ele25_eta2p1_WPTight_Gsf': ['HLT_Ele25_eta2p1_WPTight_Gsf_v*'],
-       'Ele27_eta2p1_WPLoose_Gsf': ['HLT_Ele27_eta2p1_WPLoose_Gsf_v*'],
        'DiMu9_Ele9_CaloIdL_TrackIdL': ['HLT_DiMu9_Ele9_CaloIdL_TrackIdL_v*'],
        'Mu8_DiEle12_CaloIdL_TrackIdL': ['HLT_Mu8_DiEle12_CaloIdL_TrackIdL_v*'],
        'TripleMu_12_10_5': ['HLT_TripleMu_12_10_5_v*'],
        'Ele16_Ele12_Ele8_CaloIdL_TrackIdL': ['HLT_Ele16_Ele12_Ele8_CaloIdL_TrackIdL_v*'],
-       'Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL': ['HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_v*'],
-       'Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ': ['HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
-       'Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL': ['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_v*'],
-       'Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ': ['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
-       'Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ': ['HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
-       'Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ': ['HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v*'],
-       'Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ': ['HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v*'],
-       'IsoMu22': ['HLT_IsoMu22_v*'],
-       'IsoTkMu22': ['HLT_IsoTkMu22_v*'],
 }
 
 # puppiMET
@@ -366,6 +351,7 @@ if getHeppyOption("loadSamples"):
         #sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
     
+    selectedComponents = [SingleElectron_Run2016H_03Feb2017_v3]
     #selectedComponents = [ewkDM_ttZ_ll_DC2A_0p200000_DC2V_0p200000]
     #selectedComponents = [WpWpJJ]
     #selectedComponents = [TTbarDMJets_DiLept_pseudoscalar_Mchi_50_Mphi_10]
@@ -391,8 +377,13 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [DoubleMuon_Run2016B_23Sep2016]
     for comp in selectedComponents:
             comp.files = comp.files[:1]
-#            #comp.files = ['root://eoscms.cern.ch//eos/cms/store/data/Run2016C/DoubleMuon/MINIAOD/23Sep2016-v1/80000/005599F4-5787-E611-A034-0025905C54C6.root']
-#            #comp.files = ['root://eoscms.cern.ch//store/group/phys_jetmet/MetScanners/bobak_pickevents_miniAOD.root']
+            #comp.files = []
+            #for i in range(41):
+            #    if i == 39: continue #missing file
+            #    fn = 'event_%s.root'%i
+            #    comp.files.append(fn)
+            #comp.files = ['root://eoscms.cern.ch//eos/cms/store/data/Run2016C/DoubleMuon/MINIAOD/23Sep2016-v1/80000/005599F4-5787-E611-A034-0025905C54C6.root']
+            #comp.files = ['root://eoscms.cern.ch//store/group/phys_jetmet/MetScanners/bobak_pickevents_miniAOD.root']
             comp.splitFactor = 1
 
 from CMGTools.TTHAnalysis.tools.EOSEventsWithDownload import EOSEventsWithDownload
