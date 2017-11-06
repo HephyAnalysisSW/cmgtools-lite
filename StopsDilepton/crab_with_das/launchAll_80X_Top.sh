@@ -48,45 +48,47 @@
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" TTLep_pow
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M50_HT70to100
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M50_HT100to200
-python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" DYJetsToLL_M50_HT100to200_ext
+#python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" DYJetsToLL_M50_HT100to200_ext
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M50_HT200to400
-python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" DYJetsToLL_M50_HT200to400_ext
+#python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" DYJetsToLL_M50_HT200to400_ext
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M50_HT400to600
-python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" DYJetsToLL_M50_HT400to600_ext
+#python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" DYJetsToLL_M50_HT400to600_ext
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M50_HT600to800
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M50_HT800to1200
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M50_HT1200to2500
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M50_HT2500toInf
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT100to200
-python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT100to200_ext
+#python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT100to200_ext
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT200to400
-python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT200to400_ext
+#python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT200to400_ext
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT400to600
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT600toInf
-python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT600toInf_ext
+#python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT600toInf_ext
 
-### signal MC
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC2A_0p200000_DC2V_0p200000
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p500000_DC1V_0p500000 
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p500000_DC1V_m1p000000
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_0p176700_DC2V_0p176700
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_0p176700_DC2V_m0p176700
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_m0p176700_DC2V_0p176700
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_m0p176700_DC2V_m0p176700
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_0p250000
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_m0p250000
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2V_0p250000 
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2V_m0p250000
+#### signal MC
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC2A_0p200000_DC2V_0p200000
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p500000_DC1V_0p500000 
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p500000_DC1V_m1p000000
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_0p176700_DC2V_0p176700
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_0p176700_DC2V_m0p176700
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_m0p176700_DC2V_0p176700
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_m0p176700_DC2V_m0p176700
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_0p250000
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_m0p250000
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2V_0p250000 
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2V_m0p250000
+#
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH 
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_0p050000
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_0p100000
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_0p200000
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_0p300000
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_m0p150000
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_m0p250000
 
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH 
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_0p050000
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_0p100000
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_0p200000
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_0p300000
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_m0p150000
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_m0p250000
-
+python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_TTZToLL_LO
+python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_TTZToLL_LO_DC2A0p2_DC2V0p2
 
 ## 2016 Data
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" SingleMuon_Run2016B_03Feb2017_v2
