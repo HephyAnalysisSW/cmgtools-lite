@@ -193,7 +193,7 @@ ewkDM_ttZ_ll_noH_DC2V_m0p250000 = makePrivateMCComponentFromDPM(
                     )
 
 # x-sec without nunu part
-TTZToLLXsec = 
+TTZToLLXsec = 1.24 * 0.8393 * 3 * 0.03366 # x-sec increased by 1.24 from gamma*, NLO x-sec from 1610.07922
 
 ewkDM_TTZToLL_LO = makePrivateMCComponentFromDPM(
                         name    = 'ewkDM_TTZToLL_LO',
