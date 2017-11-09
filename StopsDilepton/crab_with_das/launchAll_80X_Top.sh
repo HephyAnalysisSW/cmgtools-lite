@@ -87,8 +87,8 @@
 #python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_m0p150000
 #python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_m0p250000
 
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_TTZToLL_LO
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_TTZToLL_LO_DC2A0p2_DC2V0p2
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_TTZToLL_LO
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_TTZToLL_LO_DC2A0p2_DC2V0p2
 
 ## 2016 Data
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" SingleMuon_Run2016B_03Feb2017_v2
@@ -135,3 +135,12 @@ python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --pr
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" MuonEG_Run2016G_03Feb2017
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" MuonEG_Run2016H_03Feb2017_v2
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" MuonEG_Run2016H_03Feb2017_v3
+
+python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" MET_Run2016B_03Feb2017_v2
+python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" MET_Run2016C_03Feb2017
+python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" MET_Run2016D_03Feb2017
+python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" MET_Run2016E_03Feb2017
+python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" MET_Run2016F_03Feb2017
+python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" MET_Run2016G_03Feb2017
+python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" MET_Run2016H_03Feb2017_v2
+python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" MET_Run2016H_03Feb2017_v3
