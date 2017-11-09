@@ -87,8 +87,8 @@
 #python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_m0p150000
 #python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_ttZ_ll_noH_DC2V_m0p250000
 
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_TTZToLL_LO
-python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_TTZToLL_LO_DC2A0p2_DC2V0p2
+python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_TTZToLL_01j_LO
+#python launch.py --inputDBS phys03 --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" ewkDM_TTZToLL_01j_LO_DC2A0p2_DC2V0p2
 
 ## 2016 Data
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" SingleMuon_Run2016B_03Feb2017_v2
