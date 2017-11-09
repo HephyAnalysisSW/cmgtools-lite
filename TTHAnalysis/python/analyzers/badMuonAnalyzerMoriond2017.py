@@ -75,7 +75,6 @@ class badMuonAnalyzerMoriond2017( Analyzer ):
         n = len(muons)
         for i in xrange(n):
             if (muons[i].pt() < self.minMuPt or goodMuon[i] != 0): continue;
-            bad_muons.append( muons[i] )
             bad = True;
             if (self.selectClones):
                 bad = False; # unless proven otherwise

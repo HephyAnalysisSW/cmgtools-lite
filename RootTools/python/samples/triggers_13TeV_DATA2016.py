@@ -14,6 +14,7 @@ triggers_mumu = triggers_mumu_iso
 
 triggers_ee = [ "HLT_Ele17_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*", 
                 "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*" ] # 17/12 prescaled in column 0
+triggers_ee_noniso = ["HLT_DoubleEle33_CaloIdL_v*", "HLT_DoubleEle37_Ele27_CaloIdL_GsfTrkIdVL_v*", "HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_MW_v*", "HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_v*" ]
 triggers_ee_noniso = ["HLT_DoubleEle33_CaloIdL_v*", 
                       "HLT_DoubleEle37_Ele27_CaloIdL_GsfTrkIdVL_v*", 
                       "HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_v" ]
@@ -32,6 +33,7 @@ triggers_mue   = [ "HLT_Mu17_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v*", # warni
                    "HLT_Mu8_TrkIsoVVL_Ele17_CaloIdL_TrackIdL_IsoVL_v*",
                    "HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v*", 
                    "HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*", 
+                   "HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ_v*", 
                    "HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_v*",
                    "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_v*",
                    "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v*" ]

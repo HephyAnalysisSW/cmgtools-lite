@@ -585,8 +585,12 @@ susyCoreSequence = [
     genHiggsAna,
     genHFAna,
     pdfwAna,
+<<<<<<< HEAD
     badChargedHadronAna,
     susyScanAna,
+=======
+    #susyScanAna,
+>>>>>>> eb742c3d91a590f0d8d318f2050bfe4c8d1a82d0
     vertexAna,
     lepAna,
     #ttHCoreEventAna, #inserted here
@@ -609,6 +613,7 @@ susyCoreSequence = [
     triggerFlagsAna,
     eventFlagsAna,
     badMuonAna,
+    badMuonAna_pt20,
     badMuonAnaMoriond2017,
     badCloneMuonAnaMoriond2017,
     badChargedHadronAna,

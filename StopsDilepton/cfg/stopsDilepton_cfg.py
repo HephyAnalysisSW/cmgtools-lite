@@ -99,19 +99,61 @@ ttHLepSkim.maxLeptons = 999
 
 # --- JET-LEPTON CLEANING ---
 jetAna.minLepPt = 10
+<<<<<<< HEAD
 jetAna.applyL2L3Residual = 'Data' 
+=======
+jetAna.recalibrateJets =  True 
+jetAna.applyL2L3Residual = "Data" 
+>>>>>>> eb742c3d91a590f0d8d318f2050bfe4c8d1a82d0
 jetAna.jetPt = 15
 jetAna.jetEta = 5.2 #FIXME
 jetAna.addJECShifts = True
 jetAna.doQG = False
 jetAna.smearJets = False #should be false in susycore, already
 
+<<<<<<< HEAD
 jetAna.recalibrateJets =  True #For data #FIXME
 jetAna.calculateSeparateCorrections = True #should be true if recalibrate, otherwise L1 inconsistent
 
 jetAna.calculateType1METCorrection = False
 jetAna.dataGT   = "Fall15_25nsV2_DATA"
 jetAna.mcGT   = "Spring16_25nsV3_DATA"
+=======
+jetAna.calculateSeparateCorrections = True #should be true if recalibrate, otherwise L1 inconsistent
+jetAna.calculateType1METCorrection = True
+
+isFastSim = False
+
+#jetAna.dataGT = "Summer16_23Sep2016BCDV3_DATA Summer16_23Sep2016EFV3_DATA Summer16_23Sep2016GV3_DATA Summer16_23Sep2016HV3_DATA"
+#jetAna.runsDataJEC = [276811, 278801, 280385]
+jetAna.dataGT = [ ( -1, "Summer16_23Sep2016BCDV3_DATA"), (276811, "Summer16_23Sep2016EFV3_DATA"), (278801, "Summer16_23Sep2016GV3_DATA"), (280385, "Summer16_23Sep2016HV3_DATA") ]
+
+#jetAna.dataGT   = "80X_dataRun2_2016SeptRepro_v3"
+if isFastSim:
+    jetAna.mcGT   = "Spring16_FastSimV1_MC"
+else:
+    jetAna.mcGT   = "Summer16_23Sep2016V3_MC"
+
+# if isData: ## not going to work on MC
+eventFlagsAna.triggerBits.update( {'badMuons':['Flag_badMuons'], 'duplicateMuons':['Flag_duplicateMuons'], 'noBadMuons':['Flag_noBadMuons'] })
+
+#JECdb = '/afs/hephy.at/work/d/dspitzbart/stops/CMSSW_8_0_25/src/CMGTools/RootTools/data/jec/Summer16_25nsV5_MC.db'
+
+isTTDM = False
+if isTTDM:
+    susyCoreSequence.remove( triggerFlagsAna )
+
+metAna.recalibrate = "type1"
+metAna.storePuppiExtra = False # False for MC, True for re-MiniAOD??
+#metAna.doTkMet = True # for chs met
+from CMGTools.TTHAnalysis.analyzers.chsMETAnalyzer import chsMETAnalyzer
+chsMETAna = cfg.Analyzer(
+    chsMETAnalyzer,
+    maxDz=0.1,
+    packedCandidates = 'packedPFCandidates', 
+    )
+susyCoreSequence.append( chsMETAna )
+>>>>>>> eb742c3d91a590f0d8d318f2050bfe4c8d1a82d0
 
 ## PHOTONS
 doPhotonScaleCorrections = False
@@ -122,10 +164,16 @@ if doPhotonScaleCorrections:
     'isSync': False
     }
 
+<<<<<<< HEAD
 metAna.recalibrate = False 
 
 isoTrackAna.setOff=False
 genAna.allGenTaus = True
+=======
+
+isoTrackAna.setOff = False
+genAna.allGenTaus  = True
+>>>>>>> eb742c3d91a590f0d8d318f2050bfe4c8d1a82d0
 
 from CMGTools.TTHAnalysis.analyzers.ttHLepEventAnalyzer import ttHLepEventAnalyzer
 ttHEventAna = cfg.Analyzer(
@@ -167,6 +215,7 @@ LHEAna = LHEAnalyzer.defaultConfig
 
 #lheWeightAna.useLumiInfo=True
 
+<<<<<<< HEAD
 from CMGTools.RootTools.samples.triggers_13TeV_Spring15 import *
 from CMGTools.RootTools.samples.triggers_13TeV_Spring15_1l import *
 triggerFlagsAna.triggerBits = {
@@ -212,11 +261,55 @@ triggerFlagsAna.triggerBits = {
 #mumu
         'mumuIso' : triggers_mumu_iso,
         'mumuNoniso_50ns' : triggers_mumu_noniso_50ns,
+=======
+from CMGTools.RootTools.samples.triggers_13TeV_DATA2016 import *
+triggerFlagsAna.triggerBits = {
+        # hadronic
+        'HT350_MET100': triggers_HT350_MET100,
+        "HT350":triggers_HT350,
+        "HT475":triggers_HT475,
+        "HT600":triggers_HT600,
+        "dijet":triggers_dijet,
+        "jet":triggers_jet,
+        "dijet70met120": triggers_dijet70met120,
+        "dijet55met110": triggers_dijet55met110,
+
+        'HT900'                :triggers_HT900,
+        'HT800'                :triggers_HT800,
+        'MET170_NotCleaned'    :triggers_MET170_NotCleaned,
+        'MET170_HBHECleaned'   :triggers_MET170_HBHECleaned,
+        'MET170_BeamHaloCleaned':triggers_MET170_BeamHaloCleaned,
+        'AllMET170'            :triggers_AllMET170,
+        'AllMET300'            :triggers_AllMET300,
+        'HT350_MET100'         :triggers_HT350_MET100,
+
+        ## muon
+
+        'SingleMu_iso'     :triggers_1mu_iso,
+        'SingleMu_noniso'  :triggers_1mu_noniso ,
+        'SingleMuTTZ'      :triggers_1mu_iso_TTZ,
+
+        'SingleEle_noniso'   :triggers_1e_noniso,
+        'SingleEle'          :triggers_1e,
+        'SingleEleTTZ'       :triggers_1e_iso_TTZ,
+
+#mumu
+        'mumuIso' : triggers_mumu_iso,
+>>>>>>> eb742c3d91a590f0d8d318f2050bfe4c8d1a82d0
         'mumuNoiso' : triggers_mumu_noniso,
         'mumuSS' : triggers_mumu_ss,
         'mumuHT' : triggers_mumu_ht,
 # ee
+<<<<<<< HEAD
         'ee_DZ': triggers_ee, 
+=======
+        'ee_DZ': triggers_ee,
+        'ee_noDZ':triggers_ee_nodz ,
+        'ee_noniso':triggers_ee_noniso,
+        'ee_33': ['HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_v*'],
+        'ee_33_MW': ['HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_MW_v*'],
+        'eeSS' : triggers_ee_ss,
+>>>>>>> eb742c3d91a590f0d8d318f2050bfe4c8d1a82d0
 #mue
         'mue':triggers_mue,
         'mu30e30': ['HLT_Mu30_Ele30_CaloIdL_GsfTrkIdVL_v*'],
@@ -239,6 +332,7 @@ triggerFlagsAna.triggerBits = {
         'Jet80MET90'       :triggers_Jet80MET90      ,
         'Jet80MET120'      :triggers_Jet80MET120     ,
         'MET120Mu5'        :triggers_MET120Mu5       ,
+<<<<<<< HEAD
 
         'MET170_pres'      :triggers_MET170_pres     , 
         'MET250'           :triggers_MET250          ,
@@ -264,6 +358,31 @@ triggerFlagsAna.triggerBits = {
         'DiPFJetAve80_HFJEC': ["HLT_DiPFJetAve80_HFJEC_v*"],
         'DiPFJetAve80': ["HLT_DiPFJetAve80_v*"],
         }
+=======
+# individual triggers
+
+       'Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ': ['HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v*'],
+       'Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ': ['HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v*'],
+       'IsoMu22': ['HLT_IsoMu22_v*'],
+       'IsoTkMu22': ['HLT_IsoTkMu22_v*'],
+       'IsoMu22_eta2p1': ['HLT_IsoMu22_eta2p1_v*'],
+       'IsoTkMu22_eta2p1': ['HLT_IsoTkMu22_eta2p1_v*'],
+       'IsoMu24': ['HLT_IsoMu24_v*'],
+       'IsoTkMu24': ['HLT_IsoTkMu24_v*'],
+       'Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ': ['HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
+       'Ele27_WPTight_Gsf': ['HLT_Ele27_WPTight_Gsf_v*'],
+       'Ele25_eta2p1_WPTight_Gsf': ['HLT_Ele25_eta2p1_WPTight_Gsf_v*'],
+       'Ele27_eta2p1_WPLoose_Gsf': ['HLT_Ele27_eta2p1_WPLoose_Gsf_v*'],
+       'Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL': ['HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_v*'],
+       'Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ': ['HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
+       'Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL': ['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_v*'],
+       'Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ': ['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
+       'DiMu9_Ele9_CaloIdL_TrackIdL': ['HLT_DiMu9_Ele9_CaloIdL_TrackIdL_v*'],
+       'Mu8_DiEle12_CaloIdL_TrackIdL': ['HLT_Mu8_DiEle12_CaloIdL_TrackIdL_v*'],
+       'TripleMu_12_10_5': ['HLT_TripleMu_12_10_5_v*'],
+       'Ele16_Ele12_Ele8_CaloIdL_TrackIdL': ['HLT_Ele16_Ele12_Ele8_CaloIdL_TrackIdL_v*'],
+}
+>>>>>>> eb742c3d91a590f0d8d318f2050bfe4c8d1a82d0
 
 # puppiMET
 metPuppiAna = cfg.Analyzer(
@@ -331,6 +450,7 @@ if getHeppyOption("loadSamples"):
     for sample in dataSamples + samples_data_private:
         #sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
+<<<<<<< HEAD
     from CMGTools.StopsDilepton.samples import *
 
 #    selectedComponents = [TTJets, DoubleMuon_Run2015D_16Dec]
@@ -338,6 +458,40 @@ if getHeppyOption("loadSamples"):
     for comp in selectedComponents:
             sample.json = None
             comp.files = comp.files[:1]
+=======
+    
+    selectedComponents = [SingleElectron_Run2016H_03Feb2017_v3]
+    #selectedComponents = [ewkDM_ttZ_ll_DC2A_0p200000_DC2V_0p200000]
+    #selectedComponents = [WpWpJJ]
+    #selectedComponents = [TTbarDMJets_DiLept_pseudoscalar_Mchi_50_Mphi_10]
+    #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p5_mN1_700_1000]
+    #selectedComponents = [SMS_T2bW]    
+    #selectedComponents = [TTbarDMJets_scalar_Mchi_10_Mphi_100_ext1]
+    #selectedComponents = [QCD_Pt_15to7000]
+    #selectedComponents = [WJetsToLNu]
+    #selectedComponents = [SMS_T2tt_mStop_150to250]
+    #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p05]
+    #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
+    #selectedComponents = [QCD_flat_80X_noPU]
+    selectedComponents = [DoubleMuon_Run2016E_03Feb2017]
+    #selectedComponents = [DoubleEG_Run2016E_23Sep2016]
+    #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
+    #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
+    #selectedComponents = [ tWnunu ]
+    #selectedComponents = [JetHT_Run2016H_22Feb2017]
+    #from files import doubleMu_files
+    #DoubleMuon_Run2016B_23Sep2016.files = ['root://cms-xrd-global.cern.ch/%s'%s for s in doubleMu_files]
+    #print DoubleMuon_Run2016B_23Sep2016.files
+    #DoubleMuon_Run2016B_23Sep2016.json="$CMSSW_BASE/src/CMGTools/StopsDilepton/cfg/json.json"
+    #selectedComponents = [DoubleMuon_Run2016B_23Sep2016]
+    for comp in selectedComponents:
+            comp.files = comp.files[:1]
+            #comp.files = []
+            #for i in range(41):
+            #    if i == 39: continue #missing file
+            #    fn = 'event_%s.root'%i
+            #    comp.files.append(fn)
+>>>>>>> eb742c3d91a590f0d8d318f2050bfe4c8d1a82d0
             #comp.files = ['root://eoscms.cern.ch//eos/cms/store/data/Run2016C/DoubleMuon/MINIAOD/23Sep2016-v1/80000/005599F4-5787-E611-A034-0025905C54C6.root']
             #comp.files = ['root://eoscms.cern.ch//store/group/phys_jetmet/MetScanners/bobak_pickevents_miniAOD.root']
             comp.splitFactor = 1
@@ -348,8 +502,16 @@ event_class = Events
 if getHeppyOption("fetch"):
   event_class = EOSEventsWithDownload
 
+<<<<<<< HEAD
 print "Components"
 print selectedComponents
+=======
+preprocessorFile = "$CMSSW_BASE/python/CMGTools/StopsDilepton/preprocessor/runBTaggingSlimPreprocessor_cfg.py"
+from PhysicsTools.Heppy.utils.cmsswPreprocessor import CmsswPreprocessor
+preprocessor = CmsswPreprocessor(preprocessorFile)
+jetAna.jetCol = 'selectedUpdatedPatJets'
+
+>>>>>>> eb742c3d91a590f0d8d318f2050bfe4c8d1a82d0
 config = cfg.Config( components = selectedComponents,
                      sequence = sequence,
                      services = [],

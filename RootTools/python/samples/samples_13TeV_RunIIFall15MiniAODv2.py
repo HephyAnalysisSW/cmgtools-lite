@@ -145,6 +145,7 @@ DYJetsToNuNu_M50 = kreator.makeMCComponent("DYJetsToNuNu_M50", "/DYJetsToNuNu_Tu
 VJets = WJetsToLNu_NLO + [ 
 WJetsToLNu_LO, 
 DYJetsToLL_M10to50, 
+DYJetsToLL_M5to50_LO, 
 DYJetsToLL_M10to50_ext1,
 DYJetsToLL_M5to50_LO, 
 DYJetsToLL_M50, 
@@ -499,7 +500,6 @@ TTTT = kreator.makeMCComponent("TTTT", "/TTTT_TuneCUETP8M1_13TeV-amcatnlo-pythia
 TTTT_ext = kreator.makeMCComponent("TTTT_ext", "/TTTT_TuneCUETP8M1_13TeV-amcatnlo-pythia8/RunIIFall15MiniAODv2-PU25nsData2015v1_76X_mcRun2_asymptotic_v12_ext1-v1/MINIAODSIM", "CMS", ".*root", 0.009103)
 
 Rares = [TTTT, TTTT_ext]
-
 
 
 ### ----------------------------- summary ----------------------------------------
