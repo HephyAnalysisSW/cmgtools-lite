@@ -92,7 +92,7 @@ if doElectronScaleCorrections:
     }
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 2
+ttHLepSkim.minLeptons = 0
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
@@ -100,7 +100,7 @@ ttHLepSkim.maxLeptons = 999
 # --- JET-LEPTON CLEANING ---
 jetAna.minLepPt = 10
 jetAna.recalibrateJets =  True 
-jetAna.applyL2L3Residual = "Data" 
+jetAna.applyL2L3Residual = "Data"
 jetAna.jetPt = 15
 jetAna.jetEta = 5.2 #FIXME
 jetAna.addJECShifts = True
@@ -112,18 +112,13 @@ jetAna.calculateType1METCorrection = True
 
 isFastSim = False
 
-#jetAna.dataGT = "Summer16_23Sep2016BCDV3_DATA Summer16_23Sep2016EFV3_DATA Summer16_23Sep2016GV3_DATA Summer16_23Sep2016HV3_DATA"
-#jetAna.runsDataJEC = [276811, 278801, 280385]
 jetAna.dataGT = [ ( -1, "Summer16_23Sep2016BCDV3_DATA"), (276811, "Summer16_23Sep2016EFV3_DATA"), (278801, "Summer16_23Sep2016GV3_DATA"), (280385, "Summer16_23Sep2016HV3_DATA") ]
 
 #jetAna.dataGT   = "80X_dataRun2_2016SeptRepro_v3"
-if isFastSim:
-    jetAna.mcGT   = "Spring16_FastSimV1_MC"
-else:
-    jetAna.mcGT   = "Summer16_23Sep2016V3_MC"
-
-# if isData: ## not going to work on MC
-eventFlagsAna.triggerBits.update( {'badMuons':['Flag_badMuons'], 'duplicateMuons':['Flag_duplicateMuons'], 'noBadMuons':['Flag_noBadMuons'] })
+#if isFastSim:
+#    jetAna.mcGT   = "Spring16_FastSimV1_MC"
+#else:
+#    jetAna.mcGT   = "Summer16_23Sep2016V3_MC"
 
 #JECdb = '/afs/hephy.at/work/d/dspitzbart/stops/CMSSW_8_0_25/src/CMGTools/RootTools/data/jec/Summer16_25nsV5_MC.db'
 
@@ -162,8 +157,8 @@ ttHEventAna = cfg.Analyzer(
     )
 
 ## Insert the FatJet, SV, HeavyFlavour analyzers in the sequence
-susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
-                        ttHFatJetAna)
+#susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
+#                        ttHFatJetAna)
 susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
                         ttHSVAna)
 
@@ -205,12 +200,12 @@ from CMGTools.RootTools.samples.triggers_13TeV_DATA2016 import *
 
 triggerFlagsAna.triggerBits = {
     'mu'           : ["HLT_IsoMu27_v*", "HLT_IsoMu30_v*"],
-    'mu_pre'       : ["HLT_IsoMu24_v*", "HLT_IsoMu24_eta2p1_v*"],
+    'mu_pre'       : ["HLT_IsoMu24_v*", "HLT_IsoMu24_eta2p1_v*", "HLT_Mu8_TrkIsoVVL_v*", "HLT_Mu8_v*", "HLT_Mu3_PFJet40_v*"],
     'mu_nonIso'    : ["HLT_Mu50_v*", "HLT_Mu55_v*"],
-    'mu_nonIso_pre': ["HLT_Mu17_v*", "HLT_Mu19_v*", "HLT_Mu20_v*", "HLT_Mu27_v11"],
+    'mu_nonIso_pre': ["HLT_Mu17_v*", "HLT_Mu19_v*", "HLT_Mu20_v*", "HLT_Mu27_v*"],
 
     'ele'          : ["HLT_Ele32_WPTight_Gsf_v*", "HLT_Ele35_WPTight_Gsf_v*", "HLT_Ele38_WPTight_Gsf_v*", "HLT_Ele40_WPTight_Gsf_v*"],
-    'ele_pre'      : ["HLT_Ele27_WPTight_Gsf_v*", "HLT_Ele17_CaloIdM_TrackIdM_PFJet30_v*"],
+    'ele_pre'      : ["HLT_Ele27_WPTight_Gsf_v*", "HLT_Ele17_CaloIdM_TrackIdM_PFJet30_v*", "HLT_Ele8_CaloIdM_TrackIdM_PFJet30_v*"],
 
     'mumu'         : ["HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8_v*", "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_v*", "HLT_Mu19_TrkIsoVVL_Mu9_TrkIsoVVL_DZ_Mass3p8_v*"],
     'mumu_pre'     : ["HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_v*", "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v*"],
@@ -231,8 +226,10 @@ triggerFlagsAna.triggerBits = {
     "IsoMu27"      : [ "HLT_IsoMu27_v*" ],
     "IsoMu30"      : [ "HLT_IsoMu30_v*" ],
     "IsoMu24"      : [ "HLT_IsoMu24_v*" ],
-    "IsoMu24_eta2p1": [ "HLT_IsoMu24_eta2p1_v*" ],
-
+    "IsoMu24_eta2p1":[ "HLT_IsoMu24_eta2p1_v*" ],
+    "Mu8_TrkIsoVVL": [ "HLT_Mu8_TrkIsoVVL_v*" ],
+    "Mu8"          : [ "HLT_Mu8_v*" ],
+    "Mu3_PFJet40"  : [ "HLT_Mu3_PFJet40_v*"],
     "Mu50"         : [ "HLT_Mu50_v*" ],
     "Mu55"         : [ "HLT_Mu55_v*" ],
     "Mu17"         : [ "HLT_Mu17_v*" ],
@@ -246,6 +243,7 @@ triggerFlagsAna.triggerBits = {
     "Ele40_WPTight_Gsf"   : [ "HLT_Ele40_WPTight_Gsf_v*" ],
     "Ele27_WPTight_Gsf"   : [ "HLT_Ele27_WPTight_Gsf_v*" ],
     "Ele17_CaloIdM_TrackIdM_PFJet30"   : [ "HLT_Ele17_CaloIdM_TrackIdM_PFJet30_v*" ],
+    "Ele8_CaloIdM_TrackIdM_PFJet30"    : [ "HLT_Ele8_CaloIdM_TrackIdM_PFJet30_v*" ],
 
     "Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8"     : [ "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8_v*" ],
     "Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8"   : [ "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_v*" ],

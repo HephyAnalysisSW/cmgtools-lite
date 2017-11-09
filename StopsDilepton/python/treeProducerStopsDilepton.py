@@ -90,7 +90,7 @@ susySingleLepton_collections.update({
             "selectedIsoTrack"    : NTupleCollection("isoTrack", isoTrackType, 50, help="isoTrack, sorted by pt"),
             ##------------------------------------------------
             "cleanJetsAll"       : NTupleCollection("Jet",     jetTypeSusyExtra, 25, help="Cental jets after full selection and cleaning, sorted by pt"),
-            "fatJets"         : NTupleCollection("FatJet",  fatJetType,  15, help="AK8 jets, sorted by pt"),
+            #"fatJets"         : NTupleCollection("FatJet",  fatJetType,  15, help="AK8 jets, sorted by pt"),
             "genJets"         : NTupleCollection("GenJet",  genJetType,  15, help="Gen Jets, sorted by pt"),
             "discardedJets" : NTupleCollection("DiscJet", jetTypeSusyExtra, 15, help="Jets discarted in the jet-lepton cleaning"),
             "cleanJetsFailIdAll" : NTupleCollection("JetFailId", jetTypeSusyExtra, 15, help="Jets failing id after jet-lepton cleaning"),
