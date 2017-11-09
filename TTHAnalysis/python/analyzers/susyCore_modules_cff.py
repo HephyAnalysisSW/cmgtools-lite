@@ -86,29 +86,6 @@ eventFlagsAna = cfg.Analyzer(
     }
     )
 
-from CMGTools.TTHAnalysis.analyzers.badChargedHadronAnalyzerSummer2016 import badChargedHadronAnalyzerSummer2016
-badChargedHadronAna = cfg.Analyzer(
-    badChargedHadronAnalyzerSummer2016, name = 'badChargedHadronAnaSummer2016',
-    muons='slimmedMuons',
-    packedCandidates = 'packedPFCandidates',
-)
-
-from CMGTools.TTHAnalysis.analyzers.badMuonAnalyzerSummer2016 import badMuonAnalyzerSummer2016
-badMuonAna = cfg.Analyzer(
-    badMuonAnalyzerSummer2016, name = 'badMuonAnaSummer2016',
-    muons='slimmedMuons',
-    packedCandidates = 'packedPFCandidates',
-    minMuPt=100,
-    postFix='',
-)
-badMuonAna_pt20 = cfg.Analyzer(
-    badMuonAnalyzerSummer2016, name = 'badMuonAnaSummer2016_pt20',
-    muons='slimmedMuons',
-    packedCandidates = 'packedPFCandidates',
-    minMuPt=20,
-    postFix = 'pt20' 
-)
-
 from CMGTools.TTHAnalysis.analyzers.badMuonAnalyzerMoriond2017 import badMuonAnalyzerMoriond2017
 badCloneMuonAnaMoriond2017 = cfg.Analyzer(
     badMuonAnalyzerMoriond2017, name = 'badCloneMuonMoriond2017',
@@ -607,8 +584,6 @@ susyCoreSequence = [
     # susyLeptonMatchAna,
     triggerFlagsAna,
     eventFlagsAna,
-    badMuonAna,
-    badMuonAna_pt20,
     badMuonAnaMoriond2017,
     badCloneMuonAnaMoriond2017,
     badChargedHadronAna,

@@ -337,44 +337,12 @@ sequence = cfg.Sequence(
 
 #if True or getHeppyOption("loadSamples"):
 if getHeppyOption("loadSamples"):
-    #from CMGTools.RootTools.samples.samples_13TeV_RunIISpring16MiniAODv2 import *
-    from CMGTools.RootTools.samples.samples_13TeV_RunIISummer16MiniAODv2 import *
-    from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
-    #from CMGTools.StopsDilepton.samplesReReco import *
-    #from CMGTools.StopsDilepton.samples_13TeV_Moriond2017 import *
-    from CMGTools.RootTools.samples.samples_13TeV_signals import *
-    from CMGTools.StopsDilepton.TTbarDMJets_signals_RunIISummer16MiniAODv2 import *
-    from CMGTools.StopsDilepton.ewkDM_signals_RunIISummer16MiniAODv2 import *
-    from CMGTools.StopsDilepton.samples import *
-    from CMGTools.StopsDilepton.samples import *
-    for sample in dataSamples + samples_data_private:
+    from CMGTools.RootTools.samples.samples_13TeV_DATA2017 import *
+    for sample in dataSamples:
         #sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
-        sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
+        sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-305364_13TeV_PromptReco_Collisions17_JSON.txt"
     
-    selectedComponents = [SingleElectron_Run2016H_03Feb2017_v3]
-    #selectedComponents = [ewkDM_ttZ_ll_DC2A_0p200000_DC2V_0p200000]
-    #selectedComponents = [WpWpJJ]
-    #selectedComponents = [TTbarDMJets_DiLept_pseudoscalar_Mchi_50_Mphi_10]
-    #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p5_mN1_700_1000]
-    #selectedComponents = [SMS_T2bW]    
-    #selectedComponents = [TTbarDMJets_scalar_Mchi_10_Mphi_100_ext1]
-    #selectedComponents = [QCD_Pt_15to7000]
-    #selectedComponents = [WJetsToLNu]
-    #selectedComponents = [SMS_T2tt_mStop_150to250]
-    #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p05]
-    #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
-    #selectedComponents = [QCD_flat_80X_noPU]
-    selectedComponents = [DoubleMuon_Run2016E_03Feb2017]
-    #selectedComponents = [DoubleEG_Run2016E_23Sep2016]
-    #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
-    #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
-    #selectedComponents = [ tWnunu ]
-    #selectedComponents = [JetHT_Run2016H_22Feb2017]
-    #from files import doubleMu_files
-    #DoubleMuon_Run2016B_23Sep2016.files = ['root://cms-xrd-global.cern.ch/%s'%s for s in doubleMu_files]
-    #print DoubleMuon_Run2016B_23Sep2016.files
-    #DoubleMuon_Run2016B_23Sep2016.json="$CMSSW_BASE/src/CMGTools/StopsDilepton/cfg/json.json"
-    #selectedComponents = [DoubleMuon_Run2016B_23Sep2016]
+    selectedComponents = [MET_Run2017B_12Sep2017]
     for comp in selectedComponents:
             comp.files = comp.files[:1]
             #comp.files = []
@@ -392,14 +360,14 @@ event_class = Events
 if getHeppyOption("fetch"):
   event_class = EOSEventsWithDownload
 
-preprocessorFile = "$CMSSW_BASE/python/CMGTools/StopsDilepton/preprocessor/runBTaggingSlimPreprocessor_cfg.py"
-from PhysicsTools.Heppy.utils.cmsswPreprocessor import CmsswPreprocessor
-preprocessor = CmsswPreprocessor(preprocessorFile)
-jetAna.jetCol = 'selectedUpdatedPatJets'
+#preprocessorFile = "$CMSSW_BASE/python/CMGTools/StopsDilepton/preprocessor/runBTaggingSlimPreprocessor_cfg.py"
+#from PhysicsTools.Heppy.utils.cmsswPreprocessor import CmsswPreprocessor
+#preprocessor = CmsswPreprocessor(preprocessorFile)
+#jetAna.jetCol = 'selectedUpdatedPatJets'
 
 config = cfg.Config( components = selectedComponents,
                      sequence = sequence,
                      services = [],
-                     preprocessor=preprocessor, # comment if pre-processor non needed
+                     # preprocessor=preprocessor, # comment if pre-processor non needed
                      events_class = event_class)
 
