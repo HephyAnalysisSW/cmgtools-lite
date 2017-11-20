@@ -122,15 +122,15 @@ ewkDM_ttZ_ll_noH_DC2V_m0p250000 = makeMyPrivateMCComponentFromDPM(
 # x-sec without nunu part
 TTZToLLXsec = 1.24 * 0.8393 * 3 * 0.03366 # x-sec increased by 1.24 from gamma*, NLO x-sec from 1610.07922
 
-ewkDM_TTZToLL_01j_LO = makeMyPrivateMCComponentFromDPM(
-                        name    = 'ewkDM_TTZToLL_01j_LO',
-                        dataset = '/ewkDM_TTZToLL_01j_LO_slc6_amd64_gcc481_CMSSW_7_1_30_tarball/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
+ewkDM_TTZToLL_LO = makeMyPrivateMCComponentFromDPM(
+                        name    = 'ewkDM_TTZToLL_LO',
+                        dataset = '/ewkDM_TTZToLL_LO_slc6_amd64_gcc481_CMSSW_7_1_30_tarball/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
                         xSec    = 1. * TTZToLLXsec,
                     )
 
-ewkDM_TTZToLL_01j_LO_DC2A0p2_DC2V0p2 = makeMyPrivateMCComponentFromDPM(
-                        name    = 'ewkDM_TTZToLL_01j_LO_DC2A0p2_DC2V0p2',
-                        dataset = '/ewkDM_TTZToLL_01j_LO_DC2A0p2_DC2V0p2_slc6_amd64_gcc481_CMSSW_7_1_30_tarball/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
+ewkDM_TTZToLL_LO_DC2A0p2_DC2V0p2 = makeMyPrivateMCComponentFromDPM(
+                        name    = 'ewkDM_TTZToLL_LO_DC2A0p2_DC2V0p2',
+                        dataset = '/ewkDM_TTZToLL_LO_DC2A0p2_DC2V0p2_slc6_amd64_gcc481_CMSSW_7_1_30_tarball/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
                         xSec    = 1.6832 * TTZToLLXsec,
                     )
 
@@ -155,6 +155,6 @@ signalSamples = [\
     ewkDM_ttZ_ll_noH_DC2V_0p300000,
     ewkDM_ttZ_ll_noH_DC2V_m0p150000,
     ewkDM_ttZ_ll_noH_DC2V_m0p250000,
-    ewkDM_TTZToLL_01j_LO,
-    ewkDM_TTZToLL_01j_LO_DC2A0p2_DC2V0p2,
+    ewkDM_TTZToLL_LO,
+    ewkDM_TTZToLL_LO_DC2A0p2_DC2V0p2,
 ]
