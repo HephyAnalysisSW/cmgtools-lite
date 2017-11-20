@@ -92,7 +92,7 @@ if doElectronScaleCorrections:
     }
 
 # --- LEPTON SKIMMING ---
-ttHLepSkim.minLeptons = 2
+ttHLepSkim.minLeptons = 1
 ttHLepSkim.maxLeptons = 999
 #LepSkim.idCut  = ""
 #LepSkim.ptCuts = []
@@ -261,7 +261,6 @@ triggerFlagsAna.triggerBits = {
         'Jet80MET120'      :triggers_Jet80MET120     ,
         'MET120Mu5'        :triggers_MET120Mu5       ,
 # individual triggers
-
        'Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ': ['HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v*'],
        'Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ': ['HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v*'],
        'IsoMu22': ['HLT_IsoMu22_v*'],
@@ -344,14 +343,14 @@ if getHeppyOption("loadSamples"):
     #from CMGTools.StopsDilepton.samples_13TeV_Moriond2017 import *
     from CMGTools.RootTools.samples.samples_13TeV_signals import *
     from CMGTools.StopsDilepton.TTbarDMJets_signals_RunIISummer16MiniAODv2 import *
-    #from CMGTools.StopsDilepton.ewkDM_signals_RunIISummer16MiniAODv2 import *
+    from CMGTools.StopsDilepton.ttZ01j_5f_MLM_signals_RunIISummer16MiniAODv2 import *
     from CMGTools.StopsDilepton.samples import *
     for sample in dataSamples + samples_data_private:
         #sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
     
-    selectedComponents = [SingleElectron_Run2016H_03Feb2017_v3]
-    #selectedComponents = [ewkDM_ttZ_ll_DC2A_0p200000_DC2V_0p200000]
+    #selectedComponents = [SingleElectron_Run2016H_03Feb2017_v3]
+    selectedComponents = [ttZ01j_ll]
     #selectedComponents = [WpWpJJ]
     #selectedComponents = [TTbarDMJets_DiLept_pseudoscalar_Mchi_50_Mphi_10]
     #selectedComponents = [SMS_T8bbllnunu_XCha0p5_XSlep0p5_mN1_700_1000]
@@ -364,7 +363,7 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [SMS_T2tt_mStop_425_mLSP_325]
     #selectedComponents = [QCD_flat_80X_noPU]
     #selectedComponents = [DoubleMuon_Run2016E_03Feb2017]
-    selectedComponents = [MET_Run2016B_03Feb2017_v2]
+    #selectedComponents = [MET_Run2016B_03Feb2017_v2]
     #selectedComponents = [DoubleEG_Run2016E_23Sep2016]
     #selectedComponents = [DoubleMuon_Run2016E_23Sep2016]
     #selectedComponents = [QCD_Pt_15to3000_M2_0_500, QCD_Pt_15to3000_M2_5_100]
