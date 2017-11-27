@@ -102,6 +102,7 @@ python launch.py --inputDBS phys03 --remoteDir="80X_1l_v12" --unitsPerJob=3 --pr
 python launch.py --inputDBS phys03 --remoteDir="80X_1l_v12" --unitsPerJob=3 --production_label="80X_1l_v12" ttZ0j_ll_DC1A_0p500000_DC1V_m1p000000
 python launch.py --inputDBS phys03 --remoteDir="80X_1l_v12" --unitsPerJob=3 --production_label="80X_1l_v12" ttZ0j_ll_DC1A_0p500000_DC1V_0p500000
 python launch.py --inputDBS phys03 --remoteDir="80X_1l_v12" --unitsPerJob=3 --production_label="80X_1l_v12" ttZ0j_ll_DC1A_1p000000
+python launch.py --inputDBS phys03 --remoteDir="80X_1l_v12" --unitsPerJob=3 --production_label="80X_1l_v12" ttZ0j_ll_DC1A_0p600000_DC1V_m0p240000_DC2V_0p250000
 python launch.py --inputDBS phys03 --remoteDir="80X_1l_v12" --unitsPerJob=3 --production_label="80X_1l_v12" ttZ0j_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_0p176700_DC2V_0p176700
 python launch.py --inputDBS phys03 --remoteDir="80X_1l_v12" --unitsPerJob=3 --production_label="80X_1l_v12" ttZ0j_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_0p176700_DC2V_m0p176700
 python launch.py --inputDBS phys03 --remoteDir="80X_1l_v12" --unitsPerJob=3 --production_label="80X_1l_v12" ttZ0j_ll_DC1A_0p600000_DC1V_m0p240000_DC2A_0p250000
