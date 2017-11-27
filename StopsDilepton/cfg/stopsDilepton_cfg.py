@@ -297,8 +297,8 @@ trigMatcher1El = trigMatcher1Mu.clone(
 )
 susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
                         trigMatcher1Mu)
-#susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
-#                        trigMatcher1El)
+susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
+                        trigMatcher1El)
 
 # puppiMET
 metPuppiAna = cfg.Analyzer(
