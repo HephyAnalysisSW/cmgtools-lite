@@ -46,8 +46,8 @@ leptonTypeSusy = NTupleObjectType("leptonSusy", baseObjectTypes = [ leptonTypeEx
     NTupleVariable("muonTrackType",  lambda lepton : 1 if abs(lepton.pdgId()) == 11 else lepton.muonBestTrackType(), int, help="Muon best track type"),
     NTupleVariable("chargeConsistency",  lambda lepton : ( lepton.isGsfCtfScPixChargeConsistent() + lepton.isGsfScPixChargeConsistent() ) if abs(lepton.pdgId()) == 11 else abs(lepton.muonBestTrack().charge() + lepton.innerTrack().charge() + lepton.tunePMuonBestTrack().charge() + ( lepton.globalTrack().charge() + lepton.outerTrack().charge() if lepton.isGlobalMuon() else 0) ), int, help="Tight charge criteria: for electrons, 2 if isGsfCtfScPixChargeConsistent, 1 if only isGsfScPixChargeConsistent, 0 otherwise; for muons, absolute value of the sum of all the charges (5 for global-muons, 3 for global muons)"),
     NTupleVariable("ptErrTk",  lambda lepton : ( lepton.gsfTrack().ptError() ) if abs(lepton.pdgId()) == 11 else (lepton.muonBestTrack().ptError()), help="pt error, for the gsf track or muon best track"),
-    #NTupleVariable("matchedTrgObj1El",lambda lepton: lepton.matchedTrgObj1El, help="electron trigger match"),
-    #NTupleVariable("matchedTrgObj1Mu",lambda lepton: lepton.matchedTrgObj1Mu, help="muonb trigger match"),
+    NTupleVariable("matchedTrgObj1El",lambda lepton: (lepton.matchedTrgObj1El.pt() if lepton.matchedTrgObj1El is not None else float('nan')), help="electron trigger match object pt"),
+    NTupleVariable("matchedTrgObj1Mu",lambda lepton: (lepton.matchedTrgObj1Mu.pt() if lepton.matchedTrgObj1El is not None else float('nan')), help="muonb trigger match object pt"),
 ])
 
 
