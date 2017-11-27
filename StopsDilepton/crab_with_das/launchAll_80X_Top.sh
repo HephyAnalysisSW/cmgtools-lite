@@ -92,6 +92,10 @@
 
 #python launch.py --inputDBS phys03 --remoteDir="80X_2l_v12" --unitsPerJob=3 --production_label="80X_2l_v12" ewkDM_TTZToLL_LO
 #python launch.py --inputDBS phys03 --remoteDir="80X_2l_v12" --unitsPerJob=3 --production_label="80X_2l_v12" ewkDM_TTZToLL_LO_DC2A0p2_DC2V0p2
+python launch.py --inputDBS phys03 --remoteDir="80X_2l_v12" --unitsPerJob=3 --production_label="80X_2l_v12" ewkDM_TTZToLL_LO_DC1A_0p50_DC1V_0p50 
+python launch.py --inputDBS phys03 --remoteDir="80X_2l_v12" --unitsPerJob=3 --production_label="80X_2l_v12" ewkDM_TTZToLL_LO_DC1A_0p50_DC1V_m1p00
+python launch.py --inputDBS phys03 --remoteDir="80X_2l_v12" --unitsPerJob=3 --production_label="80X_2l_v12" ewkDM_TTZToLL_LO_DC1A_0p60_DC1V_m0p24_DC2A0p25
+python launch.py --inputDBS phys03 --remoteDir="80X_2l_v12" --unitsPerJob=3 --production_label="80X_2l_v12" ewkDM_TTZToLL_LO_DC1A_1p00_DC1V_0p00
 
 #python launch.py --inputDBS phys03 --remoteDir="80X_2l_v12" --unitsPerJob=3 --production_label="80X_2l_v12" ewkDM_TTZToLL_01j_LO
 #python launch.py --inputDBS phys03 --remoteDir="80X_2l_v12" --unitsPerJob=3 --production_label="80X_2l_v12" ewkDM_TTZToLL_01j_LO_DC2A0p2_DC2V0p2

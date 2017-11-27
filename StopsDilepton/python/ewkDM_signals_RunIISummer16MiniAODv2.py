@@ -134,6 +134,33 @@ ewkDM_TTZToLL_LO_DC2A0p2_DC2V0p2 = makeMyPrivateMCComponentFromDPM(
                         xSec    = 1.6832 * TTZToLLXsec,
                     )
 
+ewkDM_TTZToLL_LO_DC1A_0p50_DC1V_0p50 = makePrivateMCComponentFromDPM(
+                        name    = 'ewkDM_TTZToLL_LO_DC1A_0p50_DC1V_0p50',
+                        dataset = '/ewkDM_TTZToLL_LO_DC1A_0p50_DC1V_0p50_slc6_amd64_gcc481_CMSSW_7_1_30_tarball/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
+                        dpmdir  = '/store/user/dspitzba/ewkDM_TTZToLL_LO_DC1A_0p50_DC1V_0p50_slc6_amd64_gcc481_CMSSW_7_1_30_tarball/ewkDM_mAOD/171121_081604/0000',
+                        xSec    = 1. * TTZToLLXsec,
+                    )
+
+ewkDM_TTZToLL_LO_DC1A_0p50_DC1V_m1p00 = makePrivateMCComponentFromDPM(
+                        name    = 'ewkDM_TTZToLL_LO_DC1A_0p50_DC1V_m1p00',
+                        dataset = '/ewkDM_TTZToLL_LO_DC1A_0p50_DC1V_m1p00_slc6_amd64_gcc481_CMSSW_7_1_30_tarball/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
+                        dpmdir  = '/store/user/dspitzba/ewkDM_TTZToLL_LO_DC1A_0p50_DC1V_m1p00_slc6_amd64_gcc481_CMSSW_7_1_30_tarball/ewkDM_mAOD/171121_081528/0000',
+                        xSec    = 1. * TTZToLLXsec,
+                    )
+
+ewkDM_TTZToLL_LO_DC1A_0p60_DC1V_m0p24_DC2A0p25 = makePrivateMCComponentFromDPM(
+                        name    = 'ewkDM_TTZToLL_LO_DC1A_0p60_DC1V_m0p24_DC2A0p25',
+                        dataset = '/ewkDM_TTZToLL_LO_DC1A_0p60_DC1V_m0p24_DC2A0p25_slc6_amd64_gcc481_CMSSW_7_1_30_tarball/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
+                        dpmdir  = '/store/user/dspitzba/ewkDM_TTZToLL_LO_DC1A_0p60_DC1V_m0p24_DC2A0p25_slc6_amd64_gcc481_CMSSW_7_1_30_tarball/ewkDM_mAOD/171121_081453/0000',
+                        xSec    = 1. * TTZToLLXsec,
+                    )
+
+ewkDM_TTZToLL_LO_DC1A_1p00_DC1V_0p00 = makePrivateMCComponentFromDPM(
+                        name    = 'ewkDM_TTZToLL_LO_DC1A_1p00_DC1V_0p00',
+                        dataset = '/ewkDM_TTZToLL_LO_DC1A_1p00_DC1V_0p00_slc6_amd64_gcc481_CMSSW_7_1_30_tarball/dspitzba-ewkDM_mAOD-0b8c51c13c712fe6e73a79b549018f23/USER',
+                        dpmdir  = '/store/user/dspitzba/ewkDM_TTZToLL_LO_DC1A_1p00_DC1V_0p00_slc6_amd64_gcc481_CMSSW_7_1_30_tarball/ewkDM_mAOD/171121_081417/0000',
+                        xSec    = 1. * TTZToLLXsec,
+                    )
 
 signalSamples = [\
     ewkDM_ttZ_ll,
@@ -157,4 +184,8 @@ signalSamples = [\
     ewkDM_ttZ_ll_noH_DC2V_m0p250000,
     ewkDM_TTZToLL_LO,
     ewkDM_TTZToLL_LO_DC2A0p2_DC2V0p2,
+    ewkDM_TTZToLL_LO_DC1A_0p50_DC1V_0p50,
+    ewkDM_TTZToLL_LO_DC1A_0p50_DC1V_m1p00,
+    ewkDM_TTZToLL_LO_DC1A_0p60_DC1V_m0p24_DC2A0p25,
+    ewkDM_TTZToLL_LO_DC1A_1p00_DC1V_0p00
 ]
