@@ -273,6 +273,30 @@ triggerFlagsAna.triggerBits = {
 
 }
 
+trigMatcher1Mu = cfg.Analyzer(
+    TriggerMatchAnalyzer, name="trigMatcher1Mu",
+    label='1Mu',
+    processName = 'PAT',
+    fallbackProcessName = 'RECO',
+    unpackPathNames = True,
+    trgObjSelectors = [ lambda t : t.path("HLT_IsoMu22_v*",1,0) or t.path("HLT_IsoMu20_v*",1,0) ],
+    collToMatch = 'selectedLeptons',
+    collMatchSelectors = [ lambda l,t : abs(l.pdgId()) == 13 ],
+    collMatchDRCut = 0.3,
+    univoqueMatching = True,
+    verbose = False,
+)
+trigMatcher1El = trigMatcher1Mu.clone(
+    name="trigMatcher1El",
+    label='1El',
+    trgObjSelectors = [ lambda t : t.path("HLT_Ele27_eta2p1_WP75_Gsf_v*",1,0) or t.path("HLT_Ele27_eta2p1_WPLoose_Gsf_v*",1,0) ],
+    collMatchSelectors = [ lambda l,t : abs(l.pdgId()) == 11 ],
+)
+susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
+                        trigMatcher1Mu)
+susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
+                        trigMatcher1El)
+
 # puppiMET
 metPuppiAna = cfg.Analyzer(
     METAnalyzer, name="metPuppiAnalyzer",
