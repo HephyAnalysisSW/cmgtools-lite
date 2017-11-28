@@ -50,7 +50,7 @@ JetHT_Run2017D          = kreator.makeDataComponent("JetHT_Run2017D"         , "
 HTMHT_Run2017D          = kreator.makeDataComponent("HTMHT_Run2017D"         , "/HTMHT/Run2017D-PromptReco-v1/MINIAOD"         , "CMS", ".*root", json)
 MET_Run2017D            = kreator.makeDataComponent("MET_Run2017D"           , "/MET/Run2017D-PromptReco-v1/MINIAOD"           , "CMS", ".*root", json)
 SingleElectron_Run2017D = kreator.makeDataComponent("SingleElectron_Run2017D", "/SingleElectron/Run2017D-PromptReco-v1/MINIAOD", "CMS", ".*root", json)
-SingleMuon_Run2017D     = kreator.makeDataComponent("SingleMuon_Run2017D"    , "/SingleMuon/Run2017D-PromptReco-v1/MINIAOD"    , "CMS", ".*root", json)
+SingleMuon_Run2017D     = kreator.makeDataComponent("SingleMuon_Run2017D"    , "/SingleMuon/Run2017D-PromptReco-v1/MINIAOD"    , "CMS", ".*root", json, useAAA=True)
 SinglePhoton_Run2017D   = kreator.makeDataComponent("SinglePhoton_Run2017D"  , "/SinglePhoton/Run2017D-PromptReco-v1/MINIAOD"  , "CMS", ".*root", json)
 DoubleEG_Run2017D       = kreator.makeDataComponent("DoubleEG_Run2017D"      , "/DoubleEG/Run2017D-PromptReco-v1/MINIAOD"      , "CMS", ".*root", json)
 MuonEG_Run2017D         = kreator.makeDataComponent("MuonEG_Run2017D"        , "/MuonEG/Run2017D-PromptReco-v1/MINIAOD"        , "CMS", ".*root", json)
@@ -76,21 +76,21 @@ dataSamples_Run2017E = [JetHT_Run2017E, HTMHT_Run2017E, MET_Run2017E, SingleElec
 
 ### ----------------------------- Run2017F PromptReco  ----------------------------------------
 
-#JetHT_Run2017F          = kreator.makeDataComponent("JetHT_Run2017F"         , "/JetHT/Run2017F-PromptReco-v1/MINIAOD"         , "CMS", ".*root", json)
-#HTMHT_Run2017F          = kreator.makeDataComponent("HTMHT_Run2017F"         , "/HTMHT/Run2017F-PromptReco-v1/MINIAOD"         , "CMS", ".*root", json)
-#MET_Run2017F            = kreator.makeDataComponent("MET_Run2017F"           , "/MET/Run2017F-PromptReco-v1/MINIAOD"           , "CMS", ".*root", json)
-#SingleElectron_Run2017F = kreator.makeDataComponent("SingleElectron_Run2017F", "/SingleElectron/Run2017F-PromptReco-v1/MINIAOD", "CMS", ".*root", json)
-#SingleMuon_Run2017F     = kreator.makeDataComponent("SingleMuon_Run2017F"    , "/SingleMuon/Run2017F-PromptReco-v1/MINIAOD"    , "CMS", ".*root", json)
-#SinglePhoton_Run2017F   = kreator.makeDataComponent("SinglePhoton_Run2017F"  , "/SinglePhoton/Run2017F-PromptReco-v1/MINIAOD"  , "CMS", ".*root", json)
-#DoubleEG_Run2017F       = kreator.makeDataComponent("DoubleEG_Run2017F"      , "/DoubleEG/Run2017F-PromptReco-v1/MINIAOD"      , "CMS", ".*root", json)
-#MuonEG_Run2017F         = kreator.makeDataComponent("MuonEG_Run2017F"        , "/MuonEG/Run2017F-PromptReco-v1/MINIAOD"        , "CMS", ".*root", json)
-#DoubleMuon_Run2017F     = kreator.makeDataComponent("DoubleMuon_Run2017F"    , "/DoubleMuon/Run2017F-PromptReco-v1/MINIAOD"    , "CMS", ".*root", json)
-#Tau_Run2017F            = kreator.makeDataComponent("Tau_Run2017F"           , "/Tau/Run2017F-PromptReco-v1/MINIAOD"           , "CMS", ".*root", json)
-#
-#dataSamples_Run2017F = [JetHT_Run2017F, HTMHT_Run2017F, MET_Run2017F, SingleElectron_Run2017F, SingleMuon_Run2017F, SinglePhoton_Run2017F, DoubleEG_Run2017F, MuonEG_Run2017F, DoubleMuon_Run2017F, Tau_Run2017F]
+JetHT_Run2017F          = kreator.makeDataComponent("JetHT_Run2017F"         , "/JetHT/Run2017F-PromptReco-v1/MINIAOD"         , "CMS", ".*root", json)
+HTMHT_Run2017F          = kreator.makeDataComponent("HTMHT_Run2017F"         , "/HTMHT/Run2017F-PromptReco-v1/MINIAOD"         , "CMS", ".*root", json)
+MET_Run2017F            = kreator.makeDataComponent("MET_Run2017F"           , "/MET/Run2017F-PromptReco-v1/MINIAOD"           , "CMS", ".*root", json)
+SingleElectron_Run2017F = kreator.makeDataComponent("SingleElectron_Run2017F", "/SingleElectron/Run2017F-PromptReco-v1/MINIAOD", "CMS", ".*root", json)
+SingleMuon_Run2017F     = kreator.makeDataComponent("SingleMuon_Run2017F"    , "/SingleMuon/Run2017F-PromptReco-v1/MINIAOD"    , "CMS", ".*root", json)
+SinglePhoton_Run2017F   = kreator.makeDataComponent("SinglePhoton_Run2017F"  , "/SinglePhoton/Run2017F-PromptReco-v1/MINIAOD"  , "CMS", ".*root", json)
+DoubleEG_Run2017F       = kreator.makeDataComponent("DoubleEG_Run2017F"      , "/DoubleEG/Run2017F-PromptReco-v1/MINIAOD"      , "CMS", ".*root", json)
+MuonEG_Run2017F         = kreator.makeDataComponent("MuonEG_Run2017F"        , "/MuonEG/Run2017F-PromptReco-v1/MINIAOD"        , "CMS", ".*root", json)
+DoubleMuon_Run2017F     = kreator.makeDataComponent("DoubleMuon_Run2017F"    , "/DoubleMuon/Run2017F-PromptReco-v1/MINIAOD"    , "CMS", ".*root", json)
+Tau_Run2017F            = kreator.makeDataComponent("Tau_Run2017F"           , "/Tau/Run2017F-PromptReco-v1/MINIAOD"           , "CMS", ".*root", json)
+
+dataSamples_Run2017F = [JetHT_Run2017F, HTMHT_Run2017F, MET_Run2017F, SingleElectron_Run2017F, SingleMuon_Run2017F, SinglePhoton_Run2017F, DoubleEG_Run2017F, MuonEG_Run2017F, DoubleMuon_Run2017F, Tau_Run2017F]
 
 
-dataSamples = dataSamples_Run2017B + dataSamples_Run2017C + dataSamples_Run2017D + dataSamples_Run2017E# + dataSamples_Run2017F
+dataSamples = dataSamples_Run2017B + dataSamples_Run2017C + dataSamples_Run2017D + dataSamples_Run2017E + dataSamples_Run2017F
 
 samples = dataSamples
 ### ---------------------------------------------------------------------
