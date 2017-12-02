@@ -100,7 +100,7 @@ ttHLepSkim.maxLeptons = 999
 # --- JET-LEPTON CLEANING ---
 jetAna.minLepPt = 10
 jetAna.recalibrateJets =  True 
-jetAna.applyL2L3Residual = "Data"
+jetAna.applyL2L3Residual = False #"Data"
 jetAna.jetPt = 15
 jetAna.jetEta = 5.2 #FIXME
 jetAna.addJECShifts = True
@@ -113,6 +113,7 @@ jetAna.calculateType1METCorrection = True
 isFastSim = False
 
 jetAna.dataGT = [ ( -1, "Summer16_23Sep2016BCDV3_DATA"), (276811, "Summer16_23Sep2016EFV3_DATA"), (278801, "Summer16_23Sep2016GV3_DATA"), (280385, "Summer16_23Sep2016HV3_DATA") ]
+jetAna.mcGT   = "Summer16_23Sep2016V3_MC"
 
 #jetAna.dataGT   = "80X_dataRun2_2016SeptRepro_v3"
 #if isFastSim:
@@ -354,11 +355,13 @@ sequence = cfg.Sequence(
 #if True or getHeppyOption("loadSamples"):
 if getHeppyOption("loadSamples"):
     from CMGTools.RootTools.samples.samples_13TeV_DATA2017 import *
+    from CMGTools.RootTools.samples.samples_13TeV_RunIISummer17MiniAODv2 import *
     for sample in dataSamples:
         #sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306126_13TeV_PromptReco_Collisions17_JSON.txt"
     
-    selectedComponents = [SingleMuon_Run2017D]
+    selectedComponents = [TT_pow]
+    #selectedComponents = [SingleMuon_Run2017D]
     for comp in selectedComponents:
             comp.files = comp.files[:1]
             #comp.files = []
