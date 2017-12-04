@@ -358,7 +358,7 @@ if getHeppyOption("loadSamples"):
     from CMGTools.RootTools.samples.samples_13TeV_RunIISummer17MiniAODv2 import *
     for sample in dataSamples:
         #sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
-        sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306126_13TeV_PromptReco_Collisions17_JSON.txt"
+        sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt"
     
     #selectedComponents = [TT_pow]
     #selectedComponents = [SingleMuon_Run2017D]
