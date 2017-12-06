@@ -23,7 +23,7 @@ import pickle
 comp = pickle.load(open("sample_"+datasetname+".pkl","rb"))
 
 crabFiles=PSet.process.source.fileNames
-print crabFiles
+#print crabFiles
 firstInput = crabFiles[0]
 tested=False
 forceaaa=False
@@ -70,7 +70,7 @@ config = cfg.Config(components=[comp],sequence=seq,preprocessor=pre,services=[],
 #replace files with crab ones
 config.components[0].files=crabFiles
 
-print crabFiles
+#print crabFiles
 
 from PhysicsTools.HeppyCore.framework.looper import Looper
 looper = Looper( 'Output', config, nPrint = 1)
@@ -78,9 +78,9 @@ looper.loop()
 looper.write()
 
 print PSet.process.output.fileName
-os.system("ls -lR")
+#os.system("ls -lR")
 os.rename("Output/tree.root", "tree.root")
-os.system("ls -lR")
+#os.system("ls -lR")
 
 # print in crab log file the content of the job log files, so one can see it from 'crab getlog'
 print "-"*25
@@ -136,7 +136,7 @@ fwkreport='''<FrameworkJobReport>
 
 </FrameworkJobReport>''' % (firstInput,entries)
 
-print fwkreport
+#print fwkreport
 
 f1=open('./FrameworkJobReport.xml', 'w+')
 f1.write(fwkreport)

@@ -75,4 +75,4 @@ cat Output/cmsRun.log
 echo "Now removing Output/cmsswPreProcessing.root"
 find . -name cmsswPreProcessing.root -type f -delete
 
-ls -lR
+#ls -lR

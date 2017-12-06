@@ -25,29 +25,29 @@
 #python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" JetHT_Run2017E
 #python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" JetHT_Run2017F
 
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" MuonEG_Run2017B_12Sep2017
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" MuonEG_Run2017C_12Sep2017
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" MuonEG_Run2017D
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" MuonEG_Run2017E
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" MuonEG_Run2017F
-
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleMuon_Run2017B_12Sep2017
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleMuon_Run2017C_12Sep2017
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleMuon_Run2017D
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleMuon_Run2017E
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleMuon_Run2017F
-
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleEG_Run2017B_12Sep2017
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleEG_Run2017C_12Sep2017
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleEG_Run2017D
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleEG_Run2017E
-python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleEG_Run2017F
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" MuonEG_Run2017B_12Sep2017
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" MuonEG_Run2017C_12Sep2017
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" MuonEG_Run2017D
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" MuonEG_Run2017E
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" MuonEG_Run2017F
+#
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleMuon_Run2017B_12Sep2017
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleMuon_Run2017C_12Sep2017
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleMuon_Run2017D
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleMuon_Run2017E
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleMuon_Run2017F
+#
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleEG_Run2017B_12Sep2017
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleEG_Run2017C_12Sep2017
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleEG_Run2017D
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleEG_Run2017E
+#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleEG_Run2017F
 
 
 ### Summer17 MC
-#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" TT_pow
-#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DYJetsToLL_M10to50_LO
-#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DYJetsToLL_M50_LO_ext
+#python launch.py --remoteDir="92X_1l_v14" --unitsPerJob=1 --production_label="92X_1l_v14" TT_pow
+#python launch.py --remoteDir="92X_1l_v14" --unitsPerJob=1 --production_label="92X_1l_v14" DYJetsToLL_M10to50_LO
+python launch.py --remoteDir="92X_1l_v15_1" --unitsPerJob=1 --totalUnits=1 --production_label="92X_1l_v15_1" DYJetsToLL_M50_LO_ext
 #python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" WW
 #python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" WZ
 #python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" ZZ
