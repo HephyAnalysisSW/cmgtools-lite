@@ -43,7 +43,6 @@
 #python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleEG_Run2017E
 #python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleEG_Run2017F
 
-
 ### Summer17 MC
 #python launch.py --remoteDir="92X_1l_v14" --unitsPerJob=1 --production_label="92X_1l_v14" TT_pow
 #python launch.py --remoteDir="92X_1l_v14" --unitsPerJob=1 --production_label="92X_1l_v14" DYJetsToLL_M10to50_LO
@@ -117,4 +116,3 @@ python launch.py --remoteDir="92X_1l_v15_1" --unitsPerJob=1 --totalUnits=1 --pro
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT400to600
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT600toInf
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT600toInf_ext
-
