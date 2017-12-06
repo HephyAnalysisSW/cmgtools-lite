@@ -363,8 +363,8 @@ if getHeppyOption("loadSamples"):
     selectedComponents = [TT_pow]
     #selectedComponents = [SingleMuon_Run2017D]
     for comp in selectedComponents:
-            comp.files = comp.files[:1]
-            #comp.files = []
+            #comp.files = comp.files[:1]
+            comp.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer17MiniAOD/DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/92X_upgrade2017_realistic_v10-v1/110000/16AAAA26-1F8E-E711-8B55-44A842CFC98B.root']
             #for i in range(41):
             #    if i == 39: continue #missing file
             #    fn = 'event_%s.root'%i

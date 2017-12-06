@@ -43,15 +43,13 @@ python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92
 python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleEG_Run2017E
 python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DoubleEG_Run2017F
 
-
 ### Summer17 MC
-#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" TT_pow
-#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DYJetsToLL_M10to50_LO
-#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DYJetsToLL_M50_LO_ext
-#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" WW
-#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" WZ
-#python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" ZZ
-
+python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" TT_pow
+python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DYJetsToLL_M10to50_LO
+python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" DYJetsToLL_M50_LO_ext
+python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" WW
+python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" WZ
+python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92X_1l_v13" ZZ
 
 #### Background MC ttZ 3l
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=2 --production_label="80X_2l_v10" TTZ_LO
@@ -117,4 +115,3 @@ python launch.py --remoteDir="92X_1l_v13" --unitsPerJob=2 --production_label="92
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT400to600
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=3 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT600toInf
 #python launch.py --remoteDir="80X_2l_v10" --unitsPerJob=1 --production_label="80X_2l_v10" DYJetsToLL_M5to50_HT600toInf_ext
-
