@@ -200,78 +200,90 @@ from CMGTools.RootTools.samples.triggers_13TeV_DATA2016 import *
 #https://cmswbm.cern.ch/cmsdb/servlet/TriggerMode?KEY=l1_hlt_collisions2017/v285
 
 triggerFlagsAna.triggerBits = {
-    'mu'           : ["HLT_IsoMu27_v*", "HLT_IsoMu30_v*"],
-    'mu_pre'       : ["HLT_IsoMu24_v*", "HLT_IsoMu24_eta2p1_v*", "HLT_Mu8_TrkIsoVVL_v*", "HLT_Mu8_v*", "HLT_Mu3_PFJet40_v*"],
-    'mu_nonIso'    : ["HLT_Mu50_v*", "HLT_Mu55_v*"],
-    'mu_nonIso_pre': ["HLT_Mu17_v*", "HLT_Mu19_v*", "HLT_Mu20_v*", "HLT_Mu27_v*"],
+        # hadronic
+        'HT350_MET100': triggers_HT350_MET100,
+        "HT350":triggers_HT350,
+        "HT475":triggers_HT475,
+        "HT600":triggers_HT600,
+        "dijet":triggers_dijet,
+        "jet":triggers_jet,
+        "dijet70met120": triggers_dijet70met120,
+        "dijet55met110": triggers_dijet55met110,
 
-    'ele'          : ["HLT_Ele32_WPTight_Gsf_v*", "HLT_Ele35_WPTight_Gsf_v*", "HLT_Ele38_WPTight_Gsf_v*", "HLT_Ele40_WPTight_Gsf_v*"],
-    'ele_pre'      : ["HLT_Ele27_WPTight_Gsf_v*", "HLT_Ele17_CaloIdM_TrackIdM_PFJet30_v*", "HLT_Ele8_CaloIdM_TrackIdM_PFJet30_v*"],
+        'HT900'                :triggers_HT900,
+        'HT800'                :triggers_HT800,
+        'MET170_NotCleaned'    :triggers_MET170_NotCleaned,
+        'MET170_HBHECleaned'   :triggers_MET170_HBHECleaned,
+        'MET170_BeamHaloCleaned':triggers_MET170_BeamHaloCleaned,
+        'AllMET170'            :triggers_AllMET170,
+        'AllMET300'            :triggers_AllMET300,
+        'HT350_MET100'         :triggers_HT350_MET100,
 
-    'mumu'         : ["HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8_v*", "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_v*", "HLT_Mu19_TrkIsoVVL_Mu9_TrkIsoVVL_DZ_Mass3p8_v*"],
-    'mumu_pre'     : ["HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_v*", "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v*"],
-    'mumu_ht'      : ["HLT_DoubleMu4_Mass8_DZ_PFHT350_v*"],
+        ## muon
 
-    "mue"          : ["HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v*", "HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*", "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v*" ],
-    "mue_pre"      : ["HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_v*"], 
-    "mue_ht"       : ["HLT_Mu8_Ele8_CaloIdM_TrackIdM_Mass8_PFHT350_DZ_v*"],
+        'SingleMu_iso'     :triggers_1mu_iso,
+        'SingleMu_noniso'  :triggers_1mu_noniso ,
+        'SingleMuTTZ'      :triggers_1mu_iso_TTZ,
 
-    "ee"           : ["HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v*", "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*" ],
-    "ee_ht"        : ["HLT_DoubleEle8_CaloIdM_TrackIdM_Mass8_DZ_PFHT350_v*"], 
+        'SingleEle_noniso'   :triggers_1e_noniso,
+        'SingleEle'          :triggers_1e,
+        'SingleEleTTZ'       :triggers_1e_iso_TTZ,
 
-    "mmm"          : ["HLT_TripleMu_10_5_5_DZ_v*", "HLT_TripleMu_5_3_3_Mass3p8to60_DZ_v*", "HLT_TripleMu_12_10_5_v*" ],
-    "mme"          : ["HLT_DiMu9_Ele9_CaloIdL_TrackIdL_v*", "HLT_DiMu9_Ele9_CaloIdL_TrackIdL_DZ_v*" ],
-    "mee"          : ["HLT_Mu8_DiEle12_CaloIdL_TrackIdL_v*", "HLT_Mu8_DiEle12_CaloIdL_TrackIdL_DZ_v*" ],
-    "eee"          : ["HLT_Ele16_Ele12_Ele8_CaloIdL_TrackIdL_v*" ],
-
-    "IsoMu27"      : [ "HLT_IsoMu27_v*" ],
-    "IsoMu30"      : [ "HLT_IsoMu30_v*" ],
-    "IsoMu24"      : [ "HLT_IsoMu24_v*" ],
-    "IsoMu24_eta2p1":[ "HLT_IsoMu24_eta2p1_v*" ],
-    "Mu8_TrkIsoVVL": [ "HLT_Mu8_TrkIsoVVL_v*" ],
-    "Mu8"          : [ "HLT_Mu8_v*" ],
-    "Mu3_PFJet40"  : [ "HLT_Mu3_PFJet40_v*"],
-    "Mu50"         : [ "HLT_Mu50_v*" ],
-    "Mu55"         : [ "HLT_Mu55_v*" ],
-    "Mu17"         : [ "HLT_Mu17_v*" ],
-    "Mu19"         : [ "HLT_Mu19_v*" ],
-    "Mu20"         : [ "HLT_Mu20_v*" ],
-    "Mu27"         : [ "HLT_Mu27_v*" ],
-
-    "Ele32_WPTight_Gsf"   : [ "HLT_Ele32_WPTight_Gsf_v*" ],
-    "Ele35_WPTight_Gsf"   : [ "HLT_Ele35_WPTight_Gsf_v*" ],
-    "Ele38_WPTight_Gsf"   : [ "HLT_Ele38_WPTight_Gsf_v*" ],
-    "Ele40_WPTight_Gsf"   : [ "HLT_Ele40_WPTight_Gsf_v*" ],
-    "Ele27_WPTight_Gsf"   : [ "HLT_Ele27_WPTight_Gsf_v*" ],
-    "Ele17_CaloIdM_TrackIdM_PFJet30"   : [ "HLT_Ele17_CaloIdM_TrackIdM_PFJet30_v*" ],
-    "Ele8_CaloIdM_TrackIdM_PFJet30"    : [ "HLT_Ele8_CaloIdM_TrackIdM_PFJet30_v*" ],
-
-    "Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8"     : [ "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass8_v*" ],
-    "Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8"   : [ "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_Mass3p8_v*" ],
-    "Mu19_TrkIsoVVL_Mu9_TrkIsoVVL_DZ_Mass3p8"   : [ "HLT_Mu19_TrkIsoVVL_Mu9_TrkIsoVVL_DZ_Mass3p8_v*" ],
-    "Mu17_TrkIsoVVL_Mu8_TrkIsoVVL"              : [ "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_v*" ],
-    "Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ"           : [ "HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v*" ],
-    "DoubleMu4_Mass8_DZ_PFHT350"                : [ "HLT_DoubleMu4_Mass8_DZ_PFHT350_v*" ],
-
-    "Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL"   : [ "HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_v*" ],
-    "Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ": [ "HLT_Mu23_TrkIsoVVL_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*" ],
-    "Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ" : [ "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v*" ], 
-    "Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL"    : [ "HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_v*" ],
-    "Mu8_Ele8_CaloIdM_TrackIdM_Mass8_PFHT350_DZ"    : [ "HLT_Mu8_Ele8_CaloIdM_TrackIdM_Mass8_PFHT350_DZ_v*" ],
-
-    "Ele23_Ele12_CaloIdL_TrackIdL_IsoVL"             : [ "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v*" ],
-    "Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ"          : [ "HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*" ], 
-    "DoubleEle8_CaloIdM_TrackIdM_Mass8_DZ_PFHT350"   : [ "HLT_DoubleEle8_CaloIdM_TrackIdM_Mass8_DZ_PFHT350_v*" ],
-
-    "TripleMu_10_5_5_DZ"                : [ "HLT_TripleMu_10_5_5_DZ_v*" ],
-    "TripleMu_5_3_3_Mass3p8to60_DZ"     : [ "HLT_TripleMu_5_3_3_Mass3p8to60_DZ_v*" ],
-    "TripleMu_12_10_5"                  : [ "HLT_TripleMu_12_10_5_v*" ], 
-    "DiMu9_Ele9_CaloIdL_TrackIdL"       : [ "HLT_DiMu9_Ele9_CaloIdL_TrackIdL_v*" ],
-    "DiMu9_Ele9_CaloIdL_TrackIdL_DZ"    : [ "HLT_DiMu9_Ele9_CaloIdL_TrackIdL_DZ_v*" ], 
-    "Mu8_DiEle12_CaloIdL_TrackIdL"      : [ "HLT_Mu8_DiEle12_CaloIdL_TrackIdL_v*" ],
-    "Mu8_DiEle12_CaloIdL_TrackIdL_DZ"   : [ "HLT_Mu8_DiEle12_CaloIdL_TrackIdL_DZ_v*" ], 
-    "Ele16_Ele12_Ele8_CaloIdL_TrackIdL" : [ "HLT_Ele16_Ele12_Ele8_CaloIdL_TrackIdL_v*" ], 
-
+#mumu
+        'mumuIso' : triggers_mumu_iso,
+        'mumuNoiso' : triggers_mumu_noniso,
+        'mumuSS' : triggers_mumu_ss,
+        'mumuHT' : triggers_mumu_ht,
+# ee
+        'ee_DZ': triggers_ee,
+        'ee_noDZ':triggers_ee_nodz ,
+        'ee_noniso':triggers_ee_noniso,
+        'ee_33': ['HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_v*'],
+        'ee_33_MW': ['HLT_DoubleEle33_CaloIdL_GsfTrkIdVL_MW_v*'],
+        'eeSS' : triggers_ee_ss,
+#mue
+        'mue':triggers_mue,
+        'mu30e30': ['HLT_Mu30_Ele30_CaloIdL_GsfTrkIdVL_v*'],
+#dilepton+HT
+        'ee_ht':triggers_ee_ht,
+        'mue_ht':triggers_mue_ht,
+#multi-lepton
+        '3e':triggers_3e,
+        '3mu':triggers_3mu,
+        '3mu_alt':triggers_3mu_alt,
+        '2mu1e':triggers_2mu1e,
+        '2e1mu':triggers_2e1mu,
+#fake rate
+        'FR_1mu_iso':triggers_FR_1mu_iso,
+        'FR_1mu_noiso':triggers_FR_1mu_noiso,
+        'FR_1e_noiso':triggers_FR_1e_noiso,
+        'FR_1e_iso':triggers_FR_1e_iso,
+        'FR_1e_b2g':triggers_FR_1e_b2g,
+#MET
+        'Jet80MET90'       :triggers_Jet80MET90      ,
+        'Jet80MET120'      :triggers_Jet80MET120     ,
+        'MET120Mu5'        :triggers_MET120Mu5       ,
+# individual triggers
+        'Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ': ['HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v*'],
+        'Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ': ['HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v*'],
+        'IsoMu22': ['HLT_IsoMu22_v*'],
+        'IsoTkMu22': ['HLT_IsoTkMu22_v*'],
+        'IsoMu22_eta2p1': ['HLT_IsoMu22_eta2p1_v*'],
+        'IsoTkMu22_eta2p1': ['HLT_IsoTkMu22_eta2p1_v*'],
+        'IsoMu24': ['HLT_IsoMu24_v*'],
+        'IsoTkMu24': ['HLT_IsoTkMu24_v*'],
+        'Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ': ['HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
+        'Ele27_WPTight_Gsf': ['HLT_Ele27_WPTight_Gsf_v*'],
+        'Ele25_eta2p1_WPTight_Gsf': ['HLT_Ele25_eta2p1_WPTight_Gsf_v*'],
+        'Ele27_eta2p1_WPLoose_Gsf': ['HLT_Ele27_eta2p1_WPLoose_Gsf_v*'],
+        'Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL': ['HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_v*'],
+        'Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ': ['HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
+        'Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL': ['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_v*'],
+        'Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ': ['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
+        'DiMu9_Ele9_CaloIdL_TrackIdL': ['HLT_DiMu9_Ele9_CaloIdL_TrackIdL_v*'],
+        'Mu8_DiEle12_CaloIdL_TrackIdL': ['HLT_Mu8_DiEle12_CaloIdL_TrackIdL_v*'],
+        'TripleMu_12_10_5': ['HLT_TripleMu_12_10_5_v*'],
+        'Ele16_Ele12_Ele8_CaloIdL_TrackIdL': ['HLT_Ele16_Ele12_Ele8_CaloIdL_TrackIdL_v*'],
 }
 
 trigMatcher1Mu = cfg.Analyzer(
@@ -281,7 +293,7 @@ trigMatcher1Mu = cfg.Analyzer(
     fallbackProcessName = 'RECO',
     unpackPathNames = True,
     #trgObjSelectors = [ lambda t : t.path("HLT_IsoMu22_v*",1,0) or t.path("HLT_IsoMu20_v*",1,0) ],
-    trgObjSelectors = [ lambda t : t.path("HLT_IsoMu27_v*",1,0) or t.path("HLT_IsoMu30_v*",1,0) ],#"HLT_IsoMu22", "HLT_IsoTkMu22", "HLT_IsoMu22_eta2p1", "HLT_IsoTkMu22_eta2p1", "HLT_IsoMu24", "HLT_IsoTkMu24"
+    trgObjSelectors = [ lambda t : t.path("HLT_IsoMu22_v*",1,0) or t.path("HLT_IsoTkMu22_v*",1,0) or t.path("HLT_IsoMu22_eta2p1_v*",1,0) or t.path("HLT_IsoTkMu22_eta2p1_v*",1,0) or t.path("HLT_IsoTkMu24_v*",1,0)  ],#"HLT_IsoMu22", "HLT_IsoTkMu22", "HLT_IsoMu22_eta2p1", "HLT_IsoTkMu22_eta2p1", "HLT_IsoMu24", "HLT_IsoTkMu24"
     collToMatch = 'selectedLeptons',
     collMatchSelectors = [ lambda l,t : abs(l.pdgId()) == 13 ],
     collMatchDRCut = 0.3,
@@ -293,7 +305,7 @@ trigMatcher1El = trigMatcher1Mu.clone(
     label='1El',
     #trgObjSelectors = [ lambda t : t.path("HLT_Ele27_eta2p1_WP75_Gsf_v*",1,0) or t.path("HLT_Ele27_eta2p1_WPLoose_Gsf_v*",1,0) ],
     #"HLT_Ele27_WPTight_Gsf", "HLT_Ele25_eta2p1_WPTight_Gsf", "HLT_Ele27_eta2p1_WPLoose_Gsf"
-    trgObjSelectors = [ lambda t : t.path("HLT_Ele32_WPTight_Gsf_v*",1,0) or t.path("HLT_Ele35_WPTight_Gsf_v*",1,0) or t.path("HLT_Ele38_WPTight_Gsf_v*",1,0) or t.path("HLT_Ele40_WPTight_Gsf_v*",1,0) ],
+    trgObjSelectors = [ lambda t : t.path("HLT_Ele27_WPTight_Gsf_v*",1,0) or t.path("HLT_Ele25_eta2p1_WPTight_Gsf_v*",1,0) or t.path("HLT_Ele27_eta2p1_WPLoose_Gsf_v*",1,0) ],
     collMatchSelectors = [ lambda l,t : abs(l.pdgId()) == 11 ],
 )
 susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
