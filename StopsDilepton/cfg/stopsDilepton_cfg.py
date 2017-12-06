@@ -370,10 +370,11 @@ if getHeppyOption("loadSamples"):
     from CMGTools.RootTools.samples.samples_13TeV_RunIISummer17MiniAODv2 import *
     for sample in dataSamples:
         #sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
-        sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306126_13TeV_PromptReco_Collisions17_JSON.txt"
+        sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt"
     
-    selectedComponents = [TT_pow]
+    #selectedComponents = [TT_pow]
     #selectedComponents = [SingleMuon_Run2017D]
+    selectedComponents = [SingleMuon_Run2017F]
     for comp in selectedComponents:
             #comp.files = comp.files[:1]
             comp.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer17MiniAOD/DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/92X_upgrade2017_realistic_v10-v1/110000/16AAAA26-1F8E-E711-8B55-44A842CFC98B.root']
@@ -383,6 +384,8 @@ if getHeppyOption("loadSamples"):
             #    comp.files.append(fn)
             #comp.files = ['root://eoscms.cern.ch//store/data/Run2017D/SingleMuon/MINIAOD/PromptReco-v1/000/302/031/00000/268C0C2A-498F-E711-872D-02163E019DAB.root']
             #comp.files = ['root://eoscms.cern.ch//store/group/phys_jetmet/MetScanners/bobak_pickevents_miniAOD.root']
+            #comp.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer17MiniAOD/DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/92X_upgrade2017_realistic_v10-v1/110000/16AAAA26-1F8E-E711-8B55-44A842CFC98B.root']
+            comp.files = ['root://cms-xrd-global.cern.ch//store/data/Run2017F/SingleMuon/MINIAOD/PromptReco-v1/000/306/134/00000/1E8CC801-C2C6-E711-8397-FA163E158EBC.root']
             comp.splitFactor = 1
 
 from CMGTools.TTHAnalysis.tools.EOSEventsWithDownload import EOSEventsWithDownload
