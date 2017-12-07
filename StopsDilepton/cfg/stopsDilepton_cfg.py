@@ -263,27 +263,39 @@ triggerFlagsAna.triggerBits = {
         'Jet80MET90'       :triggers_Jet80MET90      ,
         'Jet80MET120'      :triggers_Jet80MET120     ,
         'MET120Mu5'        :triggers_MET120Mu5       ,
+        'PFMET120_PFMHT120_IDTight': ['HLT_PFMET120_PFMHT120_IDTight_v*'],
+        'PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60':     ['HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60_v*'],
+        'PFMETNoMu120_PFMHTNoMu120_IDTight':            ['HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v*'],
+
 # individual triggers
-        'Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ': ['HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v*'],
-        'Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ': ['HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v*'],
-        'IsoMu22': ['HLT_IsoMu22_v*'],
-        'IsoTkMu22': ['HLT_IsoTkMu22_v*'],
-        'IsoMu22_eta2p1': ['HLT_IsoMu22_eta2p1_v*'],
-        'IsoTkMu22_eta2p1': ['HLT_IsoTkMu22_eta2p1_v*'],
-        'IsoMu24': ['HLT_IsoMu24_v*'],
-        'IsoTkMu24': ['HLT_IsoTkMu24_v*'],
-        'Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ': ['HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
-        'Ele27_WPTight_Gsf': ['HLT_Ele27_WPTight_Gsf_v*'],
-        'Ele25_eta2p1_WPTight_Gsf': ['HLT_Ele25_eta2p1_WPTight_Gsf_v*'],
-        'Ele27_eta2p1_WPLoose_Gsf': ['HLT_Ele27_eta2p1_WPLoose_Gsf_v*'],
-        'Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL': ['HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_v*'],
-        'Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ': ['HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
-        'Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL': ['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_v*'],
-        'Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ': ['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
-        'DiMu9_Ele9_CaloIdL_TrackIdL': ['HLT_DiMu9_Ele9_CaloIdL_TrackIdL_v*'],
-        'Mu8_DiEle12_CaloIdL_TrackIdL': ['HLT_Mu8_DiEle12_CaloIdL_TrackIdL_v*'],
-        'TripleMu_12_10_5': ['HLT_TripleMu_12_10_5_v*'],
-        'Ele16_Ele12_Ele8_CaloIdL_TrackIdL': ['HLT_Ele16_Ele12_Ele8_CaloIdL_TrackIdL_v*'],
+        'Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ':              ['HLT_Mu17_TrkIsoVVL_Mu8_TrkIsoVVL_DZ_v*'],
+        'Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ':            ['HLT_Mu17_TrkIsoVVL_TkMu8_TrkIsoVVL_DZ_v*'],
+        'IsoMu22':                                      ['HLT_IsoMu22_v*'],
+        'IsoTkMu22':                                    ['HLT_IsoTkMu22_v*'],
+        'IsoMu22_eta2p1':                               ['HLT_IsoMu22_eta2p1_v*'],
+        'IsoTkMu22_eta2p1':                             ['HLT_IsoTkMu22_eta2p1_v*'],
+        'IsoMu24':                                      ['HLT_IsoMu24_v*'],
+        'IsoTkMu24':                                    ['HLT_IsoTkMu24_v*'],
+        'IsoMu27':                                      ['HLT_IsoMu27_v*'],
+        'Ele23_Ele12_CaloIdL_TrackIdL_IsoVL':           ['HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_v*'],
+        'Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ':        ['HLT_Ele23_Ele12_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
+        'Ele27_WPTight_Gsf':                            ['HLT_Ele27_WPTight_Gsf_v*'],
+        'Ele25_eta2p1_WPTight_Gsf':                     ['HLT_Ele25_eta2p1_WPTight_Gsf_v*'],
+        'Ele27_eta2p1_WPLoose_Gsf':                     ['HLT_Ele27_eta2p1_WPLoose_Gsf_v*'],
+        'Ele27_WPTight_Gsf':                            ['HLT_Ele27_WPTight_Gsf_v*'],
+        'Ele35_WPTight_Gsf':                            ['HLT_Ele35_WPTight_Gsf_v*'],
+        'Ele115_CaloIdVT_GsfTrkIdT':                    ['HLT_Ele115_CaloIdVT_GsfTrkIdT_v*'],
+        'Ele50_CaloIdVT_GsfTrkIdT_PFJet165':            ['HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165_v*'],
+        'Photon175':                                    ['HLT_Photon175_v*'],
+        'Photon200':                                    ['HLT_Photon200_v*'],
+        'Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL':   ['HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_v*'],
+        'Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ':['HLT_Mu23_TrkIsoVVL_Ele8_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
+        'Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL':   ['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_v*'],
+        'Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ':['HLT_Mu8_TrkIsoVVL_Ele23_CaloIdL_TrackIdL_IsoVL_DZ_v*'],
+        'DiMu9_Ele9_CaloIdL_TrackIdL':                  ['HLT_DiMu9_Ele9_CaloIdL_TrackIdL_v*'],
+        'Mu8_DiEle12_CaloIdL_TrackIdL':                 ['HLT_Mu8_DiEle12_CaloIdL_TrackIdL_v*'],
+        'TripleMu_12_10_5':                             ['HLT_TripleMu_12_10_5_v*'],
+        'Ele16_Ele12_Ele8_CaloIdL_TrackIdL':            ['HLT_Ele16_Ele12_Ele8_CaloIdL_TrackIdL_v*'],
 }
 
 trigMatcher1Mu = cfg.Analyzer(
@@ -293,7 +305,7 @@ trigMatcher1Mu = cfg.Analyzer(
     fallbackProcessName = 'RECO',
     unpackPathNames = True,
     #trgObjSelectors = [ lambda t : t.path("HLT_IsoMu22_v*",1,0) or t.path("HLT_IsoMu20_v*",1,0) ],
-    trgObjSelectors = [ lambda t : t.path("HLT_IsoMu22_v*",1,0) or t.path("HLT_IsoTkMu22_v*",1,0) or t.path("HLT_IsoMu22_eta2p1_v*",1,0) or t.path("HLT_IsoTkMu22_eta2p1_v*",1,0) or t.path("HLT_IsoTkMu24_v*",1,0)  ],#"HLT_IsoMu22", "HLT_IsoTkMu22", "HLT_IsoMu22_eta2p1", "HLT_IsoTkMu22_eta2p1", "HLT_IsoMu24", "HLT_IsoTkMu24"
+    trgObjSelectors = [ lambda t : t.path("HLT_IsoMu27_v*",1,0) or t.path("HLT_IsoTkMu22_v*",1,0) or t.path("HLT_IsoMu22_eta2p1_v*",1,0) or t.path("HLT_IsoTkMu22_eta2p1_v*",1,0) or t.path("HLT_IsoTkMu24_v*",1,0) or t.path("HLT_IsoMu24_v*",1,0)  ],
     collToMatch = 'selectedLeptons',
     collMatchSelectors = [ lambda l,t : abs(l.pdgId()) == 13 ],
     collMatchDRCut = 0.3,
@@ -305,7 +317,7 @@ trigMatcher1El = trigMatcher1Mu.clone(
     label='1El',
     #trgObjSelectors = [ lambda t : t.path("HLT_Ele27_eta2p1_WP75_Gsf_v*",1,0) or t.path("HLT_Ele27_eta2p1_WPLoose_Gsf_v*",1,0) ],
     #"HLT_Ele27_WPTight_Gsf", "HLT_Ele25_eta2p1_WPTight_Gsf", "HLT_Ele27_eta2p1_WPLoose_Gsf"
-    trgObjSelectors = [ lambda t : t.path("HLT_Ele27_WPTight_Gsf_v*",1,0) or t.path("HLT_Ele25_eta2p1_WPTight_Gsf_v*",1,0) or t.path("HLT_Ele27_eta2p1_WPLoose_Gsf_v*",1,0) ],
+    trgObjSelectors = [ lambda t : t.path("HLT_Ele35_WPTight_Gsf_v*",1,0) or t.path("HLT_Ele27_WPTight_Gsf_v*",1,0) or t.path("HLT_Ele25_eta2p1_WPTight_Gsf_v*",1,0) or t.path("HLT_Ele27_eta2p1_WPLoose_Gsf_v*",1,0) ],
     collMatchSelectors = [ lambda l,t : abs(l.pdgId()) == 11 ],
 )
 susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
@@ -374,10 +386,10 @@ if getHeppyOption("loadSamples"):
     
     #selectedComponents = [TT_pow]
     #selectedComponents = [SingleMuon_Run2017D]
-    selectedComponents = [SingleMuon_Run2017F]
+    selectedComponents = [DYJetsToLL_M50_LO_ext]
     for comp in selectedComponents:
             #comp.files = comp.files[:1]
-            comp.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer17MiniAOD/DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/92X_upgrade2017_realistic_v10-v1/110000/16AAAA26-1F8E-E711-8B55-44A842CFC98B.root']
+            comp.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer17MiniAOD/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/92X_upgrade2017_realistic_v10_ext1-v2/10000/00F9D855-E293-E711-B625-02163E014200.root']
             #for i in range(41):
             #    if i == 39: continue #missing file
             #    fn = 'event_%s.root'%i
@@ -385,7 +397,7 @@ if getHeppyOption("loadSamples"):
             #comp.files = ['root://eoscms.cern.ch//store/data/Run2017D/SingleMuon/MINIAOD/PromptReco-v1/000/302/031/00000/268C0C2A-498F-E711-872D-02163E019DAB.root']
             #comp.files = ['root://eoscms.cern.ch//store/group/phys_jetmet/MetScanners/bobak_pickevents_miniAOD.root']
             #comp.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer17MiniAOD/DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/92X_upgrade2017_realistic_v10-v1/110000/16AAAA26-1F8E-E711-8B55-44A842CFC98B.root']
-            comp.files = ['root://cms-xrd-global.cern.ch//store/data/Run2017F/SingleMuon/MINIAOD/PromptReco-v1/000/306/134/00000/1E8CC801-C2C6-E711-8397-FA163E158EBC.root']
+            #comp.files = ['root://cms-xrd-global.cern.ch//store/data/Run2017F/SingleMuon/MINIAOD/PromptReco-v1/000/306/134/00000/1E8CC801-C2C6-E711-8397-FA163E158EBC.root']
             comp.splitFactor = 1
 
 from CMGTools.TTHAnalysis.tools.EOSEventsWithDownload import EOSEventsWithDownload
