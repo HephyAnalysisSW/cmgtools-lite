@@ -385,16 +385,17 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt"
     
     #selectedComponents = [TT_pow]
-    #selectedComponents = [SingleMuon_Run2017D]
-    selectedComponents = [DYJetsToLL_M50_LO_ext]
+    selectedComponents = [SingleMuon_Run2017D]
+    #selectedComponents = [DYJetsToLL_M50_LO_ext]
     for comp in selectedComponents:
-            #comp.files = comp.files[:1]
-            comp.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer17MiniAOD/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/92X_upgrade2017_realistic_v10_ext1-v2/10000/00F9D855-E293-E711-B625-02163E014200.root']
+            comp.files = comp.files[:1]
+            #comp.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer17MiniAOD/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/92X_upgrade2017_realistic_v10_ext1-v2/10000/00F9D855-E293-E711-B625-02163E014200.root']
             #for i in range(41):
             #    if i == 39: continue #missing file
             #    fn = 'event_%s.root'%i
             #    comp.files.append(fn)
             #comp.files = ['root://eoscms.cern.ch//store/data/Run2017D/SingleMuon/MINIAOD/PromptReco-v1/000/302/031/00000/268C0C2A-498F-E711-872D-02163E019DAB.root']
+            #comp.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/DYJetsToLL_M-50_HT-400to600_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/50000/3E1DE3B8-87C0-E611-8733-00145EDD74ED.root']
             #comp.files = ['root://eoscms.cern.ch//store/group/phys_jetmet/MetScanners/bobak_pickevents_miniAOD.root']
             #comp.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer17MiniAOD/DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/92X_upgrade2017_realistic_v10-v1/110000/16AAAA26-1F8E-E711-8B55-44A842CFC98B.root']
             #comp.files = ['root://cms-xrd-global.cern.ch//store/data/Run2017F/SingleMuon/MINIAOD/PromptReco-v1/000/306/134/00000/1E8CC801-C2C6-E711-8397-FA163E158EBC.root']
