@@ -1,4 +1,4 @@
-PROD_LABEL="8025_mAODv2_ISR2"
+PROD_LABEL="8025_mAODv2_v10"
 REMOTE_DIR_DATA="${PROD_LABEL}/Data25ns"
 REMOTE_DIR_MC="${PROD_LABEL}/RunIISummer16MiniAODv2"
 #REMOTE_DIR_MC="${PROD_LABEL}/RunIISpring16MiniAODv2"
@@ -128,7 +128,7 @@ case $i in
     z=true
     tt=true
     w=true
-    data=false
+    data=true
     st=true
     ttx=true
     #sig=true
@@ -244,17 +244,17 @@ fi
 if  $vv
 then
   echo ----------------------  Submitting Dibosons  -----------------------
-  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   WGJets  WGToLNuG 
-  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL WZ ZZ WW #TBar_tWch  T_tWch 
-  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   WWTo2L2Nu  WWToLNuQQ  WWToLNuQQ_ext  WWTo1L1Nu2Q 
-  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   ZZTo2L2Nu  ZZTo2L2Q     ZZTo2Q2Nu  ZZTo4L
-  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   WZTo1L3Nu  WZTo1L1Nu2Q  WZTo2L2Q   WZTo3LNu   WZTo3LNu_amcatnlo
-  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   VVTo2L2Nu  VVTo2L2Nu_ext
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   WWTo2L2Nu  WWToLNuQQ  WWToLNuQQ_ext  WWTo1L1Nu2Q #NOTE: NLO (high stat) 
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   ZZTo2L2Nu  ZZTo2L2Q     ZZTo2Q2Nu  ZZTo4L #NOTE: NLO (high stat) 
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   WZTo1L3Nu  WZTo1L1Nu2Q  WZTo2L2Q   WZTo3LNu   WZTo3LNu_amcatnlo #NOTE: NLO (high stat) 
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   WGJets  WGToLNuG #NOTE: NLO (high stat) 
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   VVTo2L2Nu  VVTo2L2Nu_ext #NOTE: NLO (high stat) 
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL WZ ZZ WW #TBar_tWch  T_tWch #NOTE: LO (low stat) 
 fi
 
 if  $ttx
 then
-  echo ----------------------  Submitting Dibosons  -----------------------
+  echo ----------------------  Submitting TTX  -----------------------
   python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   TTWToLNu_ext  TTWToLNu_ext2  TTWToQQ  TTW_LO  TTZToQQ  TTZToLLNuNu_ext  TTZToLLNuNu_m1to10  TTZ_LO  TTGJets
   #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL  TTWToLNu TTWToQQ TTW_LO TTZToQQ TTZToLLNuNu TTZ_LO TTGJets 
 fi

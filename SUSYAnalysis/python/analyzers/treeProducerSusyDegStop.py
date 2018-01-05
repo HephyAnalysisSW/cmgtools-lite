@@ -63,7 +63,9 @@ susySingleLepton_globalVariables = susyCore_globalVariables + [
             NTupleVariable("lheHTIncoming", lambda ev : ev.lheHTIncoming, mcOnly=True, help="H_{T} computed from quarks and gluons in Heppy LHEAnalyzer (only LHE status<0 as mothers)"),
             # ---------------------------------------------------------------------------------------------------------------------------------------- #
             #ISR jet counting for SUSY reweighting
-            NTupleVariable("nIsr", lambda ev : getattr(ev,"nIsr",-999) , help="Number of ISR jets not matched to gen particles"),
+            NTupleVariable("nIsr",    lambda ev : getattr(ev,"nIsr",-999) ,    help="Number of ISR jets not matched to gen particles"),
+            NTupleVariable("nGenIsr", lambda ev : getattr(ev,"nGenIsr",-999) , help="Number of Gen ISR jets not matched to gen particles"),
+            NTupleVariable("nFatIsr", lambda ev : getattr(ev,"nFatIsr",-999) , help="Number of Fat ISR jets not matched to gen particles"),
 
 ]
 
