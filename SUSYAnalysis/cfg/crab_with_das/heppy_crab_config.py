@@ -20,8 +20,8 @@ print "\n------  done tarring ...."
 #os.system("tar czf cmgdataset.tar.gz --directory $HOME .cmgdataset")
 #os.system("tar czf cafpython.tar.gz --directory /afs/cern.ch/cms/caf/ python")
 #config.JobType.inputFiles = ['FrameworkJobReport.xml','heppy_config.py','heppy_crab_script.py','cmgdataset.tar.gz', 'python.tar.gz', 'cafpython.tar.gz']
-config.JobType.inputFiles = ['FrameworkJobReport.xml','heppy_config.py','heppy_crab_script.py','python.tar.gz', 
-                             "runBTaggingSlimPreprocessor_cfg.py" ]
+config.JobType.inputFiles = ['FrameworkJobReport.xml','heppy_config.py','heppy_crab_script.py','python.tar.gz']#, 
+                             #"runBTaggingSlimPreprocessor_cfg.py" ] #FIXME: required for DeepFlavour
                              #"$CMSSW_BASE/src/CMGTools/SUSYAnalysis/cfg/runBTaggingSlimPreprocessor_cfg.py" ]
 #config.JobType.sendPythonFolder = True
 config.JobType.outputFiles = ['output.log.tgz'] # susySingleLepton.root is automatically send because of the pset file
@@ -41,7 +41,7 @@ for l in p.stdout.readlines():
 
 
 
-config.Data.outLFNDirBase = '/store/user/' + user+'/cmgTuples/'
+config.Data.outLFNDirBase = '/store/user/' + user + '/cmgTuples/'
 remoteDir = os.environ["CMG_REMOTE_DIR"]
 if remoteDir!='':
   config.Data.outLFNDirBase+=remoteDir.rstrip('/')+'/'

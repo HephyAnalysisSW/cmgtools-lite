@@ -86,7 +86,7 @@ photonTypeSusy = NTupleObjectType("gammaSusy", baseObjectTypes = [ photonType ],
 ## JET
 ##------------------------------------------  
 
-jetTypeSusy = NTupleObjectType("jetSusy",  baseObjectTypes = [ jetType ], variables = [
+jetTypeSusy = NTupleObjectType("jetSusy",  baseObjectTypes = [ jetTypeExtra ], variables = [
 
     #NTupleVariable("DFudsg", lambda x : x.btag('deepFlavourJetTags:probudsg'), float, help="Deep flavor discriminator: udsg"),
     #NTupleVariable("DFb",    lambda x : x.btag('deepFlavourJetTags:probb'),    float, help="Deep flavor discriminator: b"),
@@ -117,9 +117,24 @@ jetTypeSusy = NTupleObjectType("jetSusy",  baseObjectTypes = [ jetType ], variab
     NTupleVariable("muMult", lambda x : x.muonMultiplicity(), int, mcOnly = False,help="muonMultiplicity from PFJet.h"),
     NTupleVariable("HFHMult", lambda x : x.HFHadronMultiplicity(), int, mcOnly = False,help="HFHadronMultiplicity from PFJet.h"),
     NTupleVariable("HFEMMult", lambda x : x.HFEMMultiplicity(), int, mcOnly = False,help="HFEMMultiplicity from PFJet.h"),
+    
+    NTupleVariable("isIsr",  lambda x : getattr(x,'isIsr',0), int, mcOnly=True, help="Flag whether jet is considered ISR"),
 ])
 
-      
+fatJetType = NTupleObjectType("fatJet",  baseObjectTypes = [ jetTypeExtra ], variables = [
+    NTupleVariable("prunedMass",  lambda x : x.userFloat("ak8PFJetsCHSPrunedMass"),  float, help="pruned mass"),
+    NTupleVariable("softDropMass", lambda x : x.userFloat("ak8PFJetsCHSSoftDropMass"), float, help="trimmed mass"),
+    NTupleVariable("tau1", lambda x : x.userFloat("NjettinessAK8:tau1"), float, help="1-subjettiness"),
+    NTupleVariable("tau2", lambda x : x.userFloat("NjettinessAK8:tau2"), float, help="2-subjettiness"),
+    NTupleVariable("tau3", lambda x : x.userFloat("NjettinessAK8:tau3"), float, help="3-subjettiness"),
+    NTupleVariable("topMass", lambda x : (x.tagInfo("caTop").properties().topMass if x.tagInfo("caTop") else -99), float, help="CA8 jet topMass"),
+    NTupleVariable("minMass", lambda x : (x.tagInfo("caTop").properties().minMass if x.tagInfo("caTop") else -99), float, help="CA8 jet minMass"),
+    NTupleVariable("nSubJets", lambda x : (x.tagInfo("caTop").properties().nSubJets if x.tagInfo("caTop") else -99), float, help="CA8 jet nSubJets"),
+    
+    NTupleVariable("isIsr",  lambda x : getattr(x,'isFatIsr',0), int, mcOnly=True, help="Flag whether fat jet is considered ISR"),
+])
+
+
 ##------------------------------------------  
 ## MET
 ##------------------------------------------  
@@ -157,7 +172,7 @@ genTrackTypeSusy = NTupleObjectType("genTrackSusy",  baseObjectTypes = [ isoTrac
     NTupleVariable("matchedLepIndex",     lambda x : x.matchedLepIndex , help="index of the matched Lepton to the track"),
     NTupleVariable("matchedLepDr",        lambda x : x.matchedLepDr    , help="deltaR of the matched Lepton to the track"),
     NTupleVariable("matchedGenPartIndex", lambda x : x.matchedGenPartIndex , mcOnly=True, help="index of the matched GenParticle to the track"),
-    NTupleVariable("matchedGenPartDr",    lambda x : x.matchedGenPartDr    , mcOnly=True, help="deltaR of the matched GenPartricle to the track"),
+    NTupleVariable("matchedGenPartDr",    lambda x : x.matchedGenPartDr    , mcOnly=True, help="deltaR of the matched GenParticle to the track"),
     NTupleVariable("CosPhiMet",          lambda x : x.CosPhiMet   , help="Cos Track Phi with Met"     ),
     NTupleVariable("CosPhiJet1",          lambda x : x.CosPhiJet1   , help="Cos Track Phi with the Leading Jet"     ),
     NTupleVariable("CosPhiJet12",          lambda x : x.CosPhiJet12   , help="Cos Track Phi with the Leading + SubJet"),
@@ -182,12 +197,15 @@ trackTypeSusy = NTupleObjectType("trackSusy",  baseObjectTypes = [ genTrackTypeS
 ])
 
 
-
+##------------------------------------------  
+## GENJETS
+##------------------------------------------  
 
 genJetType = NTupleObjectType("genJets",  baseObjectTypes = [ fourVectorType ], mcOnly=True, variables = [
     NTupleVariable("nConstituents", lambda x : x.nConstituents() ,help="Number of Constituents"),
+    NTupleVariable("isIsr",  lambda x : getattr(x,'isGenIsr',0), int, mcOnly=True, help="Flag whether genJet is considered ISR"),
+    NTupleVariable("mcMatchId",  lambda x : getattr(x, 'mcMatchId', -99), int, mcOnly=True, help="Match to source from hard scatter (pdgId of heaviest particle in chain, 25 for H, 6 for t, 23/24 for W/Z), zero if non-prompt or fake"),
+    NTupleVariable("mcMatchFlav",  lambda x : getattr(x,'mcMatchFlav',-99), int, mcOnly=True, help="Flavour of associated parton from hard scatter (if any)"),
+    #NTupleVariable("emEnergy", lambda x : x.emEnergy() ,help="EM energy"),
+    #NTupleVariable("hadEnergy", lambda x : x.hadEnergy() ,help="Hadronic energy"),
 ])
-
-
-
-
