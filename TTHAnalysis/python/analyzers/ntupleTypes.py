@@ -177,8 +177,8 @@ jetTypeSusySuperLight = NTupleObjectType("jet",  baseObjectTypes = [ fourVectorT
         NTupleVariable("etaetaMoment", lambda x : x.etaetaMoment() if hasattr(x,'etaetaMoment') else -1, mcOnly=True, help="eta eta moment"),
         NTupleVariable("phiphiMoment", lambda x : x.phiphiMoment() if hasattr(x,'phiphiMoment') else -1, mcOnly=True, help="phi phi moment"),
         NTupleVariable("btagCSV",   lambda x : x.btag('pfCombinedInclusiveSecondaryVertexV2BJetTags'), help="CSV-IVF v2 discriminator"),
-        NTupleVariable("mcFlavour",     lambda x : x.mcFlavour(),     int, mcOnly=True, help="parton flavour (physics definition, i.e. including b's from shower)"),
-        NTupleVariable("partonFlavour", lambda x : x.partonFlavour(), int, mcOnly=True, help="purely parton-based flavour"),
+        NTupleVariable("mcFlavour", lambda x : x.partonFlavour(), int,     mcOnly=True, help="parton flavour (physics definition, i.e. including b's from shower)"), #NOTE: we do not use this, but needs to be fixed centrally
+        NTupleVariable("partonFlavour", lambda x : x.partonFlavour(), int,     mcOnly=True, help="purely parton-based flavour"),
 ])
 
 jetTypeSusyExtra = NTupleObjectType("jetSusyExtra",  baseObjectTypes = [ jetTypeSusyExtraLight ], variables = [
