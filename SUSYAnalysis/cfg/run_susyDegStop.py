@@ -547,63 +547,63 @@ config = cfg.Config( components = selectedComponents,
          preprocessor = preprocessor,
          events_class = Events)
 
-#######################
-####### Extras ########
-#######################
-
-### Skim function ###
-
-def preselOrLTSkim(event):
-    met_pt  = event.met.pt()
-    jets    = event.cleanJetsAll
-    leps    = event.selectedLeptons
-
-    njets   = len(jets) 
-    nleps   = len(leps)
-
-    #lt_cut  = 12
-    #ht_cut  = 20
-    #met_cut = 20
-    #isr_cut = 9
-
-    lt_cut  = 120
-    ht_cut  = 200
-    met_cut = 200
-    isr_cut = 90
-
-    verbose = False
-    if verbose: 
-        print "\n \n ---------------------"
-        print "leps", leps
-
-    passed_lt = False
-
-    if leps:
-        lt = leps[0].pt() + met_pt
-        if verbose: print "lt", lt
-        if lt > lt_cut:
-            passed_lt = True 
-            return True
-    if not passed_lt:
-        if verbose: print "met_pt", met_pt
-        if met_pt < met_cut:
-            return False
-        all_jets = [ (j.pt(),j.eta(), j.jetID("POG_PFID")) for j in jets ] 
-        jet_pts  = [ j.pt() for j in jets if j.pt()>30 and abs(j.eta())<2.4 and j.jetID("POG_PFID") ] 
-        if verbose:
-            print 'all jets:      ',all_jets
-            print 'selected jets: ',jet_pts
-        if jet_pts and jet_pts[0] < isr_cut:
-            return False
-        #ht = sum( [j.pt() for j in jets if j.pt()>30 and abs(j.eta())<2.4 and j.id()] )
-        ht = sum( jet_pts )
-        if verbose: print "ht", ht
-        if ht < ht_cut:
-            return False
-        if verbose: print "Event Passed!!"
-        return True
-    else:
-      return False
-    assert False, "Shouldn't have gotten here!"
-    if verbose: print "Event Passed!!"
-    return True
+########################
+######## Extras ########
+########################
+#
+#### Skim function ### #FIXME: add to separate file
+#
+#def preselOrLTSkim(event):
+#    met_pt  = event.met.pt()
+#    jets    = event.cleanJetsAll
+#    leps    = event.selectedLeptons
+#
+#    njets   = len(jets) 
+#    nleps   = len(leps)
+#
+#    #lt_cut  = 12
+#    #ht_cut  = 20
+#    #met_cut = 20
+#    #isr_cut = 9
+#
+#    lt_cut  = 120
+#    ht_cut  = 200
+#    met_cut = 200
+#    isr_cut = 90
+#
+#    verbose = False
+#    if verbose: 
+#        print "\n \n ---------------------"
+#        print "leps", leps
+#
+#    passed_lt = False
+#
+#    if leps:
+#        lt = leps[0].pt() + met_pt
+#        if verbose: print "lt", lt
+#        if lt > lt_cut:
+#            passed_lt = True 
+#            return True
+#    if not passed_lt:
+#        if verbose: print "met_pt", met_pt
+#        if met_pt < met_cut:
+#            return False
+#        all_jets = [ (j.pt(),j.eta(), j.jetID("POG_PFID")) for j in jets ] 
+#        jet_pts  = [ j.pt() for j in jets if j.pt()>30 and abs(j.eta())<2.4 and j.jetID("POG_PFID") ] 
+#        if verbose:
+#            print 'all jets:      ',all_jets
+#            print 'selected jets: ',jet_pts
+#        if jet_pts and jet_pts[0] < isr_cut:
+#            return False
+#        #ht = sum( [j.pt() for j in jets if j.pt()>30 and abs(j.eta())<2.4 and j.id()] )
+#        ht = sum( jet_pts )
+#        if verbose: print "ht", ht
+#        if ht < ht_cut:
+#            return False
+#        if verbose: print "Event Passed!!"
+#        return True
+#    else:
+#      return False
+#    assert False, "Shouldn't have gotten here!"
+#    if verbose: print "Event Passed!!"
+#    return True
