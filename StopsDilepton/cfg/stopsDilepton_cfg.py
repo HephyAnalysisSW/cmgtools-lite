@@ -134,7 +134,7 @@ from CMGTools.TTHAnalysis.analyzers.chsMETAnalyzer import chsMETAnalyzer
 chsMETAna = cfg.Analyzer(
     chsMETAnalyzer,
     maxDz=0.1,
-    packedCandidates = 'packedPFCandidates', 
+    packedCandidates = 'packedPFCandidates',
     )
 susyCoreSequence.append( chsMETAna )
 
@@ -354,32 +354,6 @@ susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
 susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
                         trigMatcher1El)
 
-# puppiMET
-metPuppiAna = cfg.Analyzer(
-    METAnalyzer, name="metPuppiAnalyzer",
-    metCollection     = "slimmedMETsPuppi",
-    noPUMetCollection = "slimmedMETsPuppi",
-    copyMETsByValue = False,
-    doTkMet = False,
-    includeTkMetCHS = False,
-    includeTkMetPVLoose = False,
-    includeTkMetPVTight = False,
-    doPuppiMet = False,
-    doMetNoPU = False,
-    doMetNoMu = False,
-    doMetNoEle = False,
-    doMetNoPhoton = False,
-    recalibrate = False,
-    applyJetSmearing = False, # does nothing unless the jet smearing is turned on in the jet analyzer
-    old74XMiniAODs = False, # set to True to get the correct Raw MET when running on old 74X MiniAODs
-    jetAnalyzerCalibrationPostFix = "",
-    candidates='packedPFCandidates',
-    candidatesTypes='std::vector<pat::PackedCandidate>',
-    dzMax = 0.1,
-    collectionPostFix = "Puppi",
-    storePuppiExtra = False,
-    )
-
 ## Tree Producer
 treeProducer = cfg.Analyzer(
      AutoFillTreeProducer, name='treeProducerSusySingleLepton',
@@ -401,7 +375,6 @@ sequence = cfg.Sequence(
   susyCoreSequence+
       [ 
         LHEAna,
-        metPuppiAna,
         ttHEventAna,
         treeProducer,
         ])
@@ -416,9 +389,11 @@ if getHeppyOption("loadSamples"):
     
     #selectedComponents = [TT_pow]
     selectedComponents = [WZ]
+    #selectedComponents = [DoubleMuon_Run2017D_17Nov2017]
     #selectedComponents = [DYJetsToLL_M50_LO_ext]
     for comp in selectedComponents:
             comp.files = comp.files[:1]
+            print comp.files
             #comp.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer17MiniAOD/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/92X_upgrade2017_realistic_v10_ext1-v2/10000/00F9D855-E293-E711-B625-02163E014200.root']
             #for i in range(41):
             #    if i == 39: continue #missing file
