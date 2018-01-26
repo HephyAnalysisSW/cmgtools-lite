@@ -83,7 +83,7 @@ TriBosons = [
 
 ### ----------------------------- summary ----------------------------------------
 
-mcSamples = TTs + VJets + DiBosons + TriBosons
+mcSamples = TTs + VJets + DiBosons + TriBosons + TTV
 
 samples = mcSamples
 
