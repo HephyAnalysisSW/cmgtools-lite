@@ -224,25 +224,26 @@ triggerFlagsAna.triggerBits = {
     "mee"          : ["HLT_Mu8_DiEle12_CaloIdL_TrackIdL_v*", "HLT_Mu8_DiEle12_CaloIdL_TrackIdL_DZ_v*" ],
     "eee"          : ["HLT_Ele16_Ele12_Ele8_CaloIdL_TrackIdL_v*" ],
 
+    "IsoMu24"      : [ "HLT_IsoMu24_v*" ],
     "IsoMu27"      : [ "HLT_IsoMu27_v*" ],
     "IsoMu30"      : [ "HLT_IsoMu30_v*" ],
-    "IsoMu24"      : [ "HLT_IsoMu24_v*" ],
     "IsoMu24_eta2p1":[ "HLT_IsoMu24_eta2p1_v*" ],
     "Mu8_TrkIsoVVL": [ "HLT_Mu8_TrkIsoVVL_v*" ],
     "Mu8"          : [ "HLT_Mu8_v*" ],
     "Mu3_PFJet40"  : [ "HLT_Mu3_PFJet40_v*"],
-    "Mu50"         : [ "HLT_Mu50_v*" ],
-    "Mu55"         : [ "HLT_Mu55_v*" ],
     "Mu17"         : [ "HLT_Mu17_v*" ],
     "Mu19"         : [ "HLT_Mu19_v*" ],
     "Mu20"         : [ "HLT_Mu20_v*" ],
+    "Mu24"         : [ "HLT_Mu24_v*" ],
     "Mu27"         : [ "HLT_Mu27_v*" ],
+    "Mu50"         : [ "HLT_Mu50_v*" ],
+    "Mu55"         : [ "HLT_Mu55_v*" ],
 
+    "Ele27_WPTight_Gsf"   : [ "HLT_Ele27_WPTight_Gsf_v*" ],
     "Ele32_WPTight_Gsf"   : [ "HLT_Ele32_WPTight_Gsf_v*" ],
     "Ele35_WPTight_Gsf"   : [ "HLT_Ele35_WPTight_Gsf_v*" ],
     "Ele38_WPTight_Gsf"   : [ "HLT_Ele38_WPTight_Gsf_v*" ],
     "Ele40_WPTight_Gsf"   : [ "HLT_Ele40_WPTight_Gsf_v*" ],
-    "Ele27_WPTight_Gsf"   : [ "HLT_Ele27_WPTight_Gsf_v*" ],
     "Ele17_CaloIdM_TrackIdM_PFJet30"   : [ "HLT_Ele17_CaloIdM_TrackIdM_PFJet30_v*" ],
     "Ele8_CaloIdM_TrackIdM_PFJet30"    : [ "HLT_Ele8_CaloIdM_TrackIdM_PFJet30_v*" ],
 
@@ -317,7 +318,10 @@ triggerFlagsAna.triggerBits = {
         'Jet80MET90'       :triggers_Jet80MET90      ,
         'Jet80MET120'      :triggers_Jet80MET120     ,
         'MET120Mu5'        :triggers_MET120Mu5       ,
-        'PFMET120_PFMHT120_IDTight': ['HLT_PFMET120_PFMHT120_IDTight_v*'],
+        'PFMET120_PFMHT120_IDTight':                    ['HLT_PFMET120_PFMHT120_IDTight_v*'],
+        'PFMET120_PFMHT120_IDTight_PFHT60':             ['HLT_PFMET120_PFMHT120_IDTight_PFHT60_v*'],
+        'PFMET130_PFMHT130_IDTight':                    ['HLT_PFMET130_PFMHT130_IDTight_v*'],
+        'PFMET140_PFMHT140_IDTight':                    ['HLT_PFMET140_PFMHT140_IDTight_v*'],
         'PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60':     ['HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_PFHT60_v*'],
         'PFMETNoMu120_PFMHTNoMu120_IDTight':            ['HLT_PFMETNoMu120_PFMHTNoMu120_IDTight_v*'],
 
@@ -330,6 +334,9 @@ triggerFlagsAna.triggerBits = {
         'IsoTkMu24':                                    ['HLT_IsoTkMu24_v*'],
         'Ele25_eta2p1_WPTight_Gsf':                     ['HLT_Ele25_eta2p1_WPTight_Gsf_v*'],
         'Ele27_eta2p1_WPLoose_Gsf':                     ['HLT_Ele27_eta2p1_WPLoose_Gsf_v*'],
+        'Ele30_eta2p1_WPTight_Gsf_CentralPFJet35_EleCleaned':['HLT_Ele30_eta2p1_WPTight_Gsf_CentralPFJet35_EleCleaned_v*'],
+        'Ele28_eta2p1_WPTight_Gsf_HT150':               ['HLT_Ele28_eta2p1_WPTight_Gsf_HT150_v*'],
+        'Ele32_WPTight_Gsf_L1DoubleEG':                 ['HLT_Ele32_WPTight_Gsf_L1DoubleEG_v*'],
         'Ele115_CaloIdVT_GsfTrkIdT':                    ['HLT_Ele115_CaloIdVT_GsfTrkIdT_v*'],
         'Ele50_CaloIdVT_GsfTrkIdT_PFJet165':            ['HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165_v*'],
         'Photon175':                                    ['HLT_Photon175_v*'],
@@ -399,7 +406,7 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt"
     
     #selectedComponents = [TT_pow]
-    selectedComponents = [WZ]
+    selectedComponents = [TTZToLLNuNu]
     #selectedComponents = [DoubleMuon_Run2017D_17Nov2017]
     #selectedComponents = [DYJetsToLL_M50_LO_ext]
     for comp in selectedComponents:
