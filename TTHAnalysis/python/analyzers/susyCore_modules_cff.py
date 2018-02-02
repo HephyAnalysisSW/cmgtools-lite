@@ -90,6 +90,9 @@ eventFlagsAna = cfg.Analyzer(
         "BadPFMuonFilter" : [ "Flag_BadPFMuonFilter" ],
         "BadChargedCandidateSummer16Filter" : [ "Flag_BadChargedCandidateSummer16Filter" ],
         "BadPFMuonSummer16Filter" : [ "Flag_BadPFMuonSummer16Filter" ],
+        "MuFlag_good" : [ "Flag_noBadMuons" ],
+        "MuFlag_bad" : [ "Flag_badMuons" ],
+        "MuFlag_dup" : [ "Flag_duplicateMuons" ],
     }
     )
 
@@ -321,6 +324,7 @@ tauAna = cfg.Analyzer(
 ## those are the cuts for the nonEMu                                                                                                                                                                         
 isoTrackAna = cfg.Analyzer(
     IsoTrackAnalyzer, name='isoTrackAnalyzer',
+    useLegacy2016=True,
     setOff=True,
     #####
     candidates='packedPFCandidates',
