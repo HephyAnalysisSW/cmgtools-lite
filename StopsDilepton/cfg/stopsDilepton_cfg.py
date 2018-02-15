@@ -395,12 +395,12 @@ sequence = cfg.Sequence(
 #if True or getHeppyOption("loadSamples"):
 if getHeppyOption("loadSamples"):
     from CMGTools.RootTools.samples.samples_13TeV_DATA2017 import *
-    from CMGTools.RootTools.samples.samples_13TeV_RunIIFall17MiniAODv2 import *
+    from CMGTools.RootTools.samples.samples_13TeV_RunIIFall17MiniAOD import *
     for sample in dataSamples:
         #sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt"
     
-    selectedComponents = [TTWToLNu]
+    selectedComponents = [TTZToLLNuNu_amc]
     #selectedComponents = [TTZToLLNuNu]
     #selectedComponents = [DoubleMuon_Run2017D_17Nov2017]
     #selectedComponents = [DYJetsToLL_M50_LO_ext]
