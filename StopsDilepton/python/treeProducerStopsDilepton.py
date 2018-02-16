@@ -98,6 +98,6 @@ susySingleLepton_collections.update({
             ##------------------------------------------------
             "ivf"       : NTupleCollection("SV",     svType, 20, help="SVs from IVF"),
             "selectedPhotons"    : NTupleCollection("gamma", photonTypeSusy, 50, help="photons with pt>15 and loose cut based ID"),
-            "LHE_weights" : NTupleCollection("LHEweight", weightsInfoType, 1000, mcOnly=True, help="LHE weight info"),
+            "LHE_weights" : NTupleCollection("LHEweight", weightsInfoType, 2000, mcOnly=True, help="LHE weight info"),
 })
 

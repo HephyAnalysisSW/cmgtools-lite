@@ -190,6 +190,7 @@ from PhysicsTools.Heppy.analyzers.gen.LHEAnalyzer import LHEAnalyzer
 LHEAna = LHEAnalyzer.defaultConfig
 
 #lheWeightAna.useLumiInfo=True
+lheWeightAna.usePSweights = True
 
 from CMGTools.RootTools.samples.triggers_13TeV_DATA2016 import *
 
@@ -400,7 +401,7 @@ if getHeppyOption("loadSamples"):
         #sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt"
     
-    selectedComponents = [TTZToLLNuNu_amc]
+    selectedComponents = [TTLep_pow]
     #selectedComponents = [TTZToLLNuNu]
     #selectedComponents = [DoubleMuon_Run2017D_17Nov2017]
     #selectedComponents = [DYJetsToLL_M50_LO_ext]
