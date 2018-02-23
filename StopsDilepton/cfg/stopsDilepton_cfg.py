@@ -21,37 +21,18 @@ lepAna.rhoElectron = 'fixedGridRhoFastjetAll'
 
 ## ELECTRONS
 lepAna.loose_electron_pt  = 5
-eleID = "Incl"
 doElectronScaleCorrections = False
 lepAna.doMiniIsolation = True
 
-if eleID == "CBID":
-  lepAna.loose_electron_id  = "POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Veto" # no Iso
-  lepAna.loose_electron_lostHits = 999. # no cut
-  lepAna.loose_electron_dxy    = 0.1
-  lepAna.loose_electron_dz     = 0.2
+lepAna.loose_electron_id  = ""
+lepAna.loose_electron_lostHits = 999. # no cut
+lepAna.loose_electron_dxy    = 999.
+lepAna.loose_electron_dz     = 999.
 
-  lepAna.inclusive_electron_id  = ""#"POG_Cuts_ID_SPRING15_25ns_v1_ConvVetoDxyDz_Veto_full5x5"
-  lepAna.inclusive_electron_lostHits = 999. # no cut since embedded in ID
-  lepAna.inclusive_electron_dxy    = 999. # no cut since embedded in ID
-  lepAna.inclusive_electron_dz     = 999. # no cut since embedded in ID
-
-elif eleID == "MVAID":
-  inclusive_electron_id  = "" # same as in susyCore
-
-  #lepAna.loose_electron_id = "POG_MVA_ID_Phys14_NonTrig_VLoose" # Phys14 era
-  lepAna.loose_electron_id = "POG_MVA_ID_Spring15_NonTrig_VLoose" # Spring15 25ns era
-
-elif eleID == "Incl": # as inclusive as possible
-  lepAna.loose_electron_id  = ""
-  lepAna.loose_electron_lostHits = 999. # no cut
-  lepAna.loose_electron_dxy    = 999.
-  lepAna.loose_electron_dz     = 999.
-
-  lepAna.inclusive_electron_id  = ""
-  lepAna.inclusive_electron_lostHits = 999.  # no cut
-  lepAna.inclusive_electron_dxy    = 999. # no cut since embedded in ID
-  lepAna.inclusive_electron_dz     = 999. # no cut since embedded in ID
+lepAna.inclusive_electron_id  = ""
+lepAna.inclusive_electron_lostHits = 999.  # no cut
+lepAna.inclusive_electron_dxy    = 999. # no cut since embedded in ID
+lepAna.inclusive_electron_dz     = 999. # no cut since embedded in ID
 
 ## MUONS
 # store everything
@@ -66,20 +47,12 @@ lepAna.loose_muon_pt  = 5
 # Isolation
 isolation = "relIso03"
 
-if isolation == "miniIso":
-  # do miniIso
-  lepAna.doMiniIsolation = True
-  lepAna.miniIsolationPUCorr = 'rhoArea'
-  lepAna.miniIsolationVetoLeptons = None
-  lepAna.loose_muon_isoCut     = lambda muon : muon.miniRelIso < 0.4
-  lepAna.loose_electron_isoCut = lambda elec : elec.miniRelIso < 0.4
-elif isolation == "relIso03":
-  # normal relIso03
-  lepAna.ele_isoCorr = "rhoArea"
-  lepAna.mu_isoCorr = "deltaBeta"
+# normal relIso03
+lepAna.ele_isoCorr = "rhoArea"
+lepAna.mu_isoCorr = "rhoArea"
 
-  lepAna.loose_electron_relIso = 0.5
-  lepAna.loose_muon_relIso = 0.5
+lepAna.loose_electron_relIso = 0.5
+lepAna.loose_muon_relIso = 0.5
 
 if doElectronScaleCorrections:
     era = '25ns'
@@ -344,7 +317,8 @@ trigMatcher1Mu = cfg.Analyzer(
     TriggerMatchAnalyzer, name="trigMatcher1Mu",
     label='1Mu',
     processName = 'PAT',
-    fallbackProcessName = 'RECO',
+    fallbackCollection = 'selectedPatTrigger',
+    fallbackProcessName = 'PAT',
     unpackPathNames = True,
     #trgObjSelectors = [ lambda t : t.path("HLT_IsoMu22_v*",1,0) or t.path("HLT_IsoMu20_v*",1,0) ],
     trgObjSelectors = [ lambda t : t.path("HLT_IsoMu27_v*",1,0) or t.path("HLT_IsoMu30_v*",1,0) ],
@@ -397,11 +371,17 @@ if getHeppyOption("loadSamples"):
     from CMGTools.RootTools.samples.samples_13TeV_DATA2017 import *
     from CMGTools.RootTools.samples.samples_13TeV_RunIIFall17MiniAOD import *
     for sample in dataSamples:
-        #sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt"
-    
     selectedComponents = [TTZToLLNuNu_amc]
-    #selectedComponents = [TTZToLLNuNu]
+
+    #from CMGTools.RootTools.samples.samples_13TeV_RunIISummer16MiniAODv2 import *
+    #from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
+    #for sample in dataSamples:
+    #    sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
+    #selectedComponents = [MET_Run2016B_03Feb2017_v2]
+    #selectedComponents = [DYJetsToLL_M50_LO_ext] 
+
+    #selectedComponents = [TTZToLLNuNu_amc]
     #selectedComponents = [DoubleMuon_Run2017D_17Nov2017]
     #selectedComponents = [DYJetsToLL_M50_LO_ext]
     for comp in selectedComponents:

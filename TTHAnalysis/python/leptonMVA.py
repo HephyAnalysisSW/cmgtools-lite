@@ -28,6 +28,7 @@ class MVATool:
         self.name = name
         self.reader = ROOT.TMVA.Reader("Silent")
         self.vars  = vars
+        self.specs = specs
         for s in specs: self.reader.AddSpectator(s.name,s.var)
         for v in vars:  self.reader.AddVariable(v.name,v.var)
         #print "Would like to load %s from %s! " % (name,xml)
@@ -85,7 +86,7 @@ _CommonVars = {
  'ttv_noLepTau':[ 
     MVAVar("pt",lambda x: x.pt()),
     MVAVar("eta",lambda x: x.eta()),
-    MVAVar("trackMult",lambda lepton: sum((deltaR(x.eta(),x.phi(),lepton.jet.eta(),lepton.jet.phi())<=0.4 and x.charge()!=0 and x.fromPV()>1 and qualityTrk(x.pseudoTrack(),lepton.associatedVertex)) for x in lepton.jet.daughterPtrVector()) if hasattr(lepton,'jet') and lepton.jet != lepton else 0),
+    MVAVar("trackMult",lambda lepton: sum((deltaR(x.eta(),x.phi(),lepton.jet.eta(),lepton.jet.phi())<=0.4 and x.charge()!=0 and x.fromPV()>1 and x.hasTrackDetails() and qualityTrk(x.pseudoTrack(),lepton.associatedVertex)) for x in lepton.jet.daughterPtrVector()) if hasattr(lepton,'jet') and lepton.jet != lepton else 0),
     MVAVar("miniIsoCharged",lambda x: getattr(x,'miniAbsIsoCharged',-99)/x.pt()), 
     MVAVar("miniIsoNeutral",lambda x: getattr(x,'miniAbsIsoNeutral',-99)/x.pt()), 
     MVAVar("ptrel", lambda x : ptRelv2(x) if hasattr(x,'jet') else -1),
