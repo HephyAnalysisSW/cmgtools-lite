@@ -16,9 +16,10 @@ parser.add_option("--unitsPerJob", dest="unitsPerJob", help="Nr. of units (files
 parser.add_option("--totalUnits", dest="totalUnits", help="Total nr. of units (files)", type="int", default=None)
 parser.add_option("--inputDBS", dest="inputDBS", help="dbs instance", default=None)
 parser.add_option("--lumiMask", dest="lumiMask", help="lumi mask (for data)", default=None)
+parser.add_option("--year", dest="year", help="2016 or 2017", default=2017, type=int)
 ( options, args ) = parser.parse_args()
 
-handle = open("heppy_samples.py", 'r')
+handle = open("heppy_samples_%i.py"%options.year, 'r')
 cfo = imp.load_source("heppy_samples", "heppy_samples.py", handle)
 handle.close()
 
@@ -47,11 +48,12 @@ if not selectedComponents:
 os.system("scram runtime -sh")
 os.system("source /cvmfs/cms.cern.ch/crab3/crab.sh")
 
-os.environ["CMG_PROD_LABEL"]  = options.production_label
-os.environ["CMG_REMOTE_DIR"]  = options.remoteDir
-os.environ["CMG_VERSION"] = options.cmg_version
+os.environ["CMG_PROD_LABEL"]    = options.production_label
+os.environ["CMG_REMOTE_DIR"]    = options.remoteDir
+os.environ["CMG_YEAR"]          = options.year
+os.environ["CMG_VERSION"]       = options.cmg_version
 os.environ["CMG_UNITS_PER_JOB"] = str(options.unitsPerJob)
-os.environ["CMG_LUMI_MASK"] = options.lumiMask if options.lumiMask else "None"
+os.environ["CMG_LUMI_MASK"]     = options.lumiMask if options.lumiMask else "None"
 if options.totalUnits:
     os.environ["CMG_TOTAL_UNITS"] = str(options.totalUnits)
 else:
