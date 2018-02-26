@@ -1,11 +1,29 @@
+# Heppy
 import PhysicsTools.HeppyCore.framework.config as cfg
 from PhysicsTools.HeppyCore.framework.heppy_loop import getHeppyOption
 
-#Load all analyzers
+# General
+import os
+
+# Load all analyzers
 from CMGTools.TTHAnalysis.analyzers.susyCore_modules_cff import *
 
-# general flags & settings 
 year                        = 2016
+# environment var has precedence (for crab)
+try:
+    year = int(os.environ["CMG_YEAR"])
+except:
+    pass
+# Heppy option
+try:
+    year = int(getHeppyOption("year"))
+except:
+    pass
+
+print "Year:", year
+assert year in [2016, 2017], "Year must be 2016 or 2017. Got %r" % year 
+
+# general flags & settings 
 minLeptons                  = 1
 storePackedCandidates       = False
 doElectronScaleCorrections  = False
