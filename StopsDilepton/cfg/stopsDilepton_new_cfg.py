@@ -111,7 +111,7 @@ if year == 2016:
     jetAna.mcGT   = "Summer16_23Sep2016V3_MC"
 elif year == 2017:
     jetAna.applyL2L3Residual = False
-    jetAna.dataGT = [ ( -1, "Fall17_17Nov2017B_V6_Data"), ( 299337, "Fall17_17Nov2017C_V6_Data"), ( 302030, "Fall17_17Nov2017D_V6_Data"), ( 303435, "Fall17_17Nov2017E_V6_Data"), ( 304911, "Fall17_17Nov2017F_V6_Data") ]
+    jetAna.dataGT = [ ( -1, "Fall17_17Nov2017B_V6_DATA"), ( 299337, "Fall17_17Nov2017C_V6_DATA"), ( 302030, "Fall17_17Nov2017D_V6_DATA"), ( 303435, "Fall17_17Nov2017E_V6_DATA"), ( 304911, "Fall17_17Nov2017F_V6_DATA") ]
     jetAna.mcGT   = "Fall17_17Nov2017_V4_MC"
 
 # tree Producer
