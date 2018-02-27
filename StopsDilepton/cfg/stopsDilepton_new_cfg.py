@@ -24,7 +24,7 @@ print "Year:", year
 assert year in [2016, 2017], "Year must be 2016 or 2017. Got %r" % year 
 
 # general flags & settings 
-minLeptons                  = 1
+minLeptons                  = 0
 storePackedCandidates       = False
 doElectronScaleCorrections  = False
 doPhotonScaleCorrections    = False
@@ -111,7 +111,7 @@ if year == 2016:
     jetAna.mcGT   = "Summer16_23Sep2016V3_MC"
 elif year == 2017:
     jetAna.applyL2L3Residual = False
-    jetAna.dataGT = [ ( -1, "Fall17_17Nov2017_V4_MC") ]
+    jetAna.dataGT = [ ( -1, "Fall17_17Nov2017B_V6_Data"), ( 299337, "Fall17_17Nov2017C_V6_Data"), ( 302030, "Fall17_17Nov2017D_V6_Data"), ( 303435, "Fall17_17Nov2017E_V6_Data"), ( 304911, "Fall17_17Nov2017F_V6_Data") ]
     jetAna.mcGT   = "Fall17_17Nov2017_V4_MC"
 
 # tree Producer
@@ -227,8 +227,8 @@ elif year == 2017:
         TriggerMatchAnalyzer, name="trigMatcher1Mu",
         label='1Mu',
         processName = 'PAT',
-        fallbackCollection = 'selectedPatTrigger',
-        fallbackProcessName = 'PAT',
+        fallbackCollection = 'slimmedPatTrigger',
+        fallbackProcessName = 'RECO',
         unpackPathNames = True,
         trgObjSelectors = [ lambda t : t.path("HLT_IsoMu27_v*",1,0) or t.path("HLT_IsoMu30_v*",1,0) ],
         collToMatch = 'selectedLeptons',
@@ -283,7 +283,11 @@ if getHeppyOption("loadSamples"):
         for sample in dataSamples:
             sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
 
-        selectedComponents = [DYJetsToLL_M50_LO_ext]
+        #TTJets_SingleLeptonFromTbar.files = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root"]
+        #selectedComponents = [TTJets_SingleLeptonFromTbar]
+
+        MuonEG_Run2016F_03Feb2017.files=["root://cms-xrd-global.cern.ch//store/data/Run2016F/MuonEG/MINIAOD/03Feb2017-v1/50000/0496325A-05EB-E611-953B-0025905A60DE.root"]
+        selectedComponents = [MuonEG_Run2016F_03Feb2017]
 
     elif year==2017:
         from CMGTools.RootTools.samples.samples_13TeV_DATA2017 import *
@@ -291,7 +295,11 @@ if getHeppyOption("loadSamples"):
         for sample in dataSamples:
             sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON.txt"
 
-        selectedComponents = [TTZToLLNuNu_amc]
+        TTSemi_pow.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIIFall17MiniAOD/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8/MINIAODSIM/94X_mc2017_realistic_v10-v1/50000/004C666D-C0E0-E711-AADB-0CC47A6C183A.root']
+        selectedComponents = [TTSemi_pow]
+
+        #MuonEG_Run2017F_17Nov2017.files=['root://cms-xrd-global.cern.ch//store/data/Run2017F/MuonEG/MINIAOD/17Nov2017-v1/50000/02F38D9F-54EA-E711-A28D-02163E014331.root']
+        #selectedComponents = [MuonEG_Run2017F_17Nov2017]
 
     for comp in selectedComponents:
         comp.files = comp.files[:1]
