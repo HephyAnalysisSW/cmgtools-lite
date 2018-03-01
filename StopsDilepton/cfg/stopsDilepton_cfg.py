@@ -401,7 +401,7 @@ if getHeppyOption("loadSamples"):
         #sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-282092_13TeV_PromptReco_Collisions16_JSON.txt"
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306462_13TeV_PromptReco_Collisions17_JSON.txt"
     
-    selectedComponents = [T_sch_lep]
+    selectedComponents = [TTLep_pow]
     #selectedComponents = [DoubleMuon_Run2017D_17Nov2017]
     #selectedComponents = [DYJetsToLL_M50_LO_ext]
     for comp in selectedComponents:
