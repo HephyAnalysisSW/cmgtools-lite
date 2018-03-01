@@ -110,9 +110,9 @@ if year == 2016:
     jetAna.dataGT = [ ( -1, "Summer16_23Sep2016BCDV3_DATA"), (276811, "Summer16_23Sep2016EFV3_DATA"), (278801, "Summer16_23Sep2016GV3_DATA"), (280385, "Summer16_23Sep2016HV3_DATA") ]
     jetAna.mcGT   = "Summer16_23Sep2016V3_MC"
 elif year == 2017:
-    jetAna.applyL2L3Residual = False
+    jetAna.applyL2L3Residual = "Data"
     jetAna.dataGT = [ ( -1, "Fall17_17Nov2017B_V6_DATA"), ( 299337, "Fall17_17Nov2017C_V6_DATA"), ( 302030, "Fall17_17Nov2017D_V6_DATA"), ( 303435, "Fall17_17Nov2017E_V6_DATA"), ( 304911, "Fall17_17Nov2017F_V6_DATA") ]
-    jetAna.mcGT   = "Fall17_17Nov2017_V4_MC"
+    jetAna.mcGT   = "Fall17_17Nov2017_V6_MC"
 
 # tree Producer
 from CMGTools.StopsDilepton.treeProducerStopsDilepton import *
@@ -283,11 +283,11 @@ if getHeppyOption("loadSamples"):
         for sample in dataSamples:
             sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
 
-        #TTJets_SingleLeptonFromTbar.files = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root"]
-        #selectedComponents = [TTJets_SingleLeptonFromTbar]
+        TTJets_SingleLeptonFromTbar.files = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root"]
+        selectedComponents = [TTJets_SingleLeptonFromTbar]
 
-        MuonEG_Run2016F_03Feb2017.files=["root://cms-xrd-global.cern.ch//store/data/Run2016F/MuonEG/MINIAOD/03Feb2017-v1/50000/0496325A-05EB-E611-953B-0025905A60DE.root"]
-        selectedComponents = [MuonEG_Run2016F_03Feb2017]
+        #MuonEG_Run2016F_03Feb2017.files=["root://cms-xrd-global.cern.ch//store/data/Run2016F/MuonEG/MINIAOD/03Feb2017-v1/50000/0496325A-05EB-E611-953B-0025905A60DE.root"]
+        #selectedComponents = [MuonEG_Run2016F_03Feb2017]
 
     elif year==2017:
         from CMGTools.RootTools.samples.samples_13TeV_DATA2017 import *
@@ -295,11 +295,11 @@ if getHeppyOption("loadSamples"):
         for sample in dataSamples:
             sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON.txt"
 
-        TTSemi_pow.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIIFall17MiniAOD/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8/MINIAODSIM/94X_mc2017_realistic_v10-v1/50000/004C666D-C0E0-E711-AADB-0CC47A6C183A.root']
-        selectedComponents = [TTSemi_pow]
+        #TTSemi_pow.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIIFall17MiniAOD/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8/MINIAODSIM/94X_mc2017_realistic_v10-v1/50000/004C666D-C0E0-E711-AADB-0CC47A6C183A.root']
+        #selectedComponents = [TTSemi_pow]
 
-        #MuonEG_Run2017F_17Nov2017.files=['root://cms-xrd-global.cern.ch//store/data/Run2017F/MuonEG/MINIAOD/17Nov2017-v1/50000/02F38D9F-54EA-E711-A28D-02163E014331.root']
-        #selectedComponents = [MuonEG_Run2017F_17Nov2017]
+        MuonEG_Run2017F_17Nov2017.files=['root://cms-xrd-global.cern.ch//store/data/Run2017F/MuonEG/MINIAOD/17Nov2017-v1/50000/02F38D9F-54EA-E711-A28D-02163E014331.root']
+        selectedComponents = [MuonEG_Run2017F_17Nov2017]
 
     for comp in selectedComponents:
         comp.files = comp.files[:1]
