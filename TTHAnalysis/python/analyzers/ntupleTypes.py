@@ -27,6 +27,7 @@ leptonTypeSusy = NTupleObjectType("leptonSusy", baseObjectTypes = [ leptonTypeEx
     #NTupleVariable("mvaIdSpring16",   lambda lepton : lepton.mvaRun2("Spring16") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG Spring16 MVA discriminator value; 1 for muons"),
     NTupleVariable("eleCutId_Spring2016_25ns_v1_ConvVetoDxyDz",     lambda x : (1*x.electronID("POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Veto") + 1*x.electronID("POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Loose") + 1*x.electronID("POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Medium") + 1*x.electronID("POG_Cuts_ID_SPRING16_25ns_v1_ConvVetoDxyDz_Tight")) if abs(x.pdgId()) == 11 else -1, int, help="Electron cut-based ID Spring2016 25ns v1 ConvVetoDxyDz: 0=none, 1=veto, 2=loose, 3=medium, 4=tight"),
     # Lepton MVA-id related variables
+    NTupleVariable("mvaTTV",    lambda lepton : getattr(lepton, 'mvaValueTTV', -1), help="Lepton MVA (TTV version)"),
     NTupleVariable("mvaTTH",    lambda lepton : getattr(lepton, 'mvaValueTTH', -1), help="Lepton MVA (TTH version)"),
     NTupleVariable("mvaSUSY",    lambda lepton : getattr(lepton, 'mvaValueSUSY', -1), help="Lepton MVA (SUSY version)"),
     NTupleVariable("jetPtRatiov1", lambda lepton : lepton.pt()/lepton.jet.pt() if hasattr(lepton,'jet') else -1, help="pt(lepton)/pt(nearest jet)"),
@@ -49,15 +50,18 @@ leptonTypeSusy = NTupleObjectType("leptonSusy", baseObjectTypes = [ leptonTypeEx
     NTupleVariable("muonTrackType",  lambda lepton : 1 if abs(lepton.pdgId()) == 11 else lepton.muonBestTrackType(), int, help="Muon best track type"),
     NTupleVariable("chargeConsistency",  lambda lepton : ( lepton.isGsfCtfScPixChargeConsistent() + lepton.isGsfScPixChargeConsistent() ) if abs(lepton.pdgId()) == 11 else abs(lepton.muonBestTrack().charge() + lepton.innerTrack().charge() + lepton.tunePMuonBestTrack().charge() + ( lepton.globalTrack().charge() + lepton.outerTrack().charge() if lepton.isGlobalMuon() else 0) ), int, help="Tight charge criteria: for electrons, 2 if isGsfCtfScPixChargeConsistent, 1 if only isGsfScPixChargeConsistent, 0 otherwise; for muons, absolute value of the sum of all the charges (5 for global-muons, 3 for global muons)"),
     NTupleVariable("ptErrTk",  lambda lepton : ( lepton.gsfTrack().ptError() ) if abs(lepton.pdgId()) == 11 else (lepton.muonBestTrack().ptError()), help="pt error, for the gsf track or muon best track"),
+    NTupleVariable("muonInnerTrkRelErr",  lambda lepton : ( lepton.innerTrack().ptError()/lepton.innerTrack().pt() if lepton.innerTrack().pt()>0 else 99 ) if abs(lepton.pdgId()) == 13 else 0., help="relative pt error on muon inner track (99 if doesn't exist), 0 for electrons"),
     NTupleVariable("matchedTrgObj1El", lambda lepton: (lepton.matchedTrgObj1El.pt() if hasattr(lepton, "matchedTrgObj1El") and lepton.matchedTrgObj1El is not None else float('nan')), help="electron trigger match object pt"),
     NTupleVariable("matchedTrgObj1Mu", lambda lepton: (lepton.matchedTrgObj1Mu.pt() if hasattr(lepton, "matchedTrgObj1Mu") and lepton.matchedTrgObj1Mu is not None else float('nan')), help="muon trigger match object pt"),
+    NTupleVariable("miniRelIsoCharged",   lambda x : getattr(x,'miniAbsIsoCharged',-99)/x.pt()),
+    NTupleVariable("miniRelIsoNeutral",   lambda x : getattr(x,'miniAbsIsoNeutral',-99)/x.pt()),
+    NTupleVariable("trackMult",lambda lepton: sum((deltaR(x.eta(),x.phi(),lepton.jet.eta(),lepton.jet.phi())<=0.4 and x.charge()!=0 and x.fromPV()>1 and x.hasTrackDetails() and qualityTrk(x.pseudoTrack(),lepton.associatedVertex)) for x in lepton.jet.daughterPtrVector()) if hasattr(lepton,'jet') and lepton.jet != lepton else 0, help="trackMult as used in TTV lepton MVA"),
+
 ])
 
 
 
 leptonTypeSusyExtraLight = NTupleObjectType("leptonSusyExtraLight", baseObjectTypes = [ leptonTypeSusy, leptonTypeExtra ], variables = [
-    NTupleVariable("miniRelIsoCharged",   lambda x : getattr(x,'miniAbsIsoCharged',-99)/x.pt()),
-    NTupleVariable("miniRelIsoNeutral",   lambda x : getattr(x,'miniAbsIsoNeutral',-99)/x.pt()),
     NTupleVariable("jetNDauChargedMVASel",    lambda lepton : sum((deltaR(x.eta(),x.phi(),lepton.jet.eta(),lepton.jet.phi())<=0.4 and x.charge()!=0 and x.fromPV()>1 and x.hasTrackDetails() and qualityTrk(x.pseudoTrack(),lepton.associatedVertex)) for x in lepton.jet.daughterPtrVector()) if hasattr(lepton,'jet') and lepton.jet != lepton else 0, help="n charged daughters (with selection for ttH lepMVA) of nearest jet"),
     NTupleVariable("jetCorrFactor_L1", lambda x: x.jet.CorrFactor_L1 if hasattr(x.jet,'CorrFactor_L1') else 1, help="matched jet L1 correction factor"),
     NTupleVariable("jetCorrFactor_L1L2", lambda x: x.jet.CorrFactor_L1L2 if hasattr(x.jet,'CorrFactor_L1L2') else 1, help="matched jet L1L2 correction factor"),

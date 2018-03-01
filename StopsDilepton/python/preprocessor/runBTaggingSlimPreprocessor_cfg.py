@@ -41,7 +41,7 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(100) )
 ## Input files
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
-        '/store/mc/RunIISpring16MiniAODv2/TTJets_DiLept_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v4/00000/107D4288-EE2B-E611-8CDA-02163E0114CC.root'
+        'root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/DYJetsToLL_M-50_HT-400to600_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/50000/3E1DE3B8-87C0-E611-8733-00145EDD74ED.root'
     )
 )
 
@@ -63,24 +63,24 @@ process.options   = cms.untracked.PSet(
 
 from PhysicsTools.PatAlgos.tools.jetTools import updateJetCollection
 updateJetCollection(
-   process,
-   #jetSource = cms.InputTag('selectedUpdatedPatJetsNewJEC'),
-   jetSource = cms.InputTag('slimmedJets'),                                                                                                                                                
-   jetCorrections = ('AK4PFchs', cms.vstring(['L1FastJet', 'L2Relative', 'L3Absolute']), 'None'),
-   btagDiscriminators = [
-    'deepFlavourJetTags:probudsg'        ,
-    'deepFlavourJetTags:probb'           ,
-    'deepFlavourJetTags:probc'           ,
-    'deepFlavourJetTags:probbb'          ,
-    'deepFlavourJetTags:probcc'          ,
-    #'pfDeepCSVJetTags:probudsg'        ,
-    #'pfDeepCSVJetTags:probb'           ,
-    #'pfDeepCSVJetTags:probc'           ,
-    #'pfDeepCSVJetTags:probbb'          ,
-    #'pfDeepCSVJetTags:probcc'          ,
-    ]
-)
+  process,
+  jetSource = cms.InputTag('slimmedJets'),
+  #labelName = 'selectedUpdated',
+  jetCorrections = ('AK4PFchs', ['L1FastJet', 'L2Relative', 'L3Absolute'], 'None'),
+  # DeepCSV twiki: https://twiki.cern.ch/twiki/bin/view/CMS/DeepFlavour
+  btagDiscriminators = [
+    'pfCombinedSecondaryVertexV2BJetTags',
+    'pfDeepCSVJetTags:probudsg',
+    'pfDeepCSVJetTags:probb',
+    'pfDeepCSVJetTags:probc',
+    'pfDeepCSVJetTags:probbb',
+   #'pfDeepCSVJetTags:probcc', # not available in CMSSW_9_X_Y, also not really needed for us
+  ]
+ )
 
+from PhysicsTools.PatAlgos.tools.helpers import getPatAlgosToolsTask
+#process.jetSequence=getPatAlgosToolsTask(process)    
+process.p = cms.Path(getPatAlgosToolsTask(process))        
 
 process.MINIAODSIMoutput = cms.OutputModule("PoolOutputModule",                     
     compressionAlgorithm = cms.untracked.string('LZMA'),    
@@ -93,12 +93,12 @@ process.MINIAODSIMoutput = cms.OutputModule("PoolOutputModule",
     eventAutoFlushCompressedSize = cms.untracked.int32(15728640),                   
     fastCloning = cms.untracked.bool(False),                
     fileName = cms.untracked.string('BTagging.root'),  
-    outputCommands = cms.untracked.vstring(#'keep *',
+    outputCommands = cms.untracked.vstring('keep *',
                                            #'drop *_deepNNTagInfos*_*_*',
                                            'drop *',
                                            'keep *_selectedUpdatedPatJets*_*_*',
                                            ),
     overrideInputFileSplitLevels = cms.untracked.bool(True) 
 )           
-            
+
 process.endpath = cms.EndPath(process.MINIAODSIMoutput)                                                                                                                                                     
