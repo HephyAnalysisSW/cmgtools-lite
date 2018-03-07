@@ -323,11 +323,22 @@ DiBosons = [
     ZZTo2L2Nu,
 ]
 
+WWW = kreator.makeMCComponent("WWW", "/WWW_4F_TuneCP5_13TeV-amcatnlo-pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v11-v1/MINIAODSIM", "CMS", ".*root", 0.2086)
+#WWZ = kreator.makeMCComponent("WWZ", "", "CMS", ".*root",  0.1651 )
+WZZ = kreator.makeMCComponent("WZZ", "/WZZ_TuneCP5_13TeV-amcatnlo-pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v11-v1/MINIAODSIM", "CMS", ".*root",  0.05565 )
+ZZZ = kreator.makeMCComponent("ZZZ", "/ZZZ_TuneCP5_13TeV-amcatnlo-pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v11-v1/MINIAODSIM", "CMS", ".*root",  0.01398 )
+
+TriBosons = [
+WWW,
+WZZ,
+#WWZ,
+ZZZ,
+]
 
 
 # ----------------------------- summary ----------------------------------------
 
-mcSamples = QCDPtFlat + QCDPt + QCDHT + QCD_Mus + QCD_EMs + Ws + DYs + TTs + Ts + TTXs + TTXXs + DiBosons
+mcSamples = QCDPtFlat + QCDPt + QCDHT + QCD_Mus + QCD_EMs + Ws + DYs + TTs + Ts + TTXs + TTXXs + DiBosons + TriBosons
 
 samples = mcSamples
 
