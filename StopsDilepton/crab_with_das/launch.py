@@ -23,6 +23,10 @@ handle = open("heppy_samples_%i.py"%options.year, 'r')
 cfo = imp.load_source("heppy_samples", "heppy_samples.py", handle)
 handle.close()
 
+# create symlink
+if os.path.exists("heppy_config.py"): os.remove("heppy_config.py")
+os.symlink("../cfg/stopsDilepton_%i_cfg.py"%options.year, "heppy_config.py")
+
 import PhysicsTools.HeppyCore.framework.config as cfg
 allComponents = { }
 for d in cfo.__dict__:
@@ -50,7 +54,6 @@ os.system("source /cvmfs/cms.cern.ch/crab3/crab.sh")
 
 os.environ["CMG_PROD_LABEL"]    = options.production_label
 os.environ["CMG_REMOTE_DIR"]    = options.remoteDir
-os.environ["CMG_YEAR"]          = options.year
 os.environ["CMG_VERSION"]       = options.cmg_version
 os.environ["CMG_UNITS_PER_JOB"] = str(options.unitsPerJob)
 os.environ["CMG_LUMI_MASK"]     = options.lumiMask if options.lumiMask else "None"

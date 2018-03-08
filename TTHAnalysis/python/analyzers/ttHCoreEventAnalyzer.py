@@ -400,7 +400,7 @@ class ttHCoreEventAnalyzer( Analyzer ):
         for lep in event.selectedLeptons:
             if hasattr(lep,'miniAbsIsoCharged'):
                 lep.mvaValueTTH     = self.leptonMVATTH(lep)
-                lep.mvaValueSUSY     = self.leptonMVASUSY(lep)
+                lep.mvaValueSUSY    = self.leptonMVASUSY(lep)
                 lep.mvaValueTTV     = self.leptonMVATTV(lep)
                 if self.doLeptonMVASoft:
                     if not (hasattr(lep,'AbsIsoMIVCharged04') and hasattr(lep,'isoSumRawP4Charged04')):
@@ -411,7 +411,7 @@ class ttHCoreEventAnalyzer( Analyzer ):
             if lep not in event.selectedLeptons:
                 if hasattr(lep,'miniAbsIsoCharged'):
                     lep.mvaValueTTH     = self.leptonMVATTH(lep)
-                    lep.mvaValueSUSY     = self.leptonMVASUSY(lep)
+                    lep.mvaValueSUSY    = self.leptonMVASUSY(lep)
                     lep.mvaValueTTV     = self.leptonMVATTV(lep)
                     if self.doLeptonMVASoft:
                         if not (hasattr(lep,'AbsIsoMIVCharged04') and hasattr(lep,'isoSumRawP4Charged04')):
