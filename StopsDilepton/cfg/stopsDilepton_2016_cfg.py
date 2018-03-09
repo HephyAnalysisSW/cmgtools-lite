@@ -11,7 +11,7 @@ from CMGTools.TTHAnalysis.analyzers.susyCore_modules_cff import *
 print "Year: 2016"
 
 # general flags & settings 
-minLeptons                  = 0
+minLeptons                  = 1
 storePackedCandidates       = False
 doElectronScaleCorrections  = False
 doPhotonScaleCorrections    = False

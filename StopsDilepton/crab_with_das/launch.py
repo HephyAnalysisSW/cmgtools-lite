@@ -20,7 +20,7 @@ parser.add_option("--year", dest="year", help="2016 or 2017", default=2017, type
 ( options, args ) = parser.parse_args()
 
 handle = open("heppy_samples_%i.py"%options.year, 'r')
-cfo = imp.load_source("heppy_samples", "heppy_samples.py", handle)
+cfo = imp.load_source("heppy_samples", "heppy_samples_%i.py"%options.year, handle)
 handle.close()
 
 # create symlink

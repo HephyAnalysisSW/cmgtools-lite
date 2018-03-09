@@ -15,7 +15,7 @@ from CMGTools.TTHAnalysis.tools.functionsRAX import _susy2lss_idEmu_cuts_obj,_su
 ## LEPTON
 ##------------------------------------------  
 leptonTypeSusy = NTupleObjectType("leptonSusy", baseObjectTypes = [ leptonTypeExtra ], variables = [
-    NTupleVariable("mvaIdSpring15",   lambda lepton : lepton.mvaRun2("NonTrigSpring15MiniAOD") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG MVA ID for non-triggering electrons, Spring15 re-training; 1 for muons"),
+    NTupleVariable("mvaIdFall17noIso",   lambda lepton : lepton.mvaRun2("Fall17noIso") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG MVA ID for non-isolated  electrons, Fall17 re-training; 1 for muons"),
     NTupleVariable("mvaIdSpring16HZZ",   lambda lepton : lepton.mvaRun2("Spring16HZZ") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG MVA ID, Spring16; 1 for muons"),
     NTupleVariable("mvaIdSpring16",   lambda lepton : lepton.mvaRun2("Spring16GP") if abs(lepton.pdgId()) == 11 else 1, help="EGamma POG MVA ID, Spring16; 1 for muons"),
     NTupleVariable("neutralHadronIsoR03", lambda lepton : lepton.neutralHadronIsoR(0.3), help=""),
