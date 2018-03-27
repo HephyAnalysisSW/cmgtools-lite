@@ -45,6 +45,8 @@ leptonTypeSusy = NTupleObjectType("leptonSusy", baseObjectTypes = [ leptonTypeEx
     #2016 muon Id
     NTupleVariable("softMuonId2016", lambda lepton: _soft_MuonId_2016ICHEP(lepton), help="Soft muon ID retuned for ICHEP 2016"),
     NTupleVariable("mediumMuonID2016", lambda lepton: _medium_MuonId_2016ICHEP(lepton), help="Medium muon ID retuned for ICHEP 2016"),
+    # 2017 ele Id
+    NTupleVariable("dEtaInSeed", lambda lepton: lepton.deltaEtaSuperClusterTrackAtVtx() - lepton.superCluster().eta()+lepton.superCluster().seed().eta() if abs(lepton.pdgId())==11 else 99, help="DeltaEta wrt ele SC seed" ),
     # More
     NTupleVariable("tightChargeFix",  lambda lepton : ( lepton.isGsfCtfScPixChargeConsistent() + lepton.isGsfScPixChargeConsistent() ) if abs(lepton.pdgId()) == 11 else 2*(lepton.muonBestTrack().ptError()/lepton.muonBestTrack().pt() < 0.2), int, help="Tight charge criteria: for electrons, 2 if isGsfCtfScPixChargeConsistent, 1 if only isGsfScPixChargeConsistent, 0 otherwise; for muons, 2 if ptError/pt < 0.20, 0 otherwise (using the muon best track)"),
     NTupleVariable("muonTrackType",  lambda lepton : 1 if abs(lepton.pdgId()) == 11 else lepton.muonBestTrackType(), int, help="Muon best track type"),
@@ -56,9 +58,7 @@ leptonTypeSusy = NTupleObjectType("leptonSusy", baseObjectTypes = [ leptonTypeEx
     NTupleVariable("miniRelIsoCharged",   lambda x : getattr(x,'miniAbsIsoCharged',-99)/x.pt()),
     NTupleVariable("miniRelIsoNeutral",   lambda x : getattr(x,'miniAbsIsoNeutral',-99)/x.pt()),
     NTupleVariable("trackMult",lambda lepton: sum((deltaR(x.eta(),x.phi(),lepton.jet.eta(),lepton.jet.phi())<=0.4 and x.charge()!=0 and x.fromPV()>1 and x.hasTrackDetails() and qualityTrk(x.pseudoTrack(),lepton.associatedVertex)) for x in lepton.jet.daughterPtrVector()) if hasattr(lepton,'jet') and lepton.jet != lepton else 0, help="trackMult as used in TTV lepton MVA"),
-
 ])
-
 
 
 leptonTypeSusyExtraLight = NTupleObjectType("leptonSusyExtraLight", baseObjectTypes = [ leptonTypeSusy, leptonTypeExtra ], variables = [
@@ -96,7 +96,7 @@ leptonTypeSusyExtraLight = NTupleObjectType("leptonSusyExtraLight", baseObjectTy
     NTupleVariable("svNTracks", lambda x : x.ivf.numberOfDaughters() if getattr(x,'ivf',None) != None else -99, help="Number of tracks of associated SV"),
 
     # Extra electron kinematic variables used for charge flip studies
-    ##NTupleVariable("etaSc", lambda x : x.superCluster().eta(), help="Photon supercluster pseudorapidity"), # already in leptonExtra
+    ## NTupleVariable("etaSc", lambda x : x.superCluster().eta(), help="Photon supercluster pseudorapidity"), # already in leptonExtra
     NTupleVariable("energySc", lambda x : x.superCluster().energy() if abs(x.pdgId())==11 else -100, help="Electron supercluster pseudorapidity"),
 
 

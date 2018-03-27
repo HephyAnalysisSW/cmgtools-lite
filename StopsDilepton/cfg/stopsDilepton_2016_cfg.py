@@ -176,6 +176,7 @@ trigMatcher1Mu = cfg.Analyzer(
     TriggerMatchAnalyzer, name="trigMatcher1Mu",
     label='1Mu',
     processName = 'PAT',
+    #processName = '',
     fallbackCollection = 'selectedPatTrigger',
     fallbackProcessName = 'PAT',
     unpackPathNames = True,
@@ -231,16 +232,17 @@ if getHeppyOption("loadSamples"):
     for sample in dataSamples:
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
 
-    TTJets_SingleLeptonFromTbar.files = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root"]
-    selectedComponents = [TTJets_SingleLeptonFromTbar]
+    #selectedComponents = [TTJets_SingleLeptonFromTbar]
 
-    #MuonEG_Run2016F_03Feb2017.files=["root://cms-xrd-global.cern.ch//store/data/Run2016F/MuonEG/MINIAOD/03Feb2017-v1/50000/0496325A-05EB-E611-953B-0025905A60DE.root"]
-    #selectedComponents = [MuonEG_Run2016F_03Feb2017]
+    MuonEG_Run2016F_03Feb2017.files=["root://cms-xrd-global.cern.ch//store/data/Run2016F/MuonEG/MINIAOD/03Feb2017-v1/50000/0496325A-05EB-E611-953B-0025905A60DE.root"]
+    selectedComponents = [MuonEG_Run2016F_03Feb2017]
 
+    #selectedComponents = [ttZ0j_ll]
+    #selectedComponents = [WZTo3LNu]
     for comp in selectedComponents:
         comp.files = comp.files[:1]
         print comp.files
-        comp.splitFactor = 1
+        comp.splitFactor = 10
 
 from CMGTools.TTHAnalysis.tools.EOSEventsWithDownload import EOSEventsWithDownload
 from PhysicsTools.HeppyCore.framework.eventsfwlite import Events
