@@ -86,15 +86,17 @@ _CommonVars = {
  ],
  'ttv_noLepTau':[ 
     MVAVar("pt",lambda x: x.pt()),
-    MVAVar("eta",lambda x: x.eta()),
-    MVAVar("trackMult",lambda lepton: sum((deltaR(x.eta(),x.phi(),lepton.jet.eta(),lepton.jet.phi())<=0.4 and x.charge()!=0 and x.fromPV()>1 and x.hasTrackDetails() and qualityTrk(x.pseudoTrack(),lepton.associatedVertex)) for x in lepton.jet.daughterPtrVector()) if hasattr(lepton,'jet') and lepton.jet != lepton else 0),
+    MVAVar("eta",lambda x: abs(x.eta())),
+    MVAVar("trackMultClosestJet",lambda lepton: sum((deltaR(x.eta(),x.phi(),lepton.jet.eta(),lepton.jet.phi())<=0.4 and x.charge()!=0 and x.fromPV()>1 and x.hasTrackDetails() and qualityTrk(x.pseudoTrack(),lepton.associatedVertex)) for x in lepton.jet.daughterPtrVector()) if hasattr(lepton,'jet') and lepton.jet != lepton else 0),
     MVAVar("miniIsoCharged",lambda x: getattr(x,'miniAbsIsoCharged',-99)/x.pt()), 
     MVAVar("miniIsoNeutral",lambda x: getattr(x,'miniAbsIsoNeutral',-99)/x.pt()), 
-    MVAVar("ptrel", lambda x : ptRelv2(x) if hasattr(x,'jet') else -1),
-    MVAVar("min(ptratio,1.5)", lambda x : min((x.pt()/jetLepAwareJEC(x).Pt() if hasattr(x,'jet') else -1), 1.5)),
-    MVAVar("relIso0p3", lambda x : x.relIso03),
-    MVAVar("max(jetbtagCSV,0)", lambda x : max( (x.jet.btag('pfCombinedInclusiveSecondaryVertexV2BJetTags') if hasattr(x.jet, 'btag') else -99) ,0.)),
+    MVAVar("pTRel", lambda x : ptRelv2(x) if hasattr(x,'jet') else -1),
+    MVAVar("ptRatio", lambda x : min((x.pt()/jetLepAwareJEC(x).Pt() if hasattr(x,'jet') else -1), 1.5)),
+    MVAVar("relIso", lambda x : x.relIso03),
+    MVAVar("deepCsvClosestJet", lambda x : max( (x.jet.btag('pfCombinedInclusiveSecondaryVertexV2BJetTags') if hasattr(x.jet, 'btag') else -99) ,0.)),
     MVAVar("sip3d",lambda x: x.sip3D()),
+    MVAVar("dxy",lambda x: log(abs(x.dxy()))),
+    MVAVar("dz", lambda x: log(abs(x.dz()))),
  ],
  'training2017':[
     MVAVar("LepGood_pt",lambda x: x.pt()),
@@ -123,7 +125,7 @@ _MuonVars = {
     MVAVar("LepGood_segmentCompatibility",lambda x: x.segmentCompatibility()), 
  ],
  'ttv_noLepTau': [
-    MVAVar("segmComp",lambda x: x.segmentCompatibility()), 
+    MVAVar("segmentCompatibility",lambda x: x.segmentCompatibility()), 
  ],
 }
 _MuonVars['forMoriond_eleOLD'] = _MuonVars['forMoriond']
@@ -146,7 +148,7 @@ _ElectronVars = {
     MVAVar("LepGood_mvaIdSpring15",lambda x: x.mvaRun2("NonTrigSpring15MiniAOD")),
  ],
  'ttv_noLepTau': [
-    MVAVar("eleMVA",lambda x: x.mvaRun2("Spring16GP")),
+    MVAVar("electronMva",lambda x: x.mvaRun2("Spring16GP")),
  ],
  'training2017': [
     MVAVar("LepGood_mvaIdFall17noIso",lambda x: x.mvaRun2("Fall17noIso")),
