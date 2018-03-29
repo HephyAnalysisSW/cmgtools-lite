@@ -55,7 +55,8 @@ _CommonSpect = {
 _CommonSpect['forMoriond_eleOLD'] = _CommonSpect['forMoriond']
 _CommonSpect['forMoriond_eleHZZ'] = _CommonSpect['forMoriond']
 _CommonSpect['forMoriond_eleGP'] = _CommonSpect['forMoriond']
-_CommonSpect['ttv_noLepTau'] = _CommonSpect['forMoriond']
+_CommonSpect['ttv_noLepTau_2016'] = _CommonSpect['forMoriond']
+_CommonSpect['ttv_noLepTau_2017'] = _CommonSpect['forMoriond']
 _CommonSpect['training2017'] = _CommonSpect['forMoriond']
 
 _CommonVars = {
@@ -84,7 +85,21 @@ _CommonVars = {
     MVAVar("LepGood_dxy := log(abs(LepGood_dxy))",lambda x: log(abs(x.dxy()))),
     MVAVar("LepGood_dz  := log(abs(LepGood_dz))", lambda x: log(abs(x.dz()))),
  ],
- 'ttv_noLepTau':[ 
+ 'ttv_noLepTau_2016':[ 
+    MVAVar("pt",lambda x: x.pt()),
+    MVAVar("eta",lambda x: abs(x.eta())),
+    MVAVar("trackMultClosestJet",lambda lepton: sum((deltaR(x.eta(),x.phi(),lepton.jet.eta(),lepton.jet.phi())<=0.4 and x.charge()!=0 and x.fromPV()>1 and x.hasTrackDetails() and qualityTrk(x.pseudoTrack(),lepton.associatedVertex)) for x in lepton.jet.daughterPtrVector()) if hasattr(lepton,'jet') and lepton.jet != lepton else 0),
+    MVAVar("miniIsoCharged",lambda x: getattr(x,'miniAbsIsoCharged',-99)/x.pt()), 
+    MVAVar("miniIsoNeutral",lambda x: getattr(x,'miniAbsIsoNeutral',-99)/x.pt()), 
+    MVAVar("pTRel", lambda x : ptRelv2(x) if hasattr(x,'jet') else -1),
+    MVAVar("ptRatio", lambda x : min((x.pt()/jetLepAwareJEC(x).Pt() if hasattr(x,'jet') else -1), 1.5)),
+    MVAVar("relIso", lambda x : x.relIso03),
+    MVAVar("deepCsvClosestJet", lambda x : max( (x.jet.btag('pfCombinedInclusiveSecondaryVertexV2BJetTags') if hasattr(x.jet, 'btag') else -99) ,0.)),
+    MVAVar("sip3d",lambda x: x.sip3D()),
+    MVAVar("dxy",lambda x: log(abs(x.dxy()))),
+    MVAVar("dz", lambda x: log(abs(x.dz()))),
+ ],
+ 'ttv_noLepTau_2017':[ 
     MVAVar("pt",lambda x: x.pt()),
     MVAVar("eta",lambda x: abs(x.eta())),
     MVAVar("trackMultClosestJet",lambda lepton: sum((deltaR(x.eta(),x.phi(),lepton.jet.eta(),lepton.jet.phi())<=0.4 and x.charge()!=0 and x.fromPV()>1 and x.hasTrackDetails() and qualityTrk(x.pseudoTrack(),lepton.associatedVertex)) for x in lepton.jet.daughterPtrVector()) if hasattr(lepton,'jet') and lepton.jet != lepton else 0),
@@ -124,7 +139,10 @@ _MuonVars = {
  'SoftJetLessNOBTAG': [
     MVAVar("LepGood_segmentCompatibility",lambda x: x.segmentCompatibility()), 
  ],
- 'ttv_noLepTau': [
+ 'ttv_noLepTau_2016': [
+    MVAVar("segmentCompatibility",lambda x: x.segmentCompatibility()), 
+ ],
+ 'ttv_noLepTau_2017': [
     MVAVar("segmentCompatibility",lambda x: x.segmentCompatibility()), 
  ],
 }
@@ -147,8 +165,11 @@ _ElectronVars = {
  'SoftJetLessNOBTAG': [
     MVAVar("LepGood_mvaIdSpring15",lambda x: x.mvaRun2("NonTrigSpring15MiniAOD")),
  ],
- 'ttv_noLepTau': [
+ 'ttv_noLepTau_2016': [
     MVAVar("electronMva",lambda x: x.mvaRun2("Spring16GP")),
+ ],
+ 'ttv_noLepTau_2017': [
+    MVAVar("electronMvaFall17NoIso",lambda x: x.mvaRun2("Fall17noIso")),
  ],
  'training2017': [
     MVAVar("LepGood_mvaIdFall17noIso",lambda x: x.mvaRun2("Fall17noIso")),

@@ -128,7 +128,7 @@ susyCoreSequence.insert(susyCoreSequence.index(metAna),
                         badChargedHadronAna)
 susyCoreSequence.insert(susyCoreSequence.index(metAna),
                         badMuonAna)
-      
+
 # iso tracks
 isoTrackAna.setOff = False
 
@@ -197,6 +197,9 @@ susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
                         trigMatcher1Mu)
 susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
                         trigMatcher1El)
+
+# store TTV lepton MVA in 2016 version
+leptonTypeSusy.variables.append(  NTupleVariable("mvaTTV",lambda lepton : getattr(lepton, 'mvaValueTTV2016', -1), help="Lepton MVA (TTV 2016 version)") )
 
 # tree producer
 treeProducer = cfg.Analyzer(

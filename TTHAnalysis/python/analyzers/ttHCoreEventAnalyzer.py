@@ -30,10 +30,14 @@ class ttHCoreEventAnalyzer( Analyzer ):
             self.leptonMVAPathSoftEWK = getattr(self.cfg_ana, "leptonMVAPathSoftEWK", "CMGTools/TTHAnalysis/data/leptonMVA/jetless/SoftJetLessNOBTAGNOTAU_SIGTChiNeu8090_%s_BDTG.weights.xml")
             if self.leptonMVAPathSoftEWK[0] != "/": self.leptonMVAPathSoftEWK = "%s/src/%s" % ( os.environ['CMSSW_BASE'], self.leptonMVAPathSoftEWK)
             self.leptonMVASoftEWK = LeptonMVA(self.leptonMVAKindSoftEWK, self.leptonMVAPathSoftEWK, self.cfg_comp.isMC)
-        self.leptonMVAKindTTV = getattr(self.cfg_ana, "leptonMVAKindTTV", "ttv_noLepTau")
-        self.leptonMVAPathTTV = getattr(self.cfg_ana, "leptonMVAPathTTV", "CMGTools/TTHAnalysis/data/leptonMVA/ttv/%s_BDTG.weights.xml")
-        if self.leptonMVAPathTTV[0] != "/": self.leptonMVAPathTTV = "%s/src/%s" % ( os.environ['CMSSW_BASE'], self.leptonMVAPathTTV)
-        self.leptonMVATTV = LeptonMVA(self.leptonMVAKindTTV, self.leptonMVAPathTTV, self.cfg_comp.isMC)
+        self.leptonMVAKindTTV2016 = getattr(self.cfg_ana, "leptonMVAKindTTV2016", "ttv_noLepTau_2016")
+        self.leptonMVAPathTTV2016 = getattr(self.cfg_ana, "leptonMVAPathTTV2016", "CMGTools/TTHAnalysis/data/leptonMVA/ttv/%s_BDTG_TTV_2016.weights.xml")
+        if self.leptonMVAPathTTV2016[0] != "/": self.leptonMVAPathTTV2016 = "%s/src/%s" % ( os.environ['CMSSW_BASE'], self.leptonMVAPathTTV2016)
+        self.leptonMVATTV2016 = LeptonMVA(self.leptonMVAKindTTV2016, self.leptonMVAPathTTV2016, self.cfg_comp.isMC)
+        self.leptonMVAKindTTV2017 = getattr(self.cfg_ana, "leptonMVAKindTTV2017", "ttv_noLepTau_2017")
+        self.leptonMVAPathTTV2017 = getattr(self.cfg_ana, "leptonMVAPathTTV2017", "CMGTools/TTHAnalysis/data/leptonMVA/ttv/%s_BDTG_TTV_2017.weights.xml")
+        if self.leptonMVAPathTTV2017[0] != "/": self.leptonMVAPathTTV2017 = "%s/src/%s" % ( os.environ['CMSSW_BASE'], self.leptonMVAPathTTV2017)
+        self.leptonMVATTV2017 = LeptonMVA(self.leptonMVAKindTTV2017, self.leptonMVAPathTTV2017, self.cfg_comp.isMC)
 
         self.jetPt = cfg_ana.jetPt
 
@@ -401,7 +405,8 @@ class ttHCoreEventAnalyzer( Analyzer ):
             if hasattr(lep,'miniAbsIsoCharged'):
                 lep.mvaValueTTH     = self.leptonMVATTH(lep)
                 lep.mvaValueSUSY    = self.leptonMVASUSY(lep)
-                lep.mvaValueTTV     = self.leptonMVATTV(lep)
+                lep.mvaValueTTV2016     = self.leptonMVATTV2016(lep)
+                lep.mvaValueTTV2017     = self.leptonMVATTV2017(lep)
                 if self.doLeptonMVASoft:
                     if not (hasattr(lep,'AbsIsoMIVCharged04') and hasattr(lep,'isoSumRawP4Charged04')):
                         raise RuntimeError, 'Soft lepton MVA needs AbsIsoMIVCharged04 and isoSumRawP4Charged04 calculated for leptons'
@@ -412,7 +417,8 @@ class ttHCoreEventAnalyzer( Analyzer ):
                 if hasattr(lep,'miniAbsIsoCharged'):
                     lep.mvaValueTTH     = self.leptonMVATTH(lep)
                     lep.mvaValueSUSY    = self.leptonMVASUSY(lep)
-                    lep.mvaValueTTV     = self.leptonMVATTV(lep)
+                    lep.mvaValueTTV2016     = self.leptonMVATTV2016(lep)
+                    lep.mvaValueTTV2017     = self.leptonMVATTV2017(lep)
                     if self.doLeptonMVASoft:
                         if not (hasattr(lep,'AbsIsoMIVCharged04') and hasattr(lep,'isoSumRawP4Charged04')):
                             raise RuntimeError, 'Soft lepton MVA needs AbsIsoMIVCharged04 and isoSumRawP4Charged04 calculated for leptons'

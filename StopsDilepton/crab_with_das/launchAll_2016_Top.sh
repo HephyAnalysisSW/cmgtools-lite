@@ -4,8 +4,8 @@
 #python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=2 --production_label="2016_1l_v1" TTZ_LO
 #python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" TTZToLLNuNu_ext
 #python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" WZTo3LNu_amcatnlo
-python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" WZTo3LNu_mllmin01
-python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" WZTo3LNu_ext
+#python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" WZTo3LNu_mllmin01
+#python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" WZTo3LNu_ext
 #python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" WZTo3LNu
 #python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" TTWToLNu_ext
 #python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" TTWToLNu_ext2
@@ -27,6 +27,7 @@ python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --producti
 #python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" TTZToLLNuNu_m1to10
 #python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" DYJetsToLL_M10to50_LO
 #python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" DYJetsToLL_M50_LO_ext
+python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=2 --production_label="2016_1l_v1" DYJetsToLL_M50_LO_ext2
 #python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" TTJets_LO
 #python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" WWW
 #python launch.py --year=2016 --remoteDir="2016_1l_v1" --unitsPerJob=3 --production_label="2016_1l_v1" GGHZZ4L
