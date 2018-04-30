@@ -61,23 +61,26 @@ python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --producti
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_LO 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_LO_ext 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M10to50_LO 
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DY1JetsToLL_M50_LO     
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DY1JetsToLL_M50_LO_ext 
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DY2JetsToLL_M50_LO     
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DY2JetsToLL_M50_LO_ext 
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DY3JetsToLL_M50_LO     
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DY4JetsToLL_M50_LO     
+#python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DY1JetsToLL_M50_LO     
+#python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DY1JetsToLL_M50_LO_ext 
+#python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DY2JetsToLL_M50_LO     
+#python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DY2JetsToLL_M50_LO_ext 
+#python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DY3JetsToLL_M50_LO     
+#python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DY4JetsToLL_M50_LO     
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M4to50_HT70to100  
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M4to50_HT100to200 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M4to50_HT200to400 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M4to50_HT400to600 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M4to50_HT600toInf 
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_HT100to200   
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_HT200to400   
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_HT400to600   
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_HT600to800   
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_HT100to200
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_HT100to200_ext1
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_HT200to400
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_HT200to400_ext1
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_HT400to600
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_HT400to600_ext1
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_HT600to800
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_HT800to1200  
-#DYJetsToLL_M50_HT1200to2500 
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_HT1200to2500 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" DYJetsToLL_M50_HT2500toInf  
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTJets 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTLep_pow  
@@ -94,6 +97,7 @@ python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --producti
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" T_tWch_noFullyHad    
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TBar_tWch_noFullyHad 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTGJets     
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTGJets_ext
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTWToLNu_fxfx 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTW_LO 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTZToLLNuNu_amc 
@@ -116,13 +120,17 @@ python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --producti
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WZ 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" ZZ 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WWTo2L2Nu 
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WWToLNuQQ
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WWToLNuQQ_ext
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WW_DPS 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WZTo3LNu_fxfx 
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WZTo1L1Nu2Q
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" ZZTo4L 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" ZZTo4L_ext 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" ZZTo2L2Nu 
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WWW 
-#WWZ 
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WWW_4F
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WWZ_4F 
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WZG
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WZZ 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" ZZZ 
 
