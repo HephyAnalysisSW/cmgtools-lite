@@ -97,6 +97,7 @@ python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --producti
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" T_tWch_noFullyHad    
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TBar_tWch_noFullyHad 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTGJets     
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTGJets_ext
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTWToLNu_fxfx 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTW_LO 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTZToLLNuNu_amc 
@@ -119,8 +120,11 @@ python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --producti
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WZ 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" ZZ 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WWTo2L2Nu 
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WWToLNuQQ
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WWToLNuQQ_ext
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WW_DPS 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WZTo3LNu_fxfx 
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WZTo1L1Nu2Q
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" ZZTo4L 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" ZZTo4L_ext 
 python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" ZZTo2L2Nu 
