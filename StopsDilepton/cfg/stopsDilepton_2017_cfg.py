@@ -206,12 +206,12 @@ if getHeppyOption("loadSamples"):
     for sample in dataSamples:
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON.txt"
 
-    selectedComponents = [MuonEG_Run2017F_17Nov2017]
-    MuonEG_Run2017F_17Nov2017.files = ["/afs/hephy.at/user/r/rschoefbeck/www/etc/pickevents.root"]
+    #selectedComponents = [MuonEG_Run2017F_17Nov2017]
+    #MuonEG_Run2017F_17Nov2017.files = ["/afs/hephy.at/user/r/rschoefbeck/www/etc/pickevents.root"]
 
     # sync
     #TTSemi_pow.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIIFall17MiniAOD/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8/MINIAODSIM/94X_mc2017_realistic_v10-v1/50000/004C666D-C0E0-E711-AADB-0CC47A6C183A.root']
-    #selectedComponents = [TTSemi_pow]
+    selectedComponents = [WWZ_4F]
     #MuonEG_Run2017F_17Nov2017.files=['root://cms-xrd-global.cern.ch//store/data/Run2017F/MuonEG/MINIAOD/17Nov2017-v1/50000/02F38D9F-54EA-E711-A28D-02163E014331.root']
     #selectedComponents += [MuonEG_Run2017F_17Nov2017]
 
