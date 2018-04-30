@@ -57,6 +57,8 @@ lepAna.ele_effectiveAreas = 'Fall17'
 lepAna.loose_electron_relIso = 0.5
 lepAna.loose_muon_relIso     = 0.5
 
+lepAna.match_inclusiveLeptons=True
+
 if doElectronScaleCorrections:
     era = '25ns'
     lepAna.doElectronScaleCorrections = {
