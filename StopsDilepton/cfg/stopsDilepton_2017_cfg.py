@@ -211,9 +211,14 @@ if getHeppyOption("loadSamples"):
 
     # sync
     #TTSemi_pow.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIIFall17MiniAOD/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8/MINIAODSIM/94X_mc2017_realistic_v10-v1/50000/004C666D-C0E0-E711-AADB-0CC47A6C183A.root']
-    selectedComponents = [WWZ_4F]
+    #selectedComponents = [WWZ_4F]
     #MuonEG_Run2017F_17Nov2017.files=['root://cms-xrd-global.cern.ch//store/data/Run2017F/MuonEG/MINIAOD/17Nov2017-v1/50000/02F38D9F-54EA-E711-A28D-02163E014331.root']
     #selectedComponents += [MuonEG_Run2017F_17Nov2017]
+    #selectedComponents = [TTZToLLNuNu_amc]
+    #TTZToLLNuNu_amc.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIIFall17MiniAOD/TTZToLLNuNu_M-10_TuneCP5_13TeV-amcatnlo-pythia8/MINIAODSIM/94X_mc2017_realistic_v10-v1/20000/02A1FA28-F1F9-E711-AFB2-002590E3A0FC.root']
+    #selectedComponents = [ TTLep_pow ]
+    #TTLep_pow.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIIFall17MiniAOD/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/MINIAODSIM/94X_mc2017_realistic_v10-v2/60000/0857E231-22EF-E711-BEAC-FA163E2DB7A6.root']
+    selectedComponents = [ GluGluToZZTo4mu ]
 
 for comp in selectedComponents:
     comp.files = comp.files[:1]

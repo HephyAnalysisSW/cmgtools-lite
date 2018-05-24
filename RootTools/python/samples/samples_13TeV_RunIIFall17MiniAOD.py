@@ -365,6 +365,14 @@ ZZTo4L      = kreator.makeMCComponent("ZZTo4L",     "/ZZTo4L_13TeV_powheg_pythia
 ZZTo4L_ext  = kreator.makeMCComponent("ZZTo4L_ext", "/ZZTo4L_13TeV_powheg_pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/MINIAODSIM", "CMS", ".*root", 1.256)
 ZZTo2L2Nu   = kreator.makeMCComponent("ZZTo2L2Nu",  "/ZZTo2L2Nu_13TeV_powheg_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v1/MINIAODSIM", "CMS", ".*root", 0.564)
 
+GluGluToZZTo2e2mu   = kreator.makeMCComponent("GluGluToZZTo2e2mu",      "/GluGluToContinToZZTo2e2mu_13TeV_MCFM701_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v2/MINIAODSIM", "CMS", ".*root", 3.185)
+GluGluToZZTo2e2nu   = kreator.makeMCComponent("GluGluToZZTo2e2nu",      "/GluGluToContinToZZTo2e2nu_13TeV_MCFM701_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v1/MINIAODSIM", "CMS", ".*root", 14.93)
+GluGluToZZTo2mu2nu  = kreator.makeMCComponent("GluGluToZZTo2mu2nu",     "/GluGluToContinToZZTo2mu2nu_13TeV_MCFM701_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v2/MINIAODSIM", "CMS", ".*root", 14.93)
+GluGluToZZTo2e2tau  = kreator.makeMCComponent("GluGluToZZTo2e2tau",     "/GluGluToContinToZZTo2e2tau_13TeV_MCFM701_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v2/MINIAODSIM", "CMS", ".*root", 3.185)
+GluGluToZZTo2mu2tau = kreator.makeMCComponent("GluGluToZZTo2mu2tau",    "/GluGluToContinToZZTo2mu2tau_13TeV_MCFM701_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v2/MINIAODSIM", "CMS", ".*root", 3.185)
+GluGluToZZTo4e      = kreator.makeMCComponent("GluGluToZZTo4e",         "/GluGluToContinToZZTo4e_13TeV_MCFM701_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v1/MINIAODSIM", "CMS", ".*root", 1.575, useAAA=True)
+GluGluToZZTo4mu     = kreator.makeMCComponent("GluGluToZZTo4mu",        "/GluGluToContinToZZTo4mu_13TeV_MCFM701_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v1/MINIAODSIM", "CMS", ".*root", 1.575, useAAA=True)
+
 
 DiBosons = [
     WW,
@@ -379,6 +387,10 @@ DiBosons = [
     ZZ,
     ZZTo4L, ZZTo4L_ext,
     ZZTo2L2Nu,
+    GluGluToZZTo2e2mu,
+    GluGluToZZTo2e2nu, GluGluToZZTo2mu2nu,
+    GluGluToZZTo2e2tau, GluGluToZZTo2mu2tau,
+    GluGluToZZTo4e, GluGluToZZTo4mu,
 ]
 
 # ===  TRI-BOSONS
