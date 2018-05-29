@@ -29,7 +29,7 @@ treeProducer = cfg.Analyzer(
      saveTLorentzVectors = False,  # can set to True to get also the TLorentzVectors, but trees will be bigger
      globalVariables = [ ], # rho, nvertices, njets
      globalObjects = [], 
-     collection = ( "selectedLeptons" , NTupleCollection("lep", leptonTypeSusy, 10, help="Leptons after the preselection") ),
+     collection = ( "selectedLeptons" , NTupleCollection("lep", leptonTypeSusy, 10, help="leptons after the preselection") ),
      vector_collection = ( "pfCands" , NTupleCollection("pfCand", particleType, 100, help="pf candidates associated") ),
      defaultFloatType = 'F',
 )
