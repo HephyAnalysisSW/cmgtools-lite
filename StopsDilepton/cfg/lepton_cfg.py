@@ -29,7 +29,8 @@ treeProducer = cfg.Analyzer(
      saveTLorentzVectors = False,  # can set to True to get also the TLorentzVectors, but trees will be bigger
      globalVariables = [ ], # rho, nvertices, njets
      globalObjects = [], 
-     collection = ( "selectedLeptons" , NTupleCollection("lep", leptonTypeSusy, 10, help="Leptons after the preselection") ),
+     collection = ( "selectedLeptons" , NTupleCollection("lep", leptonTypeSusy, 10, help="leptons after the preselection") ),
+     vector_collection = ( "pfCands" , NTupleCollection("pfCand", particleType, 100, help="pf candidates associated") ),
      defaultFloatType = 'F',
 )
 
@@ -76,7 +77,8 @@ lepAna.ele_effectiveAreas = 'Spring15_25ns_v1'
 # Loose selection 
 lepAna.loose_electron_relIso = 0.5
 lepAna.loose_muon_relIso     = 0.5
-
+lepAna.match_inclusiveLeptons=True
+lepAna.pfCandAssocDR         = 0.5
 #-------- SEQUENCE
 
 sequence = cfg.Sequence([
@@ -94,7 +96,11 @@ sequence = cfg.Sequence([
 selectedComponents = [
         ]
 
+leptonTypeSusy.variables.append(  NTupleVariable("isElectron",lambda lepton : abs(lepton.pdgId())==11, help="isElectron") )
+leptonTypeSusy.variables.append(  NTupleVariable("isMuon",lambda lepton : abs(lepton.pdgId())==13, help="isMuon") )
+
 if getHeppyOption("loadSamples"):
+
     from CMGTools.RootTools.samples.samples_13TeV_RunIISummer16MiniAODv2 import *
     from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
     from CMGTools.RootTools.samples.samples_13TeV_signals import *
