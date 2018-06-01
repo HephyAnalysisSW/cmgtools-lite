@@ -89,7 +89,7 @@ jetAna.calculateType1METCorrection = True
 
 # 2016/17 JEC
 jetAna.applyL2L3Residual = "Data"
-jetAna.dataGT = [ ( -1, "Summer16_23Sep2016BCDV3_DATA"), (276811, "Summer16_23Sep2016EFV3_DATA"), (278801, "Summer16_23Sep2016GV3_DATA"), (280385, "Summer16_23Sep2016HV3_DATA") ]
+jetAna.dataGT = [ ( -1, "Summer16_07Aug2017BCD_V10_DATA"), (276811, "Summer16_07Aug2017EF_V10_DATA"), (278801, "Summer16_07Aug2017GH_V10_DATA") ]
 jetAna.mcGT   = "Summer16_23Sep2016V3_MC"
 
 # tree Producer
@@ -178,7 +178,7 @@ trigMatcher1Mu = cfg.Analyzer(
     processName = 'PAT',
     #processName = '',
     fallbackCollection = 'selectedPatTrigger',
-    fallbackProcessName = 'PAT',
+    fallbackProcessName = 'RECO',
     unpackPathNames = True,
     trgObjSelectors = [ lambda t : t.path("HLT_IsoMu22_v*",1,0) or t.path("HLT_IsoTkMu22_v*",1,0) or t.path("HLT_IsoMu22_eta2p1_v*",1,0) or t.path("HLT_IsoTkMu22_eta2p1_v*",1,0) or t.path("HLT_IsoTkMu24_v*",1,0)  ],#"HLT_IsoMu22", "HLT_IsoTkMu22", "HLT_IsoMu22_eta2p1", "HLT_IsoTkMu22_eta2p1", "HLT_IsoMu24", "HLT_IsoTkMu24"
     collToMatch = 'selectedLeptons',
@@ -236,14 +236,15 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
 
     # sync mc
-    selectedComponents = [TTJets_SingleLeptonFromTbar]
-    TTJets_SingleLeptonFromTbar.files=['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root']
+    #selectedComponents = [TTJets_SingleLeptonFromTbar]
+    #TTJets_SingleLeptonFromTbar.files=['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root']
     # sync data
-    MuonEG_Run2016F_03Feb2017.files=["root://cms-xrd-global.cern.ch//store/data/Run2016F/MuonEG/MINIAOD/03Feb2017-v1/50000/0496325A-05EB-E611-953B-0025905A60DE.root"]
-    selectedComponents += [MuonEG_Run2016F_03Feb2017]
+    MuonEG_Run2016F_07Aug17.files=["root://cms-xrd-global.cern.ch//store/data/Run2016F/MuonEG/MINIAOD/07Aug17-v1/110000/0ADB9E32-B19A-E711-BCE0-008CFAC91A68.root"]
+    selectedComponents = [MuonEG_Run2016F_07Aug17]
 
     #selectedComponents = [ttZ0j_ll]
     #selectedComponents = [WZTo3LNu]
+    #selectedComponents = [JetHT_Run2016B_03Feb2017_v2]
     for comp in selectedComponents:
         comp.files = comp.files[:1]
         print comp.files
