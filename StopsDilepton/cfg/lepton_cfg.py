@@ -29,9 +29,16 @@ treeProducer = cfg.Analyzer(
      saveTLorentzVectors = False,  # can set to True to get also the TLorentzVectors, but trees will be bigger
      globalVariables = [ ], # rho, nvertices, njets
      globalObjects = [], 
-     collection = ( "selectedLeptons" , NTupleCollection("lep", leptonTypeSusy, 10, help="Leptons after the preselection") ),
+     collection = ( "selectedLeptons" , NTupleCollection("lep", leptonTypeSusy, 10, help="leptons after the preselection") ),
+     vector_collection = ( "pfCands" , NTupleCollection("pfCand", particleType, 100, help="pf candidates associated") ),
      defaultFloatType = 'F',
 )
+
+
+# add lepton classes
+leptonTypeSusy.variables.append( NTupleVariable("isPromptId", lambda x: abs(getattr(x, 'mcMatchId', -99)) in [6,23,24,25,37], int, help="isPrompt for leptons after the preselection for MVA training"))
+leptonTypeSusy.variables.append( NTupleVariable("isNonPromptId", lambda x: not (abs(getattr(x, 'mcMatchId', -99)) in [6,23,24,25,37]) and (abs(getattr(x,'mcMatchAny',-99)) in [4,5]), int,  help="isNonPrompt for leptons after the preselection for MVA training"))
+leptonTypeSusy.variables.append( NTupleVariable("isFakeId", lambda x: not (abs(getattr(x, 'mcMatchId', -99)) in [6,23,24,25,37]) and not (abs(getattr(x,'mcMatchAny',-99)) in [4,5]), int,  help="isFake for leptons after the preselection for MVA training"))
 
 # Lepton settings
 lepAna.packedCandidates = 'packedPFCandidates'
@@ -70,7 +77,8 @@ lepAna.ele_effectiveAreas = 'Spring15_25ns_v1'
 # Loose selection 
 lepAna.loose_electron_relIso = 0.5
 lepAna.loose_muon_relIso     = 0.5
-
+lepAna.match_inclusiveLeptons=True
+lepAna.pfCandAssocDR         = 0.5
 #-------- SEQUENCE
 
 sequence = cfg.Sequence([
@@ -88,20 +96,29 @@ sequence = cfg.Sequence([
 selectedComponents = [
         ]
 
-if True or getHeppyOption("loadSamples"):
+leptonTypeSusy.variables.append(  NTupleVariable("isElectron",lambda lepton : abs(lepton.pdgId())==11, help="isElectron") )
+leptonTypeSusy.variables.append(  NTupleVariable("isMuon",lambda lepton : abs(lepton.pdgId())==13, help="isMuon") )
+
+if getHeppyOption("loadSamples"):
+
     from CMGTools.RootTools.samples.samples_13TeV_RunIISummer16MiniAODv2 import *
     from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
     from CMGTools.RootTools.samples.samples_13TeV_signals import *
     from CMGTools.StopsDilepton.TTbarDMJets_signals_RunIISummer16MiniAODv2 import *
     from CMGTools.StopsDilepton.ttX0j_5f_MLM_signals_RunIISummer16MiniAODv2 import *
-    from CMGTools.StopsDilepton.samples import *
+    #from CMGTools.StopsDilepton.samples import *
 
     for sample in dataSamples:
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
 
     # sync mc
+    #TTJets_SingleLeptonFromTbar.files=["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root"]
+    #TTJets_SingleLeptonFromTbar.files=["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00D6E4E7-EFD4-E611-9C59-549F3525A184.root"]
+    TTJets_SingleLeptonFromTbar.files=["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/020F0317-AED4-E611-ACCA-002590DE3A92.root"]
     selectedComponents = [TTJets_SingleLeptonFromTbar]
-    TTJets_SingleLeptonFromTbar.files=['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root']
+    
+    #QCD_Pt120to170.files=["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/QCD_Pt-120to170_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/020CF991-90B1-E611-ADFB-0017A4770C28.root"]
+    #selectedComponents = [QCD_Pt120to170]
     ## sync data
     #MuonEG_Run2016F_03Feb2017.files=["root://cms-xrd-global.cern.ch//store/data/Run2016F/MuonEG/MINIAOD/03Feb2017-v1/50000/0496325A-05EB-E611-953B-0025905A60DE.root"]
     #selectedComponents += [MuonEG_Run2016F_03Feb2017]
