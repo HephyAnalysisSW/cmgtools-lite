@@ -180,7 +180,7 @@ trigMatcher1Mu = cfg.Analyzer(
     processName = 'PAT',
     #processName = '',
     fallbackCollection = 'selectedPatTrigger',
-    fallbackProcessName = 'RECO',
+    fallbackProcessName = 'RECO', #RECO or PAT
     unpackPathNames = True,
     trgObjSelectors = [ lambda t : t.path("HLT_IsoMu22_v*",1,0) or t.path("HLT_IsoTkMu22_v*",1,0) or t.path("HLT_IsoMu22_eta2p1_v*",1,0) or t.path("HLT_IsoTkMu22_eta2p1_v*",1,0) or t.path("HLT_IsoTkMu24_v*",1,0)  ],#"HLT_IsoMu22", "HLT_IsoTkMu22", "HLT_IsoMu22_eta2p1", "HLT_IsoTkMu22_eta2p1", "HLT_IsoMu24", "HLT_IsoTkMu24"
     collToMatch = 'selectedLeptons',
@@ -241,8 +241,11 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [TTJets_SingleLeptonFromTbar]
     #TTJets_SingleLeptonFromTbar.files=['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root']
     # sync data
-    MuonEG_Run2016F_07Aug17.files=["root://cms-xrd-global.cern.ch//store/data/Run2016F/MuonEG/MINIAOD/07Aug17-v1/110000/0ADB9E32-B19A-E711-BCE0-008CFAC91A68.root"]
-    selectedComponents = [MuonEG_Run2016F_07Aug17]
+    #MuonEG_Run2016F_07Aug17.files=["root://cms-xrd-global.cern.ch//store/data/Run2016F/MuonEG/MINIAOD/07Aug17-v1/110000/0ADB9E32-B19A-E711-BCE0-008CFAC91A68.root"]
+    #selectedComponents = [MuonEG_Run2016F_07Aug17]
+    # test new MC
+    GluGluToZZTo2e2mu.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/GluGluToContinToZZTo2e2mu_13TeV_MCFM701_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/A669DB9C-B8BD-E611-B462-001E67E33C60.root']
+    selectedComponents = [GluGluToZZTo2e2mu]
 
     #selectedComponents = [ttZ0j_ll]
     #selectedComponents = [WZTo3LNu]
