@@ -249,6 +249,7 @@ lepAna = cfg.Analyzer(
     do_mc_match = True, # note: it will in any case try it only on MC, not on data
     do_mc_match_photons = "all",
     match_inclusiveLeptons = False, # match to all inclusive leptons
+    pfCandAssocDR   = 0., # don't by default collect pf candidates in vicinity of lepton
     )
 
 ## Lepton-based Skim (generic, but requirements depend on the final state)

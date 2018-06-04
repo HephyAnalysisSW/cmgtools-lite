@@ -166,7 +166,7 @@ _ElectronVars = {
     MVAVar("LepGood_mvaIdSpring15",lambda x: x.mvaRun2("NonTrigSpring15MiniAOD")),
  ],
  'ttv_noLepTau_2016': [
-    MVAVar("electronMva",lambda x: x.mvaRun2("Spring16GP")),
+    MVAVar("electronMvaSpring16GP",lambda x: x.mvaRun2("Spring16GP")),
  ],
  'ttv_noLepTau_2017': [
     MVAVar("electronMvaFall17NoIso",lambda x: x.mvaRun2("Fall17noIso")),
