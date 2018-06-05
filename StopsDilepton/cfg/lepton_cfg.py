@@ -30,7 +30,13 @@ treeProducer = cfg.Analyzer(
      globalVariables = [ ], # rho, nvertices, njets
      globalObjects = [], 
      collection = ( "selectedLeptons" , NTupleCollection("lep", leptonTypeSusy, 10, help="leptons after the preselection") ),
-     vector_collection = ( "pfCands" , NTupleCollection("pfCand", particleType, 100, help="pf candidates associated") ),
+     vector_collections = [ 
+        ( "pfCands_neutral" ,  NTupleCollection("pfCand_neutral", particleType, 100, help="neutral pf candidates associated") ),
+        ( "pfCands_charged" ,  NTupleCollection("pfCand_charged", particleType, 100, help="charged pf candidates associated") ),
+        ( "pfCands_photon" ,   NTupleCollection("pfCand_photon", particleType, 100, help="photon pf candidates associated") ),
+        ( "pfCands_electron" , NTupleCollection("pfCand_electron", particleType, 100, help="electron pf candidates associated") ),
+        ( "pfCands_muon" ,     NTupleCollection("pfCand_muon", particleType, 100, help="muon pf candidates associated") ),
+        ],
      defaultFloatType = 'F',
 )
 
