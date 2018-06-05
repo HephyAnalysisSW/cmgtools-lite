@@ -20,7 +20,7 @@ class AutoFillVectorTreeProducer( TreeAnalyzerNumpy ):
         self.globalObjects = {}
         self.globalVariables = []
         self.collection         = cfg_ana.collection
-        self.vector_collection  = cfg_ana.vector_collection
+        self.vector_collections = cfg_ana.vector_collections
         if hasattr(cfg_ana,"globalObjects"):
                 self.globalObjects.update(cfg_ana.globalObjects)
         if hasattr(cfg_ana,"globalVariables"):
@@ -36,9 +36,10 @@ class AutoFillVectorTreeProducer( TreeAnalyzerNumpy ):
         k,v = self.collection
         if type(v) == tuple and isinstance(v[0], AutoHandle):
             self.handles[k] = v[0]
-        k,v = self.vector_collection
-        if type(v) == tuple and isinstance(v[0], AutoHandle):
-            self.handles[k] = v[0]
+
+        for k,v in self.vector_collections:
+            if type(v) == tuple and isinstance(v[0], AutoHandle):
+                self.handles[k] = v[0]
 
     def declareCoreVariables(self, tr, isMC):
         """Here we declare the variables that we always want and that are hard-coded"""
@@ -82,9 +83,9 @@ class AutoFillVectorTreeProducer( TreeAnalyzerNumpy ):
             if c.help: h = "%s for %s" % ( h if h else v.name, c.help )
             tree.var("%s_%s" % (c.name, v.name), type=v.type, default=v.default, title=h, filler=v.filler, zipper=v.zipper)
 
-        k, c = self.vector_collection
-        if type(c) == tuple: c = c[-1]
-        c.makeBranchesVector(tree, isMC)
+        for k, c in self.vector_collections:
+            if type(c) == tuple: c = c[-1]
+            c.makeBranchesVector(tree, isMC)
  
     def fillCoreVariables(self, tr, event, isMC):
         """Here we fill the variables that we always want and that are hard-coded"""
@@ -155,14 +156,14 @@ class AutoFillVectorTreeProducer( TreeAnalyzerNumpy ):
         for i in xrange(num):
             o = collection[i]
 
-            v_cn, v_c = self.vector_collection
-            if type(v_c) == tuple and isinstance(v_c[0], AutoHandle):
-                #if not isMC and v_c[-1].mcOnly: continue
-                objects = getattr( v, v_cn ) 
-                #setattr(event, v_cn, [objects[i] for i in xrange(objects.size())])
-                v_c = v_c[-1]
-            if not isMC and v_c.mcOnly: v_continue
-            v_c.fillBranchesVector(self.tree, getattr(o, v_cn), isMC)
+            for v_cn, v_c in self.vector_collections:
+                if type(v_c) == tuple and isinstance(v_c[0], AutoHandle):
+                    #if not isMC and v_c[-1].mcOnly: continue
+                    objects = getattr( v, v_cn ) 
+                    #setattr(event, v_cn, [objects[i] for i in xrange(objects.size())])
+                    v_c = v_c[-1]
+                if not isMC and v_c.mcOnly: v_continue
+                v_c.fillBranchesVector(self.tree, getattr(o, v_cn), isMC)
 
             for v in allvars:
                 self.tree.fill("%s_%s" % (c.name, v.name), v(o))
