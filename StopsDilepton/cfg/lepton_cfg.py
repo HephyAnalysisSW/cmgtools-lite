@@ -47,17 +47,19 @@ leptonTypeSusy.variables.append( NTupleVariable("isNonPromptId", lambda x: not (
 leptonTypeSusy.variables.append( NTupleVariable("isFakeId", lambda x: not (abs(getattr(x, 'mcMatchId', -99)) in [6,23,24,25,37]) and not (abs(getattr(x,'mcMatchAny',-99)) in [4,5]), int,  help="isFake for leptons after the preselection for MVA training"))
 
 #add INT-Type lepton variables as FLOAT (is default)
-leptonTypeSusy.variables.append( NTupleVariable("convVeto_float", lambda x : x.passConversionVeto() if abs(x.pdgId())==11 else 1, help="Conversion veto (always true for muons)"))
+leptonTypeSusy.variables.append( NTupleVariable("convVeto_float", lambda x : x.passConversionVeto() if abs(x.pdgId())==11 else 1., help="Conversion veto (always true for muons)"))
 leptonTypeSusy.variables.append( NTupleVariable("lostHits_float", lambda x : (x.gsfTrack() if abs(x.pdgId())==11 else x.innerTrack()).hitPattern().numberOfLostHits(ROOT.reco.HitPattern.MISSING_INNER_HITS), help="Number of lost hits on inner track"))
     
 leptonTypeSusy.variables.append(  NTupleVariable("isElectron_float",lambda lepton : 1. if abs(lepton.pdgId())==11 else 0., help="isElectron") )
 leptonTypeSusy.variables.append(  NTupleVariable("isMuon_float",lambda lepton : 1. if abs(lepton.pdgId())==13 else 0., help="isMuon") )
 
+leptonTypeSusy.variables.append(  NTupleVariable("isGlobalMuon_float",   lambda x : x.physObj.isGlobalMuon() if abs(x.pdgId())==13 else 1., help="Muon is global"))
+
 #add pfCand variables
 #particleType.variables.append( NTupleVariable("puppiWeight",  lambda x : x.puppiWeight(), help="puppiWeight"))
-particleType.variables.append( NTupleVariable("puppiWeight",  lambda x : x.puppiWeight() if not abs(x.pdgId()) in [11,13] else 0., help="puppiWeight"))
-particleType.variables.append( NTupleVariable("hcalFraction",  lambda x : x.hcalFraction() if not abs(x.pdgId()) in [11,13] else 0., help="hcalFraction"))
-particleType.variables.append( NTupleVariable("fromPV",  lambda x : x.fromPV() if not abs(x.pdgId()) in [11,13] else 0., help="fromPV"))
+particleType.variables.append( NTupleVariable("puppiWeight",  lambda x : x.puppiWeight() if not abs(x.pdgId()) in [11,13] else 1., help="puppiWeight"))
+particleType.variables.append( NTupleVariable("hcalFraction",  lambda x : x.hcalFraction() if not abs(x.pdgId()) in [11,13] else 1., help="hcalFraction"))
+particleType.variables.append( NTupleVariable("fromPV",  lambda x : x.fromPV() if not abs(x.pdgId()) in [11,13] else 1., help="fromPV"))
 leptonTypeSusy.variables.append( NTupleVariable("npfCands_neutral_float",  lambda x : len(x.pfCands_neutral), help="npfCands_neutral_float"))
 leptonTypeSusy.variables.append( NTupleVariable("npfCands_charged_float",  lambda x : len(x.pfCands_charged), help="npfCands_charged_float"))
 leptonTypeSusy.variables.append( NTupleVariable("npfCands_photon_float",  lambda x : len(x.pfCands_photon), help="npfCands_photon_float"))
