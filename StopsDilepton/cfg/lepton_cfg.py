@@ -57,6 +57,12 @@ leptonTypeSusy.variables.append(  NTupleVariable("isMuon_float",lambda lepton : 
 #particleType.variables.append( NTupleVariable("puppiWeight",  lambda x : x.puppiWeight(), help="puppiWeight"))
 particleType.variables.append( NTupleVariable("puppiWeight",  lambda x : x.puppiWeight() if not abs(x.pdgId()) in [11,13] else 0., help="puppiWeight"))
 particleType.variables.append( NTupleVariable("hcalFraction",  lambda x : x.hcalFraction() if not abs(x.pdgId()) in [11,13] else 0., help="hcalFraction"))
+particleType.variables.append( NTupleVariable("fromPV",  lambda x : x.fromPV() if not abs(x.pdgId()) in [11,13] else 0., help="fromPV"))
+leptonTypeSusy.variables.append( NTupleVariable("npfCands_neutral_float",  lambda x : len(x.pfCands_neutral), help="npfCands_neutral_float"))
+leptonTypeSusy.variables.append( NTupleVariable("npfCands_charged_float",  lambda x : len(x.pfCands_charged), help="npfCands_charged_float"))
+leptonTypeSusy.variables.append( NTupleVariable("npfCands_photon_float",  lambda x : len(x.pfCands_photon), help="npfCands_photon_float"))
+leptonTypeSusy.variables.append( NTupleVariable("npfCands_electron_float",  lambda x : len(x.pfCands_electron), help="npfCands_electron_float"))
+leptonTypeSusy.variables.append( NTupleVariable("npfCands_muon_float",  lambda x : len(x.pfCands_muon), help="npfCands_muon_float"))
 
 
 # Lepton settings
