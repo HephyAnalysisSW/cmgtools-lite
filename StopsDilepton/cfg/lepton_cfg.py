@@ -60,6 +60,13 @@ leptonTypeSusy.variables.append(  NTupleVariable("isGlobalMuon_float",   lambda 
 particleType.variables.append( NTupleVariable("puppiWeight",  lambda x : x.puppiWeight() if not abs(x.pdgId()) in [11,13] else 1., help="puppiWeight"))
 particleType.variables.append( NTupleVariable("hcalFraction",  lambda x : x.hcalFraction() if not abs(x.pdgId()) in [11,13] else 1., help="hcalFraction"))
 particleType.variables.append( NTupleVariable("fromPV",  lambda x : x.fromPV() if not abs(x.pdgId()) in [11,13] else 1., help="fromPV"))
+
+particleType.variables.append( NTupleVariable("dxy_pf",  lambda x : x.dxy(), help="dxy"))
+particleType.variables.append( NTupleVariable("dz_pf",  lambda x : x.dz(), help="dz"))
+particleType.variables.append( NTupleVariable("dzAssociatedPV",  lambda x : x.dzAssociatedPV() if not abs(x.pdgId()) in [11,13] else 1., help="dzAssociatedPV"))
+#particleType.variables.append( NTupleVariable("vertex",  lambda x : x.vertex(),  help="vertex"))
+#particleType.variables.append( NTupleVariable("vertexRef",  lambda x : x.vertexRef(), help="vertexRef"))
+
 leptonTypeSusy.variables.append( NTupleVariable("npfCands_neutral_float",  lambda x : len(x.pfCands_neutral), help="npfCands_neutral_float"))
 leptonTypeSusy.variables.append( NTupleVariable("npfCands_charged_float",  lambda x : len(x.pfCands_charged), help="npfCands_charged_float"))
 leptonTypeSusy.variables.append( NTupleVariable("npfCands_photon_float",  lambda x : len(x.pfCands_photon), help="npfCands_photon_float"))
@@ -139,13 +146,19 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
 
     # sync mc
-    TTJets_SingleLeptonFromTbar.files=["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root"]
-    #TTJets_SingleLeptonFromTbar.files=["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00D6E4E7-EFD4-E611-9C59-549F3525A184.root"]
-    #TTJets_SingleLeptonFromTbar.files=["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/020F0317-AED4-E611-ACCA-002590DE3A92.root"]
-    selectedComponents = [TTJets_SingleLeptonFromTbar]
+    #TTJets_SingleLeptonFromTbar.files=[
+    #    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root",
+    #    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00D6E4E7-EFD4-E611-9C59-549F3525A184.root",
+    #    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/020F0317-AED4-E611-ACCA-002590DE3A92.root"
+    #                                   ] 
+    #selectedComponents = [TTJets_SingleLeptonFromTbar]
     
-    #QCD_Pt120to170.files=["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/QCD_Pt-120to170_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/020CF991-90B1-E611-ADFB-0017A4770C28.root"]
-    #selectedComponents = [QCD_Pt120to170]
+    QCD_Pt120to170.files=[
+        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/QCD_Pt-120to170_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/020CF991-90B1-E611-ADFB-0017A4770C28.root",
+        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/QCD_Pt-120to170_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/DA5E4D3E-88B1-E611-B9BF-0025908217DA.root",
+        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/QCD_Pt-120to170_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/FC5FEF89-90B1-E611-9FF6-90B11CBCFF8F.root"
+                           ]
+    selectedComponents = [QCD_Pt120to170]
     ## sync data
     #MuonEG_Run2016F_03Feb2017.files=["root://cms-xrd-global.cern.ch//store/data/Run2016F/MuonEG/MINIAOD/03Feb2017-v1/50000/0496325A-05EB-E611-953B-0025905A60DE.root"]
     #selectedComponents += [MuonEG_Run2016F_03Feb2017]
