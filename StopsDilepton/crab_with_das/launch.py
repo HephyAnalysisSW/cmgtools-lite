@@ -27,7 +27,7 @@ handle.close()
 # create symlink
 if os.path.exists("heppy_config.py"): os.remove("heppy_config.py")
 #os.symlink("../cfg/stopsDilepton_%i_cfg.py"%options.year, "heppy_config.py")
-os.symlink(parser.cfg_name%options.year, "heppy_config.py")
+os.symlink(options.cfg_name%options.year, "heppy_config.py")
 
 import PhysicsTools.HeppyCore.framework.config as cfg
 allComponents = { }

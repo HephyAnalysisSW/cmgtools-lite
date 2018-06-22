@@ -24,7 +24,8 @@ config.JobType.allowUndistributedCMSSW = True
 config.section_("Data")
 config.Data.ignoreLocality = True
 
-config.Data.splitting = 'FileBased'
+#config.Data.splitting = 'FileBased'
+config.Data.splitting = 'Automatic'
 
 import subprocess
 user = os.environ["USER"]
@@ -58,7 +59,7 @@ config.Site.ignoreGlobalBlacklist = False
 #config.section_("Debug")
 #config.Debug.extraJDL = ['+CMS_ALLOW_OVERFLOW=False']
 
-if os.environ['USER'] in ['schoef', 'rschoefbeck', 'schoefbeck', 'dspitzba', 'dspitzbart']:
+if os.environ['USER'] in ['schoef', 'rschoefbeck', 'schoefbeck', 'dspitzba', 'dspitzbart', 'gmoertl']:
   config.Site.storageSite = 'T2_AT_Vienna'
 #config.Data.ignoreLocality = True
 
