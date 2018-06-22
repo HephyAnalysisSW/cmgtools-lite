@@ -36,6 +36,7 @@ treeProducer = cfg.Analyzer(
         ( "pfCands_photon" ,   NTupleCollection("pfCand_photon", particleType, 100, help="photon pf candidates associated") ),
         ( "pfCands_electron" , NTupleCollection("pfCand_electron", particleType, 100, help="electron pf candidates associated") ),
         ( "pfCands_muon" ,     NTupleCollection("pfCand_muon", particleType, 100, help="muon pf candidates associated") ),
+        ( "ivf",               NTupleCollection("SV",     svType, 20, help="SVs from IVF") ),
         ],
      defaultFloatType = 'F',
 )
@@ -115,6 +116,13 @@ lepAna.match_inclusiveLeptons=True
 lepAna.pfCandAssocDR         = 0.5
 #-------- SEQUENCE
 
+# Secondary vertex analyzer
+from CMGTools.TTHAnalysis.analyzers.ttHSVAnalyzer import ttHSVAnalyzer
+ttHSVAna = cfg.Analyzer(
+    ttHSVAnalyzer, name="ttHSVAnalyzer",
+    do_mc_match = True,
+)
+
 sequence = cfg.Sequence([
     skimAnalyzer,
     #eventSelector,
@@ -124,6 +132,7 @@ sequence = cfg.Sequence([
     vertexAna,
     lepAna,
     jetAna,
+    ttHSVAna,
     treeProducer,
     ])
 
