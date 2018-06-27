@@ -131,7 +131,7 @@ case $i in
     data=true
     st=true
     ttx=true
-    #sig=true
+    sig=true
     #sigfullsim=true
     echo Will Process everything! 
     shift
@@ -151,15 +151,15 @@ if $data
 then
   #python launch.py --unitsPerJob=1 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL       MET_Run2015D_v4  MET_Run2015D_05Oct SingleMuon_Run2015D_v4  SingleMuon_Run2015D_05Oct SingleElectron_Run2015D_05Oct  SingleElectron_Run2015D_v4  
   echo ----------------------  Submitting DATA  ------ -----------------
-  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      MET_Run2016B_23Sep2016            MET_Run2016C_23Sep2016            MET_Run2016D_23Sep2016            MET_Run2016E_23Sep2016             MET_Run2016F_23Sep2016              MET_Run2016G_23Sep2016                 MET_Run2016H_PromptReco_v2              MET_Run2016H_PromptReco_v3                
-  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      JetHT_Run2016B_23Sep2016          JetHT_Run2016C_23Sep2016          JetHT_Run2016D_23Sep2016          JetHT_Run2016E_23Sep2016           JetHT_Run2016F_23Sep2016            JetHT_Run2016G_23Sep2016               JetHT_Run2016H_PromptReco_v2            JetHT_Run2016H_PromptReco_v3           
-  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleElectron_Run2016B_23Sep2016 SingleElectron_Run2016C_23Sep2016 SingleElectron_Run2016D_23Sep2016 SingleElectron_Run2016E_23Sep2016  SingleElectron_Run2016F_23Sep2016   SingleElectron_Run2016G_23Sep2016      SingleElectron_Run2016H_PromptReco_v2   SingleElectron_Run2016H_PromptReco_v3       
-  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleMuon_Run2016B_23Sep2016     SingleMuon_Run2016C_23Sep2016     SingleMuon_Run2016D_23Sep2016     SingleMuon_Run2016E_23Sep2016      SingleMuon_Run2016F_23Sep2016       SingleMuon_Run2016G_23Sep2016          SingleMuon_Run2016H_PromptReco_v2       SingleMuon_Run2016H_PromptReco_v3         
- 
-  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL  MET_Run2016B_03Feb2017_v2  MET_Run2016C_03Feb2017  MET_Run2016D_03Feb2017  MET_Run2016E_03Feb2017  MET_Run2016F_03Feb2017  MET_Run2016G_03Feb2017  MET_Run2016H_03Feb2017_v2  MET_Run2016H_03Feb2017_v3
-  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL  JetHT_Run2016B_03Feb2017_v2  JetHT_Run2016C_03Feb2017  JetHT_Run2016D_03Feb2017  JetHT_Run2016E_03Feb2017  JetHT_Run2016F_03Feb2017  JetHT_Run2016G_03Feb2017  JetHT_Run2016H_03Feb2017_v2  JetHT_Run2016H_03Feb2017_v3
-  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL  SingleElectron_Run2016B_03Feb2017_v2  SingleElectron_Run2016C_03Feb2017  SingleElectron_Run2016D_03Feb2017  SingleElectron_Run2016E_03Feb2017  SingleElectron_Run2016F_03Feb2017  SingleElectron_Run2016G_03Feb2017  SingleElectron_Run2016H_03Feb2017_v2  SingleElectron_Run2016H_03Feb2017_v3
-  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL  SingleMuon_Run2016B_03Feb2017_v2  SingleMuon_Run2016C_03Feb2017  SingleMuon_Run2016D_03Feb2017  SingleMuon_Run2016E_03Feb2017  SingleMuon_Run2016F_03Feb2017  SingleMuon_Run2016G_03Feb2017  SingleMuon_Run2016H_03Feb2017_v2  SingleMuon_Run2016H_03Feb2017_v3
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL  MET_Run2016B_03Feb2017_v2  MET_Run2016C_03Feb2017  MET_Run2016D_03Feb2017  MET_Run2016E_03Feb2017  MET_Run2016F_03Feb2017  MET_Run2016G_03Feb2017  MET_Run2016H_03Feb2017_v2  MET_Run2016H_03Feb2017_v3
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL  JetHT_Run2016B_03Feb2017_v2  JetHT_Run2016C_03Feb2017  JetHT_Run2016D_03Feb2017  JetHT_Run2016E_03Feb2017  JetHT_Run2016F_03Feb2017  JetHT_Run2016G_03Feb2017  JetHT_Run2016H_03Feb2017_v2  JetHT_Run2016H_03Feb2017_v3
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL  SingleElectron_Run2016B_03Feb2017_v2  SingleElectron_Run2016C_03Feb2017  SingleElectron_Run2016D_03Feb2017  SingleElectron_Run2016E_03Feb2017  SingleElectron_Run2016F_03Feb2017  SingleElectron_Run2016G_03Feb2017  SingleElectron_Run2016H_03Feb2017_v2  SingleElectron_Run2016H_03Feb2017_v3
+  python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL  SingleMuon_Run2016B_03Feb2017_v2  SingleMuon_Run2016C_03Feb2017  SingleMuon_Run2016D_03Feb2017  SingleMuon_Run2016E_03Feb2017  SingleMuon_Run2016F_03Feb2017  SingleMuon_Run2016G_03Feb2017  SingleMuon_Run2016H_03Feb2017_v2  SingleMuon_Run2016H_03Feb2017_v3
+  
+  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      MET_Run2016B_23Sep2016            MET_Run2016C_23Sep2016            MET_Run2016D_23Sep2016            MET_Run2016E_23Sep2016             MET_Run2016F_23Sep2016              MET_Run2016G_23Sep2016                 MET_Run2016H_PromptReco_v2              MET_Run2016H_PromptReco_v3                
+  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      JetHT_Run2016B_23Sep2016          JetHT_Run2016C_23Sep2016          JetHT_Run2016D_23Sep2016          JetHT_Run2016E_23Sep2016           JetHT_Run2016F_23Sep2016            JetHT_Run2016G_23Sep2016               JetHT_Run2016H_PromptReco_v2            JetHT_Run2016H_PromptReco_v3           
+  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleElectron_Run2016B_23Sep2016 SingleElectron_Run2016C_23Sep2016 SingleElectron_Run2016D_23Sep2016 SingleElectron_Run2016E_23Sep2016  SingleElectron_Run2016F_23Sep2016   SingleElectron_Run2016G_23Sep2016      SingleElectron_Run2016H_PromptReco_v2   SingleElectron_Run2016H_PromptReco_v3       
+  #python launch.py --unitsPerJob=50 --remoteDir=$REMOTE_DIR_DATA --production_label=$PROD_LABEL      SingleMuon_Run2016B_23Sep2016     SingleMuon_Run2016C_23Sep2016     SingleMuon_Run2016D_23Sep2016     SingleMuon_Run2016E_23Sep2016      SingleMuon_Run2016F_23Sep2016       SingleMuon_Run2016G_23Sep2016          SingleMuon_Run2016H_PromptReco_v2       SingleMuon_Run2016H_PromptReco_v3         
 fi
 
 if  $tt
@@ -222,8 +222,8 @@ then
   python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   WWTo2L2Nu  WWToLNuQQ  WWToLNuQQ_ext  WWTo1L1Nu2Q #NOTE: NLO (high stat) 
   python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   ZZTo2L2Nu  ZZTo2L2Q     ZZTo2Q2Nu  ZZTo4L #NOTE: NLO (high stat) 
   python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   WZTo1L3Nu  WZTo1L1Nu2Q  WZTo2L2Q   WZTo3LNu   WZTo3LNu_amcatnlo #NOTE: NLO (high stat) 
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   VVTo2L2Nu  VVTo2L2Nu_ext #NOTE: NLO (high stat) 
   #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   WGJets  WGToLNuG #NOTE: NLO (high stat) 
-  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   VVTo2L2Nu  VVTo2L2Nu_ext #NOTE: NLO (high stat) 
   #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL WZ ZZ WW #TBar_tWch  T_tWch #NOTE: LO (low stat) 
 fi
 

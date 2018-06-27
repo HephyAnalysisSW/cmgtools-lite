@@ -241,7 +241,7 @@ lepAna.loose_muon_dz =               0.5
 
 lepAna.doMiniIsolation       =  False
 lepAna.ele_isoCorr           =  "rhoArea"
-lepAna.mu_isoCorr            =  "rhoArea"
+lepAna.mu_isoCorr            =  "rhoArea" # NOTE: SUSY PAG recommends rho-effective area (EA) while Muon POG recommends delta-beta
 
 # Hybrid Isolation
 absIsoCut = 20 #5
