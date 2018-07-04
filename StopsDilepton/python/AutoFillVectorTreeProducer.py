@@ -159,10 +159,11 @@ class AutoFillVectorTreeProducer( TreeAnalyzerNumpy ):
             for v_cn, v_c in self.vector_collections:
                 if type(v_c) == tuple and isinstance(v_c[0], AutoHandle):
                     #if not isMC and v_c[-1].mcOnly: continue
-                    objects = getattr( v, v_cn ) 
+                    objects = getattr( v, v_cn ) if hasattr(v, v_cn ) else getattr( event, v_cn ) 
                     #setattr(event, v_cn, [objects[i] for i in xrange(objects.size())])
                     v_c = v_c[-1]
                 if not isMC and v_c.mcOnly: v_continue
+                #v_c.fillBranchesVector(self.tree, getattr(event, v_cn) if hasattr(event, v_cn) else getattr(o, v_cn), isMC)
                 v_c.fillBranchesVector(self.tree, getattr(o, v_cn), isMC)
 
             for v in allvars:

@@ -36,15 +36,45 @@ treeProducer = cfg.Analyzer(
         ( "pfCands_photon" ,   NTupleCollection("pfCand_photon", particleType, 100, help="photon pf candidates associated") ),
         ( "pfCands_electron" , NTupleCollection("pfCand_electron", particleType, 100, help="electron pf candidates associated") ),
         ( "pfCands_muon" ,     NTupleCollection("pfCand_muon", particleType, 100, help="muon pf candidates associated") ),
+        ( "ivf",               NTupleCollection("SV",     svType, 20, help="SVs from IVF") ),
         ],
      defaultFloatType = 'F',
 )
 
+svType.variables.append( NTupleVariable("deltaR",  lambda x : x.deltaR, help="deltaR(v,lepton)"))
 
 # add lepton classes
 leptonTypeSusy.variables.append( NTupleVariable("isPromptId", lambda x: abs(getattr(x, 'mcMatchId', -99)) in [6,23,24,25,37], int, help="isPrompt for leptons after the preselection for MVA training"))
 leptonTypeSusy.variables.append( NTupleVariable("isNonPromptId", lambda x: not (abs(getattr(x, 'mcMatchId', -99)) in [6,23,24,25,37]) and (abs(getattr(x,'mcMatchAny',-99)) in [4,5]), int,  help="isNonPrompt for leptons after the preselection for MVA training"))
 leptonTypeSusy.variables.append( NTupleVariable("isFakeId", lambda x: not (abs(getattr(x, 'mcMatchId', -99)) in [6,23,24,25,37]) and not (abs(getattr(x,'mcMatchAny',-99)) in [4,5]), int,  help="isFake for leptons after the preselection for MVA training"))
+
+#add INT-Type lepton variables as FLOAT (is default)
+leptonTypeSusy.variables.append( NTupleVariable("convVeto_float", lambda x : x.passConversionVeto() if abs(x.pdgId())==11 else 1., help="Conversion veto (always true for muons)"))
+leptonTypeSusy.variables.append( NTupleVariable("lostHits_float", lambda x : (x.gsfTrack() if abs(x.pdgId())==11 else x.innerTrack()).hitPattern().numberOfLostHits(ROOT.reco.HitPattern.MISSING_INNER_HITS), help="Number of lost hits on inner track"))
+    
+leptonTypeSusy.variables.append(  NTupleVariable("isElectron_float",lambda lepton : 1. if abs(lepton.pdgId())==11 else 0., help="isElectron") )
+leptonTypeSusy.variables.append(  NTupleVariable("isMuon_float",lambda lepton : 1. if abs(lepton.pdgId())==13 else 0., help="isMuon") )
+
+leptonTypeSusy.variables.append(  NTupleVariable("isGlobalMuon_float",   lambda x : x.physObj.isGlobalMuon() if abs(x.pdgId())==13 else 1., help="Muon is global"))
+
+#add pfCand variables
+#particleType.variables.append( NTupleVariable("puppiWeight",  lambda x : x.puppiWeight(), help="puppiWeight"))
+particleType.variables.append( NTupleVariable("puppiWeight",  lambda x : x.puppiWeight() if not abs(x.pdgId()) in [11,13] else 1., help="puppiWeight"))
+particleType.variables.append( NTupleVariable("hcalFraction",  lambda x : x.hcalFraction() if not abs(x.pdgId()) in [11,13] else 1., help="hcalFraction"))
+particleType.variables.append( NTupleVariable("fromPV",  lambda x : x.fromPV() if not abs(x.pdgId()) in [11,13] else 1., help="fromPV"))
+
+particleType.variables.append( NTupleVariable("dxy_pf",  lambda x : x.dxy(), help="dxy"))
+particleType.variables.append( NTupleVariable("dz_pf",  lambda x : x.dz(), help="dz"))
+particleType.variables.append( NTupleVariable("dzAssociatedPV",  lambda x : x.dzAssociatedPV() if not abs(x.pdgId()) in [11,13] else 1., help="dzAssociatedPV"))
+#particleType.variables.append( NTupleVariable("vertex",  lambda x : x.vertex(),  help="vertex"))
+#particleType.variables.append( NTupleVariable("vertexRef",  lambda x : x.vertexRef(), help="vertexRef"))
+
+leptonTypeSusy.variables.append( NTupleVariable("npfCands_neutral_float",  lambda x : len(x.pfCands_neutral), help="npfCands_neutral_float"))
+leptonTypeSusy.variables.append( NTupleVariable("npfCands_charged_float",  lambda x : len(x.pfCands_charged), help="npfCands_charged_float"))
+leptonTypeSusy.variables.append( NTupleVariable("npfCands_photon_float",  lambda x : len(x.pfCands_photon), help="npfCands_photon_float"))
+leptonTypeSusy.variables.append( NTupleVariable("npfCands_electron_float",  lambda x : len(x.pfCands_electron), help="npfCands_electron_float"))
+leptonTypeSusy.variables.append( NTupleVariable("npfCands_muon_float",  lambda x : len(x.pfCands_muon), help="npfCands_muon_float"))
+
 
 # Lepton settings
 lepAna.packedCandidates = 'packedPFCandidates'
@@ -87,6 +117,13 @@ lepAna.match_inclusiveLeptons=True
 lepAna.pfCandAssocDR         = 0.5
 #-------- SEQUENCE
 
+# Secondary vertex analyzer
+from CMGTools.TTHAnalysis.analyzers.ttHSVAnalyzer import ttHSVAnalyzer
+ttHSVAna = cfg.Analyzer(
+    ttHSVAnalyzer, name="ttHSVAnalyzer",
+    do_mc_match = True,
+)
+
 sequence = cfg.Sequence([
     skimAnalyzer,
     #eventSelector,
@@ -94,6 +131,7 @@ sequence = cfg.Sequence([
     pileUpAna,
     genAna,
     vertexAna,
+    ttHSVAna,
     lepAna,
     jetAna,
     treeProducer,
@@ -118,13 +156,19 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_271036-284044_13TeV_23Sep2016ReReco_Collisions16_JSON.txt"
 
     # sync mc
-    #TTJets_SingleLeptonFromTbar.files=["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root"]
-    #TTJets_SingleLeptonFromTbar.files=["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00D6E4E7-EFD4-E611-9C59-549F3525A184.root"]
-    TTJets_SingleLeptonFromTbar.files=["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/020F0317-AED4-E611-ACCA-002590DE3A92.root"]
-    selectedComponents = [TTJets_SingleLeptonFromTbar]
+    #TTJets_SingleLeptonFromTbar.files=[
+    #    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root",
+    #    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00D6E4E7-EFD4-E611-9C59-549F3525A184.root",
+    #    "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/020F0317-AED4-E611-ACCA-002590DE3A92.root"
+    #                                   ] 
+    #selectedComponents = [TTJets_SingleLeptonFromTbar]
     
-    #QCD_Pt120to170.files=["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/QCD_Pt-120to170_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/020CF991-90B1-E611-ADFB-0017A4770C28.root"]
-    #selectedComponents = [QCD_Pt120to170]
+    QCD_Pt120to170.files=[
+        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/QCD_Pt-120to170_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/020CF991-90B1-E611-ADFB-0017A4770C28.root",
+        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/QCD_Pt-120to170_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/DA5E4D3E-88B1-E611-B9BF-0025908217DA.root",
+        "root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/QCD_Pt-120to170_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/FC5FEF89-90B1-E611-9FF6-90B11CBCFF8F.root"
+                           ]
+    selectedComponents = [QCD_Pt120to170]
     ## sync data
     #MuonEG_Run2016F_03Feb2017.files=["root://cms-xrd-global.cern.ch//store/data/Run2016F/MuonEG/MINIAOD/03Feb2017-v1/50000/0496325A-05EB-E611-953B-0025905A60DE.root"]
     #selectedComponents += [MuonEG_Run2016F_03Feb2017]

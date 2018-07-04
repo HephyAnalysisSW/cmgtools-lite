@@ -17,6 +17,7 @@ parser.add_option("--totalUnits", dest="totalUnits", help="Total nr. of units (f
 parser.add_option("--inputDBS", dest="inputDBS", help="dbs instance", default=None)
 parser.add_option("--lumiMask", dest="lumiMask", help="lumi mask (for data)", default=None)
 parser.add_option("--year", dest="year", help="2016 or 2017", default=2017, type=int)
+parser.add_option("--cfg_name", dest="cfg_name", help="Name of the cfg", default="../cfg/stopsDilepton_%i_cfg.py", type=str)
 ( options, args ) = parser.parse_args()
 
 handle = open("heppy_samples_%i.py"%options.year, 'r')
@@ -25,7 +26,8 @@ handle.close()
 
 # create symlink
 if os.path.exists("heppy_config.py"): os.remove("heppy_config.py")
-os.symlink("../cfg/stopsDilepton_%i_cfg.py"%options.year, "heppy_config.py")
+#os.symlink("../cfg/stopsDilepton_%i_cfg.py"%options.year, "heppy_config.py")
+os.symlink(options.cfg_name%options.year, "heppy_config.py")
 
 import PhysicsTools.HeppyCore.framework.config as cfg
 allComponents = { }
