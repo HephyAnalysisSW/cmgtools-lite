@@ -497,7 +497,7 @@ dataSamples_Run2016H_07Aug17 = [JetHT_Run2016H_07Aug17, HTMHT_Run2016H_07Aug17, 
 ### Summary of 07Aug17
 dataSamples_07Aug17 = dataSamples_Run2016B_07Aug17_v2 + dataSamples_Run2016C_07Aug17 + dataSamples_Run2016D_07Aug17 + dataSamples_Run2016E_07Aug17 + dataSamples_Run2016F_07Aug17 + dataSamples_Run2016G_07Aug17 + dataSamples_Run2016H_07Aug17
 
-dataSamples = dataSamples_PromptReco + dataSamples_23Sep2016 + dataSamples_07Aug17
+dataSamples = dataSamples_PromptReco + dataSamples_23Sep2016 + dataSamples_07Aug17 + dataSamples_03Feb2017
 samples = dataSamples
 
 ### ---------------------------------------------------------------------
