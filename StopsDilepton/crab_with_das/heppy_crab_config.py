@@ -24,8 +24,8 @@ config.JobType.allowUndistributedCMSSW = True
 config.section_("Data")
 config.Data.ignoreLocality = True
 
-#config.Data.splitting = 'FileBased'
-config.Data.splitting = 'Automatic'
+config.Data.splitting = 'FileBased'
+#config.Data.splitting = 'Automatic'
 
 import subprocess
 user = os.environ["USER"]

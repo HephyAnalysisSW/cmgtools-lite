@@ -93,7 +93,8 @@ susySingleLepton_collections.update({
             #"fatJets"         : NTupleCollection("FatJet",  fatJetType,  15, help="AK8 jets, sorted by pt"),
             "genJets"         : NTupleCollection("GenJet",  genJetType,  15, help="Gen Jets, sorted by pt"),
             "discardedJets" : NTupleCollection("DiscJet", jetTypeSusyExtra, 15, help="Jets discarted in the jet-lepton cleaning"),
-            "cleanJetsFailIdAll" : NTupleCollection("JetFailId", jetTypeSusyExtra, 15, help="Jets failing id after jet-lepton cleaning"),
+#            "cleanJetsFailIdAll" : NTupleCollection("JetFailId", jetTypeSusyExtra, 15, help="Jets failing id after jet-lepton cleaning"),
+            "jetsAllNoID"      : NTupleCollection("JetAll", jetTypeSusyExtra, 25, help="All jets w/o cleaning and Id"),
 #            "reclusteredFatJets" : NTupleCollection("RCFatJet",     fourVectorType,20, help="FatJets1.2 reclusterd from ak4 cleanJetsAll pT > 30, eta <5 "),
             ##------------------------------------------------
             "ivf"       : NTupleCollection("SV",     svType, 20, help="SVs from IVF"),
