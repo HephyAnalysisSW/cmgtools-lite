@@ -371,7 +371,7 @@ def jetLepAwareJEC(lep): # use only if jetAna.calculateSeparateCorrections==True
     if not hasattr(lep.jet,'rawFactor'): return l # if lep==jet (matched to lepton object itself)
     p4j = lep.jet.p4()
     j = ROOT.TLorentzVector(p4j.Px(),p4j.Py(),p4j.Pz(),p4j.E())
-    #if ((j*lep.jet.rawFactor()-l).Rho()<1e-4): return l # matched to jet containing only the lepton
+    #if ((j*lep.jet.rawFactor()-l).Rho()<1e-4): return l # matched to jet containing only the lepton. Commented out in order to be in sync with Ghent
     j = (j*lep.jet.rawFactor()-l*(1.0/lep.jet.l1corrFactor()))*lep.jet.corrFactor()+l
     return j
 def ptRelv2(lep): # use only if jetAna.calculateSeparateCorrections==True
