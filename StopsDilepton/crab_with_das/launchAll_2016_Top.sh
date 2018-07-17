@@ -33,13 +33,22 @@
 #python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GGHZZ4L
 #python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" VHToNonbb
 #python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" THQ
-python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GluGluToZZTo2e2mu
-python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GluGluToZZTo2e2nu
-python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GluGluToZZTo2mu2nu
-python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GluGluToZZTo2e2tau
-python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GluGluToZZTo2mu2tau
-python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GluGluToZZTo4e
-python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GluGluToZZTo4mu
+python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" THW
+python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" WZG
+python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" TTWW
+python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" TTWZ
+python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" TTZZ
+python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" WGToLNuG_amcatnlo_ext1
+python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" WGToLNuG_amcatnlo_ext2
+python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" WGToLNuG_amcatnlo_ext3
+
+#python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GluGluToZZTo2e2mu
+#python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GluGluToZZTo2e2nu
+#python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GluGluToZZTo2mu2nu
+#python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GluGluToZZTo2e2tau
+#python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GluGluToZZTo2mu2tau
+#python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GluGluToZZTo4e
+#python launch.py --year=2016 --remoteDir="2016_1l_v13" --unitsPerJob=3 --production_label="2016_1l_v13" GluGluToZZTo4mu
 
 
 ### Background MC ttW

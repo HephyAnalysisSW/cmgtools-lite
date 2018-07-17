@@ -85,13 +85,18 @@ jetAna.jetPt = 15
 jetAna.jetEta = 5.2 #FIXME
 jetAna.addJECShifts = True
 jetAna.doQG = False
+## experimental
+#jetAna.cleanJetsFromLeptons = False
+#jetAna.cleanSelectedLeptons = False
+##
 jetAna.smearJets = False #should be false in susycore, already
 jetAna.calculateSeparateCorrections = True #should be true if recalibrate, otherwise L1 inconsistent
 jetAna.calculateType1METCorrection = True
 
 # 2016/17 JEC
 jetAna.applyL2L3Residual = "Data"
-jetAna.dataGT = [ ( -1, "Summer16_07Aug2017BCD_V10_DATA"), (276811, "Summer16_07Aug2017EF_V10_DATA"), (278801, "Summer16_07Aug2017GH_V10_DATA") ]
+jetAna.dataGT = [ ( -1, "Summer16_07Aug2017BCD_V10_DATA"), (276812, "Summer16_07Aug2017EF_V10_DATA"), (278802, "Summer16_07Aug2017GH_V10_DATA") ]
+#jetAna.dataGT = [ ( -1, "Summer16_23Sep2016BCDV3_DATA"), (276811, "Summer16_23Sep2016EFV3_DATA"), (278801, "Summer16_23Sep2016GV3_DATA"), (280385, "Summer16_23Sep2016HV3_DATA") ]
 jetAna.mcGT   = "Summer16_23Sep2016V3_MC"
 
 # tree Producer
@@ -242,10 +247,15 @@ if getHeppyOption("loadSamples"):
     #TTJets_SingleLeptonFromTbar.files=['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root']
     # sync data
     #MuonEG_Run2016F_07Aug17.files=["root://cms-xrd-global.cern.ch//store/data/Run2016F/MuonEG/MINIAOD/07Aug17-v1/110000/0ADB9E32-B19A-E711-BCE0-008CFAC91A68.root"]
-    #selectedComponents = [MuonEG_Run2016F_07Aug17]
+    MuonEG_Run2016F_07Aug17.files=["event_0.root"]
+    selectedComponents = [MuonEG_Run2016F_07Aug17]
+    #DoubleMuon_Run2016D_07Aug17.files=["event_1.root"]
+    #selectedComponents = [DoubleMuon_Run2016D_07Aug17]
+    #DoubleMuon_Run2016G_07Aug17.files=["event_2.root"]
+    #selectedComponents = [DoubleMuon_Run2016G_07Aug17]
     # test new MC
-    GluGluToZZTo2e2mu.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/GluGluToContinToZZTo2e2mu_13TeV_MCFM701_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/A669DB9C-B8BD-E611-B462-001E67E33C60.root']
-    selectedComponents = [GluGluToZZTo2e2mu]
+    #GluGluToZZTo2e2mu.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/GluGluToContinToZZTo2e2mu_13TeV_MCFM701_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/A669DB9C-B8BD-E611-B462-001E67E33C60.root']
+    #selectedComponents = [GluGluToZZTo2e2mu]
 
     #selectedComponents = [ttZ0j_ll]
     #selectedComponents = [WZTo3LNu]
