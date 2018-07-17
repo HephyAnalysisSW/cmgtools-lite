@@ -1,1 +1,1 @@
-../cfg/stopsDilepton_2016_cfg.py
+../cfg/stopsDilepton_2017_cfg.py

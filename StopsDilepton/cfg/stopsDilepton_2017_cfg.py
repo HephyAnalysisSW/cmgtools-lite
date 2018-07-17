@@ -156,7 +156,7 @@ trigMatcher1Mu = cfg.Analyzer(
     label='1Mu',
     processName = 'PAT',
     fallbackCollection = 'slimmedPatTrigger',
-    fallbackProcessName = 'RECO',
+    fallbackProcessName = 'PAT',
     unpackPathNames = True,
     trgObjSelectors = [ lambda t : t.path("HLT_IsoMu27_v*",1,0) or t.path("HLT_IsoMu30_v*",1,0) ],
     collToMatch = 'selectedLeptons',
@@ -208,10 +208,11 @@ if getHeppyOption("loadSamples"):
     for sample in dataSamples:
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON.txt"
 
-    selectedComponents = [MuonEG_Run2017F_17Nov2017]
-    MuonEG_Run2017F_17Nov2017.json=None
+    selectedComponents = [TTZToLLNuNu_amc_psw]
+    #selectedComponents = [MuonEG_Run2017F_17Nov2017]
+    #MuonEG_Run2017F_17Nov2017.json=None
     #MuonEG_Run2017F_17Nov2017.files = ["/afs/hephy.at/user/r/rschoefbeck/www/etc/pickevents.root"]
-    MuonEG_Run2017F_17Nov2017.files = ['root://cms-xrd-global.cern.ch//store/data/Run2018B/DoubleMuon/MINIAOD/PromptReco-v1/000/317/383/00000/F8DC8A54-1669-E811-8656-02163E01A01E.root']
+    #MuonEG_Run2017F_17Nov2017.files = ['root://cms-xrd-global.cern.ch//store/data/Run2018B/DoubleMuon/MINIAOD/PromptReco-v1/000/317/383/00000/F8DC8A54-1669-E811-8656-02163E01A01E.root']
     # sync
     #TTSemi_pow.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIIFall17MiniAOD/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8/MINIAODSIM/94X_mc2017_realistic_v10-v1/50000/004C666D-C0E0-E711-AADB-0CC47A6C183A.root']
     #selectedComponents = [WWZ_4F]
