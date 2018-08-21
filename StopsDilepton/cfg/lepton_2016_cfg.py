@@ -56,6 +56,8 @@ leptonTypeSusy.variables.append(  NTupleVariable("isElectron_float",lambda lepto
 leptonTypeSusy.variables.append(  NTupleVariable("isMuon_float",lambda lepton : 1. if abs(lepton.pdgId())==13 else 0., help="isMuon") )
 
 leptonTypeSusy.variables.append(  NTupleVariable("isGlobalMuon_float",   lambda x : x.physObj.isGlobalMuon() if abs(x.pdgId())==13 else 1., help="Muon is global"))
+# store TTV lepton MVA in 2016 version
+leptonTypeSusy.variables.append(  NTupleVariable("mvaTTV",lambda lepton : getattr(lepton, 'mvaValueTTV2016', -1), help="Lepton MVA (TTV 2016 version)") )
 
 # store TTV lepton MVA in 2016 version
 leptonTypeSusy.variables.append(  NTupleVariable("mvaTTV",lambda lepton : getattr(lepton, 'mvaValueTTV2016', -1), help="Lepton MVA (TTV 2016 version)") )
@@ -127,6 +129,12 @@ ttHSVAna = cfg.Analyzer(
     do_mc_match = True,
 )
 
+from CMGTools.TTHAnalysis.analyzers.ttHLepEventAnalyzer import ttHLepEventAnalyzer
+ttHEventAna = cfg.Analyzer(
+    ttHLepEventAnalyzer, name="ttHLepEventAnalyzer",
+    minJets25 = 0,
+    )
+
 sequence = cfg.Sequence([
     skimAnalyzer,
     #eventSelector,
@@ -137,6 +145,8 @@ sequence = cfg.Sequence([
     ttHSVAna,
     lepAna,
     jetAna,
+    ttHSVAna,
+    ttHEventAna,
     treeProducer,
     ])
 
