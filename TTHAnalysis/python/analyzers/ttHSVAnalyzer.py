@@ -137,77 +137,79 @@ class ttHSVAnalyzer( Analyzer ):
         def ref2id(ref):
             return (ref.id().processIndex(), ref.id().productIndex(), ref.key())
 
-        # ====== Matching IVF <-> JET by candidate reference (optional) ==========
-        if self.associatedJetsByRef:  
-            # Attach SVs to Jets 
-            daumap = {}
-            for s in event.ivf:
-                s.jet = None
-                for i in xrange(s.numberOfDaughters()):
-                    daumap[ref2id(s.daughterPtr(i))] = s
-            for j in getattr(event, self.jetCollection):
-                #print "jet with pt %5.2f, eta %+4.2f, phi %+4.2f: " % (j.pt(), j.eta(), j.phi())
-                jdaus = [ref2id(j.daughterPtr(i)) for i in xrange(j.numberOfDaughters())]
-                j.svs = []
-                for jdau in jdaus:
-                    if jdau in daumap:
-                        #print " --> matched by ref with SV with pt %5.2f, eta %+4.2f, phi %+4.2f: " % (daumap[jdau].pt(), daumap[jdau].eta(), daumap[jdau].phi())
-                        j.svs.append(daumap[jdau])
-                        daumap[jdau].jet = j	    
-        else:
-            for s in event.ivf: s.jet = None
-
-        # ====== Matching IVF <-> JET by DR ==========
         for s in event.ivf:
-            if s.jet != None: continue
-            #print "Unassociated SV with %d tracks, mass %5.2f, pt %5.2f, eta %+4.2f, phi %+4.2f: " % (s.numberOfDaughters(), s.mass(), s.pt(), s.eta(), s.phi())
-            bestDr = 0.4
-            for j in getattr(event, self.jetCollection):
-                dr = deltaR(s.eta(),s.phi(),j.eta(),j.phi())
-                if dr < bestDr:
-                   bestDr = dr
-                   s.jet = j
-                   #print "   close to jet with pt %5.2f, eta %+4.2f, phi %+4.2f: dr = %.3f" % (j.pt(), j.eta(), j.phi(), dr)
-
+            s.jet = None
+#        # ====== Matching IVF <-> JET by candidate reference (optional) ==========
+#        if self.associatedJetsByRef:  
+#            # Attach SVs to Jets 
+#            daumap = {}
+#            for s in event.ivf:
+#                s.jet = None
+#                for i in xrange(s.numberOfDaughters()):
+#                    daumap[ref2id(s.daughterPtr(i))] = s
+#            for j in getattr(event, self.jetCollection):
+#                #print "jet with pt %5.2f, eta %+4.2f, phi %+4.2f: " % (j.pt(), j.eta(), j.phi())
+#                jdaus = [ref2id(j.daughterPtr(i)) for i in xrange(j.numberOfDaughters())]
+#                j.svs = []
+#                for jdau in jdaus:
+#                    if jdau in daumap:
+#                        #print " --> matched by ref with SV with pt %5.2f, eta %+4.2f, phi %+4.2f: " % (daumap[jdau].pt(), daumap[jdau].eta(), daumap[jdau].phi())
+#                        j.svs.append(daumap[jdau])
+#                        daumap[jdau].jet = j	    
+#        else:
+#            for s in event.ivf: s.jet = None
+#
+#        # ====== Matching IVF <-> JET by DR ==========
+#        for s in event.ivf:
+#            if s.jet != None: continue
+#            #print "Unassociated SV with %d tracks, mass %5.2f, pt %5.2f, eta %+4.2f, phi %+4.2f: " % (s.numberOfDaughters(), s.mass(), s.pt(), s.eta(), s.phi())
+#            bestDr = 0.4
+#            for j in getattr(event, self.jetCollection):
+#                dr = deltaR(s.eta(),s.phi(),j.eta(),j.phi())
+#                if dr < bestDr:
+#                   bestDr = dr
+#                   s.jet = j
+#                   #print "   close to jet with pt %5.2f, eta %+4.2f, phi %+4.2f: dr = %.3f" % (j.pt(), j.eta(), j.phi(), dr)
+#
         # ====== Matching IVF <-> Lepton ==========
         #print "\n\nNew event: "
-        for l in event.selectedLeptons:
-            #print "Lepton pdgId %+2d pt %5.2f, eta %+4.2f, phi %+4.2f, sip3d %5.2f, mcMatchAny %d, mcMatchId %d: " % (l.pdgId(), l.pt(), l.eta(), l.phi(), l.sip3D(), getattr(l,'mcMatchAny',-37), getattr(l,'mcMatchId',-37))
-            track = l.gsfTrack() if abs(l.pdgId()) == 11  else l.track()
-            l.ivfAssoc = None
-            l.ivf      = None
-            l.ivfSip3d = 0 # sip wrt SV
-            l.ivfRedPt = 0 # pt of SV (without lepton)
-            l.ivfRedM  = 0 # mass of SV (without lepton)
-            for s in event.ivf:
-                #dr = deltaR(l.eta(), l.phi(), s.eta(), s.phi())
-                #mindr = min([deltaR(s.daughter(i).eta(),s.daughter(i).phi(),l.eta(),l.phi()) for i in xrange(s.numberOfDaughters())])
-                sip3d = SignedImpactParameterComputer.signedIP3D(track.get(), s, s.momentum()).significance()
-                byref = False
-                daus = [ref2id(s.daughterPtr(i)) for i in xrange(s.numberOfDaughters())]
-                for i in xrange(l.numberOfSourceCandidatePtrs()):
-                    src = l.sourceCandidatePtr(i)
-                    if src.isNonnull() and src.isAvailable():
-                        if ref2id(src) in daus:
-                            byref = True
-                invmass  = (l.p4() + s.p4()).mass() if not byref else s.mass() 
-                #go = False
-                if byref:
-                    l.ivfAssoc = "byref"
-                    l.ivf      = s
-                    l.ivfSip3d = sip3d
-                    l.ivfRedM  = (s.p4() - l.p4()).mass()
-                    l.ivfRedPt = (s.p4() - l.p4()).Pt()
-                    #go = True
-                    break
-                elif l.ivfAssoc != "byref" and invmass < 6:
-                    if l.ivfAssoc == None or (l.ivfAssoc[0] == "bymass" and l.ivfAssoc[1] > invmass):
-                        l.ivfAssoc = ("bymass",invmass)
-                        l.ivf      = s
-                        l.ivfSip3d = sip3d
-                        l.ivfRedM  = s.mass()
-                        l.ivfRedPt = s.pt()
-                        #go = True
+#        for l in event.selectedLeptons:
+#            #print "Lepton pdgId %+2d pt %5.2f, eta %+4.2f, phi %+4.2f, sip3d %5.2f, mcMatchAny %d, mcMatchId %d: " % (l.pdgId(), l.pt(), l.eta(), l.phi(), l.sip3D(), getattr(l,'mcMatchAny',-37), getattr(l,'mcMatchId',-37))
+#            track = l.gsfTrack() if abs(l.pdgId()) == 11  else l.track()
+#            l.ivfAssoc = None
+#            l.ivf      = None
+#            l.ivfSip3d = 0 # sip wrt SV
+#            l.ivfRedPt = 0 # pt of SV (without lepton)
+#            l.ivfRedM  = 0 # mass of SV (without lepton)
+#            for s in event.ivf:
+#                #dr = deltaR(l.eta(), l.phi(), s.eta(), s.phi())
+#                #mindr = min([deltaR(s.daughter(i).eta(),s.daughter(i).phi(),l.eta(),l.phi()) for i in xrange(s.numberOfDaughters())])
+#                sip3d = SignedImpactParameterComputer.signedIP3D(track.get(), s, s.momentum()).significance()
+#                byref = False
+#                daus = [ref2id(s.daughterPtr(i)) for i in xrange(s.numberOfDaughters())]
+#                for i in xrange(l.numberOfSourceCandidatePtrs()):
+#                    src = l.sourceCandidatePtr(i)
+#                    if src.isNonnull() and src.isAvailable():
+#                        if ref2id(src) in daus:
+#                            byref = True
+#                invmass  = (l.p4() + s.p4()).mass() if not byref else s.mass() 
+#                #go = False
+#                if byref:
+#                    l.ivfAssoc = "byref"
+#                    l.ivf      = s
+#                    l.ivfSip3d = sip3d
+#                    l.ivfRedM  = (s.p4() - l.p4()).mass()
+#                    l.ivfRedPt = (s.p4() - l.p4()).Pt()
+#                    #go = True
+#                    break
+#                elif l.ivfAssoc != "byref" and invmass < 6:
+#                    if l.ivfAssoc == None or (l.ivfAssoc[0] == "bymass" and l.ivfAssoc[1] > invmass):
+#                        l.ivfAssoc = ("bymass",invmass)
+#                        l.ivf      = s
+#                        l.ivfSip3d = sip3d
+#                        l.ivfRedM  = s.mass()
+#                        l.ivfRedPt = s.pt()
+#                        #go = True
                 #bymc = False
                 #if self.cfg_comp.isMC and l.mcMatchAny == 2 and s.mcHadron != None and l.mcMatchAny_gp != None:
                 #    hadmothers = []

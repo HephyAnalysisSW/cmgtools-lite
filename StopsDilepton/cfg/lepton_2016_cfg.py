@@ -41,6 +41,7 @@ treeProducer = cfg.Analyzer(
      defaultFloatType = 'F',
 )
 
+svType.variables.append( NTupleVariable("deltaR",  lambda x : x.deltaR, help="deltaR(v,lepton)"))
 
 # add lepton classes
 leptonTypeSusy.variables.append( NTupleVariable("isPromptId", lambda x: abs(getattr(x, 'mcMatchId', -99)) in [6,23,24,25,37], int, help="isPrompt for leptons after the preselection for MVA training"))
@@ -138,6 +139,7 @@ sequence = cfg.Sequence([
     pileUpAna,
     genAna,
     vertexAna,
+    ttHSVAna,
     lepAna,
     jetAna,
     ttHSVAna,
