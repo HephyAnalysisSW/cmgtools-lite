@@ -57,6 +57,9 @@ leptonTypeSusy.variables.append(  NTupleVariable("isMuon_float",lambda lepton : 
 
 leptonTypeSusy.variables.append(  NTupleVariable("isGlobalMuon_float",   lambda x : x.physObj.isGlobalMuon() if abs(x.pdgId())==13 else 1., help="Muon is global"))
 
+# store TTV lepton MVA in 2016 version
+leptonTypeSusy.variables.append(  NTupleVariable("mvaTTV",lambda lepton : getattr(lepton, 'mvaValueTTV2016', -1), help="Lepton MVA (TTV 2016 version)") )
+
 #add pfCand variables
 #particleType.variables.append( NTupleVariable("puppiWeight",  lambda x : x.puppiWeight(), help="puppiWeight"))
 particleType.variables.append( NTupleVariable("puppiWeight",  lambda x : x.puppiWeight() if not abs(x.pdgId()) in [11,13] else 1., help="puppiWeight"))
