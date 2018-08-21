@@ -163,7 +163,8 @@ class AutoFillVectorTreeProducer( TreeAnalyzerNumpy ):
                     #setattr(event, v_cn, [objects[i] for i in xrange(objects.size())])
                     v_c = v_c[-1]
                 if not isMC and v_c.mcOnly: v_continue
-                v_c.fillBranchesVector(self.tree, getattr(event, v_cn) if hasattr(event, v_cn) else getattr(o, v_cn), isMC)
+                #v_c.fillBranchesVector(self.tree, getattr(event, v_cn) if hasattr(event, v_cn) else getattr(o, v_cn), isMC)
+                v_c.fillBranchesVector(self.tree, getattr(o, v_cn), isMC)
 
             for v in allvars:
                 self.tree.fill("%s_%s" % (c.name, v.name), v(o))
