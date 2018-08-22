@@ -148,7 +148,14 @@ leptonTypeSusy.variables.append( NTupleVariable("isFakeId", lambda x: not (abs(g
 #add INT-Type lepton variables as FLOAT (is default)
 leptonTypeSusy.variables.append( NTupleVariable("convVeto_float", lambda x : x.passConversionVeto() if abs(x.pdgId())==11 else 1., help="Conversion veto (always true for muons)"))
 leptonTypeSusy.variables.append( NTupleVariable("lostHits_float", lambda x : (x.gsfTrack() if abs(x.pdgId())==11 else x.innerTrack()).hitPattern().numberOfLostHits(ROOT.reco.HitPattern.MISSING_INNER_HITS), help="Number of lost hits on inner track"))
-    
+
+leptonTypeSusy.variables.append( NTupleVariable("trackerLayers_float", lambda x : (x.track() if abs(x.pdgId())==13 else x.gsfTrack()).hitPattern().trackerLayersWithMeasurement(), help="Tracker Layers") )
+leptonTypeSusy.variables.append( NTupleVariable("pixelLayers_float", lambda x : (x.track() if abs(x.pdgId())==13 else x.gsfTrack()).hitPattern().pixelLayersWithMeasurement(), help="Pixel Layers") )
+leptonTypeSusy.variables.append( NTupleVariable("trackerHits_float", lambda x : (x.track() if abs(x.pdgId())==13 else x.gsfTrack()).hitPattern().numberOfValidTrackerHits(), help="Tracker hits") )
+leptonTypeSusy.variables.append( NTupleVariable("lostOuterHits_float",    lambda x : (x.gsfTrack() if abs(x.pdgId())==11 else x.innerTrack()).hitPattern().numberOfLostHits(ROOT.reco.HitPattern.MISSING_OUTER_HITS), help="Number of lost hits on outer track") )
+leptonTypeSusy.variables.append( NTupleVariable("nStations_float",    lambda lepton : float(lepton.numberOfMatchedStations()) if abs(lepton.pdgId()) == 13 else 4., help="Number of matched muons stations (4 for electrons)") )
+leptonTypeSusy.variables.append( NTupleVariable("isTrackerMuon_float",   lambda x : x.physObj.isTrackerMuon() if abs(x.pdgId())==13 else 1, help="Muon is tracker") )
+ 
 leptonTypeSusy.variables.append(  NTupleVariable("isElectron_float",lambda lepton : 1. if abs(lepton.pdgId())==11 else 0., help="isElectron") )
 leptonTypeSusy.variables.append(  NTupleVariable("isMuon_float",lambda lepton : 1. if abs(lepton.pdgId())==13 else 0., help="isMuon") )
 
