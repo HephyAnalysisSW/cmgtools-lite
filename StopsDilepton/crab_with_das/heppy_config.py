@@ -1,1 +1,1 @@
-../cfg/lepton_2016_cfg.py
+../cfg/lepton_2017_cfg.py
