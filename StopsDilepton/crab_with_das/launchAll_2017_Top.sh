@@ -86,7 +86,7 @@
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTLep_pow  
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTLep_pow_small  
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTHad_pow  
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTSemi_pow 
+#python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTSemi_pow 
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTLep_pow_TuneDown  
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTLep_pow_TuneUp    
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTLep_pow_hdampDown 
@@ -143,5 +143,15 @@ python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --producti
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" GluGluToZZTo4e
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" GluGluToZZTo4mu
 
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" GGHZZ4L
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" QQHZZ4L 
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" QQHZZ4L_ext
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WpHZZ4L
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WmHZZ4L
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" WmHZZ4L_ext
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" ZHZZ4LF
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" ZHZZ4LF_ext
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTWZ
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTZZ
 
 
