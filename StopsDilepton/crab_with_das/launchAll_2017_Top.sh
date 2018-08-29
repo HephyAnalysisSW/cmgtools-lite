@@ -86,7 +86,7 @@
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTLep_pow  
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTLep_pow_small  
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTHad_pow  
-#python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTSemi_pow 
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTSemi_pow 
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTLep_pow_TuneDown  
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTLep_pow_TuneUp    
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTLep_pow_hdampDown 
@@ -102,7 +102,7 @@
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTW_LO 
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" tWll
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTZToLLNuNu_amc 
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTZToLLNuNu_amc_psw 
+#python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTZToLLNuNu_amc_psw 
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTZ_LO 
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTZToLLNuNu_m1to10  
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTH_pow  
