@@ -3,6 +3,8 @@
 ####### Background MC ttZ 3l
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=2 --production_label="2016_1l_v16" TTZ_LO
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TTZToLLNuNu_ext
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TTZToLLNuNu_ext2
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TTZToLLNuNu_ext3
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" WZTo3LNu_amcatnlo
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" WZTo3LNu_mllmin01
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" WZTo3LNu_ext
@@ -71,7 +73,13 @@
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_fsrdown
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_isrup
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_isrdown
-python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow
+#python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow
+
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" QQHZZ4L
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" WpHZZ4L
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" WmHZZ4L
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" ZHZZ4LF
+
 
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" DYJetsToLL_M50_HT70to100
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" DYJetsToLL_M50_HT100to200
