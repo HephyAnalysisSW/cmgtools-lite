@@ -335,7 +335,7 @@ TTXs = [ TTGJets, TTGJets_ext,
          TTWToLNu_fxfx, TTW_LO, 
          TTZToLLNuNu_amc, TTZToLLNuNu_amc_psw, TTZ_LO, TTZToLLNuNu_m1to10, 
          TZQToLL, 
-         TTH_pow, TTHnobb_fxfx, TTHnobb_pow, TTHtautau_pow, THW, THQ ]
+         TTH_pow, TTHnobb_fxfx, TTHnobb_pow, TTHtautau_pow, THW, THQ, tWll ]
 
 # ====== TT + DIBOSON, 4-top =====
 
