@@ -3,8 +3,8 @@
 ####### Background MC ttZ 3l
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=2 --production_label="2016_1l_v16" TTZ_LO
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TTZToLLNuNu_ext
-python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TTZToLLNuNu_ext2
-python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TTZToLLNuNu_ext3
+#python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TTZToLLNuNu_ext2
+#python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TTZToLLNuNu_ext3
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" WZTo3LNu_amcatnlo
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" WZTo3LNu_mllmin01
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" WZTo3LNu_ext
@@ -75,10 +75,31 @@ python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --product
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_isrdown
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow
 
-python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" QQHZZ4L
-python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" WpHZZ4L
-python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" WmHZZ4L
-python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" ZHZZ4LF
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_fsrup
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_fsrup_ext
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_fsrdown
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_fsrdown_ext
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_isrup
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_isrdown
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_isrdown_ext
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_TuneCUETP8M2T4down
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_TuneCUETP8M2T4down_ext
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_TuneCUETP8M2T4_up
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_TuneCUETP8M2T4_up_ext
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_hdampUP
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_hdampUP_ext
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_hdampDOWN
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_hdampDOWN_ext
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_TuneCUETP8M2T4_erdON
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_TuneCUETP8M2T4_erdON_ext
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_QCDbasedCRTune_erdON
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_QCDbasedCRTune_erdON_ext
+python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" TT_pow_GluonMoveCRTune
+
+#python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" QQHZZ4L
+#python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" WpHZZ4L
+#python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" WmHZZ4L
+#python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" ZHZZ4LF
 
 
 #python launch.py --year=2016 --remoteDir="2016_1l_v16" --unitsPerJob=3 --production_label="2016_1l_v16" DYJetsToLL_M50_HT70to100

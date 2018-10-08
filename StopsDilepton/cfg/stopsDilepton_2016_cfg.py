@@ -253,7 +253,7 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [DoubleMuon_Run2016D_07Aug17]
     #DoubleMuon_Run2016G_07Aug17.files=["event_2.root"]
     #selectedComponents = [DoubleMuon_Run2016G_07Aug17]
-    WZTo3LNu_amcatnlo.files = ["WZ_0.root"]
+    WZTo3LNu_amcatnlo.files = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TT_TuneCUETP8M2T4_13TeV-powheg-fsrup-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/50000/FE7F9E30-C6D6-E611-96FE-001E673475A6.root"]
     selectedComponents = [WZTo3LNu_amcatnlo]
     # test new MC
     #GluGluToZZTo2e2mu.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/GluGluToContinToZZTo2e2mu_13TeV_MCFM701_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/A669DB9C-B8BD-E611-B462-001E67E33C60.root']
