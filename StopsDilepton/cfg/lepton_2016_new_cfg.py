@@ -7,13 +7,13 @@ import os
 
 # Load all analyzers
 from CMGTools.TTHAnalysis.analyzers.susyCore_modules_cff import *
-from CMGTools.StopsDilepton.AutoFillVectorTreeProducer  import * 
 from CMGTools.TTHAnalysis.analyzers.ntupleTypes import *
 
 print "Year: 2016"
 
 # general flags & settings 
 minLeptons                  = 1
+doDeepLeptonIsolation       = True
 storePackedCandidates       = False
 doElectronScaleCorrections  = False
 doPhotonScaleCorrections    = False
@@ -58,19 +58,42 @@ lepAna.ele_effectiveAreas = 'Spring15_25ns_v1'
 # Loose selection 
 lepAna.loose_electron_relIso = 0.5
 lepAna.loose_muon_relIso     = 0.5
-
 lepAna.match_inclusiveLeptons=True
-lepAna.pfCandAssocDR         = 0.5
 
-# Secondary vertex analyzer
-from CMGTools.TTHAnalysis.analyzers.ttHSVAnalyzer import ttHSVAnalyzer
-ttHSVAna = cfg.Analyzer(
-    ttHSVAnalyzer, name="ttHSVAnalyzer",
-    do_mc_match = True,
-)
-# SV
-susyCoreSequence.insert(susyCoreSequence.index(lepAna),
-                        ttHSVAna)
+#deeplepton Isoproducer
+deepLepton_collections = {}
+if doDeepLeptonIsolation:
+    from CMGTools.StopsDilepton.deepLeptonIsoProducer import deepLeptonIsoProducer
+    deepLepIsoProd = cfg.Analyzer(
+        deepLeptonIsoProducer, name="deepLepIsoProd",
+        packedCandidates = 'packedPFCandidates',
+        pfCandAssocDR = 0.5, #DR below which pf cands are associated to the lepton 
+        ivfAssocDR = 0.6, #DR below which IVF are associated to the lepton 
+        )
+    #add pfCand variables
+    pfParticleType = NTupleObjectType("pfParticle", baseObjectTypes = [ particleType ], variables = [
+        NTupleVariable("puppiWeight",  lambda x : x.puppiWeight() if not abs(x.pdgId()) in [11,13] else 1., help="puppiWeight"),
+        NTupleVariable("hcalFraction",  lambda x : x.hcalFraction() if not abs(x.pdgId()) in [11,13] else 1., help="hcalFraction"),
+        NTupleVariable("fromPV",  lambda x : x.fromPV() if not abs(x.pdgId()) in [11,13] else 1., help="fromPV"),
+        NTupleVariable("dxy_pf",  lambda x : x.dxy(), help="dxy"),
+        NTupleVariable("dz_pf",  lambda x : x.dz(), help="dz"),
+        NTupleVariable("dzAssociatedPV",  lambda x : x.dzAssociatedPV() if not abs(x.pdgId()) in [11,13] else 1., help="dzAssociatedPV"),
+        NTupleVariable("selectedLeptons_mask",  lambda x : x.selectedLeptons_mask, int, help="bitwise mask storing the association to selected leptons"),
+        NTupleVariable("otherLeptons_mask",  lambda x : x.otherLeptons_mask, int, help="bitwise mask storing the association to other leptons"),
+    ])
+    SVwithMaskType = NTupleObjectType("SVwithMask", baseObjectTypes = [svType], variables = [ 
+        NTupleVariable("selectedLeptons_mask",  lambda x : x.selectedLeptons_mask, int, help="bitwise mask storing the association to selected leptons"),
+        NTupleVariable("otherLeptons_mask",  lambda x : x.otherLeptons_mask, int, help="bitwise mask storing the association to other leptons"),
+    ])
+
+    deepLepton_collections.update( { 
+         "pfCands_neutral" :  NTupleCollection("DL_pfCand_neutral", pfParticleType, 100, help="neutral pf candidates associated") ,
+         "pfCands_charged" :  NTupleCollection("DL_pfCand_charged", pfParticleType, 500, help="charged pf candidates associated") ,
+         "pfCands_photon" :   NTupleCollection("DL_pfCand_photon", pfParticleType, 100, help="photon pf candidates associated") ,
+         "pfCands_electron" : NTupleCollection("DL_pfCand_electron", pfParticleType, 100, help="electron pf candidates associated") ,
+         "pfCands_muon" :     NTupleCollection("DL_pfCand_muon", pfParticleType, 100, help="muon pf candidates associated") ,
+         "ivf_candidates":    NTupleCollection("DL_SV",     SVwithMaskType, 20, help="SVs from IVF close to leptons") ,
+        })
 
 if doElectronScaleCorrections:
     era = '25ns'
@@ -98,71 +121,22 @@ jetAna.jetPt = 15
 jetAna.jetEta = 5.2 #FIXME
 jetAna.addJECShifts = True
 jetAna.doQG = False
+## experimental
+#jetAna.cleanJetsFromLeptons = False
+#jetAna.cleanSelectedLeptons = False
+##
 jetAna.smearJets = False #should be false in susycore, already
 jetAna.calculateSeparateCorrections = True #should be true if recalibrate, otherwise L1 inconsistent
 jetAna.calculateType1METCorrection = True
 
 # 2016/17 JEC
 jetAna.applyL2L3Residual = "Data"
-jetAna.dataGT = [ ( -1, "Summer16_07Aug2017BCD_V10_DATA"), (276811, "Summer16_07Aug2017EF_V10_DATA"), (278801, "Summer16_07Aug2017GH_V10_DATA") ]
+jetAna.dataGT = [ ( -1, "Summer16_07Aug2017BCD_V10_DATA"), (276812, "Summer16_07Aug2017EF_V10_DATA"), (278802, "Summer16_07Aug2017GH_V10_DATA") ]
+#jetAna.dataGT = [ ( -1, "Summer16_23Sep2016BCDV3_DATA"), (276811, "Summer16_23Sep2016EFV3_DATA"), (278801, "Summer16_23Sep2016GV3_DATA"), (280385, "Summer16_23Sep2016HV3_DATA") ]
 jetAna.mcGT   = "Summer16_07Aug2017_V10_MC"
 
-#add pfCand variables
-pfParticleType = NTupleObjectType("pfParticle", baseObjectTypes = [ particleType ], variables = [
-NTupleVariable("puppiWeight",  lambda x : x.puppiWeight() if not abs(x.pdgId()) in [11,13] else 1., help="puppiWeight"),
-NTupleVariable("hcalFraction",  lambda x : x.hcalFraction() if not abs(x.pdgId()) in [11,13] else 1., help="hcalFraction"),
-NTupleVariable("fromPV",  lambda x : x.fromPV() if not abs(x.pdgId()) in [11,13] else 1., help="fromPV"),
-NTupleVariable("dxy_pf",  lambda x : x.dxy(), help="dxy"),
-NTupleVariable("dz_pf",  lambda x : x.dz(), help="dz"),
-NTupleVariable("dzAssociatedPV",  lambda x : x.dzAssociatedPV() if not abs(x.pdgId()) in [11,13] else 1., help="dzAssociatedPV"),
-NTupleVariable("deltaR",  lambda x : x.deltaR, help="deltaR to lepton"),
-NTupleVariable("ptRel",  lambda x : x.ptRel, help="ptRel to lepton"),
-])
-
 # tree Producer
-treeProducer = cfg.Analyzer(
-     AutoFillVectorTreeProducer, name='treeProducer',
-     vectorTree = False,
-     saveTLorentzVectors = False,  # can set to True to get also the TLorentzVectors, but trees will be bigger
-     globalVariables = [ ], # rho, nvertices, njets
-     globalObjects = [], 
-     collection = ( "selectedLeptons" , NTupleCollection("lep", leptonTypeSusy, 10, help="leptons after the preselection") ),
-     vector_collections = [ 
-        ( "pfCands_neutral" ,  NTupleCollection("pfCand_neutral", pfParticleType, 100, help="neutral pf candidates associated") ),
-        ( "pfCands_charged" ,  NTupleCollection("pfCand_charged", pfParticleType, 100, help="charged pf candidates associated") ),
-        ( "pfCands_photon" ,   NTupleCollection("pfCand_photon", pfParticleType, 100, help="photon pf candidates associated") ),
-        ( "pfCands_electron" , NTupleCollection("pfCand_electron", pfParticleType, 100, help="electron pf candidates associated") ),
-        ( "pfCands_muon" ,     NTupleCollection("pfCand_muon", pfParticleType, 100, help="muon pf candidates associated") ),
-        ( "ivf",               NTupleCollection("SV",     svType, 20, help="SVs from IVF") ),
-        ],
-     defaultFloatType = 'F',
-)
-
-svType.variables.append( NTupleVariable("deltaR",  lambda x : x.deltaR, help="deltaR(v,lepton)"))
-
-# add lepton classes
-leptonTypeSusy.variables.append( NTupleVariable("isPromptId", lambda x: abs(getattr(x, 'mcMatchId', -99)) in [6,23,24,25,37], int, help="isPrompt for leptons after the preselection for MVA training"))
-leptonTypeSusy.variables.append( NTupleVariable("isNonPromptId", lambda x: not (abs(getattr(x, 'mcMatchId', -99)) in [6,23,24,25,37]) and (abs(getattr(x,'mcMatchAny',-99)) in [4,5]), int,  help="isNonPrompt for leptons after the preselection for MVA training"))
-leptonTypeSusy.variables.append( NTupleVariable("isFakeId", lambda x: not (abs(getattr(x, 'mcMatchId', -99)) in [6,23,24,25,37]) and not (abs(getattr(x,'mcMatchAny',-99)) in [4,5]), int,  help="isFake for leptons after the preselection for MVA training"))
-
-#add INT-Type lepton variables as FLOAT (is default)
-leptonTypeSusy.variables.append( NTupleVariable("convVeto_float", lambda x : x.passConversionVeto() if abs(x.pdgId())==11 else 1., help="Conversion veto (always true for muons)"))
-leptonTypeSusy.variables.append( NTupleVariable("lostHits_float", lambda x : (x.gsfTrack() if abs(x.pdgId())==11 else x.innerTrack()).hitPattern().numberOfLostHits(ROOT.reco.HitPattern.MISSING_INNER_HITS), help="Number of lost hits on inner track"))
-
-leptonTypeSusy.variables.append( NTupleVariable("trackerLayers_float", lambda x : (x.track() if abs(x.pdgId())==13 else x.gsfTrack()).hitPattern().trackerLayersWithMeasurement(), help="Tracker Layers") )
-leptonTypeSusy.variables.append( NTupleVariable("pixelLayers_float", lambda x : (x.track() if abs(x.pdgId())==13 else x.gsfTrack()).hitPattern().pixelLayersWithMeasurement(), help="Pixel Layers") )
-leptonTypeSusy.variables.append( NTupleVariable("trackerHits_float", lambda x : (x.track() if abs(x.pdgId())==13 else x.gsfTrack()).hitPattern().numberOfValidTrackerHits(), help="Tracker hits") )
-leptonTypeSusy.variables.append( NTupleVariable("lostOuterHits_float",    lambda x : (x.gsfTrack() if abs(x.pdgId())==11 else x.innerTrack()).hitPattern().numberOfLostHits(ROOT.reco.HitPattern.MISSING_OUTER_HITS), help="Number of lost hits on outer track") )
-leptonTypeSusy.variables.append( NTupleVariable("nStations_float",    lambda lepton : float(lepton.numberOfMatchedStations()) if abs(lepton.pdgId()) == 13 else 4., help="Number of matched muons stations (4 for electrons)") )
-leptonTypeSusy.variables.append( NTupleVariable("isTrackerMuon_float",   lambda x : x.physObj.isTrackerMuon() if abs(x.pdgId())==13 else 1, help="Muon is tracker") )
- 
-leptonTypeSusy.variables.append(  NTupleVariable("isElectron_float",lambda lepton : 1. if abs(lepton.pdgId())==11 else 0., help="isElectron") )
-leptonTypeSusy.variables.append(  NTupleVariable("isMuon_float",lambda lepton : 1. if abs(lepton.pdgId())==13 else 0., help="isMuon") )
-
-leptonTypeSusy.variables.append(  NTupleVariable("isGlobalMuon_float",   lambda x : x.physObj.isGlobalMuon() if abs(x.pdgId())==13 else 1., help="Muon is global"))
-# store TTV lepton MVA in 2016 version
-leptonTypeSusy.variables.append(  NTupleVariable("mvaTTV",lambda lepton : getattr(lepton, 'mvaValueTTV2016', -1), help="Lepton MVA (TTV 2016 version)") )
-
+from CMGTools.StopsDilepton.treeProducerStopsDilepton import *
 
 # MET
 metAna.recalibrate = "type1"
@@ -190,13 +164,38 @@ badMuonAna = cfg.Analyzer(
     minMuPt=100,
     postFix='',
 )
+susySingleLepton_globalVariables.extend( [
+    NTupleVariable("Flag_badChargedHadronSummer2016",  lambda ev: ev.badChargedHadronSummer2016, int, help="badChargedHadron filter result"),
+    NTupleVariable("Flag_badMuonSummer2016",  lambda ev: ev.badMuonSummer2016, int, help="badMuon filter result") ] )
+susyCoreSequence.insert(susyCoreSequence.index(metAna),
+                        badChargedHadronAna)
+susyCoreSequence.insert(susyCoreSequence.index(metAna),
+                        badMuonAna)
 
+# iso tracks
+isoTrackAna.setOff = False
 
 from CMGTools.TTHAnalysis.analyzers.ttHLepEventAnalyzer import ttHLepEventAnalyzer
 ttHEventAna = cfg.Analyzer(
     ttHLepEventAnalyzer, name="ttHLepEventAnalyzer",
     minJets25 = 0,
     )
+
+# Fat jets
+susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
+                        ttHFatJetAna)
+# SV
+susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
+                        ttHSVAna)
+
+#ISR jet counting
+from CMGTools.TTHAnalysis.analyzers.nIsrAnalyzer import NIsrAnalyzer
+nISRAna = cfg.Analyzer(
+    NIsrAnalyzer, name="NIsrAnalyzer",
+    minJets25 = 0,
+    )
+susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
+                        nISRAna)
 
 if storePackedCandidates:
     from CMGTools.TTHAnalysis.analyzers.packedCandidateAnalyzer import packedCandidateAnalyzer
@@ -213,11 +212,57 @@ from PhysicsTools.Heppy.analyzers.gen.LHEAnalyzer import LHEAnalyzer
 LHEAna = LHEAnalyzer.defaultConfig
 lheWeightAna.usePSweights = True
 
+# trigger bits
+from CMGTools.StopsDilepton.triggers_2016 import triggerBits
+triggerFlagsAna.triggerBits = triggerBits
+trigMatcher1Mu = cfg.Analyzer(
+    TriggerMatchAnalyzer, name="trigMatcher1Mu",
+    label='1Mu',
+    processName = 'PAT',
+    #processName = '',
+    fallbackCollection = 'selectedPatTrigger',
+    fallbackProcessName = 'RECO', #RECO or PAT
+    unpackPathNames = True,
+    trgObjSelectors = [ lambda t : t.path("HLT_IsoMu22_v*",1,0) or t.path("HLT_IsoTkMu22_v*",1,0) or t.path("HLT_IsoMu22_eta2p1_v*",1,0) or t.path("HLT_IsoTkMu22_eta2p1_v*",1,0) or t.path("HLT_IsoTkMu24_v*",1,0)  ],#"HLT_IsoMu22", "HLT_IsoTkMu22", "HLT_IsoMu22_eta2p1", "HLT_IsoTkMu22_eta2p1", "HLT_IsoMu24", "HLT_IsoTkMu24"
+    collToMatch = 'selectedLeptons',
+    collMatchSelectors = [ lambda l,t : abs(l.pdgId()) == 13 ],
+    collMatchDRCut = 0.3,
+    univoqueMatching = True,
+    verbose = False,
+)
+trigMatcher1El = trigMatcher1Mu.clone(
+    name="trigMatcher1El",
+    label='1El',
+    trgObjSelectors = [ lambda t : t.path("HLT_Ele27_WPTight_Gsf_v*",1,0) or t.path("HLT_Ele25_eta2p1_WPTight_Gsf_v*",1,0) or t.path("HLT_Ele27_eta2p1_WPLoose_Gsf_v*",1,0) ],
+    collMatchSelectors = [ lambda l,t : abs(l.pdgId()) == 11 ],
+)
+susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
+                        trigMatcher1Mu)
+susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
+                        trigMatcher1El)
+
+# store TTV lepton MVA in 2016 version
+leptonTypeSusy.variables.append(  NTupleVariable("mvaTTV",lambda lepton : getattr(lepton, 'mvaValueTTV2016', -1), help="Lepton MVA (TTV 2016 version)") )
+
+# tree producer
+susySingleLepton_collections.update( deepLepton_collections )
+treeProducer = cfg.Analyzer(
+     AutoFillTreeProducer, name='treeProducerSusySingleLepton',
+     vectorTree = True,
+     saveTLorentzVectors = False,  # can set to True to get also the TLorentzVectors, but trees will be bigger
+     defaultFloatType = 'F', # use Float_t for floating point
+     PDFWeights = PDFWeights,
+     globalVariables = susySingleLepton_globalVariables,
+     globalObjects = susySingleLepton_globalObjects,
+     collections = susySingleLepton_collections,
+)
+
 sequence = cfg.Sequence(
   susyCoreSequence+
       [
         LHEAna,
         ttHEventAna,
+        deepLepIsoProd,
         treeProducer,
         ])
 
@@ -240,10 +285,17 @@ if getHeppyOption("loadSamples"):
     #TTJets_SingleLeptonFromTbar.files=['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TTJets_SingleLeptFromTbar_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/60000/00A25ADE-DFD4-E611-8EAC-0025905A48B2.root']
     # sync data
     #MuonEG_Run2016F_07Aug17.files=["root://cms-xrd-global.cern.ch//store/data/Run2016F/MuonEG/MINIAOD/07Aug17-v1/110000/0ADB9E32-B19A-E711-BCE0-008CFAC91A68.root"]
+    #MuonEG_Run2016F_07Aug17.files=["event_0.root"]
     #selectedComponents = [MuonEG_Run2016F_07Aug17]
-    # test new MC
+    #DoubleMuon_Run2016D_07Aug17.files=["event_1.root"]
+    #selectedComponents = [DoubleMuon_Run2016D_07Aug17]
+    #DoubleMuon_Run2016G_07Aug17.files=["event_2.root"]
+    #selectedComponents = [DoubleMuon_Run2016G_07Aug17]
     WZTo3LNu_amcatnlo.files = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TT_TuneCUETP8M2T4_13TeV-powheg-fsrup-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/50000/FE7F9E30-C6D6-E611-96FE-001E673475A6.root"]
     selectedComponents = [WZTo3LNu_amcatnlo]
+    # test new MC
+    #GluGluToZZTo2e2mu.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/GluGluToContinToZZTo2e2mu_13TeV_MCFM701_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/A669DB9C-B8BD-E611-B462-001E67E33C60.root']
+    #selectedComponents = [GluGluToZZTo2e2mu]
 
     #selectedComponents = [ttZ0j_ll]
     #selectedComponents = [WZTo3LNu]
