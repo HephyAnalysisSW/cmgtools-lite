@@ -253,8 +253,10 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [DoubleMuon_Run2016D_07Aug17]
     #DoubleMuon_Run2016G_07Aug17.files=["event_2.root"]
     #selectedComponents = [DoubleMuon_Run2016G_07Aug17]
-    WZTo3LNu_amcatnlo.files = ["WZ_0.root"]
-    selectedComponents = [WZTo3LNu_amcatnlo]
+    #WZTo3LNu_amcatnlo.files = ["WZ_0.root"]
+    #selectedComponents = [WZTo3LNu_amcatnlo]
+    ttZ0j_ll_DC2A_0p200000_DC2V_0p200000.files=['root://cms-xrd-global.cern.ch//store/user/schoef/ewkDM_ttZ_ll_DC2A_0p200000_DC2V_0p200000/09Nov17-GS-3_mAOD/171118_072618/0000/SUS-RunIISummer16MiniAODv2-00088_10.root']
+    selectedComponents = [ttZ0j_ll_DC2A_0p200000_DC2V_0p200000]
     # test new MC
     #GluGluToZZTo2e2mu.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/GluGluToContinToZZTo2e2mu_13TeV_MCFM701_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/A669DB9C-B8BD-E611-B462-001E67E33C60.root']
     #selectedComponents = [GluGluToZZTo2e2mu]
