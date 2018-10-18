@@ -19,9 +19,26 @@ TTJets_LO = kreator.makeMCComponent("TTJets_LO", "/TTJets_TuneCUETP8M1_13TeV-mad
 TT_pow = kreator.makeMCComponent("TT_pow", "/TT_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM", "CMS", ".*root", 831.762)
 
 TT_pow_fsrup    = kreator.makeMCComponent("TT_pow_fsrup",   "/TT_TuneCUETP8M2T4_13TeV-powheg-fsrup-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM", "CMS", ".*root", 831.762) # extensions with ~120M events exist
+TT_pow_fsrup_ext = kreator.makeMCComponent("TT_pow_fsrup_ext",   "/TT_TuneCUETP8M2T4_13TeV-powheg-fsrup-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/MINIAODSIM", "CMS", ".*root", 831.762)
 TT_pow_fsrdown  = kreator.makeMCComponent("TT_pow_fsrdown", "/TT_TuneCUETP8M2T4_13TeV-powheg-fsrdown-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM", "CMS", ".*root", 831.762) # extensions with ~120M events exist
+TT_pow_fsrdown_ext  = kreator.makeMCComponent("TT_pow_fsrdown_ext", "/TT_TuneCUETP8M2T4_13TeV-powheg-fsrdown-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/MINIAODSIM", "CMS", ".*root", 831.762)
 TT_pow_isrup    = kreator.makeMCComponent("TT_pow_isrup",   "/TT_TuneCUETP8M2T4_13TeV-powheg-isrup-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/MINIAODSIM", "CMS", ".*root", 831.762) # extensions with ~120M events exist
 TT_pow_isrdown  = kreator.makeMCComponent("TT_pow_isrdown", "/TT_TuneCUETP8M2T4_13TeV-powheg-isrdown-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM", "CMS", ".*root", 831.762) # extensions with ~120M events exist
+TT_pow_isrdown_ext  = kreator.makeMCComponent("TT_pow_isrdown_ext", "/TT_TuneCUETP8M2T4_13TeV-powheg-isrdown-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/MINIAODSIM", "CMS", ".*root", 831.762)
+
+TT_pow_TuneCUETP8M2T4down       = kreator.makeMCComponent("TT_pow_TuneCUETP8M2T4down","/TT_TuneCUETP8M2T4down_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM","CMS",".*root", 831.762)
+TT_pow_TuneCUETP8M2T4down_ext   = kreator.makeMCComponent("TT_pow_TuneCUETP8M2T4down_ext","/TT_TuneCUETP8M2T4down_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/MINIAODSIM","CMS",".*root", 831.762)
+TT_pow_TuneCUETP8M2T4_up        = kreator.makeMCComponent("TT_pow_TuneCUETP8M2T4_up","/TT_TuneCUETP8M2T4up_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM","CMS",".*root", 831.762)
+TT_pow_TuneCUETP8M2T4_up_ext    = kreator.makeMCComponent("TT_pow_TuneCUETP8M2T4_up_ext","/TT_TuneCUETP8M2T4up_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/MINIAODSIM","CMS",".*root", 831.762)
+TT_pow_hdampUP                  = kreator.makeMCComponent("TT_pow_hdampUP","/TT_hdampUP_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM","CMS",".*root", 831.762)
+TT_pow_hdampUP_ext              = kreator.makeMCComponent("TT_pow_hdampUP_ext","/TT_hdampUP_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/MINIAODSIM","CMS",".*root", 831.762)
+TT_pow_hdampDOWN                = kreator.makeMCComponent("TT_pow_hdampDOWN","/TT_hdampDOWN_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM","CMS",".*root", 831.762)
+TT_pow_hdampDOWN_ext            = kreator.makeMCComponent("TT_pow_hdampDOWN_ext","/TT_hdampDOWN_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/MINIAODSIM","CMS",".*root", 831.762)
+TT_pow_TuneCUETP8M2T4_erdON     = kreator.makeMCComponent("TT_pow_TuneCUETP8M2T4_erdON","/TT_TuneCUETP8M2T4_erdON_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM","CMS",".*root", 831.762)
+TT_pow_TuneCUETP8M2T4_erdON_ext = kreator.makeMCComponent("TT_pow_TuneCUETP8M2T4_erdON_ext","/TT_TuneCUETP8M2T4_erdON_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/MINIAODSIM","CMS",".*root", 831.762)
+TT_pow_QCDbasedCRTune_erdON     = kreator.makeMCComponent("TT_pow_QCDbasedCRTune_erdON","/TT_TuneCUETP8M2T4_QCDbasedCRTune_erdON_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM","CMS",".*root", 831.762)
+TT_pow_QCDbasedCRTune_erdON_ext = kreator.makeMCComponent("TT_pow_QCDbasedCRTune_erdON_ext","/TT_TuneCUETP8M2T4_QCDbasedCRTune_erdON_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/MINIAODSIM","CMS",".*root", 831.762)
+TT_pow_GluonMoveCRTune          = kreator.makeMCComponent("TT_pow_GluonMoveCRTune","/TT_TuneCUETP8M2T4_GluonMoveCRTune_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM","CMS",".*root", 831.762)
 
 TT_pow_ext3 = kreator.makeMCComponent("TT_pow_ext3", "/TT_TuneCUETP8M2T4_13TeV-powheg-pythia8/RunIISummer16MiniAODv2-PUMoriond17_backup_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM", "CMS", ".*root", 831.76)
 # NOTAVAILYET # TT_pow_ext4 = kreator.makeMCComponent("TT_pow_ext4", "/TT_TuneCUETP8M1_13TeV-powheg-pythia8/RunIISpring16MiniAODv2-PUSpring16_80X_mcRun2_asymptotic_2016_miniAODv2_v0_ext4-v1/MINIAODSIM", "CMS", ".*root", 831.76)
@@ -47,7 +64,6 @@ TTJets_LO_HT1200to2500_ext = kreator.makeMCComponent("TTJets_LO_HT1200to2500_ext
 # NOTAVAILYET # TTJets_LO_HT2500toInf      = kreator.makeMCComponent("TTJets_LO_HT2500toInf", "/TTJets_HT-2500toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIIFall15MiniAODv2-PU25nsData2015v1_76X_mcRun2_asymptotic_v12-v1/MINIAODSIM", "CMS", ".*root", 0.001430*831.76/502.2)
 TTJets_LO_HT2500toInf_ext  = kreator.makeMCComponent("TTJets_LO_HT2500toInf_ext", "/TTJets_HT-2500toInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6_ext1-v1/MINIAODSIM",  "CMS", ".*root", 0.001430*831.76/502.2)
 
-
 TTs = [
 TTJets,
 # NOTAVAILYET # TTJets_reHLT,
@@ -57,9 +73,25 @@ TT_pow_ext3,
 # NOTAVAILYET # TT_pow_ext4,
 TT_pow,
 TT_pow_fsrup,
+TT_pow_fsrup_ext,
 TT_pow_fsrdown,
+TT_pow_fsrdown_ext,
 TT_pow_isrup,
 TT_pow_isrdown,
+TT_pow_isrdown_ext,
+TT_pow_TuneCUETP8M2T4down,
+TT_pow_TuneCUETP8M2T4down_ext,
+TT_pow_TuneCUETP8M2T4_up,
+TT_pow_TuneCUETP8M2T4_up_ext,
+TT_pow_hdampUP,
+TT_pow_hdampUP_ext,
+TT_pow_hdampDOWN,
+TT_pow_hdampDOWN_ext,
+TT_pow_TuneCUETP8M2T4_erdON,
+TT_pow_TuneCUETP8M2T4_erdON_ext,
+TT_pow_QCDbasedCRTune_erdON,
+TT_pow_QCDbasedCRTune_erdON_ext,
+TT_pow_GluonMoveCRTune,
 TTJets_SingleLeptonFromTbar,
 TTJets_SingleLeptonFromTbar_ext,
 TTJets_SingleLeptonFromT,
