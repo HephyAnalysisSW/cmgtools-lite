@@ -69,6 +69,7 @@ if doDeepLeptonIsolation:
         packedCandidates = 'packedPFCandidates',
         pfCandAssocDR = 0.5, #DR below which pf cands are associated to the lepton 
         ivfAssocDR = 0.6, #DR below which IVF are associated to the lepton 
+        otherLeptons = False, # whether or not to run on other leptons
         )
     #add pfCand variables
     pfParticleType = NTupleObjectType("pfParticle", baseObjectTypes = [ particleType ], variables = [
@@ -79,11 +80,11 @@ if doDeepLeptonIsolation:
         NTupleVariable("dz_pf",  lambda x : x.dz(), help="dz"),
         NTupleVariable("dzAssociatedPV",  lambda x : x.dzAssociatedPV() if not abs(x.pdgId()) in [11,13] else 1., help="dzAssociatedPV"),
         NTupleVariable("selectedLeptons_mask",  lambda x : x.selectedLeptons_mask, int, help="bitwise mask storing the association to selected leptons"),
-        NTupleVariable("otherLeptons_mask",  lambda x : x.otherLeptons_mask, int, help="bitwise mask storing the association to other leptons"),
+        #NTupleVariable("otherLeptons_mask",  lambda x : x.otherLeptons_mask, int, help="bitwise mask storing the association to other leptons"),
     ])
     SVwithMaskType = NTupleObjectType("SVwithMask", baseObjectTypes = [svType], variables = [ 
         NTupleVariable("selectedLeptons_mask",  lambda x : x.selectedLeptons_mask, int, help="bitwise mask storing the association to selected leptons"),
-        NTupleVariable("otherLeptons_mask",  lambda x : x.otherLeptons_mask, int, help="bitwise mask storing the association to other leptons"),
+        #NTupleVariable("otherLeptons_mask",  lambda x : x.otherLeptons_mask, int, help="bitwise mask storing the association to other leptons"),
     ])
 
     deepLepton_collections.update( { 
