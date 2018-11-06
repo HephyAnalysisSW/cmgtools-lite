@@ -110,46 +110,93 @@
 #python launch.py --year=2016 --remoteDir="lepton" --unitsPerJob=2 --production_label="lepton2016_v3" --cfg_name "../cfg/lepton_%i_cfg.py" DYJetsToLL_M5to50_HT600toInf
 #python launch.py --year=2016 --remoteDir="lepton" --unitsPerJob=2 --production_label="lepton2016_v3" --cfg_name "../cfg/lepton_%i_cfg.py" DYJetsToLL_M5to50_HT600toInf_ext
 
+#python launch.py --year=2016 --remoteDir="lepton" --unitsPerJob=2 --production_label="lepton2016_v3" --cfg_name "../cfg/lepton_%i_cfg.py" QCD_Pt15to30
+#python launch.py --year=2016 --remoteDir="lepton" --unitsPerJob=2 --production_label="lepton2016_v3" --cfg_name "../cfg/lepton_%i_cfg.py" QCD_Pt30to50
+#python launch.py --year=2016 --remoteDir="lepton" --unitsPerJob=2 --production_label="lepton2016_v3" --cfg_name "../cfg/lepton_%i_cfg.py" QCD_Pt50to80
+#python launch.py --year=2016 --remoteDir="lepton" --unitsPerJob=2 --production_label="lepton2016_v3" --cfg_name "../cfg/lepton_%i_cfg.py" QCD_Pt80to120
+#python launch.py --year=2016 --remoteDir="lepton" --unitsPerJob=2 --production_label="lepton2016_v3" --cfg_name "../cfg/lepton_%i_cfg.py" QCD_Pt80to120_ext2
+#python launch.py --year=2016 --remoteDir="lepton" --unitsPerJob=2 --production_label="lepton2016_v3" --cfg_name "../cfg/lepton_%i_cfg.py" QCD_Pt120to170
+#python launch.py --year=2016 --remoteDir="lepton" --unitsPerJob=2 --production_label="lepton2016_v3" --cfg_name "../cfg/lepton_%i_cfg.py" QCD_Pt120to170_ext
+#python launch.py --year=2016 --remoteDir="lepton" --unitsPerJob=2 --production_label="lepton2016_v3" --cfg_name "../cfg/lepton_%i_cfg.py" QCD_Pt170to300
+#python launch.py --year=2016 --remoteDir="lepton" --unitsPerJob=2 --production_label="lepton2016_v3" --cfg_name "../cfg/lepton_%i_cfg.py" QCD_Pt170to300_ext
 
-#make this file executable: chmod +x launch_lepton_training_data.sh
-#execute this file in shell: ./launch_lepton_training_data.sh
-#samplelist: CMGTools/RootTools/python/samples/samples_13TeV_RunIISummer16MiniAODv2.py
-#display status: for x in `ls crab_*/* -d`; do crab status $x; done
-#see also Dashboard monitoring URL
-#data saved in: dpns-ls -l /dpm/oeaw.ac.at/home/cms/store/user/gmortl/cmgTuples/lepton
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=3 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" TTJets_DiLepton
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=3 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" TTJets_DiLepton_ext
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=3 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" TTJets_SingleLeptonFromTbar
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=3 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" TTJets_SingleLeptonFromTbar_ext
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=3 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" TTJets_SingleLeptonFromT
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=3 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" TTJets_SingleLeptonFromT_ext
 
-#root: dpns-ls /dpm/oeaw.ac.at/home/cms/store/user/gmortl/cmgTuples/lepton/QCD_Pt-20to30_EMEnriched_TuneCUETP8M1_13TeV_pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_lepton_v1/180621_115116/0000/tree_9.root 
-#root: root -b root://hephyse.oeaw.ac.at//dpm/oeaw.ac.at/home/cms/store/user/gmortl/cmgTuples/lepton/QCD_Pt-20to30_EMEnriched_TuneCUETP8M1_13TeV_pythia8/RunIISummer16MiniAODv2-PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1_lepton_v1/180621_115116/0000/tree_9.root
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50_LO_ext
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50_LO_ext2
+#
+##DYNJets
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" DY1JetsToLL_M50_LO
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" DY2JetsToLL_M50_LO
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" DY3JetsToLL_M50_LO
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" DY4JetsToLL_M50_LO
+#
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt15to20_Mu5
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt20to30_Mu5
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt30to50_Mu5
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt50to80_Mu5
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt80to120_Mu5
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt80to120_Mu5_ext
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt120to170_Mu5
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt170to300_Mu5
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt170to300_Mu5_ext
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt300to470_Mu5
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt300to470_Mu5_ext
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt300to470_Mu5_ext2
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt470to600_Mu5
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt470to600_Mu5_ext
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt470to600_Mu5_ext2
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt600to800_Mu5
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt600to800_Mu5_ext
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt800to1000_Mu5
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt800to1000_Mu5_ext
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt800to1000_Mu5_ext2
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt1000toInf_Mu5
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt1000toInf_Mu5_ext
 
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50_LO_ext
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50_LO_ext2
+####### Background MC ttZ 3l
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  TTZ_LO
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  TTZToLLNuNu_ext
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  TTZToLLNuNu_ext2
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  TTZToLLNuNu_ext3
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  WZTo3LNu_amcatnlo
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  WZTo3LNu_mllmin01
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  WZTo3LNu_ext
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  WZTo3LNu
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  TTWToLNu_ext
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  TTWToLNu_ext2
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  TTHnobb_pow
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  TTHbb_ext3
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  tZq_ll_ext
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  TTGJets
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  TTGJets_ext
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  tWll
+#python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  TTTT
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  ZZTo4L
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  WZZ
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  WWZ
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  ZZZ
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  WGToLNuG
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  ZGTo2LG_ext
 
-#DYNJets
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" DY1JetsToLL_M50_LO
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" DY2JetsToLL_M50_LO
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" DY3JetsToLL_M50_LO
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" DY4JetsToLL_M50_LO
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  SingleMuon_Run2016B_07Aug17_v2
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  SingleMuon_Run2016C_07Aug17
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  SingleMuon_Run2016D_07Aug17
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  SingleMuon_Run2016E_07Aug17
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  SingleMuon_Run2016F_07Aug17
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  SingleMuon_Run2016G_07Aug17
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  SingleMuon_Run2016H_07Aug17
 
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt15to20_Mu5
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt20to30_Mu5
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt30to50_Mu5
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt50to80_Mu5
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt80to120_Mu5
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt80to120_Mu5_ext
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt120to170_Mu5
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt170to300_Mu5
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt170to300_Mu5_ext
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt300to470_Mu5
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt300to470_Mu5_ext
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt300to470_Mu5_ext2
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt470to600_Mu5
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt470to600_Mu5_ext
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt470to600_Mu5_ext2
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt600to800_Mu5
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt600to800_Mu5_ext
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt800to1000_Mu5
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt800to1000_Mu5_ext
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt800to1000_Mu5_ext2
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt1000toInf_Mu5
-python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py" QCD_Pt1000toInf_Mu5_ext
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  DoubleMuon_Run2016B_07Aug17_v2
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  DoubleMuon_Run2016C_07Aug17
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  DoubleMuon_Run2016D_07Aug17
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  DoubleMuon_Run2016E_07Aug17
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  DoubleMuon_Run2016F_07Aug17
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  DoubleMuon_Run2016G_07Aug17
+python launch.py --year=2016 --remoteDir="full_events" --unitsPerJob=2 --production_label="full_events_2016_v3" --cfg_name "../cfg/full_events_%i.py"  DoubleMuon_Run2016H_07Aug17
