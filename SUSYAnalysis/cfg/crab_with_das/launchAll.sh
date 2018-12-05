@@ -256,7 +256,8 @@ if  $ewikino
 then
   echo ------------------------------- Signal EWikino -----------------
   #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   SMS_TChiWZ_ZToLL_mZMin_0p1 
-  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   MSSM_higgsino_genHT_160_genMET_80  SMS_TChiWZ_genHT_160_genMET_80
+  #python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL   MSSM_higgsino_genHT_160_genMET_80  SMS_TChiWZ_genHT_160_genMET_80
+  python launch.py  --unitsPerJob=1 --remoteDir=$REMOTE_DIR_MC --production_label=$PROD_LABEL    SMS_TChiWZ_genHT_160_genMET_80_v2
 
 fi
 

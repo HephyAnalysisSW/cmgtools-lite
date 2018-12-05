@@ -70,7 +70,8 @@ samples = {
            #'SMS_N2C1_higgsino_genHT_160_genMET_80_3p'  :  signals.SMS_N2C1_higgsino_genHT_160_genMET_80_3p   , 
 
            #"MSSM_higgsino_genHT_160_genMET_80"   :   signals.MSSM_higgsino_genHT_160_genMET_80  , 
-           "SMS_TChiWZ_genHT_160_genMET_80"      :   signals.SMS_TChiWZ_genHT_160_genMET_80     , 
+
+           #"SMS_TChiWZ_genHT_160_genMET_80_v2"      :   signals.SMS_TChiWZ_genHT_160_genMET_80_v2     , 
           }
 
 #sample = "T2tt_dM_10to80_genHT_160_genMET_80"
@@ -178,6 +179,7 @@ if __name__ == '__main__':
 
     for sample in samples:
         fileList = samples[sample].files
+        print sample, "%s files"%len( fileList )
 
         model_base_string = sample +"_" 
         #getMasses = lambda model: map(int, model.replace(model_base_string,"").split("_")[-2:] )
@@ -188,8 +190,8 @@ if __name__ == '__main__':
             print "number of files: %s"%len(fileList)
             print "This will take some time! grab a coffee and finish the other thing you were working on!"
             pool = multiprocessing.Pool(nProc)
-            #results = pool.map( getModelInfoFromFile ,  fileList)
-            results = map( getModelInfoFromFile ,  fileList)
+            results = pool.map( getModelInfoFromFile ,  fileList)
+            #results = map( getModelInfoFromFile ,  fileList)
             pool.close()
             #pool.join()
             #models = {}
