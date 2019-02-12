@@ -100,7 +100,7 @@
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTGJets_ext
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTWToLNu_fxfx 
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTW_LO 
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" tWll
+python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" tWll_ext
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTZToLLNuNu_amc 
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTZToLLNuNu_amc_psw 
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTZ_LO 
@@ -153,6 +153,6 @@ python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --producti
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" ZHZZ4LF_ext
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTWZ
 #python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" TTZZ
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" THW
-python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" THQ
+#python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" THW
+#python launch.py --year=2017 --remoteDir="94X_1l_v10" --unitsPerJob=2 --production_label="94X_1l_v10" THQ
 

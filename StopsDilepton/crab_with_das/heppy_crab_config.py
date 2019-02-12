@@ -31,10 +31,12 @@ import subprocess
 user = os.environ["USER"]
 p = subprocess.Popen(["crab","checkusername"],stdout=subprocess.PIPE)
 for l in p.stdout.readlines():
-  if l.startswith("Username is: "):
+  if l.startswith("username is "):
     fields = l[:-1].split()
     if len(fields)==3:
       user = fields[-1]
+
+print "Found username: ", user
 
 config.Data.outLFNDirBase = '/store/user/' + user+'/cmgTuples/'
 remoteDir = os.environ["CMG_REMOTE_DIR"]
