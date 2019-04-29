@@ -202,7 +202,7 @@ DYNJetsToLL = [
 ]
 
 ## Cross sections from getXSecAnalyzer
-DYJetsToLL_M4to50_HT70to100       = kreator.makeMCComponent("DYJetsToLL_M4to50_HT70to100",       "/DYJetsToLL_M-4to50_HT-70to100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v1/MINIAODSIM",        "CMS", ".*root", 145.4)
+#DYJetsToLL_M4to50_HT70to100       = kreator.makeMCComponent("DYJetsToLL_M4to50_HT70to100",       "/DYJetsToLL_M-4to50_HT-70to100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v1/MINIAODSIM",        "CMS", ".*root", 145.4)
 #DYJetsToLL_M4to50_HT70to100_ext1  = kreator.makeMCComponent("DYJetsToLL_M4to50_HT70to100_ext1",  "/DYJetsToLL_M-4to50_HT-70to100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10_ext1-v1/MINIAODSIM",   "CMS", ".*root", 145.4)
 DYJetsToLL_M4to50_HT100to200      = kreator.makeMCComponent("DYJetsToLL_M4to50_HT100to200",      "/DYJetsToLL_M-4to50_HT-100to200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM",      "CMS", ".*root", 202.8)
 DYJetsToLL_M4to50_HT100to200_ext1 = kreator.makeMCComponent("DYJetsToLL_M4to50_HT100to200_ext1", "/DYJetsToLL_M-4to50_HT-100to200_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14_ext1-v1/MINIAODSIM", "CMS", ".*root", 202.8)
@@ -212,7 +212,7 @@ DYJetsToLL_M4to50_HT400to600      = kreator.makeMCComponent("DYJetsToLL_M4to50_H
 DYJetsToLL_M4to50_HT400to600_ext1 = kreator.makeMCComponent("DYJetsToLL_M4to50_HT400to600_ext1", "/DYJetsToLL_M-4to50_HT-400to600_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10_ext1-v1/MINIAODSIM", "CMS", ".*root", 5.66)
 DYJetsToLL_M4to50_HT600toInf      = kreator.makeMCComponent("DYJetsToLL_M4to50_HT600toInf",      "/DYJetsToLL_M-4to50_HT-600toInf_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v1/MINIAODSIM",      "CMS", ".*root", 1.852)
 DYJetsToLLM4to50HT = [
-    DYJetsToLL_M4to50_HT70to100,     #DYJetsToLL_M4to50_HT70to100_ext1,
+    #DYJetsToLL_M4to50_HT70to100,     #DYJetsToLL_M4to50_HT70to100_ext1,
     DYJetsToLL_M4to50_HT100to200,    DYJetsToLL_M4to50_HT100to200_ext1,
     DYJetsToLL_M4to50_HT200to400,    DYJetsToLL_M4to50_HT200to400_ext1,
     DYJetsToLL_M4to50_HT400to600,    DYJetsToLL_M4to50_HT400to600_ext1,
@@ -270,14 +270,14 @@ TTJets = kreator.makeMCComponent("TTJets", "/TTJets_TuneCP5_13TeV-amcatnloFXFX-p
 TTLep_pow  = kreator.makeMCComponent("TTLep_pow", "/TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM", "CMS", ".*root", 831.76*((3*0.108)**2) )
 TTLep_pow_small  = kreator.makeMCComponent("TTLep_pow_small", "/TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v2/MINIAODSIM", "CMS", ".*root", 831.76*((3*0.108)**2) )
 TTHad_pow  = kreator.makeMCComponent("TTHad_pow", "/TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM", "CMS", ".*root", 831.76*((1-3*0.108)**2) )
-TTSemi_pow = kreator.makeMCComponent("TTSemi_pow", "/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM", "CMS", ".*root", 831.76*2*(3*0.108)*(1-3*0.108) )
+TTSemi_pow = kreator.makeMCComponent("TTSemi_pow", "/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v2/MINIAODSIM", "CMS", ".*root", 831.76*2*(3*0.108)*(1-3*0.108) )
 
 TTJets_SingleLeptonFromT = kreator.makeMCComponent("TTJets_SingleLeptonFromT", "/TTJets_SingleLeptFromT_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM", "CMS", ".*root", 831.76*(3*0.108)*(1-3*0.108))
-#TTJets_SingleLeptonFromTbar = kreator.makeMCComponent("TTJets_SingleLeptonFromTbar", "/TTJets_SingleLeptFromTbar_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v11-v1/MINIAODSIM", "CMS", ".*root", 831.76*(3*0.108)*(1-3*0.108) )
+TTJets_SingleLeptonFromTbar = kreator.makeMCComponent("TTJets_SingleLeptonFromTbar", "/TTJets_SingleLeptFromTbar_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v11-v1/MINIAODSIM", "CMS", ".*root", 831.76*(3*0.108)*(1-3*0.108) )
 #TTJets_DiLepton = kreator.makeMCComponent("TTJets_DiLepton", "/TTJets_DiLept_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v11-v1/MINIAODSIM", "CMS", ".*root", 831.76*((3*0.108)**2) )
 
 
-TTs = [ TTJets, TTLep_pow, TTHad_pow, TTSemi_pow, TTJets_SingleLeptonFromT#, TTJets_SingleLeptonFromTbar, TTJets_DiLepton 
+TTs = [ TTJets, TTLep_pow, TTHad_pow, TTSemi_pow, TTJets_SingleLeptonFromT, TTJets_SingleLeptonFromTbar, #TTJets_DiLepton 
 ]
 
 TTLep_pow_TuneDown  = kreator.makeMCComponent("TTLep_pow_TuneDown", "/TTTo2L2Nu_TuneCP5down_PSweights_13TeV-powheg-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM",      "CMS", ".*root", 831.76*((3*0.108)**2) )
@@ -316,7 +316,7 @@ TTW_LO = kreator.makeMCComponent("TTW_LO", "/ttWJets_TuneCP5_13TeV_madgraphMLM_p
 
 TTZToLLNuNu_amc = kreator.makeMCComponent("TTZToLLNuNu_amc", "/TTZToLLNuNu_M-10_TuneCP5_13TeV-amcatnlo-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM", "CMS", ".*root", 0.2728, fracNegWeights=0.264) # updated x-sec used for ttZ measurement
 TTZToLLNuNu_amc_psw = kreator.makeMCComponent("TTZToLLNuNu_amc_psw", "/TTZToLLNuNu_M-10_TuneCP5_PSweights_13TeV-amcatnlo-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM", "CMS", ".*root", 0.2728, fracNegWeights=0.264, useAAA=True, unsafe=True) # updated x-sec used for ttZ measurement
-TTZ_LO = kreator.makeMCComponent("TTZ_LO", "/ttZJets_TuneCP5_13TeV_madgraphMLM_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v1/MINIAODSIM", "CMS", ".*root",  0.5297/0.692) # update to official value from LHC Higgs x-sec WG arXiv:1610.07922 ? sigma(NLO QCD+EW) = 0.8393
+TTZ_LO = kreator.makeMCComponent("TTZ_LO", "/ttZJets_TuneCP5_13TeV_madgraphMLM_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v2/MINIAODSIM", "CMS", ".*root",  0.5297/0.692) # update to official value from LHC Higgs x-sec WG arXiv:1610.07922 ? sigma(NLO QCD+EW) = 0.8393
 
 TTZToLLNuNu_m1to10  = kreator.makeMCComponent("TTZToLLNuNu_m1to10","/TTZToLL_M-1to10_TuneCP5_13TeV-amcatnlo-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM", "CMS", ".*root", 0.05324, fracNegWeights=0.236)
 
@@ -335,6 +335,12 @@ TZQToLL  = kreator.makeMCComponent("TZQToLL","/tZq_ll_4f_ckm_NLO_TuneCP5_PSweigh
 TTXs = [ TTGJets, TTGJets_ext, 
          TTWToLNu_fxfx, TTW_LO, 
          TTZToLLNuNu_amc, TTZToLLNuNu_amc_psw, TTZ_LO, TTZToLLNuNu_m1to10, 
+         TZQToLL, 
+         TTH_pow, TTHnobb_fxfx, TTHnobb_pow, TTHtautau_pow, THW, THQ, tWll_ext ]
+
+TTXs = [ TTGJets, TTGJets_ext, 
+         TTWToLNu_fxfx, TTW_LO, 
+         TTZToLLNuNu_amc, TTZToLLNuNu_amc_psw, TTZToLLNuNu_m1to10, 
          TZQToLL, 
          TTH_pow, TTHnobb_fxfx, TTHnobb_pow, TTHtautau_pow, THW, THQ, tWll_ext ]
 

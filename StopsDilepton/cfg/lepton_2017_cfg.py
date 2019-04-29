@@ -62,6 +62,16 @@ lepAna.loose_muon_relIso     = 0.5
 lepAna.match_inclusiveLeptons=True
 lepAna.pfCandAssocDR         = 0.5
 
+# Secondary vertex analyzer
+from CMGTools.TTHAnalysis.analyzers.ttHSVAnalyzer import ttHSVAnalyzer
+ttHSVAna = cfg.Analyzer(
+    ttHSVAnalyzer, name="ttHSVAnalyzer",
+    do_mc_match = True,
+)
+# SV
+susyCoreSequence.insert(susyCoreSequence.index(lepAna),
+                        ttHSVAna)
+
 if doElectronScaleCorrections:
     era = '25ns'
     lepAna.doElectronScaleCorrections = {
@@ -164,30 +174,11 @@ chsMETAna = cfg.Analyzer(
     )
 susyCoreSequence.append( chsMETAna )
 
-# iso tracks
-isoTrackAna.setOff = False
-
 from CMGTools.TTHAnalysis.analyzers.ttHLepEventAnalyzer import ttHLepEventAnalyzer
 ttHEventAna = cfg.Analyzer(
     ttHLepEventAnalyzer, name="ttHLepEventAnalyzer",
     minJets25 = 0,
     )
-
-# Fat jets
-susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
-                        ttHFatJetAna)
-# SV
-susyCoreSequence.insert(susyCoreSequence.index(lepAna),
-                        ttHSVAna)
-
-#ISR jet counting
-from CMGTools.TTHAnalysis.analyzers.nIsrAnalyzer import NIsrAnalyzer
-nISRAna = cfg.Analyzer(
-    NIsrAnalyzer, name="NIsrAnalyzer",
-    minJets25 = 0,
-    )
-susyCoreSequence.insert(susyCoreSequence.index(ttHCoreEventAna),
-                        nISRAna)
 
 if storePackedCandidates:
     from CMGTools.TTHAnalysis.analyzers.packedCandidateAnalyzer import packedCandidateAnalyzer

@@ -163,7 +163,6 @@ leptonTypeSusy.variables.append(  NTupleVariable("isGlobalMuon_float",   lambda 
 # store TTV lepton MVA in 2016 version
 leptonTypeSusy.variables.append(  NTupleVariable("mvaTTV",lambda lepton : getattr(lepton, 'mvaValueTTV2016', -1), help="Lepton MVA (TTV 2016 version)") )
 
-
 # MET
 metAna.recalibrate = "type1"
 metAna.storePuppiExtra = False # False for MC, True for re-MiniAOD??
@@ -227,7 +226,7 @@ selectedComponents = [
 if getHeppyOption("loadSamples"):
     from CMGTools.RootTools.samples.samples_13TeV_RunIISummer16MiniAODv2 import *
     from CMGTools.RootTools.samples.samples_13TeV_DATA2016 import *
-    from CMGTools.RootTools.samples.samples_13TeV_signals import *
+    #from CMGTools.RootTools.samples.samples_13TeV_signals import *
     from CMGTools.StopsDilepton.TTbarDMJets_signals_RunIISummer16MiniAODv2 import *
     from CMGTools.StopsDilepton.ttX0j_5f_MLM_signals_RunIISummer16MiniAODv2 import *
     from CMGTools.StopsDilepton.samples import *

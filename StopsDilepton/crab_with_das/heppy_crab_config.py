@@ -62,7 +62,7 @@ config.Site.ignoreGlobalBlacklist = False
 #config.section_("Debug")
 #config.Debug.extraJDL = ['+CMS_ALLOW_OVERFLOW=False']
 
-if os.environ['USER'] in ['schoef', 'rschoefbeck', 'schoefbeck', 'dspitzba', 'dspitzbart', 'gmoertl']:
+if os.environ['USER'] in ['schoef', 'rschoefbeck', 'schoefbeck', 'dspitzba', 'dspitzbart', 'gmoertl', 'tbrueckler']:
   config.Site.storageSite = 'T2_AT_Vienna'
 #config.Data.ignoreLocality = True
 
