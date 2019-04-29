@@ -93,8 +93,7 @@ eventFlagsAna = cfg.Analyzer(
         "MuFlag_good" : [ "Flag_noBadMuons" ],
         "MuFlag_bad" : [ "Flag_badMuons" ],
         "MuFlag_dup" : [ "Flag_duplicateMuons" ],
-    }
-    )
+    })
 
 from CMGTools.TTHAnalysis.analyzers.badMuonAnalyzerMoriond2017 import badMuonAnalyzerMoriond2017
 badCloneMuonAnaMoriond2017 = cfg.Analyzer(
@@ -564,6 +563,19 @@ susyTauMatchAna = cfg.Analyzer(
     statusOne  = False # put True if trying to match to genParticle with same pdgId and status 1, but False if only require same pdgId
     )
 
+from CMGTools.TTHAnalysis.analyzers.PrefiringAnalyzer import PrefiringAnalyzer
+PrefiringAnalyzer = cfg.Analyzer(
+  PrefiringAnalyzer, name='PrefiringAnalyzer',
+  #class_object= PrefiringAnalyzer,
+  L1Maps = '$CMSSW_BASE/src/CMGTools/RootTools/data/L1PrefiringMaps_new.root',
+  DataEra = '2017BtoF',
+  UseJetEMPt = False ,
+  PrefiringRateSystematicUncty =  0.2 , 
+  SkipWarnings= True,
+  )
+  
+
+
 # Core sequence of all common modules
 susyCoreSequence = [
     lheWeightAna,
@@ -601,4 +613,5 @@ susyCoreSequence = [
     badMuonAnaMoriond2017,
     badCloneMuonAnaMoriond2017,
     badChargedHadronAna,
+    PrefiringAnalyzer,
 ]

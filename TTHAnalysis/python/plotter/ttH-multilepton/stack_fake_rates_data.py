@@ -42,7 +42,7 @@ def combine(graphs,mode):
     for j,(x,xl,xh) in enumerate(xvals):
         if mode in ("default","midpoint"): 
             yhli = [ (g.GetY()[i], g.GetErrorYhigh(i), g.GetErrorYlow(i)) for g in graphs for i in xrange(g.GetN()) if abs(g.GetX()[i]-x) <= 0.01 ]
-            yavg = sum((y/(h**2+l**2)) for (y,h,l) in yhli)/sum(1.0/(h**2+l**2) for (y,h,l) in yhli)
+            yavg = sum((y/(h**2+l**2)) for (y,h,l) in yhli if h+l != 0)/sum(1.0/(h**2+l**2) for (y,h,l) in yhli if h+l != 0)
             ymax = max(y+h for (y,h,l) in yhli)
             ymin = min(y-l for (y,h,l) in yhli)
             if mode == "midpoint":
@@ -64,7 +64,7 @@ def attrs(filename,process):
         if "QCD"      in process: return { 'Label':'QCD MC, cut',     'Color':ROOT.kPink-5,  '#':1, 'key':'QCD_cut'  }
         if "DY"       in process: return { 'Label':'DY MC, cut',      'Color':ROOT.kPink-5,  '#':1, 'key':'DY_cut'  }
         if "data_sub" in process: return { 'Label':'Data, cut & sub', 'Color':ROOT.kAzure+1, '#':2, 'key':'data_sub' }
-    elif "fitSimND" in filename:
+    elif "fitSimND" in filename or "fitGlobalSimND" in filename:
         if "QCD"      in process: return { 'Label':'QCD MC',         'Color':ROOT.kPink-2,  '#':0, 'key':'QCD'       }
         if "DY"       in process: return { 'Label':'DY MC',          'Color':ROOT.kPink-2,    '#':0, 'key':'DY'       }
         if "data_fit" in process: return { 'Label':'Data, sim. fit', 'Color':ROOT.kGreen+2, '#':3, 'key':'data_fit'  }

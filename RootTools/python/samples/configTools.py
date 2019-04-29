@@ -34,11 +34,12 @@ def configureSplittingFromTime(selectedComponents,msPerEvent,jobTimeInHours,minS
         if nev == 0: continue
         njobs = (nev * msPerEvent) / (3.6e6 * jobTimeInHours)
         filesPerJob = len(comp.files)/njobs
-        if maxFiles and filesPerJob > maxFiles:
-            filesPerJob = maxFiles
         for (pattern,penalty) in penaltyByOrigin:
             if any(f for f in comp.files if pattern in f): 
                 filesPerJob /= penalty
+                if maxFiles: maxFiles /= penalty
+        if maxFiles and filesPerJob > maxFiles:
+            filesPerJob = maxFiles
         if minSplit and njobs < minSplit:
             if minSplitDoesFineSplit: 
                 raise RuntimeError, "Not implemented"
@@ -67,7 +68,7 @@ def cropToLumi(selectedComponents, maxLumi):
 
 def mergeExtensions(selectedComponents, verbose=False):
     compMap = {}
-    for comp in selectedComponents:
+    for comp in sorted(selectedComponents, key = lambda c : c.name):
         if "_ext" in comp.name:
             basename = comp.name.split("_ext",1)[0]
         else:

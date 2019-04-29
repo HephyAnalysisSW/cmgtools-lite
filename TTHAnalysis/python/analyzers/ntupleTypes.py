@@ -54,14 +54,14 @@ leptonTypeSusy = NTupleObjectType("leptonSusy", baseObjectTypes = [ leptonTypeEx
     NTupleVariable("muonInnerTrkRelErr",  lambda lepton : ( lepton.innerTrack().ptError()/lepton.innerTrack().pt() if lepton.innerTrack().pt()>0 else 99 ) if abs(lepton.pdgId()) == 13 else 0., help="relative pt error on muon inner track (99 if doesn't exist), 0 for electrons"),
     NTupleVariable("matchedTrgObj1El", lambda lepton: (lepton.matchedTrgObj1El.pt() if hasattr(lepton, "matchedTrgObj1El") and lepton.matchedTrgObj1El is not None else float('nan')), help="electron trigger match object pt"),
     NTupleVariable("matchedTrgObj1Mu", lambda lepton: (lepton.matchedTrgObj1Mu.pt() if hasattr(lepton, "matchedTrgObj1Mu") and lepton.matchedTrgObj1Mu is not None else float('nan')), help="muon trigger match object pt"),
-    NTupleVariable("miniRelIsoCharged",   lambda x : getattr(x,'miniAbsIsoCharged',-99)/x.pt()),
-    NTupleVariable("miniRelIsoNeutral",   lambda x : getattr(x,'miniAbsIsoNeutral',-99)/x.pt()),
     NTupleVariable("trackMult",lambda lepton: sum((deltaR(x.eta(),x.phi(),lepton.jet.eta(),lepton.jet.phi())<=0.4 and x.charge()!=0 and x.fromPV()>1 and x.hasTrackDetails() and qualityTrk(x.pseudoTrack(),lepton.associatedVertex)) for x in lepton.jet.daughterPtrVector()) if hasattr(lepton,'jet') and lepton.jet != lepton else 0, help="trackMult as used in TTV lepton MVA"),
 ])
 
 
 leptonTypeSusyExtraLight = NTupleObjectType("leptonSusyExtraLight", baseObjectTypes = [ leptonTypeSusy, leptonTypeExtra ], variables = [
-    NTupleVariable("jetNDauChargedMVASel",    lambda lepton : sum((deltaR(x.eta(),x.phi(),lepton.jet.eta(),lepton.jet.phi())<=0.4 and x.charge()!=0 and x.fromPV()>1 and x.hasTrackDetails() and qualityTrk(x.pseudoTrack(),lepton.associatedVertex)) for x in lepton.jet.daughterPtrVector()) if hasattr(lepton,'jet') and lepton.jet != lepton else 0, help="n charged daughters (with selection for ttH lepMVA) of nearest jet"),
+    NTupleVariable("miniRelIsoCharged",   lambda x : getattr(x,'miniAbsIsoCharged',-99)/x.pt()),
+    NTupleVariable("miniRelIsoNeutral",   lambda x : getattr(x,'miniAbsIsoNeutral',-99)/x.pt()),
+    NTupleVariable("jetNDauChargedMVASel",    lambda lepton : sum((deltaR(x.eta(),x.phi(),lepton.eta(),lepton.phi())<=0.4 and x.charge()!=0 and x.fromPV()>1 and x.hasTrackDetails() and qualityTrk(x.pseudoTrack(),lepton.associatedVertex)) for x in lepton.jet.daughterPtrVector()) if hasattr(lepton,'jet') and lepton.jet != lepton else 0, help="n charged daughters (with selection for ttH lepMVA) of nearest jet"),
     NTupleVariable("jetCorrFactor_L1", lambda x: x.jet.CorrFactor_L1 if hasattr(x.jet,'CorrFactor_L1') else 1, help="matched jet L1 correction factor"),
     NTupleVariable("jetCorrFactor_L1L2", lambda x: x.jet.CorrFactor_L1L2 if hasattr(x.jet,'CorrFactor_L1L2') else 1, help="matched jet L1L2 correction factor"),
     NTupleVariable("jetCorrFactor_L1L2L3", lambda x: x.jet.CorrFactor_L1L2L3 if hasattr(x.jet,'CorrFactor_L1L2L3') else 1, help="matched jet L1L2L3 correction factor"),
@@ -74,6 +74,9 @@ leptonTypeSusyExtraLight = NTupleObjectType("leptonSusyExtraLight", baseObjectTy
     NTupleVariable("idEmuTTH", lambda lepton: _ttH_idEmu_cuts_E2_obj(lepton), help="Electron pass trigger ID emulation cuts (TTH, E2)"),
     # NTupleVariable("idEmuRA5", lambda lepton: _susy2lss_idEmu_cuts_obj(lepton), help="Electron pass trigger ID emulation cuts (RA5)"),
     # NTupleVariable("idIsoEmuRA5", lambda lepton: _susy2lss_idIsoEmu_cuts_obj(lepton), help="Electron pass trigger ID+ISO emulation cuts (RA5)"),
+    #NTupleVariable("idEmuRA5", lambda lepton: _susy2lss_idEmu_cuts_obj(lepton), help="Electron pass trigger ID emulation cuts (RA5)"),
+    #NTupleVariable("idIsoEmuRA5", lambda lepton: _susy2lss_idIsoEmu_cuts_obj(lepton), help="Electron pass trigger ID+ISO emulation cuts (RA5)"),
+    #NTupleVariable("SOSTightID2017", lambda lepton: (lepton.electronID("MVA_ID_nonIso_Fall17_wp90") if lepton.pt()<10 else lepton.electronID("MVA_ID_nonIso_Fall17_SUSYTight")) if abs(lepton.pdgId())==11 else 0, int, help="SOS tight electron MVA noIso ID 2017 (WP: POG wp90 below 10 GeV, SUSYTight above)"),
     NTupleVariable("mcPrompt",    lambda x : x.mcMatchAny_gp.isPromptFinalState() if getattr(x,"mcMatchAny_gp",None) else 0, int, mcOnly=True, help="isPromptFinalState"),
     NTupleVariable("mcPromptTau", lambda x : x.mcMatchAny_gp.isDirectPromptTauDecayProductFinalState() if getattr(x,"mcMatchAny_gp",None) else 0, int, mcOnly=True, help="isDirectPromptTauDecayProductFinalState"),
     NTupleVariable("mcPromptGamma", lambda x : x.mcPho.isPromptFinalState() if getattr(x,"mcPho",None) else 0, int, mcOnly=True, help="Photon isPromptFinalState"),
