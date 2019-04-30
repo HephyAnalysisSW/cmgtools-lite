@@ -440,7 +440,6 @@ DiBosons = [
     WWToLNuQQ_ext,
     WW_DPS,
     WWTo2L2Nu_DPS_hpp,
-    WpWpJJ,
     WZ,
     WZTo3LNu_fxfx,
     WZTo1L1Nu2Q,
