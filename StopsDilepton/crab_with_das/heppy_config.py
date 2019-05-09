@@ -1,1 +1,1 @@
-../cfg/full_events_2016.py
+../cfg/stopsDilepton_2017_cfg.py
