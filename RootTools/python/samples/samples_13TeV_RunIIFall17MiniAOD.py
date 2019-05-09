@@ -432,6 +432,8 @@ GluGluToZZTo2mu2tau = kreator.makeMCComponent("GluGluToZZTo2mu2tau",    "/GluGlu
 GluGluToZZTo4e      = kreator.makeMCComponent("GluGluToZZTo4e",         "/GluGluToContinToZZTo4e_13TeV_MCFM701_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v1/MINIAODSIM",      "CMS", ".*root", 0.001575*1.7, useAAA=True)
 GluGluToZZTo4mu     = kreator.makeMCComponent("GluGluToZZTo4mu",        "/GluGluToContinToZZTo4mu_13TeV_MCFM701_pythia8/RunIIFall17MiniAOD-94X_mc2017_realistic_v10-v1/MINIAODSIM",     "CMS", ".*root", 0.001575*1.7, useAAA=True)
 
+VVTo2L2Nu = kreator.makeMCComponent("VVTo2L2Nu", "/VVTo2L2Nu_13TeV_amcatnloFXFX_madspin_pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM", "CMS", ".*root", 11.95)
+WGToLNuG = kreator.makeMCComponent("WGToLNuG", "/WGToLNuG_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM", "CMS", ".*root", 585.8)
 
 DiBosons = [
     WW,
@@ -455,6 +457,8 @@ DiBosons = [
     WpHZZ4L,
     WmHZZ4L, WmHZZ4L_ext,
     ZHZZ4LF, ZHZZ4LF_ext,
+    VVTo2L2Nu,
+    WGToLNuG,
 ]
 
 # ===  TRI-BOSONS

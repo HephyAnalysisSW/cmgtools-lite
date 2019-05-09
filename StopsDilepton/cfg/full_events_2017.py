@@ -248,9 +248,11 @@ if getHeppyOption("loadSamples"):
         sample.json="$CMSSW_BASE/src/CMGTools/TTHAnalysis/data/json/Cert_294927-306462_13TeV_EOY2017ReReco_Collisions17_JSON.txt"
 
     #selectedComponents = [TTZToLLNuNu_amc_psw]
-    selectedComponents = [T_tch]
+    #selectedComponents = [T_tch]
+    selectedComponents = [VVTo2L2Nu]
     #selectedComponents = [MuonEG_Run2017F_17Nov2017]
-    T_tch.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIIFall17MiniAODv2/ST_t-channel_top_4f_inclusiveDecays_TuneCP5_13TeV-powhegV2-madspin-pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/00000/8A9BD9C9-A042-E811-9D9D-7845C4FC35C9.root']
+    #T_tch.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIIFall17MiniAODv2/ST_t-channel_top_4f_inclusiveDecays_TuneCP5_13TeV-powhegV2-madspin-pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/00000/8A9BD9C9-A042-E811-9D9D-7845C4FC35C9.root']
+    VVTo2L2Nu.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIIFall17MiniAODv2/VVTo2L2Nu_13TeV_amcatnloFXFX_madspin_pythia8/MINIAODSIM/PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/90000/F88BB23B-3893-E811-B3E2-FA163E1A31DC.root']
     #MuonEG_Run2017F_17Nov2017.json=None
     #MuonEG_Run2017F_17Nov2017.files = ["/afs/hephy.at/user/r/rschoefbeck/www/etc/pickevents.root"]
     #MuonEG_Run2017F_17Nov2017.files = ['root://cms-xrd-global.cern.ch//store/data/Run2018B/DoubleMuon/MINIAOD/PromptReco-v1/000/317/383/00000/F8DC8A54-1669-E811-8656-02163E01A01E.root']

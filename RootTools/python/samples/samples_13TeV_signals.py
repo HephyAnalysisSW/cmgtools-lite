@@ -35,8 +35,8 @@ SMS_TChiSlepSnuTEx0p95=kreator.makeMCComponent("SMS_TChiSlepSnuTEx0p95","/SMS-TC
 
 #SMS_TChiZZ2L=kreator.makeMCComponent("SMS_TChiZZ2L","/SMS-TChiZZ_ZToLL_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM","CMS",".*root",1,True)
 #SMS_TChiZZ4L=kreator.makeMCComponent("SMS_TChiZZ4L","/SMS-TChiZZ_ZToLL_ZToLL_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM","CMS",".*root",1,True)
-SMS_TChiHZ=kreator.makeMCComponent("SMS_TChiHZ","/SMS-TChiHZ_HToWWZZTauTau_2LFilter_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM","CMS",".*root",1,True)
-SMS_TChiHH=kreator.makeMCComponent("SMS_TChiHH","/SMS-TChiHH_HToWWZZTauTau_HToWWZZTauTau_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM","CMS",".*root",1,True)
+#SMS_TChiHZ=kreator.makeMCComponent("SMS_TChiHZ","/SMS-TChiHZ_HToWWZZTauTau_2LFilter_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM","CMS",".*root",1,True)
+#SMS_TChiHH=kreator.makeMCComponent("SMS_TChiHH","/SMS-TChiHH_HToWWZZTauTau_HToWWZZTauTau_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISpring16MiniAODv2-PUSpring16Fast_80X_mcRun2_asymptotic_2016_miniAODv2_v0-v1/MINIAODSIM","CMS",".*root",1,True)
 
 SMS_T8bbllnunu_XCha0p5_XSlep0p05 = kreator.makeMCComponent("SMS_T8bbllnunu_XCha0p5_XSlep0p05", "/SMS-T8bbllnunu_XCha0p5_XSlep0p05_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUSummer16Fast_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM","CMS",".*root",1,True)
 SMS_T8bbllnunu_XCha0p5_XSlep0p09 = kreator.makeMCComponent("SMS_T8bbllnunu_XCha0p5_XSlep0p09", "/SMS-T8bbllnunu_XCha0p5_XSlep0p09_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUSummer16Fast_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM","CMS",".*root",1,True)
@@ -46,6 +46,9 @@ SMS_T8bbllnunu_XCha0p5_XSlep0p5_mN1_700_1000 = kreator.makeMCComponent("SMS_T8bb
 
 SMS_T8bbllnunu_XCha0p5_XSlep0p95 = kreator.makeMCComponent("SMS_T8bbllnunu_XCha0p5_XSlep0p95", "/SMS-T8bbllnunu_XCha0p5_XSlep0p95_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUSummer16Fast_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM","CMS",".*root",1,True)
 SMS_T8bbllnunu_XCha0p5_XSlep0p95_mN1_700_1300 = kreator.makeMCComponent("SMS_T8bbllnunu_XCha0p5_XSlep0p95_mN1_700_1300","/SMS-T8bbllnunu_XCha0p5_XSlep0p95_mN1_700_1300_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv2-PUSummer16Fast_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/MINIAODSIM","CMS",".*root",1,True)
+
+SMS_T2tt_dM_10to80_genHT160_genMET80_mWMin0p1 = kreator.makeMCComponent("SMS_T2tt_dM_10to80_genHT160_genMET80_mWMin0p1","/SMS-T2tt_dM-10to80_genHT-160_genMET-80_mWMin-0p1_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/RunIISummer16MiniAODv3-PUSummer16v3Fast_94X_mcRun2_asymptotic_v3-v1/MINIAODSIM","CMS",".*root",1,True)
+
 
 SignalSUSY = [
 SMS_T1bbbb_mGluino1500_mLSP100,
@@ -63,8 +66,8 @@ SMS_TChiWZ,
 SMS_T2ttDiLep_mStop_10to80,
 #SMS_TChiZZ2L, 
 #SMS_TChiZZ4L,
-SMS_TChiHZ,
-SMS_TChiHH,
+#SMS_TChiHZ,
+#SMS_TChiHH,
 SMS_TChiSlepSnux0p95,
 SMS_TChiSlepSnuTEx0p05,
 SMS_TChiSlepSnuTEx0p5,
@@ -76,7 +79,9 @@ SMS_T8bbllnunu_XCha0p5_XSlep0p5_mN1_700_1000,
 SMS_T8bbllnunu_XCha0p5_XSlep0p95,
 SMS_T8bbllnunu_XCha0p5_XSlep0p95_mN1_700_1300,
 SMS_T2bW,
-SMS_T2bt]
+#SMS_T2btu,
+SMS_T2tt_dM_10to80_genHT160_genMET80_mWMin0p1
+]
 
 ### ----------------------------- summary ----------------------------------------
 

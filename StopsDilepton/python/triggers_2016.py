@@ -68,6 +68,8 @@ triggerBits = {
         'Mu6_PFHT200_PFMET100' : ['HLT_Mu6_PFHT200_PFMET100_v*'],
         'PFMET110_PFMHT110_IDTight': ['HLT_PFMET110_PFMHT110_IDTight_v*'], #prescaled
         'PFMET120_PFMHT120_IDTight': ['HLT_PFMET120_PFMHT120_IDTight_v*'],
+        'doublemulowMET':triggers_SOS_doublemulowMET,
+        'highMET':triggers_SOS_highMET,
 
         "MET_had": [ "HLT_MET200_v*", "HLT_MET250_v*", "HLT_MET300_v*", "HLT_PFMET100_PFMHT100_IDTight_v*", "HLT_PFMET110_PFMHT110_IDTight_v*", "HLT_PFMET120_BTagCSV0p72_v*", "HLT_PFMET120_PFMHT120_IDTight_v*", "HLT_PFMET170_HBHECleaned_v*", "HLT_PFMET170_JetIdCleaned_v*", "HLT_PFMET170_NoiseCleaned_v*", "HLT_PFMET170_v*", "HLT_PFMET300_v*", "HLT_PFMET400_v*", "HLT_PFMET90_PFMHT90_IDTight_v*", "HLT_CaloMHTNoPU90_PFMET90_PFMHT90_IDTight_v*", "HLT_CaloMHTNoPU90_PFMET90_PFMHT90_IDTight_BTagCSV0p72_v*", "HLT_QuadPFJet_VBF_v*"],
         "MET_IsoTrk":[ "HLT_MET60_IsoTrk35_Loose_v*", "HLT_MET75_IsoTrk50_v*", "HLT_MET90_IsoTrk50_v*"], 

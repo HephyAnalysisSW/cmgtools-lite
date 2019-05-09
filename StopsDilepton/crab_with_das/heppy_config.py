@@ -1,1 +1,1 @@
-../cfg/lepton_2017_cfg.py
+../cfg/full_events_2016.py

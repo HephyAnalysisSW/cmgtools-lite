@@ -38,15 +38,15 @@
 ##TTJets
 
 #TTs
-python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTJets 
-python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTLep_pow 
-python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTHad_pow 
-python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTSemi_pow 
-python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTJets_SingleLeptonFromT
-python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTLep_pow_TuneDown 
-python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTLep_pow_TuneUp 
-python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTLep_pow_hdampDown 
-python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTLep_pow_hdampUp
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTJets 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTLep_pow 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTHad_pow 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTSemi_pow 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTJets_SingleLeptonFromT
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTLep_pow_TuneDown 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTLep_pow_TuneUp 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTLep_pow_hdampDown 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" TTLep_pow_hdampUp
 
 
 ##Drell-Jan
@@ -89,6 +89,82 @@ python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_l
 #python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=2 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" DYJetsToLL_M50_HT800to1200 
 #python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=2 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" DYJetsToLL_M50_HT1200to2500 
 #python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=2 --production_label="lepton2017_v2" --cfg_name "../cfg/lepton_%i_cfg.py" DYJetsToLL_M50_HT2500toInf 
+
+
+#_________________________________________________________________________________________________________________________________________________________________________
+
+
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTJets 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTLep_pow 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTHad_pow 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTSemi_pow 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTJets_SingleLeptonFromT
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTLep_pow_TuneDown 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTLep_pow_TuneUp 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTLep_pow_hdampDown 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTLep_pow_hdampUp
+
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" WJetsToLNu_HT100to200 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" WJetsToLNu_HT200to400 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" WJetsToLNu_HT400to600 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" WJetsToLNu_HT600to800 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" WJetsToLNu_HT800to1200 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" WJetsToLNu_HT1200to2500 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" WJetsToLNu_HT2500toInf 
+
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M4to50_HT100to200 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M4to50_HT100to200_ext1 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M4to50_HT200to400 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M4to50_HT200to400_ext1
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M4to50_HT400to600 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M4to50_HT400to600_ext1 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M4to50_HT600toInf 
+
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50_HT100to200 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50_HT100to200_ext1
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50_HT200to400
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50_HT200to400_ext1
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50_HT400to600
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50_HT400to600_ext1
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50_HT600to800
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50_HT800to1200
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50_HT1200to2500
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" DYJetsToLL_M50_HT2500toInf
+
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" WW 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" WZ
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" ZZ
+
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" T_tch 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" T_tWch_noFullyHad 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TBar_tch
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TBar_tWch_noFullyHad
+
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTJets_DiLepton 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTJets_SingleLeptonFromT 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTJets_SingleLeptonFromTbar
+#
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTGJets 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTGJets_ext
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTWToLNu_fxfx
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTZToLLNuNu_m1to10
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" TTZToLLNuNu_amc
+
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" T_sch_lep
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" ZZTo4L 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" ZZTo4L_ext
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" WZTo3LNu_fxfx 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" WWW_4F 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" WZZ 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" ZZZ  
+
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" VVTo2L2Nu
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" WGToLNuG
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" 
+#python launch.py --year=2017 --remoteDir="lepton" --unitsPerJob=1 --production_label="fullEvents_v1" --cfg_name "../cfg/full_events_%i.py" 
 
 
 #make this file executable: chmod +x launch_lepton_training_data.sh

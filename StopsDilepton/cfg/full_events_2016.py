@@ -122,10 +122,6 @@ jetAna.jetPt = 15
 jetAna.jetEta = 5.2 #FIXME
 jetAna.addJECShifts = True
 jetAna.doQG = False
-## experimental
-#jetAna.cleanJetsFromLeptons = False
-#jetAna.cleanSelectedLeptons = False
-##
 jetAna.smearJets = False #should be false in susycore, already
 jetAna.calculateSeparateCorrections = True #should be true if recalibrate, otherwise L1 inconsistent
 jetAna.calculateType1METCorrection = True
@@ -133,7 +129,6 @@ jetAna.calculateType1METCorrection = True
 # 2016/17 JEC
 jetAna.applyL2L3Residual = "Data"
 jetAna.dataGT = [ ( -1, "Summer16_07Aug2017BCD_V10_DATA"), (276812, "Summer16_07Aug2017EF_V10_DATA"), (278802, "Summer16_07Aug2017GH_V10_DATA") ]
-#jetAna.dataGT = [ ( -1, "Summer16_23Sep2016BCDV3_DATA"), (276811, "Summer16_23Sep2016EFV3_DATA"), (278801, "Summer16_23Sep2016GV3_DATA"), (280385, "Summer16_23Sep2016HV3_DATA") ]
 jetAna.mcGT   = "Summer16_07Aug2017_V10_MC"
 
 # tree Producer
@@ -220,7 +215,6 @@ trigMatcher1Mu = cfg.Analyzer(
     TriggerMatchAnalyzer, name="trigMatcher1Mu",
     label='1Mu',
     processName = 'PAT',
-    #processName = '',
     fallbackCollection = 'selectedPatTrigger',
     fallbackProcessName = 'RECO', #RECO or PAT
     unpackPathNames = True,
@@ -292,8 +286,14 @@ if getHeppyOption("loadSamples"):
     #selectedComponents = [DoubleMuon_Run2016D_07Aug17]
     #DoubleMuon_Run2016G_07Aug17.files=["event_2.root"]
     #selectedComponents = [DoubleMuon_Run2016G_07Aug17]
-    WZTo3LNu_amcatnlo.files = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TT_TuneCUETP8M2T4_13TeV-powheg-fsrup-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/50000/FE7F9E30-C6D6-E611-96FE-001E673475A6.root"]
-    selectedComponents = [WZTo3LNu_amcatnlo]
+    #WZTo3LNu_amcatnlo.files = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TT_TuneCUETP8M2T4_13TeV-powheg-fsrup-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/50000/FE7F9E30-C6D6-E611-96FE-001E673475A6.root"]
+    #selectedComponents = [WJetsToLNu_HT2500toInf]
+    #WJetsToLNu_HT2500toInf.files = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/WJetsToLNu_HT-2500ToInf_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/50000/D0D0C3B9-C0C4-E611-9CEE-0023AEEEB559.root"] 
+    #MET_Run2016H_07Aug17.files = MET_Run2016H_07Aug17.files[:1]
+    #selectedComponents = [MET_Run2016H_07Aug17]
+    #selectedComponents = [SMS_T2tt_dM_10to80_genHT160_genMET80_mWMin0p1]
+    #SMS_T2tt_dM_10to80_genHT160_genMET80_mWMin0p1.files = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv3/SMS-T2tt_dM-10to80_genHT-160_genMET-80_mWMin-0p1_TuneCUETP8M1_13TeV-madgraphMLM-pythia8/MINIAODSIM/PUSummer16v3Fast_94X_mcRun2_asymptotic_v3-v1/90000/FE8842A8-BC1D-E911-B42B-0242AC130002.root"]
+
     # test new MC
     #GluGluToZZTo2e2mu.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/GluGluToContinToZZTo2e2mu_13TeV_MCFM701_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/A669DB9C-B8BD-E611-B462-001E67E33C60.root']
     #selectedComponents = [GluGluToZZTo2e2mu]
