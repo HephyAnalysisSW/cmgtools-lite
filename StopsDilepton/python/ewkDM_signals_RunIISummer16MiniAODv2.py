@@ -158,7 +158,39 @@ ewkDM_TTZToLL_LO_DC1A_1p00_DC1V_0p00 = makeMyPrivateMCComponentFromDPM(
                         xSec    = 1. * TTZToLLXsec,
                     )
 
+
+yt_tZZ = makeMyPrivateMCComponentFromDPM(
+    name    = "yt_tZZ",
+    dataset = "/tZZ1j_4l_rwgt/ttschida-Summer16-mAOD949-bd3e7bcff6c9bcad356ea4ed7e4f08b4/USER",
+    xSec    = 0.005326
+)
+
+
+yt_tWZ = makeMyPrivateMCComponentFromDPM(
+    name    = "yt_tWZ",
+    dataset = "/tWZ01j_rwgt/ttschida-Summer16-mAOD949-bd3e7bcff6c9bcad356ea4ed7e4f08b4/USER",
+    xSec    = 0.2279,
+)
+
+yt_tWW = makeMyPrivateMCComponentFromDPM(
+    name    = "yt_tWW",
+    dataset = "/tWW1j_rwgt/ttschida-Summer16-mAOD949-bd3e7bcff6c9bcad356ea4ed7e4f08b4/USER",
+    xSec    = 0.7236,
+)
+
+dim6top_ttW = makeMyPrivateMCComponentFromDPM(
+    name    = "dim6top_ttW",
+    dataset = "/ttW01j_rwgt_dim6top/ttschida-Summer16-mAOD949-bd3e7bcff6c9bcad356ea4ed7e4f08b4/USER",
+    xSec    = 0.8324,
+)
+
+
 signalSamples = [\
+    yt_tZZ,
+    yt_tWZ,
+    yt_tWW,
+    dim6top_ttW,
+
     ewkDM_ttZ_ll,
     ewkDM_ttZ_ll_DC2A_0p200000_DC2V_0p200000,
     ewkDM_ttZ_ll_DC1A_0p600000_DC1V_m0p240000_DC2V_m0p250000,
