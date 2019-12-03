@@ -26,7 +26,7 @@ crabFiles=PSet.process.source.fileNames
 #print crabFiles
 firstInput = crabFiles[0]
 tested=False
-forceaaa=False
+forceaaa=True
 
 print "--------------- using edmFileUtil to convert PFN to LFN -------------------------"
 for i in xrange(0,len(crabFiles)) :

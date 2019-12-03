@@ -4,6 +4,7 @@ from PhysicsTools.HeppyCore.framework.heppy_loop import getHeppyOption
 
 # General
 import os
+import pickle
 
 # Load all analyzers
 from CMGTools.TTHAnalysis.analyzers.susyCore_modules_cff import *
@@ -175,6 +176,10 @@ if storePackedCandidates:
 from PhysicsTools.Heppy.analyzers.gen.LHEAnalyzer import LHEAnalyzer
 LHEAna = LHEAnalyzer.defaultConfig
 lheWeightAna.usePSweights = True
+# for eft weight enumeration
+from CMGTools.StopsDilepton.LHE_weight_list import *
+lheWeightAna.eft_weight_list = [x.lower() for x in ttW01j_weight_list]
+#pickle.load(file('/afs/hephy.at/data/rschoefbeck01/gridpacks/Yt/tZZ1j_rwgt_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.pkl'))
 
 # trigger bits
 from CMGTools.StopsDilepton.triggers_2016 import triggerBits
@@ -184,10 +189,10 @@ trigMatcher1Mu = cfg.Analyzer(
     label='1Mu',
     processName = 'PAT',
     #processName = '',
-    fallbackCollection = 'selectedPatTrigger',
-    fallbackProcessName = 'RECO', #RECO or PAT
-    #fallbackCollection = 'slimmedPatTrigger',
-    #fallbackProcessName = 'PAT', #RECO or PAT
+    #fallbackCollection = 'selectedPatTrigger',
+    #fallbackProcessName = 'RECO', #RECO or PAT
+    fallbackCollection = 'slimmedPatTrigger',
+    fallbackProcessName = 'PAT', #RECO or PAT
     unpackPathNames = True,
     trgObjSelectors = [ lambda t : t.path("HLT_IsoMu22_v*",1,0) or t.path("HLT_IsoTkMu22_v*",1,0) or t.path("HLT_IsoMu22_eta2p1_v*",1,0) or t.path("HLT_IsoTkMu22_eta2p1_v*",1,0) or t.path("HLT_IsoTkMu24_v*",1,0)  ],#"HLT_IsoMu22", "HLT_IsoTkMu22", "HLT_IsoMu22_eta2p1", "HLT_IsoTkMu22_eta2p1", "HLT_IsoMu24", "HLT_IsoTkMu24"
     collToMatch = 'selectedLeptons',
@@ -257,11 +262,11 @@ if getHeppyOption("loadSamples"):
     #DoubleMuon_Run2016G_07Aug17.files=["event_2.root"]
     #selectedComponents = [DoubleMuon_Run2016G_07Aug17]
     #WZTo3LNu_amcatnlo.files = ["root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/TT_TuneCUETP8M2T4_13TeV-powheg-fsrup-pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/50000/FE7F9E30-C6D6-E611-96FE-001E673475A6.root"]
-    selectedComponents = [WZTo3LNu_amcatnlo]
+    #selectedComponents = [WZTo3LNu_amcatnlo]
     #ttZ0j_ll_DC2A_0p200000_DC2V_0p200000.files=['root://cms-xrd-global.cern.ch//store/user/schoef/ewkDM_ttZ_ll_DC2A_0p200000_DC2V_0p200000/09Nov17-GS-3_mAOD/171118_072618/0000/SUS-RunIISummer16MiniAODv2-00088_10.root']
 
     #yt_tZZ.files =yt_tZZ.files[:1]
-    #selectedComponents = [yt_tZZ]
+    selectedComponents = [dim6top_ttW]
     # test new MC
     #GluGluToZZTo2e2mu.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/GluGluToContinToZZTo2e2mu_13TeV_MCFM701_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/A669DB9C-B8BD-E611-B462-001E67E33C60.root']
     #selectedComponents = [GluGluToZZTo2e2mu]
