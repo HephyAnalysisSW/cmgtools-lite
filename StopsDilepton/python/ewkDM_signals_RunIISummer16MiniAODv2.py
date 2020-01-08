@@ -173,10 +173,17 @@ yt_tWZ = makeMyPrivateMCComponentFromDPM(
 )
 yt_tWZ.reweight_pkl = '/afs/hephy.at/data/rschoefbeck01/gridpacks/Yt/tZZ1j_rwgt_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.pkl'#same
 
+yt_tWZ_filter = makeMyPrivateMCComponentFromDPM(
+    name = "yt_tWZ_filter",
+    dataset = "/tWZ01j_rwgt_filter_2/ttschida-Summer16-mAOD949-bd3e7bcff6c9bcad356ea4ed7e4f08b4/USER",
+    xSec = 0.2279*(601438./(30*10**6))*(10**6/363784.)
+)
+yt_tWZ_filter.reweight_pkl = '/afs/hephy.at/data/rschoefbeck01/gridpacks/Yt/tZZ1j_rwgt_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.pkl'#same
+
 yt_tWW = makeMyPrivateMCComponentFromDPM(
     name    = "yt_tWW",
     dataset = "/tWW1j_rwgt/ttschida-Summer16-mAOD949-bd3e7bcff6c9bcad356ea4ed7e4f08b4/USER",
-    xSec    = 0.7236,
+    xSec    = 0.02523,
 )
 yt_tWW.reweight_pkl = '/afs/hephy.at/data/rschoefbeck01/gridpacks/Yt/tZZ1j_rwgt_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.pkl' #same
 
@@ -191,6 +198,7 @@ dim6top_ttW.reweight_pkl = '/afs/hephy.at/data/rschoefbeck01/gridpacks/dim6top/t
 signalSamples = [\
     yt_tZZ,
     yt_tWZ,
+    yt_tWZ_filter,
     yt_tWW,
     dim6top_ttW,
 
