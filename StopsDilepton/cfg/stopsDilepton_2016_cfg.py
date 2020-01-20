@@ -178,7 +178,8 @@ LHEAna = LHEAnalyzer.defaultConfig
 lheWeightAna.usePSweights = True
 # for eft weight enumeration
 from CMGTools.StopsDilepton.LHE_weight_list import *
-lheWeightAna.eft_weight_list = [x.lower() for x in ttW01j_weight_list]
+#lheWeightAna.eft_weight_list = [x.lower() for x in ttW01j_weight_list]
+lheWeightAna.eft_weight_list = [x.lower() for x in tZZ1j_weight_list]
 #pickle.load(file('/afs/hephy.at/data/rschoefbeck01/gridpacks/Yt/tZZ1j_rwgt_slc6_amd64_gcc630_CMSSW_9_3_16_tarball.pkl'))
 
 # trigger bits
@@ -266,7 +267,7 @@ if getHeppyOption("loadSamples"):
     #ttZ0j_ll_DC2A_0p200000_DC2V_0p200000.files=['root://cms-xrd-global.cern.ch//store/user/schoef/ewkDM_ttZ_ll_DC2A_0p200000_DC2V_0p200000/09Nov17-GS-3_mAOD/171118_072618/0000/SUS-RunIISummer16MiniAODv2-00088_10.root']
 
     #yt_tZZ.files =yt_tZZ.files[:1]
-    selectedComponents = [dim6top_ttW]
+    selectedComponents = [yt_tWZ_filter]
     # test new MC
     #GluGluToZZTo2e2mu.files = ['root://cms-xrd-global.cern.ch//store/mc/RunIISummer16MiniAODv2/GluGluToContinToZZTo2e2mu_13TeV_MCFM701_pythia8/MINIAODSIM/PUMoriond17_80X_mcRun2_asymptotic_2016_TrancheIV_v6-v1/70000/A669DB9C-B8BD-E611-B462-001E67E33C60.root']
     #selectedComponents = [GluGluToZZTo2e2mu]

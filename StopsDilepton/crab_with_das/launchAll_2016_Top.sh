@@ -239,5 +239,6 @@
 
 #python launch.py --year=2016  --inputDBS phys03 --remoteDir="2016_1l_v16" --unitsPerJob=1 --production_label="2016_1l_v16" yt_tZZ
 #python launch.py --year=2016  --inputDBS phys03 --remoteDir="2016_1l_v16" --unitsPerJob=1 --production_label="2016_1l_v16" yt_tWZ
-#python launch.py --year=2016  --inputDBS phys03 --remoteDir="2016_1l_v16" --unitsPerJob=1 --production_label="2016_1l_v16" yt_tWW
-python launch.py --year=2016  --inputDBS phys03 --remoteDir="2016_1l_v16" --unitsPerJob=1 --production_label="2016_1l_v16" dim6top_ttW
+#python launch.py --year=2016  --inputDBS phys03 --remoteDir="2016_1l_v16" --unitsPerJob=1 --production_label="2016_1l_v16" yt_tWZ_filter
+python launch.py --year=2016  --inputDBS phys03 --remoteDir="2016_1l_v16" --unitsPerJob=1 --production_label="2016_1l_v17" yt_tWW
+#python launch.py --year=2016  --inputDBS phys03 --remoteDir="2016_1l_v16" --unitsPerJob=1 --production_label="2016_1l_v16" dim6top_ttW
